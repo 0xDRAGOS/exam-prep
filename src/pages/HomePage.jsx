@@ -84,7 +84,7 @@ const HomePage = () => {
                     ].map(({ icon, title, desc }) => (
                         <div
                             key={title}
-                            className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm hover:shadow-md transition text-center"
+                            className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm hover:shadow-md transition text-center"
                         >
                             <div className="mb-3 text-indigo-600 dark:text-indigo-400 mx-auto">{icon}</div>
                             <h3 className="text-lg font-semibold mb-1">{title}</h3>

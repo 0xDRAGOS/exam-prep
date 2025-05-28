@@ -13,7 +13,7 @@ import {ROUTES} from "./constants/constats";
 function App() {
     return (
         <ThemeProvider>
-            <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+            <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-gray-100 transition-colors">
                 <Header />
                 <main className="flex-1 pt-6">
                     <Routes>
