@@ -3198,7 +3198,7 @@
         },
         {
           "id": 3,
-          "text": "O retea de tip inel,",
+          "text": "O retea de tip inel:",
           "options": {
             "A": "conecteaza printr-un singur cablu toate calculatoarele din retea",
             "B": "conecteaza fiecare calculator de alte doua",
