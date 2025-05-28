@@ -10,6 +10,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.5.0",
     "chart.js": "^4.4.9",
     "lucide-react": "^0.511.0",
     "pdfjs-dist": "^5.2.133",
