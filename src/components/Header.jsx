@@ -20,7 +20,7 @@ const Header = () => {
         { label: 'Progres', icon: <BarChart size={16} />, path: ROUTES.progress },
     ];
 
-    const pdfFiles = useState(PDF_FILES)
+    const pdfFiles = PDF_FILES;
 
     return (
         <header className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50 transition">

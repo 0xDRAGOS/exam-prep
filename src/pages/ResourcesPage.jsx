@@ -89,7 +89,7 @@ const ResourcesPage = ({ url = "/assets/pdf/licenta-2015-grile-modul-1.pdf" }) =
                             <button
                                 key={file}
                                 onClick={() => {
-                                    setCurrentFile(PDF_PATH);
+                                    setCurrentFile(`${PDF_PATH}${file}`);
                                     setShowDropdown(false);
                                 }}
                                 className="block w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700"
