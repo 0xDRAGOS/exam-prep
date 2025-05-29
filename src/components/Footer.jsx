@@ -1,10 +1,13 @@
 import React from 'react';
 import { Github, Mail, Linkedin } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import {APP_NAME, LOGO_PATH} from "../constants/constats";
+import {APP_NAME} from "../constants/constats";
 
 const Footer = () => {
     const { isDark } = useTheme();
+    const LOGO_PATH = isDark
+        ? './assets/logo/logo_512x512_dark.png'
+        : './assets/logo/logo_512x512_light.png';
 
     return (
         <footer className="bg-gray-50 dark:bg-gray-900 border-t dark:border-gray-800 shadow-inner mt-12">

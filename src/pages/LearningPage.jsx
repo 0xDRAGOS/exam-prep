@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneLight, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useTheme } from '../context/ThemeContext';
+import React, {useEffect, useState} from 'react';
+import {CheckCircle, AlertTriangle, Info, WrapText} from 'lucide-react';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+import {oneLight, oneDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {useTheme} from '../context/ThemeContext';
 import {IMAGE_PATH, QUESTIONS_PATH} from "../constants/constats";
 
 const LearningPage = () => {
@@ -14,8 +14,16 @@ const LearningPage = () => {
     const [feedback, setFeedback] = useState(null);
     const [showExplanation, setShowExplanation] = useState(false);
     const [answered, setAnswered] = useState(false);
+    const [wrapText, setWrapText] = useState(() => {
+        const saved = localStorage.getItem("wrapText");
+        return saved !== null ? JSON.parse(saved) : true;
+    });
 
-    const { isDark } = useTheme();
+    useEffect(() => {
+        localStorage.setItem("wrapText", JSON.stringify(wrapText));
+    }, [wrapText]);
+
+    const {isDark} = useTheme();
 
     useEffect(() => {
         fetch(QUESTIONS_PATH)
@@ -30,9 +38,9 @@ const LearningPage = () => {
     const handleSelect = (key) => {
         if (answered) return;
         if (isMultiple) {
-            setSelectedAnswers(prev => ({ ...prev, [key]: !prev[key] }));
+            setSelectedAnswers(prev => ({...prev, [key]: !prev[key]}));
         } else {
-            setSelectedAnswers({ [key]: true });
+            setSelectedAnswers({[key]: true});
         }
     };
 
@@ -65,7 +73,8 @@ const LearningPage = () => {
 
     if (!started) {
         return (
-            <div className="max-w-xl mx-auto mt-10 p-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100 text-center">
+            <div
+                className="max-w-xl mx-auto mt-10 p-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100 text-center">
                 <h2 className="text-2xl font-semibold mb-6">Selectează o materie</h2>
                 <div className="grid grid-cols-1 gap-3 text-left">
                     {subjects.map((s, i) => (
@@ -103,20 +112,46 @@ const LearningPage = () => {
     }
 
     return (
-        <div className="max-w-3xl mx-auto p-4 sm:p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
+        <div
+            className="max-w-3xl mx-auto p-4 sm:p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
             <div className="flex flex-col sm:flex-row justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
-                <span className="font-medium">Întrebarea {currentQuestionIndex + 1} / {selectedSubject.questions.length}</span>
-                <span className="text-blue-600 font-mono dark:text-blue-400">📚 {selectedSubject.name}</span>
+                <span
+                    className="font-medium">Întrebarea {currentQuestionIndex + 1} / {selectedSubject.questions.length}</span>
+                <div className="flex items-center justify-center gap-3 ml-4">
+                    <span className="text-blue-600 font-mono dark:text-blue-400">📚 {selectedSubject.name}</span>
+                    <button
+                        onClick={() => setWrapText(prev => !prev)}
+                        title={wrapText ? "Textul se încadrează automat" : "Textul are scroll orizontal"}
+                        className={`p-2 rounded-full border transition-colors
+        ${wrapText
+                            ? 'bg-blue-100 dark:bg-blue-900 border-blue-400 dark:border-blue-600'
+                            : 'bg-gray-100 dark:bg-gray-800 border-gray-400 dark:border-gray-600'
+                        } hover:shadow`}
+                    >
+                        <WrapText
+                            className={`w-5 h-5 ${wrapText ? 'text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}
+                        />
+                    </button>
+                </div>
             </div>
 
             <SyntaxHighlighter
                 language="java"
                 style={isDark ? oneDark : oneLight}
+                wrapLines={wrapText}
+                wrapLongLines={wrapText}
+                codeTagProps={{
+                    style: {
+                        whiteSpace: wrapText ? 'pre-wrap' : 'pre',
+                        wordBreak: wrapText ? 'break-word' : 'normal',
+                    }
+                }}
                 customStyle={{
                     borderRadius: '0.5rem',
                     padding: '1rem',
                     fontSize: '0.9rem',
                     background: isDark ? '#1e293b' : '#f9fafb',
+                    overflowX: wrapText ? 'visible' : 'auto',
                 }}
             >
                 {currentQuestion.text}
@@ -154,14 +189,15 @@ const LearningPage = () => {
                 <div className={`mt-6 flex items-center space-x-2 p-3 rounded ${
                     feedback.includes('corect') ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300' : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300'
                 }`}>
-                    {feedback.includes('corect') ? <CheckCircle size={20} /> : <AlertTriangle size={20} />}
+                    {feedback.includes('corect') ? <CheckCircle size={20}/> : <AlertTriangle size={20}/>}
                     <span>{feedback}</span>
                 </div>
             )}
 
             {showExplanation && (
-                <div className="mt-4 bg-yellow-100 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100 border border-yellow-300 dark:border-yellow-600 p-4 rounded flex items-start gap-3">
-                    <Info size={20} className="mt-1" />
+                <div
+                    className="mt-4 bg-yellow-100 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100 border border-yellow-300 dark:border-yellow-600 p-4 rounded flex items-start gap-3">
+                    <Info size={20} className="mt-1"/>
                     <div className="text-sm leading-relaxed whitespace-pre-wrap">
                         <p className="font-semibold">Explicație:</p>
                         {currentQuestion.explanation || "(Nu există explicație pentru această întrebare.)"}

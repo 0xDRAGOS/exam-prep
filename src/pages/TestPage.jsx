@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { CheckCircle, AlertTriangle, Info } from 'lucide-react';
+import { CheckCircle, AlertTriangle, Info, WrapText } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useTheme } from '../context/ThemeContext';
@@ -19,6 +19,14 @@ const TestPage = () => {
     const [showExplanation, setShowExplanation] = useState(false);
     const [answered, setAnswered] = useState(false);
     const timerRef = useRef(null);
+    const [wrapText, setWrapText] = useState(() => {
+        const saved = localStorage.getItem("wrapText");
+        return saved !== null ? JSON.parse(saved) : true;
+    });
+
+    useEffect(() => {
+        localStorage.setItem("wrapText", JSON.stringify(wrapText));
+    }, [wrapText]);
 
     useEffect(() => {
         fetch(QUESTIONS_PATH)
@@ -141,16 +149,33 @@ const TestPage = () => {
 
     return (
         <div className="max-w-3xl mx-auto p-4 sm:p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
-            <div className="flex flex-col sm:flex-row justify-between text-sm text-gray-600 dark:text-gray-300 mb-1 gap-1 sm:gap-0">
+            <div
+                className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-300 mb-1 gap-2">
                 <span className="font-medium">Întrebarea {currentIndex + 1} / {questions.length}</span>
-                <span className="text-blue-600 dark:text-blue-400 font-mono">⏳ {formatTime(timeLeft)}</span>
+                <div className="flex items-center gap-3">
+                    <span className="text-blue-600 dark:text-blue-400 font-mono">⏳ {formatTime(timeLeft)}</span>
+                    <button
+                        onClick={() => setWrapText(prev => !prev)}
+                        title={wrapText ? "Textul se încadrează automat" : "Textul are scroll orizontal"}
+                        className={`p-2 rounded-full border transition-colors
+                ${wrapText
+                            ? 'bg-blue-100 dark:bg-blue-900 border-blue-400 dark:border-blue-600'
+                            : 'bg-gray-100 dark:bg-gray-800 border-gray-400 dark:border-gray-600'
+                        } hover:shadow`}
+                    >
+                        <WrapText
+                            className={`w-5 h-5 ${wrapText ? 'text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}
+                        />
+                    </button>
+                </div>
             </div>
+
 
             <div className="mb-2">
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded h-2">
                     <div
                         className="h-2 rounded bg-blue-500 transition-all duration-300"
-                        style={{ width: `${questionProgress}%` }}
+                        style={{width: `${questionProgress}%`}}
                     />
                 </div>
             </div>
@@ -161,13 +186,21 @@ const TestPage = () => {
 
             <SyntaxHighlighter
                 language="java"
-                style={isDark ? oneDark : oneLight }
+                style={isDark ? oneDark : oneLight}
+                wrapLines={wrapText}
+                wrapLongLines={wrapText}
+                codeTagProps={{
+                    style: {
+                        whiteSpace: wrapText ? 'pre-wrap' : 'pre',
+                        wordBreak: wrapText ? 'break-word' : 'normal',
+                    }
+                }}
                 customStyle={{
                     borderRadius: '0.5rem',
                     padding: '1rem',
                     fontSize: '0.9rem',
-                    background: isDark ? '#1f2937' : '#f9fafb',
-                    color: isDark ? '#e5e7eb' : undefined,
+                    background: isDark ? '#1e293b' : '#f9fafb',
+                    overflowX: wrapText ? 'visible' : 'auto',
                 }}
             >
                 {current.text}

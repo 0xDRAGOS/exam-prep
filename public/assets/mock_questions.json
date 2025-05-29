@@ -15,7 +15,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Răspunsul corect este A. 8.\n\nExplicație: În acest program, două variabile întregi `a` și `b` sunt declarate, cu `b` inițializat la 0 și `a` lăsat neinițializat. Bucla `for` iterează de la `i = 0` la `i = 9`. În fiecare iterație, valoarea lui `a` este atribuită lui `b`, iar apoi `i` este atribuit lui `a`. La sfârșitul buclei, `a` deține ultima valoare a lui `i`, care este 9, iar `b` deține valoarea anterioară a lui `a`, care a fost 8 (valoarea lui `i` în penultima iterație). Prin urmare, când `printf`"
+          "explanation": "Răspunsul corect este A. 8.\n\nExplicație: În acest program, două variabile întregi `a` și `b` sunt declarate, cu `b` inițializat la 0 și `a` lăsat neinițializat. Bucla `for` iterează de la `i = 0` la `i = 9` (deci 10 iterații în total). În fiecare iterație, valoarea curentă a lui `a` este salvată în `b`, apoi `a` este setat la valoarea curentă a lui `i`. La finalul buclei, `a` va avea valoarea 9 (ultima valoare a lui `i`), iar `b` va avea valoarea 8 (valoarea anterioară a lui `a`, adică din penultima iterație). Prin urmare, instrucțiunea `printf(\"%d\", b);` va afișa 8."
         },
         {
           "id": 2,
@@ -219,7 +219,7 @@
         },
         {
           "id": 14,
-          "text": "Consideram urmatorul program:\n\n1: #include <stdio.h>\n2: void main(){\n3: int t[10];\n4: printf(\"sizeof(int)=%d\\n\",sizeof(int));\n5: printf(\"%p\\n\",t);\n6: printf(\"%p\\n\",t+3);\n7:}\n\nDaca inurmaexecutieiliniilor4si5seafiseaza2respectiv0xF004, cesevaafisa inurmaexecutiei liniei 6?",
+          "text": "Consideram urmatorul program:\n\n1: #include <stdio.h>\n2: void main(){\n3: int t[10];\n4: printf(\"sizeof(int)=%d\\n\",sizeof(int));\n5: printf(\"%p\\n\",t);\n6: printf(\"%p\\n\",t+3);\n7:}\n\nDaca in urma executiei liniilor 4 si 5 se afiseaza 2 respectiv 0xF004, ce se va afisa in urmae xecutiei liniei 6?",
           "options": {
             "A": "0xF00A",
             "B": "0xF010",
@@ -2358,7 +2358,7 @@
         },
         {
           "id": 2,
-          "text": "Convertiti in zecimal numerele urmatoare (baza este indicata in indice): DA.C₁₆, 27:4₈, 11011.101₂",
+          "text": "Convertiti in zecimal numerele urmatoare (baza este indicata in indice): DA.C₁₆, 27.4₈, 11011.101₂",
           "options": {
             "A": "216.5; 17.5; 27.52;",
             "B": "218.75; 23.5; 27.625;",
@@ -4073,11 +4073,11 @@
         },
         {
           "id": 8,
-          "text": "Se da entitatea ANGAJATI, cu urmatoarele atribute: ANGAJATI (CodAngaj, Nume, DataAngajare, compartiment, profesia, salariu) CaredintreurmatoareleinstructiuniSQLpermitestergereasalariatilorangajatiinaintedeinceputul anului 2007, cu profesia ”profesor”.",
+          "text": "Se da entitatea ANGAJATI, cu urmatoarele atribute: ANGAJATI (CodAngaj, Nume, DataAngajare, compartiment, profesia, salariu) Care dintre urmatoarele instructiuni SQL permite stergerea salariatilor angajati inainte de inceputul anului 2007, cu profesia ”profesor”.",
           "options": {
             "A": "DELETE FROM Angajati WHERE DataAngajare < ”1/1/2006” AND profesia = ”pro- fesor” ;",
-            "B": "DELETE*FROMAngajatiWHEREprofesiaLIKE”profesor”HAVINGYEAR(DataAngajare) <2007;",
-            "C": "DELETEAngajatiWHEREDataAngajare<\"1/1/2007\"ANDprofesiaLIKE \"*profesor*\";",
+            "B": "DELETE * FROM Angajati WHERE profesia LIKE ”profesor” HAVING YEAR(DataAngajare) <2007;",
+            "C": "DELETE Angajati WHERE DataAngajare < \"1/1/2007\" AND profesia LIKE \"*profesor*\";",
             "D": "UPDATE Angajati SET CodAngaj = Null WHERE DataAngajare < ”1/1/2006” AND profesia = ”profesor”;",
             "E": "niciuna"
           },
@@ -4088,7 +4088,7 @@
         },
         {
           "id": 9,
-          "text": "Fie tabelul proiecte(CodProiect;CodAng;functie;suma)cu cheia(CodProiect;CodAng), de sto- care a informatiilor privind repartizarea pe proiecte a salariatilor unei firme. Suma obtinuta de- pindede CodAng si de functia inacel proiect (CodAng;functie)!suma. Aplicand a doua forma normala care din schemele urmatoare este corecta?",
+          "text": "Fie tabelul proiecte(CodProiect;CodAng;functie;suma)cu cheia(CodProiect;CodAng), de stocare a informatiilor privind repartizarea pe proiecte a salariatilor unei firme. Suma obtinuta depinde de CodAng si de functia in acel proiect (CodAng;functie) -> suma. Aplicand a doua forma normala care din schemele urmatoare este corecta?",
           "options": {
             "A": "R1=(CodProiect,CodAng,functie),R2=(CodProiect,functie,suma)",
             "B": "R1=(CodProiect,CodAng, suma), R2=(CodAng,functie)",
@@ -4450,7 +4450,7 @@
         },
         {
           "id": 12,
-          "text": "Se da tabelul \nSTUDENT(CNP, Nume, Grupa, Adresa) \nCare secventa creaza un view ce permite ca modificarilein tabela \nsa se reflecte automat siin view?",
+          "text": "Se da tabelul \nSTUDENT(CNP, Nume, Grupa, Adresa) \nCare secventa creaza un view ce permite ca modificarile in tabela \nsa se reflecte automat siin view?",
           "options": {
             "A": "CREATE VIEW stud AS \nSELECT * FROM STUDENT WHERE Grupa IN (210,220);",
             "B": "CREATE VIEW emp_vu AS \nSELECT * FROM STUDENT WHERE Grupa IN (210,220) \nWITH READ ONLY;",
@@ -4579,7 +4579,7 @@
         },
         {
           "id": 20,
-          "text": "In definirea unui cursor explicit exista urmatoarele 5 operatiuni: \n1. Declararea variabileiin care va fi stocata o linie a cursorului \n2. Deschiderea cursorului (OPEN) \n3. Declararea cursorului printr-o fraza SELECT (CURSOR nume IS SELECT ...) \n4. Structura de ciclare ce include, obligatoriu, o comanda deincarcare a \nurmatoarelor linii din cursor altfel bucla se repeta la infinit \n5. Incarcarea urmatoarei linii din cursor (FETCH) Care este ordinea corecta a acestor operatii?",
+          "text": "In definirea unui cursor explicit exista urmatoarele 5 operatiuni: \n1. Declararea variabilei in care va fi stocata o linie a cursorului \n2. Deschiderea cursorului (OPEN) \n3. Declararea cursorului printr-o fraza SELECT (CURSOR nume IS SELECT ...) \n4. Structura de ciclare ce include, obligatoriu, o comanda deincarcare a \nurmatoarelor linii din cursor altfel bucla se repeta la infinit \n5. Incarcarea urmatoarei linii din cursor (FETCH) Care este ordinea corecta a acestor operatii?",
           "options": {
             "A": "3,2,1,4,5",
             "B": "3,1,2,5,4",
@@ -4599,7 +4599,7 @@
       "questions": [
         {
           "id": 1,
-          "text": "Care este rezultatul urmatoarei operatiiin JavaScript: “1” + 2 + 4 ?",
+          "text": "Care este rezultatul urmatoarei operatii in JavaScript: “1” + 2 + 4 ?",
           "options": {
             "A": "124",
             "B": "\"124\"",
@@ -4614,7 +4614,7 @@
         },
         {
           "id": 2,
-          "text": "Care este rezultatul urmatoarei operatiiin JavaScript: 2 + 5 + “8”?",
+          "text": "Care este rezultatul urmatoarei operatii in JavaScript: 2 + 5 + “8”?",
           "options": {
             "A": "\"78\"",
             "B": "eroare, asemenea operatii nu pot fi efectuate",
@@ -4650,7 +4650,7 @@
             "A": "scrie cu rosu toate textele din toate paragrafele",
             "B": "scrie cu rosu textul din paragraful urmator",
             "C": "atribuie variabilei p culoarea rosu",
-            "D": "schimba culoarea fundaluluiin rosu",
+            "D": "schimba culoarea fundalului in rosu",
             "E": "functia p are ca parametru culoarea rosu"
           },
           "correct_answer": [
@@ -5203,7 +5203,7 @@
             "B": "<!–Acesta este un comentariu –>",
             "C": "//Acesta este un comentariu",
             "D": "Acesta este un comentariu",
-            "E": "nu se pot scrie comentariiin JavaScript"
+            "E": "nu se pot scrie comentarii in JavaScript"
           },
           "correct_answer": [
             "C"

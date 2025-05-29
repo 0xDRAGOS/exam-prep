@@ -4,13 +4,17 @@ import {
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import {APP_NAME, LOGO_PATH, PDF_FILES, PDF_PATH, ROUTES} from "../constants/constats";
+import {APP_NAME, PDF_FILES, PDF_PATH, ROUTES} from "../constants/constats";
 
 const Header = () => {
     const [showPdfDropdown, setShowPdfDropdown] = useState(false);
     const [mobileMenu, setMobileMenu] = useState(false);
     const { isDark, setIsDark } = useTheme();
     const location = useLocation();
+
+    const LOGO_PATH = isDark
+        ? './assets/logo/logo_512x512_dark.png'
+        : './assets/logo/logo_512x512_light.png';
 
     const navItems = [
         { label: 'Acasă', icon: <Home size={16} />, path: ROUTES.home },
