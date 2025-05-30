@@ -52,7 +52,7 @@ A modern React-based web application for exam preparation. Offers multiple-choic
 │   └── Footer.jsx
 │
 ├── constants/
-│   └── constats.js         # Global constants (test time, paths, PDF list)
+│   └── constants.js         # Global constants (test time, paths, PDF list)
 │
 ├── context/
 │   └── ThemeContext.jsx    # Light/dark mode context provider
@@ -87,7 +87,7 @@ Opens at `http://localhost:5173`
 
 ## 🧪 Configuration
 
-All global values can be configured in `src/constants/constats.js`:
+All global values can be configured in `src/constants/constants.js`:
 
 ```js
 export const TEST_DURATION_SECONDS = 30 * 60;

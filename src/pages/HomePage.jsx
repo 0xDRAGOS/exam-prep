@@ -10,7 +10,7 @@ import {
     FileSearch
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import {ROUTES} from "../constants/constats";
+import {ROUTES} from "../constants/constants";
 
 const HomePage = () => {
     const { isDark } = useTheme();
@@ -42,18 +42,18 @@ const HomePage = () => {
                     <span className="text-base font-semibold">Simulare Test</span>
                 </Link>
                 <Link
-                    to={ROUTES.progress}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white p-6 rounded-xl flex flex-col items-center transition"
-                >
-                    <BarChart2 size={32} className="mb-2" />
-                    <span className="text-base font-semibold">Progres</span>
-                </Link>
-                <Link
                     to={ROUTES.materials}
                     className="bg-purple-600 hover:bg-purple-700 text-white p-6 rounded-xl flex flex-col items-center transition"
                 >
                     <File size={32} className="mb-2" />
                     <span className="text-base font-semibold">Materiale</span>
+                </Link>
+                <Link
+                    to={ROUTES.progress}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white p-6 rounded-xl flex flex-col items-center transition"
+                >
+                    <BarChart2 size={32} className="mb-2" />
+                    <span className="text-base font-semibold">Progres</span>
                 </Link>
             </div>
 

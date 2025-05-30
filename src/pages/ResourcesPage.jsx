@@ -3,11 +3,11 @@ import * as pdfjsLib from 'pdfjs-dist';
 import pdfWorker from 'pdfjs-dist/build/pdf.worker?worker';
 import { FileText, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import {PDF_FILES, PDF_PATH} from "../constants/constats";
+import {PDF_FILES, PDF_PATH} from "../constants/constants";
 
 pdfjsLib.GlobalWorkerOptions.workerPort = new pdfWorker();
 
-const ResourcesPage = ({ url = "/assets/pdf/licenta-2015-grile-modul-1.pdf" }) => {
+const ResourcesPage = ({ url = "./assets/pdf/licenta-2015-grile-modul-1.pdf" }) => {
     const canvasRef = useRef(null);
     const [pdfDoc, setPdfDoc] = useState(null);
     const renderTaskRef = useRef(null);
@@ -70,7 +70,7 @@ const ResourcesPage = ({ url = "/assets/pdf/licenta-2015-grile-modul-1.pdf" }) =
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
+        <div className="max-w-4xl sm:mx-auto mx-2 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
                 <FileText className="text-indigo-500 dark:text-indigo-400" /> Vizualizare PDF
             </h2>

@@ -3,7 +3,7 @@ import {CheckCircle, AlertTriangle, Info, WrapText} from 'lucide-react';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {oneLight, oneDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {useTheme} from '../context/ThemeContext';
-import {IMAGE_PATH, QUESTIONS_PATH} from "../constants/constats";
+import {IMAGE_PATH, QUESTIONS_PATH} from "../constants/constants";
 
 const LearningPage = () => {
     const [subjects, setSubjects] = useState([]);
@@ -74,7 +74,7 @@ const LearningPage = () => {
     if (!started) {
         return (
             <div
-                className="max-w-xl mx-auto mt-10 p-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100 text-center">
+                className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100 text-center">
                 <h2 className="text-2xl font-semibold mb-6">Selectează o materie</h2>
                 <div className="grid grid-cols-1 gap-3 text-left">
                     {subjects.map((s, i) => (
@@ -106,14 +106,31 @@ const LearningPage = () => {
     if (!currentQuestion) {
         return (
             <div className="p-4 text-center text-gray-800 dark:text-gray-100">
-                <h2 className="text-xl font-bold text-green-600 dark:text-green-400">Ai parcurs toate întrebările!</h2>
+                <h2 className="text-xl font-bold text-green-600 dark:text-green-400 mb-4">
+                    ✅ Ai parcurs toate întrebările!
+                </h2>
+                <button
+                    onClick={() => {
+                        setStarted(false);
+                        setSelectedSubject(null);
+                        setCurrentQuestionIndex(0);
+                        setSelectedAnswers({});
+                        setFeedback(null);
+                        setShowExplanation(false);
+                        setAnswered(false);
+                    }}
+                    className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                >
+                    🔁 Reia Învățarea
+                </button>
             </div>
         );
     }
 
+
     return (
         <div
-            className="max-w-3xl mx-auto p-4 sm:p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
+            className="max-w-3xl sm:mx-auto mx-2 p-4 sm:p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
             <div className="flex flex-col sm:flex-row justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
                 <span
                     className="font-medium">Întrebarea {currentQuestionIndex + 1} / {selectedSubject.questions.length}</span>
@@ -205,7 +222,7 @@ const LearningPage = () => {
                 </div>
             )}
 
-            <div className="mt-6 flex flex-wrap gap-3 justify-start">
+            <div className="mt-6 flex flex-wrap gap-1 sm:gap-3 justify-center">
                 <button
                     onClick={handleAnswer}
                     disabled={answered}

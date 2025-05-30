@@ -8,7 +8,7 @@ import TestPage from './pages/TestPage';
 import ResourcesPage from './pages/ResourcesPage';
 import ProgressPage from './pages/ProgressPage';
 import { ThemeProvider } from './context/ThemeContext';
-import {ROUTES} from "./constants/constats";
+import {ROUTES} from "./constants/constants";
 
 function App() {
     return (

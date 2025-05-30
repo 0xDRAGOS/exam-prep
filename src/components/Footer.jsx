@@ -1,13 +1,10 @@
 import React from 'react';
 import { Github, Mail, Linkedin } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import {APP_NAME} from "../constants/constats";
+import {APP_NAME, LOGO_PATH} from "../constants/constants";
 
 const Footer = () => {
     const { isDark } = useTheme();
-    const LOGO_PATH = isDark
-        ? './assets/logo/logo_512x512_dark.png'
-        : './assets/logo/logo_512x512_light.png';
 
     return (
         <footer className="bg-gray-50 dark:bg-gray-900 border-t dark:border-gray-800 shadow-inner mt-12">
@@ -31,7 +28,7 @@ const Footer = () => {
                         <Mail size={20} />
                     </a>
                     <a
-                        href="https://github.com/examprep"
+                        href="https://github.com/0xDRAGOS/exam-prep"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition"

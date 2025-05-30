@@ -3,7 +3,7 @@ import { CheckCircle, AlertTriangle, Info, WrapText } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useTheme } from '../context/ThemeContext';
-import {IMAGE_PATH, QUESTIONS_PATH, TEST_DURATION_SECONDS, TEST_QUESTION_COUNT} from "../constants/constats";
+import {IMAGE_PATH, QUESTIONS_PATH, TEST_DURATION_SECONDS, TEST_QUESTION_COUNT} from "../constants/constants";
 
 const TestPage = () => {
     const { isDark } = useTheme();
@@ -29,13 +29,7 @@ const TestPage = () => {
     }, [wrapText]);
 
     useEffect(() => {
-        fetch(QUESTIONS_PATH)
-            .then(res => res.json())
-            .then(data => {
-                const allQuestions = data.subjects.flatMap(s => s.questions);
-                const shuffled = allQuestions.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
-                setQuestions(shuffled);
-            });
+        loadQuestions();
     }, []);
 
     useEffect(() => {
@@ -50,6 +44,16 @@ const TestPage = () => {
     const current = questions[currentIndex];
     const correct = current?.correct_answer ?? [];
     const isMultiple = Array.isArray(correct);
+
+    const loadQuestions = () => {
+        fetch(QUESTIONS_PATH)
+            .then(res => res.json())
+            .then(data => {
+                const allQuestions = data.subjects.flatMap(s => s.questions);
+                const shuffled = allQuestions.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
+                setQuestions(shuffled);
+            });
+    };
 
     const handleSelect = (key) => {
         if (answered) return;
@@ -119,7 +123,7 @@ const TestPage = () => {
 
     if (!started) {
         return (
-            <div className="max-w-xl mx-auto mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
+            <div className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
                 <h2 className="text-2xl font-bold mb-4">🧪 Pregătit pentru test?</h2>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
                     Vei primi 30 de întrebări aleatorii, cu timp limitat. Răspunde cât mai corect pentru a-ți îmbunătăți scorul.
@@ -136,11 +140,30 @@ const TestPage = () => {
 
     if (finished) {
         return (
-            <div className="max-w-xl mx-auto mt-10 text-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100">
-                <CheckCircle className="w-10 h-10 mx-auto text-green-500" />
+            <div
+                className="max-w-xl sm:mx-auto mx-2 mt-10 text-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100">
+                <CheckCircle className="w-10 h-10 mx-auto text-green-500"/>
                 <h2 className="text-2xl font-bold mt-2">Test Finalizat</h2>
                 <p className="text-lg mt-2 text-blue-600 dark:text-blue-400">Scor: {score} / {questions.length}</p>
                 <p className="text-gray-600 dark:text-gray-300 mt-1">{feedback}</p>
+                <button
+                    onClick={() => {
+                        setStarted(false);
+                        setFinished(false);
+                        setQuestions([]);
+                        setCurrentIndex(0);
+                        setSelectedAnswers({});
+                        setFeedback(null);
+                        setScore(0);
+                        setTimeLeft(TEST_DURATION_SECONDS);
+                        setAnswered(false);
+                        setShowExplanation(false);
+                        loadQuestions();
+                    }}
+                    className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                >
+                    🔁 Reia Testul
+                </button>
             </div>
         );
     }
@@ -148,7 +171,8 @@ const TestPage = () => {
     if (!current) return <div className="p-6 text-center text-gray-500 dark:text-gray-300">Încărcare întrebări...</div>;
 
     return (
-        <div className="max-w-3xl mx-auto p-4 sm:p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
+        <div
+            className="max-w-3xl sm:mx-auto mx-2 p-4 sm:p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
             <div
                 className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-300 mb-1 gap-2">
                 <span className="font-medium">Întrebarea {currentIndex + 1} / {questions.length}</span>
@@ -251,7 +275,7 @@ const TestPage = () => {
                 </div>
             )}
 
-            <div className="mt-6 flex flex-wrap gap-3 justify-start">
+            <div className="mt-6 flex flex-wrap gap-1 sm:gap-3 justify-center">
                 <button
                     onClick={handleAnswer}
                     disabled={answered}

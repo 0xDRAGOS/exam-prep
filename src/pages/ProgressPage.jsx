@@ -70,7 +70,7 @@ const ProgressPage = () => {
   };
 
   return (
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100">
+      <div className="max-w-5xl sm:mx-auto mx-2 px-4 sm:px-6 py-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
             <BarChart2 className="w-6 h-6" />
