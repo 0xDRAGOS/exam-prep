@@ -252,7 +252,7 @@ const TestPage = () => {
                                 checked={isSelected(key)}
                                 onChange={() => handleSelect(key)}
                             />
-                            <span className="text-base">{key}. {value}</span>
+                            <span className="text-base whitespace-pre-wrap break-words">{key}. {value}</span>
                         </div>
                     </div>
                 ))}
