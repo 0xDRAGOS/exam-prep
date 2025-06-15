@@ -132,8 +132,24 @@ const LearningPage = () => {
         <div
             className="max-w-3xl sm:mx-auto mx-2 p-4 sm:p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-gray-900 dark:text-gray-100">
             <div className="flex flex-col sm:flex-row justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
-                <span
-                    className="font-medium">Întrebarea {currentQuestionIndex + 1} / {selectedSubject.questions.length}</span>
+                <select
+                    onChange={(e) => {
+                        const index = parseInt(e.target.value, 10);
+                        setSelectedAnswers({});
+                        setFeedback(null);
+                        setShowExplanation(false);
+                        setAnswered(false);
+                        setCurrentQuestionIndex(index);
+                    }}
+                    value={currentQuestionIndex}
+                    className="px-3 py-2 mb-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                >
+                    {selectedSubject.questions.map((_, idx) => (
+                        <option key={idx} value={idx}>
+                            Întrebarea {idx + 1}
+                        </option>
+                    ))}
+                </select>
                 <div className="flex items-center justify-center gap-3 ml-4">
                     <span className="text-blue-600 font-mono dark:text-blue-400">📚 {selectedSubject.name}</span>
                     <button
