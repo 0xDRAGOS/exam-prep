@@ -1338,7 +1338,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Răspunsul corect este A. Explicația se bazează pe utilizarea cuvântului cheie `static` în Java. Variabila `x` din clasa `Static2` este declarată ca o variabilă statică, ceea ce înseamnă că este partajată între toate instanțele clasei.\n\nIată o descriere pas cu pas a ceea ce se întâmplă în program:\n\n1. Când `Static2 a = new Static2();` este executat, constructorul clasei `Static2` este apelat, ceea ce incrementează `x` de la 0 la 1.\n\n2. Când `Static2 b = new Static2();` este executat, constructorul este apelat din nou, incrementând `x` de la 1 la 2.\n\n3. Prima instrucțiune `System.out.print(\"a`"
+          "explanation": "Răspunsul corect este A. Explicația se bazează pe utilizarea cuvântului cheie `static` în Java. Variabila `x` din clasa `Static2` este declarată ca o variabilă statică, ceea ce înseamnă că este partajată între toate instanțele clasei. Orice modificare a acestei variabile printr-o instanță este vizibilă pentru toate celelalte instanțe ale clasei.\n\nIată o descriere pas cu pas a ceea ce se întâmplă în program:\n\n1. Când `Static2 a = new Static2();` este executat, constructorul clasei `Static2` este apelat și incrementează `x` de la 0 la 1.\n\n2. Când `Static2 b = new Static2();` este apelat, constructorul este din nou executat, iar `x` devine 2.\n\n3. Apoi se execută `System.out.print(\"a.x= \"+ a.x);`, care afișează `a.x= 2`, deoarece `x` este static și are valoarea 2 după cele două instanțieri.\n\n4. Se modifică valorile: `a.x = 100;` și apoi `b.x = 200;`. Deoarece `x` este static, ambele modificări afectează aceeași variabilă `x` partajată. A doua atribuire (`b.x = 200`) va suprascrie valoarea stabilită de `a.x = 100`.\n\n5. Se afișează din nou: `System.out.print(\"a.x= \"+a.x);`, care va afișa `a.x= 200`, pentru că `x` a fost setat ultima dată la 200, iar `a.x` și `b.x` se referă la aceeași variabilă statică.\n\nPrin urmare, programul afișează: `a.x= 2a.x= 200`, ceea ce corespunde opțiunii **A**."
         },
         {
           "id": 6,
@@ -1410,11 +1410,11 @@
             "B",
             "C"
           ],
-          "explanation": "În contextul applet-urilor, care sunt mici programe Java ce rulează într-un browser web, metodele unui applet sunt gestionate în moduri specifice:\n\nA. Incorect. Nu este obligatoriu să redefinești vreo metodă pentru ca un applet să fie compilat; totuși, redefinirea metodelor precum `init()`, `start()`, `stop()` și `destroy()` este comună pentru a defini comportamente specifice.\n\nB. Corect. Browserul web apelează automat anumite metode de ciclu de viață ale applet-ului, cum ar fi `init()`, `start()`, `stop()` și `destroy()` la momentele potrivite pe parcursul ciclului de viață al applet-ului.\n\nC. Corect. Metodele unui applet pot fi invocate direct de către utilizatori, de obicei prin interacțiuni, cum ar fi apăsarea unui buton sau"
+          "explanation": "În contextul applet-urilor, care sunt mici programe Java ce rulează într-un browser web, metodele unui applet sunt gestionate în moduri specifice:\n\n- **A. Incorect**. Nu este obligatoriu să redefinim vreo metodă pentru ca un applet să fie compilat. Applet-ul poate moșteni implementările implicite ale metodelor din clasa `Applet` sau `JApplet`. Totuși, pentru a-i oferi funcționalitate specifică, este obișnuit să suprascriem metode precum `init()`, `start()`, `stop()` și `destroy()`.\n\n- **B. Corect**. Metodele ciclului de viață ale unui applet (`init()`, `start()`, `stop()`, `destroy()`) sunt apelate automat de către browserul web sau de mediul de execuție Java atunci când applet-ul este încărcat, pornit, întrerupt sau distrus. Acest comportament este specific applet-urilor și permite gestionarea automată a execuției lor.\n\n- **C. Corect**. Metodele definite într-un applet pot fi apelate direct de către utilizator, de obicei prin acțiuni de interfață grafică, cum ar fi apăsarea unui buton, selectarea unei opțiuni etc. Aceste metode trebuie să fie publice pentru a putea fi apelate din exteriorul clasei.\n\n- **D. Incorect**. Nu există nicio restricție în ceea ce privește declararea de noi metode într-un applet. Programatorul poate defini orice metode necesare funcționalității aplicației.\n\nPrin urmare, opțiunile **B** și **C** sunt corecte."
         },
         {
           "id": 11,
-          "text": "Care dintre gestionarii de pozitionare (Layout Managers) de mai jos pot fi utilizati pentru applet- uri?",
+          "text": "Care dintre gestionarii de pozitionare (Layout Managers) de mai jos pot fi utilizati pentru applet-uri?",
           "options": {
             "A": "GridBagLayout;",
             "B": "TableLayout;",
@@ -1425,7 +1425,7 @@
             "A",
             "D"
           ],
-          "explanation": "În Abstract Window Toolkit (AWT) din Java, managerii de layout sunt utilizați pentru a aranja componentele într-un container. `GridBagLayout` și `FlowLayout` sunt manageri de layout standard furnizați de AWT care pot fi utilizați în applet-uri pentru a controla poziționarea și dimensionarea componentelor.\n\n- **GridBagLayout (A):** Acesta este un manager de layout versatil și flexibil care permite aranjamente complexe cu dimensiuni și aliniamente variabile ale componentelor, fiind potrivit pentru aranjarea componentelor într-un mod asemănător unei grile, cu constrângeri diferite.\n\n- **FlowLayout (D):** Acest manager de layout aranjează componentele într-un flux de la stânga la dreapta, asemănător cu textul într-un paragraf, și este potrivit pentru aranjamente simple și directe.\n\nPe de altă parte, `TableLayout` și `DefaultLayout`"
+          "explanation": "În Abstract Window Toolkit (AWT) din Java, managerii de layout sunt utilizați pentru a aranja componentele într-un container. `GridBagLayout` și `FlowLayout` sunt manageri de layout standard furnizați de AWT care pot fi utilizați în applet-uri pentru a controla poziționarea și dimensionarea componentelor.\n\n- **GridBagLayout (A):** Acesta este un manager de layout versatil și flexibil care permite aranjamente complexe cu dimensiuni și aliniamente variabile ale componentelor, fiind potrivit pentru aranjarea componentelor într-un mod asemănător unei grile, cu constrângeri diferite.\n\n- **FlowLayout (D):** Acest manager de layout aranjează componentele într-un flux de la stânga la dreapta, asemănător cu textul într-un paragraf, și este potrivit pentru aranjamente simple și directe."
         },
         {
           "id": 12,
@@ -1445,7 +1445,7 @@
           "id": 13,
           "text": "Care sunt deosebirile dintre Swing si AWT?",
           "options": {
-            "A": "Componentele Swing sunt scrise in totalitate in Java, pe cand in AWT, com- ponentele sunt scrise folosind cod nativ;",
+            "A": "Componentele Swing sunt scrise in totalitate in Java, pe cand in AWT, componentele sunt scrise folosind cod nativ;",
             "B": "Componentele AWT au vizualizarea dependenta de sistemul de operare, iar  in Swing componentele pot avea o aceeasi vizualizare, indiferent de sistemul de operare;",
             "C": "In sistemele de operare Unix componentele AWT nu sunt vizibile, pe cand cele din Swing da;",
             "D": "Fiecare componenta AWT are o componenta corespondenta in Swing;"
@@ -1629,7 +1629,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Când un browser web întâlnește eticheta `<APPLET>` într-un document HTML, acesta rezervă o zonă de afișare cu dimensiunile specificate de parametrii WIDTH și HEIGHT. Secvența corectă de acțiuni efectuate de browser este descrisă în opțiunea C: browserul creează o instanță a clasei Applet și apoi invocă metodele `init()` și `start()`.\n\nIată de ce celelalte opțiuni sunt incorecte:\n- Opțiunea A este incorectă deoarece, deși un manager de securitate este implicat în execuția appletului pentru a asigura operațiuni sigure, aceasta nu este funcția principală efectuată imediat după întâlnirea etichetei `<APPLET>`.\n- Opțiunea B este parțial adevărată în sensul că codul compilat al appletului este încărcat, dar crearea unei instanțe a appletului și apelarea metodei `init()` și"
+          "explanation": "Când un browser web întâlnește eticheta `<APPLET>` într-un document HTML, acesta rezervă o zonă de afișare cu dimensiunile specificate de parametrii `WIDTH` și `HEIGHT`. Apoi, browserul sau mașina virtuală Java (JVM) efectuează o serie de pași pentru a inițializa și rula appletul.\n\nOpțiunea **C** este corectă: browserul încarcă clasa specificată prin atributul `CODE`, creează o instanță a acelei clase (care extinde `Applet`), și apoi apelează metodele `init()` și `start()` pentru a inițializa și porni execuția vizuală a appletului în zona rezervată din pagină.\n\nIată de ce celelalte opțiuni sunt incorecte sau incomplete:\n\n- **A**: Este adevărat că un `SecurityManager` este implicat în execuția appleturilor, pentru a restricționa accesul la resursele sistemului (cum ar fi sistemul de fișiere sau rețeaua), dar acest lucru nu este un efect direct și imediat al întâlnirii tagului `<APPLET>`, ci parte din mecanismul general de securitate al JVM.\n\n- **B**: Codul compilat al appletului (fișierul `.class`) este într-adevăr încărcat folosind parametrul `CODE`, însă acest pas face parte din procesul mai larg care include și instanțierea obiectului și apelarea metodelor de viață (`init()`, `start()`), care sunt menționate doar în opțiunea C.\n\n- **D**: Această afirmație este falsă. Nu se deschid mai multe procese pe mașina client în sensul clasic al proceselor de sistem. Appletul rulează în contextul JVM într-un singur proces, eventual cu fire de execuție (threads), dacă este programat astfel.\n\nPrin urmare, **răspunsul corect este C**, deoarece descrie în mod precis comportamentul standard al browserului/JVM atunci când procesează un applet Java."
         },
         {
           "id": 26,
@@ -4687,7 +4687,7 @@
             "A",
             "C"
           ],
-          "explanation": "Codul HTML dat creează un tabel HTML cu o bordură și spațiere în jurul celulelor sale. Tabelul este format din trei rânduri (elemente `<TR>`), fiecare conținând o singură celulă (element `<TD>`) cu textul \"Your Table Data\". Atributele `onMouseover` și `onMouseout` din fiecare element `<TR>` sunt gestionari de evenimente JavaScript care schimbă culoarea de fundal a rândului atunci când mouse-ul se află deasupra acestuia sau se îndepărtează de acesta. Mai exact, când mouse-ul este deasupra unui rând, culoarea de fundal se schimbă în `#EEEEEE`, iar când mouse-ul părăsește rândul, culoarea revine la `#FFFFFF`.\n\nAstfel, răspunsurile corecte sunt:\nA. Culoarea de fundal a fiecărui rând al tabelului se schimbă când"
+          "explanation": "Codul HTML dat creează un tabel HTML cu o bordură și spațiere în jurul celulelor sale. Tabelul este format din trei rânduri (elemente `<TR>`), fiecare conținând o singură celulă (element `<TD>`) cu textul \"Your Table Data\". Atributele `onMouseover` și `onMouseout` din fiecare element `<TR>` sunt gestionari de evenimente JavaScript care schimbă culoarea de fundal a rândului atunci când mouse-ul se află deasupra acestuia sau se îndepărtează de el. Mai exact, când mouse-ul este deasupra unui rând, culoarea de fundal se schimbă în `#EEEEEE`, iar când mouse-ul părăsește rândul, culoarea revine la `#FFFFFF`.\n\nAșadar:\n- **Opțiunea A** este corectă: Se schimbă culoarea de fundal a fiecărui rând (nu a întregului tabel sau a paginii) atunci când utilizatorul trece cu mouse-ul peste el.\n- **Opțiunea C** este de asemenea corectă: Codul creează un tabel cu trei rânduri, fiecare conținând un singur element de date (`<TD>`).\n\nRestul opțiunilor sunt incorecte:\n- **B**: Tabelul are trei rânduri, nu trei coloane.\n- **D și E**: Schimbarea culorii se aplică doar rândurilor individuale, nu întregii pagini.\n\nPrin urmare, răspunsurile corecte sunt **A** și **C**."
         },
         {
           "id": 7,
@@ -4755,7 +4755,7 @@
           "id": 11,
           "text": "De ce urmatorul cod nu afiseaza o noua linie corect?\n<?php $str = ‘Hello, there.\\nHow are you?\\nThanks for visiting fyicenter’; print $str; ?>\n",
           "options": {
-            "A": "pentru ca \"n\" nu este interpretat ca o linie noua",
+            "A": "pentru ca \"\n\" nu este interpretat ca o linie noua",
             "B": "afiseaza corect linia noua",
             "C": "\"\\\" si \"n\" sunt afisate ca o secventa de caractere",
             "D": "lipseste directiva newLine();",
