@@ -1142,7 +1142,7 @@
             "C",
             "E"
           ],
-          "explanation": "În clasa `C` dată, există un constructor de copiere definit, care permite copierea unui obiect într-altul. Acest constructor de copiere este apelat în situații specifice în care un obiect trebuie să fie inițializat folosind un alt obiect din aceeași clasă.\n\n- Opțiunea A (`C c1(4,5)`) și B (`C c2(0.0, 0,0)`) implică crearea unui nou obiect folosind inițializarea directă cu argumente. Acestea nu implică copierea dintr-un alt obiect, deci constructorul de copiere nu este utilizat.\n- Opțiunea C (`C c3=c1`) folosește constructorul de copiere deoarece `c3` este inițializat folosind obiectul existent `c1`. Aceasta este o aplicare directă a constructorului de copiere.\n- Opțiunea"
+          "explanation": "În clasa `C` dată, există un constructor de copiere definit, care permite copierea unui obiect într-altul. Acest constructor de copiere este apelat în situații specifice în care un obiect trebuie să fie inițializat folosind un alt obiect din aceeași clasă.\n\n- **Opțiunea A (`C c1(4,5)`)**: Creează un obiect folosind constructorul cu doi parametri întregi. Nu este implicată copierea, ci inițializarea directă. Constructorul de copiere nu este apelat.\n\n- **Opțiunea B (`C c2(0.0, 0, 0)`)**: Este o declarație eronată. Constructorul așteaptă doi parametri `int`, dar sunt furnizate trei valori (inclusiv un `double`), ceea ce nu corespunde niciunui constructor definit. Această linie ar genera o eroare la compilare.\n\n- **Opțiunea C (`C c3 = c1`)**: Acesta este un caz clasic de inițializare prin copiere. Obiectul `c3` este creat prin copierea lui `c1`, ceea ce duce la apelarea constructorului de copiere.\n\n- **Opțiunea D (`C c4(1)`)**: Constructorul disponibil necesită doi parametri `int`. Deoarece este furnizat doar unul, iar nu există constructor cu un singur parametru, această linie ar produce o eroare de compilare.\n\n- **Opțiunea E (`C c5(c1)`)**: Aceasta este forma clasică de apelare a constructorului de copiere. Obiectul `c5` este creat prin copierea lui `c1`, deci constructorul de copiere este folosit.\n\nPrin urmare, **constructorul de copiere este apelat doar în opțiunile C și E**, ceea ce face ca acestea să fie răspunsurile corecte."
         },
         {
           "id": 23,
@@ -1492,7 +1492,7 @@
             "A": "Intotdeauna o componenta JTable are asociata un model de date, chiar daca nu specificam explicit acest lucru;",
             "B": "Prin modificarile efectuate asupra datelor unui model, se va actualiza automat si vizualizarea tabelului;",
             "C": "Pentru a crea o tabela folosind modelul AbstractModelTable, este indeajuns sa suprascriem metodele getRowCount() si getColumnCount();",
-            "D": "Modelul de date AbstractTableModel tine datele intotdeauna intr-un Vector avand ele- mente Vector;"
+            "D": "Modelul de date AbstractTableModel tine datele intotdeauna intr-un Vector avand elemente Vector;"
           },
           "correct_answer": [
             "A",
@@ -4675,7 +4675,7 @@
         },
         {
           "id": 6,
-          "text": "Ce rezultat are urm˘atorul cod HTML?\n<TABLE BORDER=”2” CELLPADDING=”2” WIDTH=”100%”>\n    <TR onMouseover=”this.bgColor=’#EEEEEE’”onMouseout=”this.bgColor=’#FFFFFF’”>\n        <TD>Your Table Data</TD>\n        </TR><TR onMouseover=”this.bgColor=’#EEEEEE’”onMouseout=”this.bgColor=’#FFFFFF’”>\n    <TD>Your Table Data</TD></TR>\n        <TR onMouseover=”this.bgColor=’#EEEEEE’”onMouseout=”this.bgColor=’#FFFFFF’”>\n            <TD>Your Table Data</TD></TR></TABLE>",
+          "text": "Ce rezultat are urmatorul cod HTML?\n<TABLE BORDER=”2” CELLPADDING=”2” WIDTH=”100%”>\n    <TR onMouseover=”this.bgColor=’#EEEEEE’”onMouseout=”this.bgColor=’#FFFFFF’”>\n        <TD>Your Table Data</TD>\n        </TR><TR onMouseover=”this.bgColor=’#EEEEEE’”onMouseout=”this.bgColor=’#FFFFFF’”>\n    <TD>Your Table Data</TD></TR>\n        <TR onMouseover=”this.bgColor=’#EEEEEE’”onMouseout=”this.bgColor=’#FFFFFF’”>\n            <TD>Your Table Data</TD></TR></TABLE>",
           "options": {
             "A": "schimba culoare de background a tabelului cand se trece cu mouse-ul pe deasupra acestuia",
             "B": "creeaza un tabel cu 3 coloane",
@@ -4710,8 +4710,8 @@
           "text": "Ce rezultat are urmatorul cod JavaScript?\n<a href=”” onMouseOver=”alert(’Your Message’);return true;”>Linked Text</a>",
           "options": {
             "A": "in momentul in care se trece cu mouse-ul peste link sare o fereastra de alertare",
-            "B": "in momentulin care se apasa link-ul sare o fereastra de alertare",
-            "C": "in momentulin care se trece peste link cu mouse-ul browserul deschide o noua fereastra",
+            "B": "in momentul in care se apasa link-ul sare o fereastra de alertare",
+            "C": "in momentul in care se trece peste link cu mouse-ul browserul deschide o noua fereastra",
             "D": "nu are niciun efect",
             "E": "niciunul dintre raspunsurile de mai sus"
           },
@@ -4755,9 +4755,9 @@
           "id": 11,
           "text": "De ce urmatorul cod nu afiseaza o noua linie corect?\n<?php $str = ‘Hello, there.\\nHow are you?\\nThanks for visiting fyicenter’; print $str; ?>\n",
           "options": {
-            "A": "pentru ca \\nn\" nu este interpretat ca o linie noua",
+            "A": "pentru ca \"n\" nu este interpretat ca o linie noua",
             "B": "afiseaza corect linia noua",
-            "C": "\\n\" si \\n\" sunt afisate ca o secventa de caractere",
+            "C": "\"\\\" si \"n\" sunt afisate ca o secventa de caractere",
             "D": "lipseste directiva newLine();",
             "E": "lipseste directiva println();"
           },
@@ -4769,7 +4769,7 @@
         },
         {
           "id": 12,
-          "text": "Care este lungimea maxima a unui nume de tabel, de baza de date sau campin MySQL?",
+          "text": "Care este lungimea maxima a unui nume de tabel, de baza de date sau camp in MySQL?",
           "options": {
             "A": "tabel: 64 de caractere, baza de date: 64 de caractere, camp: 64 de caractere",
             "B": "48 de caractere, baza de date: 64 de caractere, camp: 48 de caractere",
@@ -4796,7 +4796,7 @@
             "A",
             "B"
           ],
-          "explanation": "În PHP, funcțiile legate de criptare și hashing sunt utilizate pentru a securiza datele.\n\n- **A. CRYPT()**: Aceasta este o funcție PHP încorporată folosită pentru hashing-ul șirurilor de caractere folosind algoritmi de hashing unidirecționali. Este utilizată frecvent pentru hashing-ul parolelor.\n\n- **B. MD5()**: Această funcție generează un număr hexazecimal de 32 de caractere, care este o valoare hash, dintr-un șir de intrare dat. Deși nu este recomandată pentru criptare sigură din cauza vulnerabilităților, este totuși considerată o funcție de hashing.\n\n- **C. CRYPTED()**: Nu există o astfel de funcție în PHP cu acest nume. Ar putea părea o variație a funcției CRYPT(), dar nu este o funcție PHP validă.\n\n- **D. MD6()**"
+          "explanation": "În PHP, funcțiile legate de criptare și hashing sunt utilizate pentru a securiza datele.\n\n- **A. CRYPT()**: Aceasta este o funcție PHP încorporată folosită pentru hashing-ul șirurilor de caractere folosind algoritmi de hashing unidirecționali. Este utilizată frecvent pentru hashing-ul parolelor. Suportă mai mulți algoritmi în funcție de sistemul de operare (de exemplu, DES, MD5, Blowfish, SHA-256, SHA-512).\n\n- **B. MD5()**: Această funcție generează un număr hexazecimal de 32 de caractere, care este o valoare hash, dintr-un șir de intrare dat. Deși nu este recomandată pentru criptare sigură din cauza vulnerabilităților cunoscute (coliziuni), este totuși considerată o funcție de hashing, deci relevantă în contextul criptării ușoare sau verificării integrității datelor.\n\n- **C. CRYPTED()**: Nu există o astfel de funcție în PHP. Este posibil ca această opțiune să fie o confuzie cu `crypt()`, dar `crypted()` nu este definită nativ și nu are funcționalitate în acest context.\n\n- **D. MD6()**: Deși MD6 este un algoritm real de hashing propus ca succesor pentru MD5 și SHA-2, **nu este implementat nativ** în PHP. Prin urmare, nu este o funcție recunoscută în limbajul PHP.\n\n- **E. ENCRYPT()**: De asemenea, nu există o funcție standard numită `ENCRYPT()` în PHP. Criptarea în PHP se face prin extensii precum OpenSSL (`openssl_encrypt()`, `mcrypt_encrypt()` – învechit) sau Sodium (`sodium_crypto_secretbox()` etc.).\n\nAstfel, doar funcțiile `CRYPT()` și `MD5()` sunt valide și recunoscute ca funcții de criptare sau hashing în PHP, motiv pentru care **răspunsurile corecte sunt A și B**."
         },
         {
           "id": 14,
@@ -4923,10 +4923,10 @@
           "text": "Ce face urmatorul script JavaScript?\n<body>\n    <script language=”JavaScript”>\n        <!–\n        var myVariable = “Hello there”;\n        var therePlace = myVariable.search(“there”);\n        document.write(therePlace);\n        –>\n    </script>\n</body>",
           "options": {
             "A": "cauta un anumit cuvant intr-un text",
-            "B": "cauta cuvantul \\there\" in \\Hello there\"",
-            "C": "cauta cuvantul \\there\"",
-            "D": "scrie variabila \\therePlace\"",
-            "E": "cauta un anumit cuvant in string-ul \\Hello there\""
+            "B": "cauta cuvantul \"there\" in \"Hello there\"",
+            "C": "cauta cuvantul \"there\"",
+            "D": "scrie variabila \"therePlace\"",
+            "E": "cauta un anumit cuvant in string-ul \"Hello there\""
           },
           "correct_answer": [
             "A",
@@ -4935,7 +4935,7 @@
             "D",
             "E"
           ],
-          "explanation": "Scriptul în cauză efectuează mai multe acțiuni legate de căutarea unui cuvânt specific într-un șir de caractere și afișarea rezultatului. Iată o descriere a ceea ce face:\n\n1. **Inițializare**: Scriptul inițializează o variabilă `myVariable` cu șirul de caractere \"Hello there\".\n\n2. **Căutarea unui cuvânt**: Utilizează metoda `search()` pentru a găsi poziția subșirului \"there\" în cadrul `myVariable`. Metoda returnează indexul primei apariții a subșirului specificat, care este 6 în acest caz.\n\n3. **Stocarea rezultatului**: Rezultatul căutării, care este un număr ce indică poziția lui \"there\" în șirul \"Hello there\", este stocat în variabila `therePlace`.\n\n4. **"
+          "explanation": "Scriptul în cauză efectuează mai multe acțiuni legate de căutarea unui cuvânt specific într-un șir de caractere și afișarea rezultatului. Iată o descriere a ceea ce face:\n\n1. **Inițializare**: Scriptul inițializează o variabilă `myVariable` cu șirul de caractere \"Hello there\".\n\n2. **Căutarea unui cuvânt**: Utilizează metoda `search()` pentru a găsi poziția subșirului \"there\" în cadrul `myVariable`. Metoda returnează indexul primei apariții a subșirului specificat, care este 6 în acest caz (deoarece indexarea începe de la 0).\n\n3. **Stocarea rezultatului**: Rezultatul căutării (numărul 6) este stocat în variabila `therePlace`.\n\n4. **Afișarea rezultatului**: Valoarea variabilei `therePlace` este afișată pe pagină prin `document.write(therePlace)`, ceea ce va scrie `6` în conținutul HTML.\n\n5. **Comentariu incorect**: Scriptul încearcă să comenteze codul JavaScript cu sintaxa HTML `<!-- ... -->`, însă această practică este învechită și nu mai este necesară. De asemenea, ghilimelele din atributul `language=”JavaScript”` sunt ghilimele tipografice (greșite), care ar trebui înlocuite cu ghilimele drepte (`"`). În ciuda acestor probleme minore, majoritatea browserelor moderne interpretează codul corect.\n\nToate opțiunile A, B, C, D și E reflectă aspecte corecte ale comportamentului scriptului, chiar dacă unele sunt formulate aproximativ sau se suprapun în sens. Prin urmare, toate sunt considerate răspunsuri valide."
         },
         {
           "id": 23,
@@ -5073,11 +5073,11 @@
             "B",
             "C"
           ],
-          "explanation": "CSS (Cascading Style Sheets) este utilizat în principal pentru stilizarea și formatarea paginilor web. Iată o scurtă explicație pentru fiecare opțiune corectă:\n\nA. **Poate fi folosit de mai mulți agenți (browser, telefon mobil PDA):** CSS este conceput pentru a asigura accesibilitatea și prezentabilitatea conținutului web pe diverse dispozitive și platforme, inclusiv diferite browsere web și dispozitive mobile, cum ar fi telefoanele și PDA-urile. Această adaptabilitate este una dintre punctele forte ale CSS, permițând o experiență de utilizare consistentă în diferite medii.\n\nB. **Separa conținutul de prezentare:** Unul dintre scopurile de bază ale CSS este de a separa conținutul (HTML) de prezentarea sa (stilizarea). Această separare permite un design mai flexibil și o întreținere mai ușoară, deoarece modificările aduse prezentării"
+          "explanation": "CSS (Cascading Style Sheets) este utilizat în principal pentru stilizarea și formatarea paginilor web. Iată o scurtă explicație pentru fiecare opțiune corectă:\n\nA. **Poate fi folosit de mai mulți agenți (browser, telefon mobil PDA):** CSS este conceput pentru a asigura accesibilitatea și prezentabilitatea conținutului web pe diverse dispozitive și platforme, inclusiv diferite browsere web și dispozitive mobile, cum ar fi telefoanele și PDA-urile. Această adaptabilitate este una dintre punctele forte ale CSS, permițând o experiență de utilizare consistentă în diferite medii.\n\nB. **Separă conținutul de prezentare:** Unul dintre scopurile de bază ale CSS este de a separa conținutul (HTML) de prezentarea sa (stilizarea). Această separare permite un design mai flexibil și o întreținere mai ușoară, deoarece modificările aduse prezentării nu afectează structura conținutului. De asemenea, permite reutilizarea stilurilor pe mai multe pagini.\n\nC. **Îți confirmă faptul că ai scris codul corect:** Deși CSS nu validează direct corectitudinea codului HTML sau CSS, stilurile aplicate corect pot indica faptul că sintaxa este validă. Dacă stilurile nu sunt aplicate conform așteptărilor, poate fi un indiciu că există o eroare în codul CSS. Astfel, funcționează indirect ca o formă de verificare vizuală a corectitudinii."
         },
         {
           "id": 32,
-          "text": "Ce efect are urmatoarea regula CSS? fcolor:green;g",
+          "text": "Ce efect are urmatoarea regula CSS? {color:green;}",
           "options": {
             "A": "totul o sa fie transformat in verde",
             "B": "* din text sunt transformatein verde",
@@ -5088,11 +5088,11 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Regula CSS dată `fcolor:green;g` pare să fie o greșeală de tipar sau o sintaxă incorectă. În CSS standard, proprietatea corectă pentru a schimba culoarea textului este `color`, nu `fcolor`. Din cauza acestei sintaxe incorecte, regula nu va fi interpretată corect de către browsere și nu va avea niciun efect asupra stilizării elementelor. Prin urmare, răspunsul corect ar trebui să fie de fapt D: regula este scrisă incorect, ceea ce înseamnă că regula nu va funcționa conform intenției. Totuși, având în vedere că răspunsul corect este marcat ca A, se pare că ar putea exista o eroare în întrebare sau în cheia de răspunsuri."
+          "explanation": "Regula CSS `{color:green;}` este o declarație validă care setează culoarea textului unui element HTML la verde. Totuși, regula este incompletă în forma prezentată, deoarece lipsește selectorul care să indice asupra cărui element se aplică această stilizare. Dacă ar fi folosită, de exemplu, împreună cu selectorul universal (`* { color: green; }`), atunci ar face ca tot textul de pe pagină să fie verde. Având în vedere că în întrebare este oferită doar partea cu `{color:green;}`, iar opțiunea A spune „totul o să fie transformat în verde”, presupunem că este implicat selectorul universal. Astfel, efectul ar fi că tot conținutul textului ar fi afișat în verde, motiv pentru care răspunsul A este considerat corect."
         },
         {
           "id": 33,
-          "text": "Ce efect are urmatoarea regula CSS? \nimg [title] fborder: 2px solid blue;g <img src=”images/sunset.jpg” alt=”Lahina Sunset” title=”Lahina Sunset”>",
+          "text": "Ce efect are urmatoarea regula CSS? \nimg [title] {border: 2px solid blue;} <img src=”images/sunset.jpg” alt=”Lahina Sunset” title=”Lahina Sunset”>",
           "options": {
             "A": "imaginea o sa aiba o margine de 2px",
             "B": "imaginea o sa aiba marimea de 2px",
@@ -5139,9 +5139,9 @@
           "id": 36,
           "text": "Care este modul corect de a se conecta la o baza de date MySQL?",
           "options": {
-            "A": "mysql open(”localhost”);",
-            "B": "connect mysql(”localhost”);",
-            "C": "mysql connect(\"localhost\");",
+            "A": "mysql_open(”localhost”);",
+            "B": "connect_mysql(”localhost”);",
+            "C": "mysql_connect(\"localhost\");",
             "D": "dbopen(”localhost”);",
             "E": "dbconnetc(“localhost”);"
           },
