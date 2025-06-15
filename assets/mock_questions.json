@@ -499,7 +499,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a determina răspunsul corect, trebuie să înțelegem algoritmul aplicat vectorului `a = (8;6;4;2;3;5;7)` în cadrul procesului descris. Deși algoritmul specific nu este menționat explicit, întrebarea pare să implice că este vorba despre un algoritm de sortare sau un proces iterativ similar care rearanjează elementele vectorului.\n\nAvând în vedere opțiunile, se pare că algoritmul efectuează o operațiune de sortare, probabil un sortare prin selecție sau sortare prin inserție, unde vectorul este sortat în ordine crescătoare. Până când algoritmul ajunge la pasul `i=5`, primele cinci elemente ale vectorului sunt sortate în ordine crescătoare, în timp ce restul vectorului rămâne neschimbat.\n\nOpțiunea A `(2;3;4;5;6"
+          "explanation": "Algoritmul prezentat este o variantă de sortare prin metode iterative, apropiat de sortarea Bubble Sort. La fiecare pas `i`, vectorul este parțial sortat prin compararea elementelor în perechi și interschimbarea lor dacă sunt în ordine greșită (`a[j] < a[j-1]`). La fiecare pas, elementul minim din partea nesortată este adus către începutul vectorului. \n\nPentru vectorul inițial `a = (8;6;4;2;3;5;7)`, după execuția completă a pasului `i = 5`, vectorul devine: `(2;3;4;5;6;8;7)`. Ultimele două elemente nu sunt încă în ordine, deoarece algoritmul nu a parcurs complet pasul `i = 6`.\n\nPrin urmare, răspunsul corect este **A**."
         },
         {
           "id": 2,
@@ -568,7 +568,7 @@
           "text": "Care dintre urmatoarele nu este afirmatii nu este adevarata in cazul unui algoritm de cautare binara?",
           "options": {
             "A": "trebuie folosit un array sortat",
-            "B": "cerintadeaaveaunarraysortatnecesitamultamemoriesitimpatuncicandsuntnecesare multe stergeri si inserari",
+            "B": "cerinta de a avea un array sortat necesita multa memorie si timp atunci cand sunt necesare multe stergeri si inserari",
             "C": "trebuie sa existe un mecanism care sa permita accesul direct la elementul din mijloc",
             "D": "algoritmul de cautare binar nu este eficient atunci cand avem mai mult de 1000 de elemente"
           },
@@ -590,7 +590,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Programul este conceput pentru a extrage și a afișa inițialele cuvintelor din șirul \"Franklin D. Roosevelt\". Iată cum funcționează:\n\n1. Variabila `name` este inițializată cu șirul \"Franklin D. Roosevelt\".\n2. Variabila booleană `startWord` este setată inițial la `true`, indicând că primul caracter al șirului este considerat începutul unui cuvânt.\n3. Un ciclu `for` iterează peste fiecare caracter din șirul `name`.\n4. Dacă `startWord` este `true`, se afișează caracterul curent (`name.charAt(i)`) deoarece este începutul unui cuvânt.\n5. Dacă caracterul curent este un spațiu (`' '`), se setează `startWord` la"
+          "explanation": "Programul este conceput pentru a extrage și afișa inițialele fiecărui cuvânt din șirul \"Franklin D. Roosevelt\". Iată cum funcționează pas cu pas:\n\n1. Variabila `name` este inițializată cu șirul \"Franklin D. Roosevelt\".\n2. Variabila booleană `startWord` este setată la `true`, indicând că primul caracter din șir este considerat începutul unui cuvânt.\n3. Programul parcurge șirul caracter cu caracter folosind o buclă `for`.\n4. La fiecare iterație:\n   - Dacă `startWord` este `true`, se afișează caracterul curent — adică prima literă a unui cuvânt.\n   - Apoi, dacă caracterul curent este un spațiu (`' '`), înseamnă că urmează începutul unui nou cuvânt, deci `startWord` devine `true`.\n   - În caz contrar (`else`), `startWord` devine `false`, pentru a preveni afișarea următoarelor litere din același cuvânt.\n\n5. Aplicând această logică pentru fiecare caracter din șirul \"Franklin D. Roosevelt\":\n   - La început `startWord = true`, deci se afișează `F`\n   - Urmează literele `r, a, n...` (dar `startWord = false`, deci nu se mai afișează)\n   - Când se întâlnește primul spațiu, `startWord = true`, iar litera următoare este `D`, care se afișează\n   - Din nou, la următorul spațiu, `startWord = true`, deci se afișează `R`\n\n6. Așadar, se afișează inițialele `F`, `D`, și `R`, fiecare pe linie separată, rezultând **FDR**.\n\nPrin urmare, **răspunsul corect este A: \"FDR\"**."
         },
         {
           "id": 8,
@@ -606,7 +606,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Într-un parcurs in-order al unui arbore binar, nodurile sunt vizitate în următoarea ordine: subarborele stâng, rădăcina, subarborele drept. Această metodă de parcurgere duce la vizitarea nodurilor în ordine crescătoare pentru un arbore binar de căutare (BST).\n\nPentru a determina secvența corectă, începem de la nodul cel mai din stânga și ne deplasăm către rădăcină și apoi către subarborele drept. Să presupunem că structura arborelui este astfel încât opțiunea A reprezintă secvența corectă in-order. Acest lucru ar implica faptul că nodurile sunt vizitate exact în ordinea listată în opțiunea A: 3,5,6,23,10,12,13,15,16,18,20,7. Această secvență se potrivește cu definiția parcurgerii in-order, unde nodurile fiecărui subarbore stâng sunt vizitate înainte de"
+          "explanation": "Într-un parcurs **in-order** (parcurgere în inordine) al unui arbore binar, nodurile sunt vizitate în această ordine: **subarborele stâng → rădăcină → subarborele drept**. Aceasta este o metodă recursivă de vizitare și, în cazul unui arbore binar de căutare (BST), conduce la o listare a valorilor în ordine crescătoare.\n\nPentru a determina secvența corectă, analizăm imaginea arborelui (structuri_8.png) și aplicăm recursiv regula in-order:\n\n1. Se merge cât mai la stânga în arbore până la cel mai mic nod.\n2. Se vizitează nodul curent (rădăcina locală).\n3. Se explorează recursiv subarborele drept al nodului curent.\n\nUrmărind acest proces pe arborele din imagine, obținem următoarea secvență de vizitare:\n\n**3, 5, 6, 23, 10, 12, 13, 15, 16, 18, 20, 7**\n\nAceasta corespunde exact cu opțiunea **A**.\n\nEste important de menționat că prezența valorii `23` într-o poziție aparent nefirească poate indica faptul că arborele nu este un arbore binar de căutare (BST), ci doar un arbore binar arbitrar. În acest caz, regula de parcurgere in-order se aplică strict pe structură (stânga - rădăcină - dreapta), fără presupuneri despre valorile ordonate numeric.\n\nPrin urmare, **răspunsul corect este A**, iar parcurgerea in-order produce secvența: **3, 5, 6, 23, 10, 12, 13, 15, 16, 18, 20, 7**."
         },
         {
           "id": 9,
@@ -642,7 +642,7 @@
         },
         {
           "id": 11,
-          "text": "Ce metoda de sortare este descrisa in pseudo-codul urmator:\n\nprocedure sort(A)\nn = length(A)\nrepeat\nswapped = false\nfor i = 1 to n-1 do\nif (A[i-1]>A[i] then\nswap (A[i-1],A[i])\nswapped = true\nend if\nend for\nuntil not swapped\nend procedure\n",
+          "text": "Ce metoda de sortare este descrisa in pseudo-codul urmator:\n\nprocedure sort(A)\n   n = length(A)\n   repeat\n      swapped = false\n      for i = 1 to n-1 do\n            if (A[i-1]>A[i] then\n                  swap (A[i-1],A[i])\n               swapped = true\n            end if\n         end for\n      until not swapped\nend procedure\n",
           "options": {
             "A": "HeapSort",
             "B": "MergeSort",
@@ -671,7 +671,7 @@
         },
         {
           "id": 13,
-          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f1(int N){\n    int x = 0;\n    for (int i = 0; i < N, i++)\n    x++;\n    return x;\n}",
+          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f1(int N){\n    int x = 0;\n    for (int i = 0; i < N, i++)\n        x++;\n    return x;\n}",
           "options": {
             "A": "logN",
             "B": "N",
@@ -687,7 +687,7 @@
         },
         {
           "id": 14,
-          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f2(int N){\n    int x = 0;\n    for (int i = 0; i < N, i++)\n    for (int j = 0; j < i; j++)\n    x++;\n    return x;\n}",
+          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f2(int N){\n    int x = 0;\n    for (int i = 0; i < N, i++)\n        for (int j = 0; j < i; j++)\n            x++;\n    return x;\n}",
           "options": {
             "A": "logN",
             "B": "N",
@@ -703,7 +703,7 @@
         },
         {
           "id": 15,
-          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f3(int N){\n    if (N==0) return 1;\n    int x=0;\n    for (int i = 0; i < N; i++)\n    x+=f3(N-1);\n    return x;\n}",
+          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f3(int N){\n    if (N==0) return 1;\n        int x=0;\n    for (int i = 0; i < N; i++)\n        x+=f3(N-1);\n    return x;\n}",
           "options": {
             "A": "logN",
             "B": "N",
@@ -715,11 +715,11 @@
           "correct_answer": [
             "F"
           ],
-          "explanation": "Funcția `f3` este o funcție recursivă care calculează o valoare bazată pe intrarea `N`. Cazul de bază este atunci când `N` este 0, caz în care returnează 1. În caz contrar, inițializează un întreg `x` la 0 și folosește un ciclu care rulează de `N` ori. În fiecare iterație a ciclului, își apelează recursiv propria funcție cu argumentul `N-1` și adaugă rezultatul la `x`.\n\nAceasta creează un arbore de apeluri recursive în care fiecare nivel al arborelui corespunde unei scăderi a valorii lui `N` cu 1. La fiecare nivel `N`, funcția face `N` apeluri recursive la nivelul `N-1`. Acest tipar rezultă într-un număr total de apeluri care"
+          "explanation": "Funcția `f3` este o funcție recursivă care are un caz de bază simplu și o ramificare recursivă intensă. Să o analizăm în detaliu:\n\n```java\npublic static int f3(int N) {\n    if (N == 0) return 1;\n    int x = 0;\n    for (int i = 0; i < N; i++)\n        x += f3(N - 1);\n    return x;\n}\n```\n\n### Cum funcționează:\n- **Cazul de bază**: când `N == 0`, se returnează 1 — fără apeluri recursive.\n- **În caz contrar**, se execută `N` apeluri recursive către `f3(N - 1)`.\n\n### Observație importantă:\nLa fiecare apel cu `f3(N)`, se fac `N` apeluri către `f3(N-1)`, fiecare dintre ele făcând `N-1` apeluri către `f3(N-2)` și așa mai departe. Astfel, numărul total de apeluri crește factorial:\n\n- `T(N) = N * T(N-1)`\n- De unde rezultă: `T(N) = N * (N-1) * (N-2) * ... * 1 = N!`\n\n### Concluzie:\nAceastă funcție are **timp de execuție O(N!)** — factorial, ceea ce înseamnă că timpul de rulare crește extrem de rapid odată cu creșterea lui `N`.\n\n### Răspuns corect:\n**F. N!**"
         },
         {
           "id": 16,
-          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f1(int N){\n    int x = 0;\n    for (int i = 0; i < N, i++)\n    x++;\n    return x;\n}\npublic static int f4(int N){\n    if (N==0) return 0;\n    return f4(N/2) + f1(N) + f4(N/2);\n}",
+          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f1(int N){\n    int x = 0;\n    for (int i = 0; i < N, i++)\n        x++;\n    return x;\n}\npublic static int f4(int N){\n    if (N==0) return 0;\n        return f4(N/2) + f1(N) + f4(N/2);\n}",
           "options": {
             "A": "logN",
             "B": "N",
@@ -731,11 +731,11 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Pentru a determina complexitatea temporală a algoritmului dat, trebuie să analizăm ambele funcții, `f1` și `f4`.\n\n1. **Analiza funcției `f1(int N)`:**\n   - `f1` conține un simplu ciclu `for` care iterează de `N` ori, incrementând `x` în fiecare iterație.\n   - Prin urmare, complexitatea temporală a funcției `f1` este O(N).\n\n2. **Analiza funcției `f4(int N)`:**\n   - `f4` este o funcție recursivă care operează după cum urmează:\n     - Dacă `N` este 0, se întoarce imediat cu o operație de timp constant O(1).\n     - Altfel, face două apeluri recursive către ea însăși cu un argument de"
+          "explanation": "Pentru a determina complexitatea temporală a algoritmului, trebuie să analizăm ambele funcții: `f1(int N)` și `f4(int N)`.\n\n1. **Analiza funcției `f1(int N)`:**\n   - Această funcție conține un singur ciclu `for` care se execută de `N` ori.\n   - Fiecare iterație face o operație simplă (`x++`), deci complexitatea este:\n     **O(N)**.\n\n2. **Analiza funcției `f4(int N)`:**\n   - Aceasta este o funcție recursivă care apelează de două ori `f4(N/2)` și o dată `f1(N)` la fiecare nivel de recursie.\n   - Recursia se continuă până când `N == 0`, caz în care se întoarce constant în timp **O(1)**.\n   - La fiecare nivel, deci, avem: `T(N) = 2T(N/2) + O(N)` (pentru `f1(N)`)\n\n3. **Rezolvarea recursiei:**\n   - Această recurență este o formă clasică de divide et impera și se poate rezolva cu **Teorema Maestrului**.\n   - Forma recurenței este: `T(N) = 2T(N/2) + O(N)`\n     - Aici, `a = 2`, `b = 2`, `f(N) = O(N)`\n     - Comparăm `f(N)` cu `N^{log_b a}` = `N^{log_2 2}` = `N^1`\n     - Deoarece `f(N) = Θ(N)` = `N^{log_b a}`, ne aflăm în **Cazul 2 al Teoremei Maestrului**, ceea ce înseamnă:\n\n       👉 **T(N) = Θ(N log N)**\n\n4. **Concluzie:**\n   Funcția `f4` are o complexitate de **O(N log N)**.\n\n### Răspuns corect: **C. NlogN**"
         },
         {
           "id": 17,
-          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f1(int N){\n    int x = 0;\n    for (int i = 0; i < N, i++)\n    x++;\n    return x;\n}\npublic static int f5(int N){\n    int x = 0;\n    for (int i = N; i > 0; i = i/2)\n    x+=f1(i);\n    return x;\n}",
+          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f1(int N){\n    int x = 0;\n    for (int i = 0; i < N, i++)\n        x++;\n    return x;\n}\npublic static int f5(int N){\n    int x = 0;\n    for (int i = N; i > 0; i = i/2)\n        x+=f1(i);\n    return x;\n}",
           "options": {
             "A": "logN",
             "B": "N",
@@ -747,11 +747,11 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a determina complexitatea temporală a funcției `f5`, trebuie să analizăm atât `f1`, cât și `f5`.\n\n1. **Analizând `f1(int N)`:**\n   - Funcția `f1` execută un ciclu de la 0 la N, efectuând o operație simplă (`x++`) la fiecare iterație.\n   - Prin urmare, complexitatea temporală a lui `f1` este O(N).\n\n2. **Analizând `f5(int N)`:**\n   - Funcția `f5` execută un ciclu în care `i` începe de la N și este înjumătățit (`i = i / 2`) de fiecare dată până când `i` devine 0.\n   - Acesta este un ciclu logaritmic, care în mod tipic rulează log"
+          "explanation": "Pentru a determina complexitatea temporală a funcției `f5`, trebuie să analizăm atât `f1`, cât și comportamentul buclei din `f5`.\n\n1. **Analiza funcției `f1(int N)`:**\n   - Funcția `f1` parcurge o buclă de la `0` la `N - 1`, incrementând o variabilă `x`.\n   - Complexitatea sa este **O(N)**.\n\n2. **Analiza funcției `f5(int N)`:**\n   - În această funcție, variabila `i` începe de la `N` și este înjumătățită la fiecare iterație (`i = i / 2`).\n   - Așadar, bucla se execută de aproximativ **log₂(N)** ori.\n   - La fiecare pas, se apelează `f1(i)`, adică o funcție care rulează în **O(i)** timp.\n\n3. **Totalul timpului de execuție:**\n   - Vom avea un total:\n     `T(N) = f1(N) + f1(N/2) + f1(N/4) + ... + f1(1)`\n   - Asta se traduce în:\n     `T(N) = N + N/2 + N/4 + ... + 1`\n   - Această sumă este o serie geometrică care are ca limită superioară **2N** (converge către 2N).\n\n4. **Concluzie:**\n   - Chiar dacă sunt mai multe apeluri `f1(i)`, costul total este proporțional cu `N`.\n   - Așadar, complexitatea este **O(N)**.\n\n### Răspuns corect: **B. N**"
         },
         {
           "id": 18,
-          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f6(int N){\n    if (N==0) return 1;\n    return f6(N-1) + f6(N-1);\n}",
+          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f6(int N){\n    if (N==0) return 1;\n        return f6(N-1) + f6(N-1);\n}",
           "options": {
             "A": "logN",
             "B": "N",
@@ -763,11 +763,11 @@
           "correct_answer": [
             "E"
           ],
-          "explanation": "Algoritmul dat este o funcție recursivă care se apelează de două ori pentru fiecare decrementare a lui \\( N \\). Mai exact, pentru orice intrare \\( N \\), funcția face două apeluri recursive cu \\( N-1 \\). Această structură seamănă cu un arbore binar unde fiecare nivel al arborelui reprezintă un apel recursiv, iar fiecare nod are doi copii până se ajunge la cazul de bază (când \\( N = 0 \\)).\n\nAdâncimea arborelui de recursivitate este \\( N \\), iar la fiecare nivel \\( i \\), există \\( 2^i \\) noduri (sau apeluri ale funcției). Astfel, la cel mai adânc nivel, numărul de noduri (sau apeluri ale funcției) este \\( 2^N \\). Ca urmare, numărul de operații efectuate de"
+          "explanation": "Algoritmul dat este o funcție recursivă care se apelează de **două ori** pentru fiecare decrementare a lui `N`. Mai exact, pentru orice valoare `N > 0`, funcția execută două apeluri recursive către `f6(N-1)`, fără a reutiliza rezultatele. \n\nAceastă structură duce la formarea unui **arbore binar complet** de apeluri recursive:\n\n1. **Cazul de bază:**\n   - Când `N == 0`, funcția returnează `1` imediat, în timp constant **O(1)**.\n\n2. **Caz recursiv:**\n   - La fiecare nivel, funcția face **2 apeluri către `f6(N-1)`**.\n   - Astfel, numărul total de apeluri este:\n     - Nivel 0 (rădăcina): 1 apel\n     - Nivel 1: 2 apeluri\n     - Nivel 2: 4 apeluri\n     - ...\n     - Nivel N: 2ⁿ apeluri\n\n3. **Complexitate totală:**\n   - Numărul total de apeluri este suma: `1 + 2 + 4 + ... + 2^N = 2^{N+1} - 1`\n   - Acesta este **O(2^N)** — creștere exponențială.\n\n4. **Concluzie:**\n   - Timpul de execuție al funcției este **exponențial**, întrucât la fiecare nivel numărul apelurilor se dublează.\n\n### Răspuns corect: **E. 2^N**"
         },
         {
           "id": 19,
-          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f7(int N){\n    if (N==1) return 0;\n    return 1+f7(N/2);\n}",
+          "text": "Analizand algoritmul de mai jos precizati ce timp de executie are.\n\npublic static int f7(int N){\n    if (N==1) return 0;\n        return 1+f7(N/2);\n}",
           "options": {
             "A": "logN",
             "B": "N",
@@ -2066,7 +2066,7 @@
           "correct_answer": [
             "F"
           ],
-          "explanation": "Răspunsul corect este F deoarece reflectă în mod corespunzător modul în care complexitatea temporală a unui algoritm poate varia în funcție de scenariu (cel mai bun caz, caz mediu și cel mai rău caz) și de dimensiunea setului de intrare, \\( n \\).\n\n- **Cel mai bun caz (F: \\( k_1n + k_2 \\))**: Acest lucru sugerează că algoritmul se comportă liniar în raport cu dimensiunea intrării \\( n \\) în cel mai favorabil scenariu. Termenul liniar \\( k_1n \\) domină expresia, indicând că fiecare element este procesat de un număr constant de ori.\n\n- **Caz mediu (F: \\( k_3n^2 + k_4n + k_5 \\))**: Aceasta indică o complexitate temporală de ordin cuadratic, care"
+          "explanation": "Algoritmul prezentat este o implementare a sortării prin inserție. Acesta parcurge vectorul de la al doilea element până la ultimul și inserează fiecare element în poziția corespunzătoare în subsecvența deja sortată din stânga. Performanța acestui algoritm variază în funcție de ordinea elementelor din vectorul de intrare.\n\n- **Cel mai bun caz (k₁n + k₂):** Acesta apare atunci când vectorul este deja sortat în ordine crescătoare. În acest caz, condiția `v[j] > key` eșuează imediat, deci nu se efectuează mutări, ci doar comparații simple. Astfel, algoritmul rulează în timp liniar O(n).\n\n- **Caz mediu (k₃n² + k₄n + k₅):** În general, pentru o permutare aleatoare, algoritmul trebuie să efectueze un număr semnificativ de mutări pentru a plasa fiecare element în poziția corectă. Acest comportament duce la o complexitate de ordinul O(n²).\n\n- **Cel mai rău caz (k₆n² + k₇n + k₈):** Apare atunci când vectorul este sortat în ordine descrescătoare. Fiecare element trebuie mutat până la începutul vectorului, ceea ce implică un număr maxim de comparații și mutări. Acest scenariu are o complexitate de O(n²).\n\nAșadar, opțiunea corectă este **F**, care exprimă corect cele trei cazuri prin termeni de ordin liniar pentru cel mai bun caz și pătratici pentru celelalte două."
         },
         {
           "id": 2,
@@ -2079,7 +2079,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Pentru a determina dacă două funcții \\( T_1(n) \\) și \\( T_2(n) \\) au același ordin de creștere, folosim conceptul de echivalență asimptotică. Mai exact, se spune că două funcții cresc în același ritm dacă limita raportului lor este o constantă pozitivă pe măsură ce \\( n \\) tinde către infinit.\n\nÎn contextul întrebării cu alegere multiplă date, limita \\(\\lim_{n \\to \\infty} \\frac{T_1(n)}{T_2(n)} = k\\) (unde \\( k \\) este o constantă pozitivă) indică faptul că \\( T_1(n) \\) și \\( T_2(n) \\) cresc proporțional una cu cealaltă pentru valori mari ale lui \\( n \\)."
+          "explanation": "Pentru a determina dacă două funcții T₁(n) și T₂(n) au același ordin de creștere, se analizează limita raportului lor pentru n → ∞. Dacă această limită este o constantă pozitivă finită (adică diferită de 0 și ∞), atunci cele două funcții sunt asimptotic echivalente și se spune că au același ordin de creștere.\n\n- **A: lim T₁(n)/T₂(n) = 0** — înseamnă că T₁(n) crește mult mai lent decât T₂(n), deci T₁(n) ∈ o(T₂(n)), iar ele NU au același ordin de creștere.\n- **B: lim T₁(n)/T₂(n) = ∞** — înseamnă că T₁(n) crește mult mai repede decât T₂(n), deci T₁(n) ∈ ω(T₂(n)), și iarăși NU au același ordin de creștere.\n- **C: lim T₁(n)/T₂(n) = k (constanta pozitivă)** — înseamnă că T₁(n) și T₂(n) cresc aproximativ la fel, adică T₁(n) ∈ Θ(T₂(n)).\n\nPrin urmare, **răspunsul corect este C**: această condiție definește funcții care au același comportament de creștere asimptotic."
         },
         {
           "id": 3,
@@ -2093,7 +2093,7 @@
             "A",
             "C"
           ],
-          "explanation": "a fi în \\(\\omega(g(n))\\).**\n\n- **B. \\(f(n) \\in O(g(n))\\):** Această notație înseamnă că \\(f(n)\\) nu crește mai repede decât o constantă înmulțită cu \\(g(n)\\) pentru valori mari ale lui \\(n\\). Totuși, condiția \\(\\lim_{n \\to \\infty} \\frac{f(n)}{g(n)} = \\infty\\) sugerează că \\(f(n)\\) crește mult mai repede decât \\(g(n)\\), ceea ce contrazice definiția lui \\(f(n) \\in O(g(n))\\).\n\n- **C. \\(f(n) \\in o(g(n))\\):** Această notație înseamnă că \\(f(n)\\) crește mult mai încet decât \\(g(n)\\) pe măsură ce \\(n\\) tinde la infinit. Din nou, condiția \\(\\lim_{n \\to \\infty} \\frac{f(n)}{g(n)} = \\infty\\) indică faptul că \\(f(n)\\) crește mai repede decât \\(g(n)\\), deci \\(f(n)\\) nu poate fi în \\(o(g(n))\\).\n\n- **D. \\(f(n) \\in \\Theta(g(n))\\):** Această notație înseamnă că \\(f(n)\\) și \\(g(n)\\) cresc la aceeași rată asimptotică. Totuși, deoarece \\(\\lim_{n \\to \\infty} \\frac{f(n)}{g(n)} = \\infty\\), \\(f(n)\\) crește mai repede decât \\(g(n)\\), deci \\(f(n)\\) nu poate fi în \\(\\Theta(g(n))\\).\n\nConcluzionând, singura afirmație adevărată este A: \\(f(n) \\in \\omega(g(n))\\)."
+          "explanation": "Pentru limita lim (n → ∞) f(n)/g(n) = ∞, înseamnă că funcția f(n) crește mult mai repede decât funcția g(n) atunci când n devine foarte mare.\n\n- A. f(n) ∈ ω(g(n)) – este adevărat. Notația omega mic înseamnă că f(n) crește strict mai repede decât g(n). Așadar, dacă raportul f(n)/g(n) tinde spre infinit, atunci f(n) este într-adevăr în ω(g(n)).\n\n- B. f(n) ∈ Θ(g(n)) – este fals. Această notație ar însemna că f(n) și g(n) cresc în același ritm (adică raportul lor tinde către o constantă pozitivă). Dar aici raportul tinde către infinit, deci f(n) nu este în Θ(g(n)).\n\n- C. f(n) ∈ Ω(g(n)) – este adevărat. Notația omega mare înseamnă că f(n) crește cel puțin la fel de repede ca g(n). Cum f(n) crește chiar mai repede, această condiție este satisfăcută.\n\nConcluzie: Afirmațiile adevărate sunt A și C, pentru că f(n) domină clar g(n) când n devine foarte mare."
         },
         {
           "id": 4,
@@ -2106,7 +2106,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a înțelege de ce răspunsul corect este A, să analizăm informațiile date:\n\n1. **f(n) ∈ Θ(n):** Aceasta înseamnă că f(n) crește liniar cu n. Mai exact, există constante pozitive c1, c2 și n0 astfel încât pentru toate n ≥ n0, c1n ≤ f(n) ≤ c2n.\n\n2. **g(n) ∈ Ω(n):** Aceasta indică faptul că g(n) crește cel puțin liniar cu n. Există o constantă pozitivă c3 și un n1 astfel încât pentru toate n ≥ n1, g(n) ≥ c3n.\n\nAcum, să considerăm produsul f(n)g(n):\n\n- Deoarece f(n) este delimitat între c..."
+          "explanation": "Pentru a înțelege de ce răspunsul corect este A, să analizăm informațiile date:\n\n1. f(n) ∈ Θ(n): aceasta înseamnă că f(n) este proporțională cu n, adică f(n) crește liniar. Există constante pozitive c1 și c2 astfel încât pentru valori suficient de mari ale lui n, f(n) este între c1 * n și c2 * n.\n\n2. g(n) ∈ Ω(n): aceasta înseamnă că g(n) crește cel puțin la fel de repede ca n. Există o constantă pozitivă c3 astfel încât g(n) ≥ c3 * n pentru n suficient de mare.\n\nCând înmulțim aceste două funcții, rezultatul f(n) * g(n) este cel puțin c1 * n * c3 * n = c * n², unde c este o constantă pozitivă. Prin urmare, produsul este în Ω(n²).\n\nDeși este posibil ca g(n) să fie mai mare decât n (de exemplu, n log n sau n²), noi știm sigur doar că este cel puțin proporțională cu n. Asta înseamnă că f(n) * g(n) este cel puțin proporțională cu n², adică f(n)g(n) ∈ Ω(n²).\n\nRăspunsul B (Θ(n²)) ar fi fost corect doar dacă știam sigur că și g(n) ∈ Θ(n), ceea ce nu se specifică.\n\nPrin urmare, doar A este corect."
         },
         {
           "id": 5,
@@ -2121,7 +2121,7 @@
             "B",
             "C"
           ],
-          "explanation": "Pentru a determina comportamentul asimptotic al funcțiilor \\( f(n) = 6n^3 + 14n^2 - 8n + 4 \\) și \\( g(n) = 2n^3 \\), folosim notația Big O, care descrie o limită superioară a ratei de creștere a unei funcții.\n\n- **f(n) = 6n^3 + 14n^2 - 8n + 4**: Termenul dominant este \\( 6n^3 \\), deci \\( f(n) \\) este asimptotic echivalent cu \\( 6n^3 \\). Astfel, \\( f(n) \\) este în \\( O(n^3) \\) deoarece termenul de gradul cel mai mare"
+          "explanation": "Pentru a determina comportamentul asimptotic al funcțiilor f(n) = 6n^3 + 14n^2 - 8n + 4 și g(n) = 2n^3, folosim notația Big O, care exprimă limita superioară a ratei de creștere a unei funcții.\n\n- f(n) = 6n^3 + 14n^2 - 8n + 4: Termenul dominant este 6n^3, ceea ce înseamnă că pentru valori mari ale lui n, ceilalți termeni devin neglijabili. Astfel, f(n) este în O(6n^3), dar și în O(n^3) și O(2n^3), pentru că acești termeni sunt doar multipli constanți ai lui n^3.\n\n- g(n) = 2n^3: Este clar că este în O(2n^3), dar și în O(n^3), din același motiv.\n\nPrin urmare:\n- A este corect: ambele funcții sunt în O(2n^3)\n- B este corect: ambele funcții sunt în O(n^3)\n- C este corect: f(n) este în O(6n^3) și g(n) este în O(2n^3)\n\nToate cele trei afirmații sunt adevărate, deci răspunsurile corecte sunt A, B și C."
         },
         {
           "id": 6,
@@ -2134,7 +2134,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a înțelege de ce răspunsul corect este B, să descompunem problema folosind definițiile notațiilor Big Omega (Ω) și Big O (O).\n\n1. **f(n) ∈ Ω(n)**: Aceasta înseamnă că f(n) crește cel puțin la fel de repede ca un multiplu constant al lui n pentru n suficient de mari. Cu alte cuvinte, există o constantă pozitivă c și o valoare n₀ astfel încât pentru toate n ≥ n₀, f(n) ≥ c * n.\n\n2. **g(n) ∈ O(n²)**: Aceasta înseamnă că g(n) crește cel mult la fel de repede ca un multiplu constant al lui n² pentru n suficient de mari. Cu alte cuvinte, există o constantă pozitivă C și o valoare n..."
+          "explanation": "Pentru a înțelege de ce răspunsul corect este B, să analizăm definițiile celor două notații:\n\n1. f(n) ∈ Ω(n): înseamnă că f(n) crește cel puțin la fel de repede ca n. Adică există o constantă pozitivă c astfel încât, pentru n suficient de mare, f(n) ≥ c * n.\n\n2. g(n) ∈ O(n²): înseamnă că g(n) nu crește mai repede decât un multiplu al lui n². Adică există o constantă C astfel încât, pentru n suficient de mare, g(n) ≤ C * n².\n\nAcum analizăm raportul f(n)/g(n):\n- La limită, f(n)/g(n) ≥ c * n / (C * n²) = (c/C) * (1/n), care tinde către 0 pe măsură ce n crește.\n\nAșadar, f(n)/g(n) ∈ O(1/n), care este mai mic decât O(n). Totuși, deoarece nu cunoaștem exact f(n) și g(n), putem spune cel mult că f(n)/g(n) ∈ O(n).\n\nAfirmațiile A și C sunt prea puternice pentru informațiile date, în timp ce B este cea mai generală și corectă concluzie: f(n)/g(n) ∈ O(n)."
         },
         {
           "id": 7,
@@ -2147,7 +2147,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Răspunsul corect este B: \\( f(n) \\in O(g(n)) \\).\n\nExplicație: Notația Big O, \\( O \\), este folosită pentru a descrie o limită superioară a ratei de creștere a unei funcții. Dacă \\( f(n) \\in O(h(n)) \\), înseamnă că rata de creștere a lui \\( f(n) \\) este cel mult rata de creștere a lui \\( h(n) \\), până la un factor constant. În mod similar, dacă \\( h(n) \\in O(g(n)) \\), aceasta implică faptul că rata de creștere a lui \\( h(n) \\) este cel mult rata de creștere a lui \\( g(n) \\), din nou până la un factor constant. Prin tranzitivitate, dacă \\( f(n) \\) este mărginită superior..."
+          "explanation": "Răspunsul corect este B: f(n) ∈ O(g(n)).\n\nExplicație: Notația Big O este folosită pentru a exprima o limită superioară a complexității unei funcții. Dacă f(n) ∈ O(h(n)), înseamnă că există constante pozitive c₁ și n₁ astfel încât pentru orice n ≥ n₁, f(n) ≤ c₁ * h(n). De asemenea, dacă h(n) ∈ O(g(n)), înseamnă că există constante pozitive c₂ și n₂ astfel încât pentru orice n ≥ n₂, h(n) ≤ c₂ * g(n).\n\nPrin urmare, pentru n suficient de mare (n ≥ max(n₁, n₂)), avem:\n- f(n) ≤ c₁ * h(n) ≤ c₁ * (c₂ * g(n)) = (c₁ * c₂) * g(n),\nceea ce implică f(n) ∈ O(g(n)).\n\nAceasta este o aplicație a tranzitivității notației Big O. Așadar, concluzia corectă este că f(n) ∈ O(g(n))."
         },
         {
           "id": 8,
@@ -2161,7 +2161,7 @@
             "B",
             "C"
           ],
-          "explanation": "Pentru a rezolva această întrebare, trebuie să analizăm funcția \\( f(n) = 1 + 2 + \\ldots + n \\), care reprezintă suma primelor \\( n \\) numere naturale. Această sumă poate fi exprimată folosind formula:\n\n\\[ f(n) = \\frac{n(n + 1)}{2} \\]\n\nAceasta se simplifică aproximativ la:\n\n\\[ f(n) \\approx \\frac{n^2}{2} \\]\n\nAcum, să luăm în considerare notațiile big O și big Theta:\n\n- **Notația Big O (O)** descrie o limită superioară a ratei de creștere a unei funcții. În acest caz, deoarece \\( f(n) \\approx \\frac{n^2}{2} \\), aceasta crește cuadratic."
+          "explanation": "Pentru a rezolva această întrebare, trebuie să analizăm funcția f(n) = 1 + 2 + ... + n, care reprezintă suma primelor n numere naturale. Această sumă se poate exprima prin formula bine cunoscută:\n\nf(n) = n(n + 1)/2\n\nAceasta este o expresie polinomială de gradul 2, adică termenul dominant este n². Din punct de vedere al comportamentului asimptotic:\n\n- f(n) ∈ O(n²), deoarece funcția nu crește mai repede decât o constantă înmulțită cu n² (O(n²) oferă o limită superioară).\n- f(n) ∈ Θ(n²), deoarece funcția este și mărginită inferior de o constantă înmulțită cu n² — deci crește exact cu ordinul n².\n\nConcluzia este că atât opțiunea B (O(n²)), cât și opțiunea C (Θ(n²)) sunt corecte."
         },
         {
           "id": 9,
@@ -2176,7 +2176,7 @@
             "A",
             "B"
           ],
-          "explanation": "Algoritmul de căutare binară este conceput pentru a găsi eficient un element într-un șir sortat prin împărțirea repetată a intervalului de căutare la jumătate. Această abordare reduce semnificativ numărul de comparații necesare.\n\nComplexitatea de timp a căutării binare este O(log n) deoarece, cu fiecare pas, spațiul de căutare este înjumătățit, ceea ce duce la un număr logaritmic de pași în raport cu dimensiunea șirului. Aceasta înseamnă că, în cel mai rău caz, numărul de operațiuni necesare este proporțional cu logaritmul numărului de elemente, n.\n\nNotația Ω(log n) se referă la cel mai bun caz, unde complexitatea de timp este, de asemenea, logaritmică. Acest lucru se întâmplă deoarece, chiar și în cel mai bun caz, unde elementul este găsit în mijlocul șirului la prima verificare,"
+          "explanation": "Algoritmul de căutare binară este un algoritm eficient pentru găsirea unui element într-un vector sortat. El funcționează prin împărțirea repetată a intervalului de căutare în jumătate, comparând elementul căutat cu valoarea aflată la mijlocul intervalului curent.\n\n- La fiecare pas, dimensiunea intervalului se înjumătățește, deci numărul total de pași necesari este proporțional cu log2(n), unde n este dimensiunea vectorului. Prin urmare, în cel mai rău caz, complexitatea este O(log n).\n\n- În cel mai bun caz, elementul căutat se află chiar la mijlocul vectorului de la prima verificare, deci se face o singură comparație. Aceasta corespunde complexității Ω(log n), deoarece în analiza de complexitate considerăm și comportamentul asimptotic.\n\n- Opțiunea C (O(n)) este incorectă, deoarece nu reflectă natura logaritmică a împărțirii constante a spațiului de căutare.\n\nÎn concluzie, răspunsurile corecte sunt A și B: complexitatea căutării binare este atât în Ω(log n) (cel mai bun caz), cât și în O(log n) (cel mai rău caz)."
         },
         {
           "id": 10,
@@ -2190,7 +2190,7 @@
             "A",
             "B"
           ],
-          "explanation": "Complexitatea calculării lui \\(x^n\\) poate varia în funcție de algoritmul folosit. Dacă folosim abordarea naivă, care implică înmulțirea lui \\(x\\) cu el însuși de \\(n\\) ori, complexitatea în timp este Θ(n). Totuși, o abordare mai eficientă este metoda \"exponențiere prin pătrare\" sau \"exponențiere binară\", care reduce numărul de înmulțiri necesare. Această metodă profită de reprezentarea binară a exponentului \\(n\\) și reduce complexitatea în timp la Θ(log n). Prin urmare, ambele opțiuni A și B sunt corecte, corespunzând metodelor naive și optimizate, respectiv."
+          "explanation": "Complexitatea calculării lui x^n depinde de metoda utilizată:\n\n- Dacă folosim **metoda naivă**, în care se înmulțește x cu el însuși de n ori (x * x * x * ... * x, de n ori), atunci se efectuează n înmulțiri. Astfel, timpul de execuție este Θ(n).\n\n- Dacă folosim o **metodă eficientă**, cum ar fi 'exponențierea rapidă' sau 'exponențierea binară', atunci numărul de înmulțiri scade drastic. Această metodă împarte exponentul în două la fiecare pas și înmulțește doar când este necesar. Ea folosește reprezentarea binară a lui n, iar numărul total de pași este proporțional cu log₂(n). Astfel, complexitatea este Θ(log n).\n\n- Opțiunea C, Θ(x^n), este incorectă, deoarece nu reflectă complexitatea temporală în funcție de dimensiunea intrării (n), ci valoarea rezultatului, care este irelevantă în acest context.\n\nPrin urmare, răspunsurile corecte sunt A și B, corespunzând celor două metode diferite de calcul a lui x^n."
         },
         {
           "id": 11,
@@ -2203,7 +2203,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Relația de recurență dată este \\( t(n) = 2t(\\sqrt{n}) + \\log n \\). Pentru a determina ordinea de complexitate, putem folosi Teorema Maestrului sau alte tehnici potrivite pentru analizarea relațiilor de recurență. Totuși, Teorema Maestrului nu este direct aplicabilă aici din cauza formei neobișnuite a \\( \\sqrt{n} \\).\n\nÎn schimb, putem transforma recurența pentru a o face mai ușor de analizat. Să fie \\( m = \\log n \\). Atunci, \\( n = 2^m \\) și \\( \\sqrt{n} = 2^{m/2} \\). Înlocuind acestea în recurență obținem:\n\n\\[ t(2^m) = 2t(2^{m/2}) \\]"
+          "explanation": "Relația de recurență dată este t(n) = 2 * t(√n) + log(n). Aceasta nu se potrivește direct cu forma standard folosită în Teorema Maestrului, deoarece subproblema are dimensiune √n, nu n/2. Pentru a o rezolva, facem o schimbare de variabilă: notăm m = log₂(n). Astfel, n = 2^m și √n = 2^{m/2}. Substituim în relație:\n\nT(2^m) = 2 * T(2^{m/2}) + m.\n\nDacă notăm S(m) = T(2^m), atunci recurența devine:\nS(m) = 2 * S(m/2) + m.\n\nAceasta este o recurență clasică care are soluția S(m) ∈ O(m log m). Reînlocuind m = log n, rezultă T(n) ∈ O(log n * log log n).\n\nAșadar, răspunsul corect este A: f(n) ∈ O(log n log log n)."
         },
         {
           "id": 12,
@@ -2218,7 +2218,7 @@
             "A",
             "B"
           ],
-          "explanation": "În analiza algoritmilor, ordinul de creștere al unui algoritm este determinat de modul în care timpul său de execuție crește în funcție de dimensiunea intrării. În acest caz, timpul de execuție al algoritmului este dat de o formă care sugerează că depinde în principal de n², unde n este dimensiunea intrării.\n\n- Opțiunea A: f(n) ∈ O(n²) înseamnă că timpul de execuție crește cel mult proporțional cu n², ceea ce este adevărat pentru funcția dată, deoarece O(n²) oferă o limită superioară.\n\n- Opțiunea B:"
+          "explanation": "Relația de recurență dată este:\n\nt(n) = t(n - 1) + n, pentru n > 0\n\nt(0) = 0\n\nAceasta este o recurență binecunoscută care descrie suma numerelor de la 1 la n. Putem dezvolta câțiva termeni pentru a observa modelul:\n\nt(n) = t(n-1) + n\n       = t(n-2) + (n-1) + n\n       = ...\n       = 1 + 2 + ... + n = n(n+1)/2\n\nAșadar, t(n) este în Θ(n²), deoarece termenul dominant este n²/2. Astfel:\n\n- t(n) ∈ O(n²), adică timpul de execuție este cel mult proporțional cu n²\n- t(n) ∈ Θ(n²), adică timpul de execuție este exact de ordinul n²\n\nPrin urmare, răspunsurile corecte sunt A și B."
         },
         {
           "id": 13,
@@ -2234,7 +2234,7 @@
             "B",
             "C"
           ],
-          "explanation": "Întrebarea se referă la ordinea de creștere sau complexitatea temporală a unui algoritm cu o expresie specifică a timpului de execuție. Notația \\(O(\\cdot)\\) este folosită în informatică pentru a descrie limita superioară a timpului de rulare sau a cerințelor de spațiu ale unui algoritm în funcție de dimensiunea intrării \\(n\\).\n\nAici, timpul de execuție este exprimat în termeni de logaritmi, iar opțiunile arată diferite moduri de a reprezenta complexitatea logaritmică:\n\n- \\(O(\\log_2 n)\\) (opțiunea A) specifică logaritmi în baza 2.\n- \\(O(\\log n)\\) (opțiunea B) folosește o notație generală a logaritmului care, de obicei, implică baza 10 sau logaritmul natural; totuși, în notația Big O, diferențele de bază sunt factori constanți și nu afectează"
+          "explanation": "Relația de recurență dată este:\n\nt(n) = t(n/2), pentru n > 1\n\nt(1) = 1\n\nAceasta este o recurență clasică ce descrie o scădere exponențială a dimensiunii problemei. De fiecare dată când funcția este apelată, dimensiunea se înjumătățește. Prin urmare, numărul total de apeluri este proporțional cu log2(n).\n\nExemplu:\n- t(n) → t(n/2) → t(n/4) → ... → t(1)\n- Numărul de pași = log2(n)\n\nAșadar:\n- f(n) ∈ O(log2 n)\n- f(n) ∈ O(log n)\n- f(n) ∈ O(lgn)\n\nToate cele trei opțiuni sunt echivalente și corecte în contextul notației Big O, pentru că logaritmii cu baze diferite diferă doar printr-un factor constant. De aceea, răspunsurile corecte sunt A, B și C."
         },
         {
           "id": 14,
@@ -2248,7 +2248,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Problema Turnului din Hanoi este un exemplu clasic de algoritm recursiv, unde scopul este de a muta un teanc de discuri de pe un țăruș pe altul, folosind un al treilea țăruș ca auxiliar, respectând anumite reguli. Soluția recursivă implică mutarea a \\( n-1 \\) discuri pe țărușul auxiliar, apoi mutarea discului cel mai mare direct pe țărușul țintă și, în final, mutarea celor \\( n-1 \\) discuri de pe țărușul auxiliar pe țărușul țintă.\n\nComplexitatea de timp a acestui algoritm poate fi descrisă de relația de recurență:\n\n\\[ T(n) = 2T(n-1) + 1 \\]\n\nAceastă recurență se rezolvă ca \\( T(n) = 2^n - 1 \\), ceea ce reprezintă o creștere exponențială. Prin urmare, ordinea de"
+          "explanation": "Relația de recurență dată este:\n\nt(n) = 2 * t(n - 1) + 1, pentru n > 1\n\nt(1) = 1\n\nAceasta este exact relația care descrie timpul de execuție al algoritmului pentru rezolvarea problemei Turnurilor din Hanoi. Această problemă implică mutarea a n discuri de pe un țăruș pe altul, necesitând 2^(n) - 1 mutări.\n\nRezolvarea relației de recurență:\n- t(n) = 2 * t(n - 1) + 1\n- => t(n) = 2^n - 1\n\nPrin urmare, complexitatea este:\n- f(n) ∈ O(2^n)\n\nAceasta este o creștere exponențială, ceea ce face ca algoritmul să fie ineficient pentru valori mari ale lui n. Răspunsul corect este B."
         },
         {
           "id": 15,
@@ -2263,7 +2263,7 @@
             "A",
             "B"
           ],
-          "explanation": "Întrebarea se referă la ordinea de creștere a unui algoritm a cărui timp de execuție este reprezentat într-o formă specifică.\n\n- Opțiunea A, \\( f(n) \\in O(n) \\), indică faptul că complexitatea timpului crește liniar cu dimensiunea intrării \\( n \\). Aceasta este o complexitate comună pentru algoritmi care parcurg toate elementele intrării o singură dată.\n\n- Opțiunea B, \\( f(n) \\in O(2^{\\log n}) \\), se simplifică la \\( O(n) \\) deoarece \\( 2^{\\log n} = n \\). Prin urmare, și aceasta reprezintă o creștere liniară.\n\n- Opțiunea C, \\( f(n) \\in O(\\log n) \\), reprezintă o creștere logaritmică, care nu este echivalentă cu forma dată, prin urmare"
+          "explanation": "Relația de recurență dată este:\n\nt(n) = 2 * t(n/2) + 1, pentru n > 2\n\nt(2) = 1\n\nAceasta este o relație clasică ce poate fi rezolvată folosind Teorema Maestrului. Se potrivește formei:\n\nt(n) = a * t(n/b) + f(n), unde:\n- a = 2\n- b = 2\n- f(n) = 1 ∈ O(n^log_b(a) - ε) pentru orice ε > 0\n\nÎn acest caz:\n- log_b(a) = log₂2 = 1\n- f(n) = 1 ∈ O(n^ε) pentru orice ε < 1\n\nAșadar, conform Cazului 1 din Teorema Maestrului:\n- t(n) ∈ Θ(n)\n\nTotodată, opțiunea B este echivalentă: 2^log(n) = n, deci O(2^logn) = O(n).\n\nPrin urmare, ambele variante A și B sunt corecte, indicând că algoritmul are o complexitate de ordin liniar."
         },
         {
           "id": 16,
@@ -2277,7 +2277,7 @@
             "A",
             "C"
           ],
-          "explanation": "Relația de recurență pentru algoritmul mergesort este dată de \\( T(n) = 2T(n/2) + \\Theta(n) \\). Această relație poate fi înțeleasă astfel:\n\n- Problema de dimensiune \\( n \\) este împărțită în două subprobleme de dimensiune \\( n/2 \\), ceea ce sugerează termenul \\( 2T(n/2) \\).\n- Termenul \\( \\Theta(n) \\) reprezintă complexitatea de timp pentru a combina cele două jumătăți sortate înapoi împreună.\n\nPentru a determina complexitatea generală, putem folosi Teorema Maestrului, care este aplicabilă relațiilor de recurență de forma \\( T(n) = aT(n/b) + f(n) \\), unde:\n\n- \\( a \\) este numărul"
+          "explanation": "Relația de recurență pentru algoritmul mergesort este dată de:\n\nT(n) = 2T(n/2) + Θ(n)\n\nAceastă relație corespunde exact formei standard din Teorema Maestrului:\nT(n) = aT(n/b) + f(n), unde:\n- a = 2 (două apeluri recursive)\n- b = 2 (fiecare apel lucrează pe jumătate din date)\n- f(n) = Θ(n) (costul combinării celor două subprobleme)\n\nCalculăm log_b(a) = log₂(2) = 1.\n\nCum f(n) ∈ Θ(n), iar n^log_b(a) = n^1 = n, se aplică cazul 2 din Teorema Maestrului:\n- Dacă f(n) ∈ Θ(n^log_b(a)), atunci T(n) ∈ Θ(n log n)\n\nPrin urmare, complexitatea algoritmului mergesort este Θ(n log n).\n\nOpțiunea A este corectă: Θ(n log n)\nOpțiunea C este, de asemenea, acceptabilă deoarece n + n log n ∈ Θ(n log n), termenul logaritmic domină termenul liniar."
         },
         {
           "id": 17,
@@ -2291,12 +2291,12 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a determina ordinea de creștere a funcției \\( f(n) \\) dată de o relație de recurență, de obicei analizăm recurența pentru a identifica comportamentul său asimptotic. Dacă răspunsul corect este \\( B. f(n) \\in \\Theta(n) \\), aceasta implică faptul că relația de recurență descrie o funcție care crește liniar cu \\( n \\). Notația \\( \\Theta(n) \\) înseamnă că \\( f(n) \\) este mărginită atât superior, cât și inferior de funcții liniare de \\( n \\). Acest lucru sugerează că relația de recurență se simplifică la o formă în care termenul dominant este proporțional cu \\( n \\), indicând o ordine de creștere liniară. Înțelegerea structurii relației de recurență, cum ar fi cazul de bază și pasul recursiv, este esențială pentru a confirma acest lucru."
+          "explanation": "Recurența t(n) = t(n - 1) + 1, cu t(0) = 0, descrie o funcție care crește cu 1 la fiecare pas. Aceasta înseamnă că pentru a ajunge la t(n), se fac n pași, fiecare adăugând 1. Prin urmare:\n\nt(n) = 1 + 1 + 1 + ... + 1 (n ori) = n\n\nRezultatul este t(n) = n, ceea ce implică o creștere liniară. În notație asimptotică, aceasta înseamnă că t(n) ∈ Θ(n).\n\nOpțiunea corectă este B: Θ(n), deoarece descrie exact comportamentul acestei recurențe."
         },
         {
           "id": 18,
           "text": "Sa se indice ordinul de crestere al functiei f(n) cu urmatoarea relatie de recurenta:",
-          "image": "maa_18",
+          "image": "maa_18.png",
           "options": {
             "A": "f(n) ∈ O(n!)",
             "B": "f(n) ∈ O(n²)",
@@ -2305,12 +2305,12 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a determina ordinea de creștere a funcției \\( f(n) \\) dată de o relație de recurență, trebuie să analizăm cum se comportă funcția pe măsură ce \\( n \\) crește. Dacă relația de recurență sugerează că \\( f(n) \\) este construită prin înmulțirea sau combinarea termenilor într-un mod care seamănă cu creșterea factorială, atunci funcția va crește foarte rapid, similar cu \\( n! \\).\n\nFuncția factorială \\( n! \\) crește mai rapid decât funcțiile polinomiale, cum ar fi \\( n^2 \\), sau funcțiile liniare, cum ar fi \\( n \\). Prin urmare, dacă relația de recurență implică înmulțirea cu termeni care cresc rapid odată cu \\( n \\), aceasta se aliniază cu modelul de creștere \\( O(n!) \\), făcând-o răspunsul corect.\n\nÎn acest caz, recurența probabil"
+          "explanation": "Relația de recurență este: t(n) = n(t(n-1) + 2), cu t(1) = 0. Putem rescrie această relație ca t(n) = n * t(n-1) + 2n. Acest tip de relație combină înmulțirea cu recursia, ceea ce duce la o creștere foarte rapidă.\n\nPentru a înțelege comportamentul, putem calcula câteva valori:\n- t(1) = 0\n- t(2) = 2 * (0 + 2) = 4\n- t(3) = 3 * (4 + 2) = 18\n- t(4) = 4 * (18 + 2) = 80\n- t(5) = 5 * (80 + 2) = 410\n\nObservăm o creștere accelerată. Aceasta se aliniază cu o funcție factorială sau mai rapidă decât o funcție polinomială.\n\nAstfel, ordinea de creștere a acestei funcții este factorială, deci t(n) ∈ O(n!)."
         },
         {
           "id": 19,
           "text": "Sa se indice ordinul de crestere al functiei f(n) cu urmatoarea relatie de recurenta:",
-          "image": "maa_19",
+          "image": "maa_19.png",
           "options": {
             "A": "f(n) ∈ Θ(n)",
             "B": "f(n) ∈ Θ(n+nlogn)",
@@ -2320,12 +2320,12 @@
             "B",
             "C"
           ],
-          "explanation": "Pentru a determina ordinea de creștere a funcției \\( f(n) \\) dintr-o relație de recurență, de obicei folosești metode precum Teorema Maestrului sau metoda substituției iterative, în funcție de forma recurenței. Scopul este de a exprima complexitatea temporală în notația Big Theta, care descrie o limită asimptotică strânsă.\n\nPentru această întrebare, dacă răspunsurile corecte sunt \\( B \\) și \\( C \\), aceasta implică faptul că relația de recurență conduce la o funcție care crește proporțional cu atât \\( n + n\\log{n} \\), cât și \\( n\\log{n} \\). Acest lucru sugerează de obicei că ordinea de creștere a funcției este dominată de termenul \\( n\\log{n} \\), dar forma \\("
+          "explanation": "Relația de recurență este t(n) = 2t(n/2) + n, cu t(1) = 1. Aceasta este o formă clasică care poate fi rezolvată eficient folosind Teorema Maestrului.\n\nAvem:\n- a = 2 (numărul de apeluri recurente)\n- b = 2 (factorul de împărțire)\n- f(n) = n (termenul de cost extern)\n\nComparam f(n) cu n^log_b(a) = n^log_2(2) = n^1 = n.\n\nDeoarece f(n) = Θ(n), se aplică cazul 2 din Teorema Maestrului:\nT(n) = Θ(n log n).\n\nAceasta înseamnă că timpul de execuție al funcției crește proporțional cu n log n, adică f(n) ∈ Θ(n log n).\n\nAstfel, sunt corecte atât opțiunea B (Θ(n + n log n)), cât și opțiunea C (Θ(n log n))."
         },
         {
           "id": 20,
           "text": "Care din urmatoarele interpretari fac adevarata formula F ilustrata in graficul din Figura 5?",
-          "image": "maa_20",
+          "image": "maa_20.png",
           "options": {
             "A": "x1 = true, x2 = true, x3 = true",
             "B": "x1 = false, x2 = true, x3 = false",
@@ -2334,7 +2334,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a determina care interpretare face formula \\( F \\) adevărată, trebuie să analizăm atribuțiile de adevăr pentru variabilele \\( x1 \\), \\( x2 \\) și \\( x3 \\) așa cum sunt date în opțiuni. Răspunsul corect este opțiunea B: \\( x1 = \\text{fals} \\), \\( x2 = \\text{adevărat} \\), \\( x3 = \\text{fals} \\). Această combinație specifică satisface formula \\( F \\), așa cum este arătat în graficul din Figura 5. De obicei, aceasta înseamnă că, pe baza operațiunilor logice ilustrate (cum ar fi ȘI, SAU, NU), doar atunci când \\( x1 \\) este fals, \\( x2 \\) este adevărat, și \\( x3 \\) este"
+          "explanation": "Graficul G(F) este reprezentarea unui graf de implicații asociat unei formule booleană F exprimată în forma 2-SAT. Într-un astfel de graf, fiecare muchie între noduri reprezintă o implicație logică: dacă un literal este adevărat, atunci și celălalt trebuie să fie adevărat.\n\nPentru ca formula F să fie satisfiabilă, trebuie ca în graful G(F) să nu existe un ciclu care să conțină atât o variabilă x, cât și negația sa ¬x în același component tare conex.\n\nRăspunsul corect este opțiunea B: x1 = false, x2 = true, x3 = false. Această interpretare satisface toate implicațiile din grafic fără a crea conflicte între o variabilă și negația sa. Cu alte cuvinte, dacă urmăm traseul de implicații, niciuna dintre ele nu conduce la o contradicție.\n\nAstfel, B este singura alegere care face formula F adevărată în interpretarea logică dată de grafic."
         }
       ]
     },
