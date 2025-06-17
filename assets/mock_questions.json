@@ -1374,7 +1374,7 @@
           "options": {
             "A": "Programul este corect si va afisa la executie a=4, b=3;",
             "B": "Va aparea eroare la compilare, deoarece clasa C2 nu poate fi definita in metoda f() din clasa C1;",
-            "C": "Va aparea eroare la compilare deoarece in metoda g() nu putem accesa vari- abila locala a din metoda f();",
+            "C": "Va aparea eroare la compilare deoarece in metoda g() nu putem accesa variabila locala a din metoda f();",
             "D": "Va aparea eroare la compilare deoarece nu se creeaza in clasa Test un obiect de tip C1.C2;"
           },
           "correct_answer": [
@@ -1547,7 +1547,7 @@
         },
         {
           "id": 20,
-          "text": "Se utilizeaza protected  in Java pentru date si metode la care nu este necesar:",
+          "text": "Se utilizeaza protected in Java pentru date si metode la care nu este necesar:",
           "options": {
             "A": "Sa facem o initializare;",
             "B": "Sa le accesam in subclase;",
@@ -3990,7 +3990,7 @@
             "B",
             "D"
           ],
-          "explanation": "O entitate este un concept fundamental în modelarea datelor și se referă la un obiect sau un lucru care poate fi identificat în mod unic și despre care vrem să stocăm informații.\n\nA. Este identificată unic printr-un nume - Această opțiune este corectă deoarece fiecare entitate trebuie să aibă un identificator unic, cum ar fi un nume sau un ID, care o distinge de alte entități.\n\nB. Cuprinde, în general, mai multe valori sau realizări - Această opțiune este corectă deoarece o entitate este de obicei descrisă printr-un set de atribute sau proprietăți, fiecare având valori."
+          "explanation": "O entitate este un concept fundamental în modelarea conceptuală a bazelor de date și reprezintă un obiect concret sau abstract despre care se colectează și se stochează informații. Ea este definită printr-un set de atribute care îi descriu caracteristicile.\n\n- **A. Este identificată unic printr-un nume** – Corect. O entitate are o identitate unică, de obicei reprezentată printr-un identificator sau un nume, care permite distingerea între instanțele entității.\n\n- **B. Cuprinde, în general, mai multe valori sau realizări** – Corect. O entitate este asociată cu mai multe atribute (ex. nume, prenume, data nașterii), iar fiecare instanță a entității are valori specifice pentru aceste atribute.\n\n- **D. Semnifică un obiect concret sau abstract, reprezentat prin proprietățile sale** – Corect. Entitățile pot reprezenta persoane, lucruri, concepte etc., care sunt descrise prin atribute. Aceste atribute definesc proprietățile relevante ale entității în contextul aplicației.\n\n- **C. Administrează obiecte** – Fals. Administrația sau manipularea obiectelor este specifică aplicațiilor sau funcțiilor, nu entităților ca concepte de modelare.\n\n- **E. Semnifică o caracteristică a unui obiect concret** – Fals. Această definiție este specifică unui atribut, nu unei entități. Entitatea este obiectul în sine, în timp ce atributele sunt caracteristicile sale.\n\nPrin urmare, opțiunile corecte sunt A, B și D."
         },
         {
           "id": 3,
@@ -4026,7 +4026,7 @@
         },
         {
           "id": 5,
-          "text": "Se da tabelul: ANGAJATI (CodAngaj, Nume, DataAngajare, Compartiment, Profesia, Salariu) Care dintre urmatoarele instructiuni SQL permite afisarea numarului de salariati pe fiecare com- partiment care incepe cu litera ”A”?",
+          "text": "Se da tabelul: ANGAJATI (CodAngaj, Nume, DataAngajare, Compartiment, Profesia, Salariu) Care dintre urmatoarele instructiuni SQL permite afisarea numarului de salariati pe fiecare compartiment care incepe cu litera ”A”?",
           "options": {
             "A": "SELECT CodAngajat, Nume, Compartiment FROM ANGAJATI WHERE Nume like A* ;",
             "B": "SELECT COUNT(CodAngajat) AS Numar, Nume, Compartiment FROM ANGAJATI WHERE Nume like \"A*\" GROUP BY Compartiment ;",
@@ -4054,11 +4054,11 @@
             "D",
             "E"
           ],
-          "explanation": "Întrebarea se referă la determinarea operațiilor pe mulțimi sau relații care sunt echivalente. Iată o scurtă explicație de ce opțiunile C, D și E sunt corecte:\n\nC. R3 = R1 × R2 și R3 = PRODUS(R1, R2):\n   - Ambele operații descriu produsul cartezian al două mulțimi sau relații, asociind fiecare element din R1 cu fiecare element din R2. Astfel, ele sunt echivalente.\n\nD. R3 = R1 ∪ R2 și R3 = UNIUNEA(R1, R2):\n   - Ambele operații descriu uniunea a două mulțimi sau relații, care combină toate elementele unice din R1 și R2 în R3. Prin urmare, ele sunt echivalente.\n\nE. R3 = R1 - (R..."
+          "explanation": "Întrebarea testează cunoștințele despre echivalența operațiilor din algebra relațională și a celor din limbaje de interogare asupra bazelor de date. Iată analiza fiecărei opțiuni:\n\n- **C. R3 = R1 × R2 și R3 = PRODUCT(R1, R2):**\n  Aceasta este o echivalență clară. Produsul cartezian al două relații R1 și R2 este denumit în algebra relațională ca R1 × R2 și în unele limbaje de interogare ca PRODUCT(R1, R2).\n\n- **D. R3 = R1 ∪ R2 și R3 = UNION(R1, R2):**\n  UNIUNEA (UNION) este operația care returnează toate tuplurile distincte din R1 și R2. Este notată în mod tradițional cu ∪ în algebra relațională. Deci și aceasta este o echivalență corectă.\n\n- **E. R3 = R1 - (R1 - R2) și AND(R1, R2):**\n  Această formulare este o metodă echivalentă de a obține intersecția dintre R1 și R2. R1 - (R1 - R2) lasă doar tuplurile care se află în ambele relații, ceea ce este echivalent cu R1 ∩ R2. În unele limbaje, această intersecție poate fi exprimată și cu AND între cele două relații.\n\n- **A. R3 = R1 ∪ R2 și R3 = APPEND(R1, R2):**\n  APPEND nu elimină duplicatele, deci nu este echivalentă cu ∪ (uniune care presupune mulțime, deci fără duplicate). Deci A este falsă.\n\n- **B. R3 = R1 - R2 și R3 = R1 OR R2:**\n  R1 - R2 înseamnă diferența (elemente în R1 care nu sunt în R2), iar OR sugerează uniune. Deci nu sunt echivalente. B este falsă.\n\nConcluzie: doar opțiunile **C, D și E** sunt corecte."
         },
         {
           "id": 7,
-          "text": "Se da tabelul:\nCHITANTE (NrChitanta, Suma, DataChitanta, NrGhiseu )\nCare dintre urmatoarele instructiuni SQL are ca efect afisarea zilelor in care s-au emis mai mult de\n2 chitante?\n",
+          "text": "Se da tabelul:\nCHITANTE (NrChitanta, Suma, DataChitanta, NrGhiseu )\nCare dintre urmatoarele instructiuni SQL are ca efect afisarea zilelor in care s-au emis mai mult de 2 chitante?\n",
           "options": {
             "A": "SELECT Nrchitanta, Suma, Data FROM CHITANTE WHERE COUNT(NrChitanta)>2;",
             "B": "SELECT Nrchitanta, Suma, Data FROM CHITANTE HAVING COUNT(NrChitanta)>2;",
@@ -4084,11 +4084,11 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Răspunsul corect este C. Să analizăm de ce:\n\nÎntrebarea cere instrucțiunea SQL care va șterge angajații (salariații) care au fost angajați înainte de începutul anului 2007 și au profesia \"profesor.\"\n\n- Opțiunea A folosește incorect o comparație de dată pentru înainte de \"1/1/2006\" în loc de \"1/1/2007.\"\n- Opțiunea B folosește o sintaxă incorectă prin combinarea necorespunzătoare a clauzelor WHERE și HAVING și folosește, de asemenea, o funcție (YEAR) care nu este de obicei utilizată în acest mod într-o instrucțiune DELETE.\n- Opțiunea C specifică corect condiția pentru ștergere: angajații angajați înainte de \"1/1/2007\" cu o profesie similară cu \"profesor.\" Utilizarea operatorului LIKE cu wildcard"
+          "explanation": "Răspunsul corect este C. Instrucțiunea SQL din opțiunea C șterge angajații care îndeplinesc ambele condiții: au fost angajați înainte de 1/1/2007 și profesia lor conține cuvântul 'profesor'.\n\n- DELETE Angajati WHERE DataAngajare < \"1/1/2007\" AND profesia LIKE \"*profesor*\" este sintactic corectă în anumite sisteme SQL (ex. MS Access), unde caracterul wildcard * este utilizat în combinație cu LIKE.\n\n- Opțiunea A este incorectă pentru că utilizează o dată greșită (1/1/2006) și caractere de ghilimele incorecte.\n- Opțiunea B este invalidă pentru că folosește incorect `DELETE *` (care nu este valid SQL) și combină WHERE cu HAVING fără un GROUP BY.\n- Opțiunea D nu efectuează o ștergere, ci doar actualizează câmpul CodAngaj la NULL, ceea ce nu este cerut de întrebare.\n\nAstfel, doar opțiunea C exprimă corect intenția de a șterge înregistrările respective."
         },
         {
           "id": 9,
-          "text": "Fie tabelul proiecte(CodProiect;CodAng;functie;suma)cu cheia(CodProiect;CodAng), de stocare a informatiilor privind repartizarea pe proiecte a salariatilor unei firme. Suma obtinuta depinde de CodAng si de functia in acel proiect (CodAng;functie) -> suma. Aplicand a doua forma normala care din schemele urmatoare este corecta?",
+          "text": "Fie tabelul proiecte(CodProiect, CodAng, functie, suma) cu cheia (CodProiect, CodAng), de stocare a informatiilor privind repartizarea pe proiecte a salariatilor unei firme. Suma obtinuta depinde de CodAng si de functia in acel proiect (CodAng, functie) -> suma. Aplicand a doua forma normala care din schemele urmatoare este corecta?",
           "options": {
             "A": "R1=(CodProiect,CodAng,functie),R2=(CodProiect,functie,suma)",
             "B": "R1=(CodProiect,CodAng, suma), R2=(CodAng,functie)",
@@ -4099,7 +4099,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a determina schema corectă în contextul celei de-a doua forme normale (2NF), trebuie să ne asigurăm că toate atributele non-cheie sunt complet dependente funcțional de cheia primară. În tabelul dat, cheia primară este (CodProiect, CodAng), și se menționează că \"suma\" depinde de CodAng și \"funcție\". Acest lucru sugerează că \"funcție\" este parțial dependentă de CodAng, ceea ce încalcă 2NF deoarece nu este complet dependentă de întreaga cheie primară.\n\nPentru a atinge 2NF, trebuie să eliminăm dependențele parțiale prin crearea unor tabele separate:\n\n- În opțiunea A, primul tabel R1=(CodProiect, CodAng, funcție) descompune dependența de"
+          "explanation": "Pentru ca o relație să fie în a doua formă normală (2NF), trebuie să fie deja în prima formă normală (1NF) și toate atributele non-cheie să depind complet de cheia primară (nu doar de o parte a ei).\n\nÎn tabelul proiecte(CodProiect, CodAng, functie, suma), cheia primară este (CodProiect, CodAng). Se menționează că suma depinde de combinația (CodAng, functie), ceea ce implică o dependență parțială – suma nu depinde de întreaga cheie primară, ci de o parte a ei împreună cu un alt atribut.\n\nPentru a elimina această dependență parțială, se face o descompunere astfel:\n\n- R1=(CodProiect, CodAng, functie): conține informația complet dependentă de cheia (CodProiect, CodAng).\n- R2=(CodAng, functie, suma): reflectă faptul că suma este determinată doar de CodAng și functie.\n\nAceastă descompunere respectă regulile 2NF, deoarece toate atributele non-cheie din fiecare relație depind de întreaga cheie a respectivei relații. Prin urmare, opțiunea corectă este A."
         },
         {
           "id": 10,
@@ -4114,7 +4114,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a determina care descompunere este în a treia formă normală (3NF), trebuie să ne asigurăm că descompunerea respectă condițiile 3NF, care sunt:\n\n1. Relația trebuie să fie în a doua formă normală (2NF).\n2. Fiecare atribut non-prim (un atribut care nu face parte din nicio cheie candidat) trebuie să depindă doar de cheile candidat și nu de niciun alt atribut non-prim (adică nu ar trebui să existe dependențe tranzitive).\n\nAvând dependența tranzitivă K -> X -> Y, dorim să descompunem relația astfel încât aceste dependențe să fie păstrate și să nu existe dependențe tranzitive.\n\nÎn opțiunea B, R1=K(R-Y) și R2=(XY), descompunerea este structurată astfel încât:"
+          "explanation": "Pentru ca o relație să fie în a treia formă normală (3NF), trebuie să respecte următoarele condiții:\n\n1. Să fie în a doua formă normală (2NF).\n2. Să nu existe dependențe funcționale tranzitive între atributele non-cheie.\n\nÎn această întrebare avem o dependență tranzitivă de forma K → X → Y. Pentru a elimina dependențele tranzitive, trebuie să descompunem relația astfel încât fiecare relație rezultată să conțină doar dependențe directe de la cheia primară.\n\nOpțiunea corectă este B: R1 = K(R−Y), R2 = (XY). Această descompunere:\n- Plasează X și Y într-o relație separată (R2), unde dependența X → Y este păstrată local.\n- Elimină dependența tranzitivă din relația principală.\n- Păstrează dependența K → X în R1, unde Y a fost eliminat tocmai pentru a rupe lanțul tranzitiv.\n\nPrin urmare, această descompunere respectă regulile 3NF."
         },
         {
           "id": 11,
@@ -4129,11 +4129,11 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a determina care descompunere este în a patra formă normală (4NF), trebuie să luăm în considerare dependența multivaluată (MVD) X ->> Y. 4NF cere ca pentru fiecare dependență multivaluată netrivială X ->> Y într-o relație, X să fie o supercheie sau relația să fie descompusă.\n\nÎn opțiunile date, avem relația R, cu submulțimile X, Y și Z = R - XY, și dependența multivaluată X ->> Y.\n\nÎn descompunerea A:\n- R1 = XZ și R2 = XY.\n- R1 (XZ) include X, dar exclude Y, în timp ce R2 (XY) include atât X, cât și Y.\n- Această descompunere asigură"
+          "explanation": "Pentru a verifica dacă o descompunere este în 4NF, trebuie să ținem cont de dependențele multivaluate. În cazul unei dependențe multivaluate netriviale X →→ Y, regula spune că trebuie să descompunem relația dacă X nu este supercheie.\n\nO descompunere corectă în 4NF pentru X →→ Y este:\n- R1 = XZ\n- R2 = XY\n\nAceastă descompunere împarte schema inițială astfel încât fiecare relație separată respectă 4NF:\n- R1 păstrează atributul X și restul atributelor care nu sunt implicate în Y,\n- R2 păstrează exact dependența multivaluată X →→ Y.\n\nDeoarece această descompunere izolează dependența multivaluată și evită redundanța, ea respectă forma normală a patra.\n\nRăspunsul corect este A."
         },
         {
           "id": 12,
-          "text": "Fie tabelul Studenti(NrLeg, LimbaStraina, M asina)\n111 Engleza Logan\n111 Franceza Logan\n111 Spaniola Logan\n111 Engleza Cielo\n111 Franceza Cielo\n112 Engleza Logan\n112 Franceza Logan\nsi dependentele multivoce NrLeg \u0010 LimbaStraina, NrLeg \u0010 M asina. Care este reprezentarea\nFN4 determinata de aceste MV-dependente.",
+          "text": "Fie tabelul Studenti(NrLeg, LimbaStraina, Masina)\n         111   Engleza   Logan\n         111   Franceza   Logan\n         111   Spaniola   Logan\n         111   Engleza   Cielo\n         111   Franceza   Cielo\n         112   Engleza   Logan\n         112   Franceza   Logan\nsi dependentele multivoce NrLeg ->> LimbaStraina, NrLeg ->> Masina. Care este reprezentarea FN4 determinata de aceste MV-dependente.",
           "options": {
             "A": "R1= NrLeg, LimbaStraina, R2= NrLeg, Masina",
             "B": "R1= Masina,LimbaStraina, R2= NrLeg, LimbaStraina,",
@@ -4144,7 +4144,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "În scenariul dat, avem un tabel numit \"Studenti\" cu atributele NrLeg, LimbaStraina și Masina. Ne sunt furnizate dependențele multivaluate (MVD-uri) NrLeg →→ LimbaStraina și NrLeg →→ Masina.\n\nPentru a atinge Forma Normală Patru (4NF), o relație nu trebuie să aibă dependențe multivaluate netriviale, altele decât o cheie candidat. Aceasta înseamnă că trebuie să descompunem tabelul astfel încât fiecare relație din descompunere să aibă cel mult o dependență multivaluată netrivială.\n\nAvând în vedere MVD-urile:\n1. NrLeg →→ LimbaStraina\n2. NrLeg →→ Masina\n\nDescompunem tabelul original în două"
+          "explanation": "Pentru a determina forma normală a patra (4NF), trebuie să eliminăm toate dependențele multivaluate netriviale care nu implică o cheie candidat.\n\nÎn acest caz, avem două dependențe multivaluate:\n- NrLeg →→ LimbaStraina\n- NrLeg →→ Masina\n\nAsta înseamnă că pentru fiecare NrLeg, LimbaStraina poate varia independent față de Masina. Pentru a elimina această redundanță și a respecta 4NF, descompunem relația în două tabele separate:\n\n- R1(NrLeg, LimbaStraina)\n- R2(NrLeg, Masina)\n\nAceastă descompunere păstrează toate datele fără redundanță inutilă și satisface 4NF, deoarece în fiecare tabel, singura dependență multivaluată este între cheia candidat și un alt atribut.\n\nPrin urmare, varianta corectă este A."
         },
         {
           "id": 13,
@@ -4174,7 +4174,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "În algebra relațională, simbolurile și operatorii sunt folosiți pentru a manipula și interoga baze de date relaționale. În acest context:\n\n- Operatorul σ (sigma) reprezintă selecția, care se folosește pentru a extrage rândurile (tupluri) dintr-o relație care satisfac o anumită condiție.\n- În expresia σAn=2(studenti), operatorul σ este utilizat pentru a selecta doar acei studenți din tabelul \"studenti\" care sunt în anul II (An=2).\n\nAlte opțiuni nu sunt corecte pentru că:\n\n- A. πAn(studenti) ar returna doar o proiecție a"
+          "explanation": "În algebra relațională, operatorii principali sunt:\n\n- **σ (sigma)**: selecția – filtrează tupluri care îndeplinesc o condiție.\n- **π (pi)**: proiecția – extrage anumite atribute (coloane) dintr-o relație.\n\nOpțiunea corectă este:\n\n**B. σAn=2(studenti)** – selectează din tabela 'studenti' doar acele înregistrări unde atributul An este egal cu 2, adică exact studenții din anul II.\n\nDe ce celelalte opțiuni sunt incorecte:\n\n- **A. πAn(studenti)** – returnează toate valorile distincte ale anului de studiu din tabela 'studenti', deci nu filtrează doar anul II.\n- **C. πAn(σAn=2(studenti))** – selectează studenții din anul II, dar returnează doar valoarea câmpului An (adică doar '2'), nu lista studenților.\n- **D. σAn(πAn=2(studenti))** – este o formulare incorectă sintactic în algebra relațională.\n- **E. πNume(studenti)** – returnează doar toate numele studenților, fără să verifice anul de studiu.\n\nPrin urmare, doar expresia din opțiunea B returnează toți studenții din anul II."
         },
         {
           "id": 15,
@@ -4192,7 +4192,7 @@
             "D",
             "E"
           ],
-          "explanation": "Întrebarea se referă la caracteristicile algebrei relaționale în contextul bazelor de date relaționale. Iată o scurtă explicație pentru fiecare opțiune corectă:\n\nA. Completă (permite extragerea oricăror informații din bază) - Algebra relațională este considerată completă deoarece oferă un set de operații care pot fi utilizate pentru a interoga și manipula datele în orice mod necesar pentru a extrage toate informațiile posibile dintr-o bază de date relațională.\n\nB. Procedurală (arată și modul în care se obțin informațiile din baza de date) - Algebra relațională este procedurală, ceea ce înseamnă că specifică o secvență de operații care trebuie efectuate pentru a obține datele dorite. Ea descrie cum poate fi obținut rezultatul, spre deosebire de limbajele declarative care se concentrează pe ce rezultat este necesar.\n\nD. Limbaj formal -"
+          "explanation": "Întrebarea se referă la caracteristicile algebrei relaționale în contextul bazelor de date relaționale. Iată o explicație pentru fiecare opțiune corectă:\n\nA. Completă (permite extragerea oricăror informații din bază) – Algebra relațională este completă în sensul că, împreună cu calculul relațional, este capabilă să exprime toate interogările care sunt considerate „computabil relațional”. Acest lucru înseamnă că orice interogare logică asupra unei baze de date relaționale poate fi exprimată în acest formalism.\n\nB. Procedurală (arată și modul în care se obțin informațiile din baza de date) – Algebra relațională este un limbaj procedural, adică descrie pașii (operațiile) care trebuie executați pentru a obține rezultatul dorit. Aceasta este o diferență esențială față de calculul relațional, care este declarat și se concentrează pe ce se dorește obținut, nu cum.\n\nD. Limbaj formal – Algebra relațională este un limbaj formal cu o bază matematică riguroasă. Acest lucru îi permite să fie utilizată ca fundament teoretic pentru optimizarea interogărilor în sistemele de gestiune a bazelor de date.\n\nE. Limbaj de interogare – Deși nu este un limbaj de interogare folosit direct de utilizatori (precum SQL), algebra relațională stă la baza acestora și este un model formal folosit pentru a exprima interogări asupra datelor. Este folosită în sistemele de baze de date pentru a transforma interogările scrise în limbaje de nivel înalt în planuri de execuție eficiente.\n\nOpțiunea C este incorectă deoarece algebra relațională nu este orientată pe obiecte și nu lucrează cu informații de tip obiectual."
         },
         {
           "id": 16,
@@ -4211,7 +4211,7 @@
         },
         {
           "id": 17,
-          "text": "Fiind data apriori o multime de restrictii data de o multime de dependente funtionale F. Elaborarea\nunei reguli de validare pentru o dependenta functionala X → Y presupune:",
+          "text": "Fiind data apriori o multime de restrictii data de o multime de dependente funtionale F. Elaborarea unei reguli de validare pentru o dependenta functionala X → Y presupune:",
           "options": {
             "A": "Verificarea deductibilitatii din F",
             "B": "Verificarea incluziunii X ⊂ Y",
@@ -4223,11 +4223,11 @@
             "A",
             "C"
           ],
-          "explanation": "Pentru a elabora o regulă de validare pentru o dependență funcțională \\( X \\rightarrow Y \\), trebuie să ne asigurăm că această dependență este consistentă cu setul dat de dependențe funcționale \\( F \\).\n\n- **A. Verificarea deductibilității din F**: Aceasta înseamnă verificarea dacă dependența \\( X \\rightarrow Y \\) poate fi dedusă logic din setul \\( F \\). Acest lucru asigură că dependența este validă conform constrângerilor existente.\n\n- **C. Verificarea incluziunii \\( X \\subseteq X^+ \\)**: Aceasta implică verificarea dacă setul \\( X \\) este inclus în închiderea sa \\( X^+ \\) cu privire la \\( F \\). Acest lucru este întotdeauna adevărat prin definiție, dar în contextul validării,"
+          "explanation": "Pentru a valida o dependență funcțională X → Y având un set de dependențe funcționale F, este necesar să evaluăm dacă această relație este susținută logic de F. Se urmăresc următoarele aspecte:\n\nA. Verificarea deductibilității din F: Acesta este pasul esențial în validare. Se determină dacă dependența X → Y poate fi derivată logic folosind regulile de inferență asupra setului de dependențe F, cum ar fi reflexivitatea, augmentarea și transitivitatea. Dacă Y este inclus în închiderea lui X (X+), atunci X → Y este deductibilă din F și deci validă.\n\nB. Verificarea incluziunii X ⊂ Y: Această condiție nu este necesară pentru validarea unei dependențe funcționale. O astfel de incluziune nu este relevantă pentru validitate și poate chiar să inducă în eroare în anumite cazuri.\n\nC. Verificarea incluziunii X ⊂ X+: Aceasta este întotdeauna adevărată prin definiția închiderii unui set de atribute. Cu toate acestea, validarea presupune de fapt verificarea dacă Y este inclus în X+, nu invers. Totuși, verificarea lui X+ este esențială în proces.\n\nD. Normalizarea schemei de relație XY: Normalizarea este un proces ulterior, folosit pentru îmbunătățirea designului unei baze de date, dar nu este parte directă a procesului de validare a unei dependențe funcționale.\n\nPrin urmare, doar opțiunile A și C sunt corecte, deoarece se referă la etapele necesare pentru a valida logic o dependență funcțională în cadrul unui sistem de restricții date de F."
         },
         {
           "id": 18,
-          "text": "Fiind data apriori o multime de restrictii data de o multime de dependente funtionale F. Elaborarea\nunei proceduri pentru a verifica dependenta functionala X → Y presupune mai intai:",
+          "text": "Fiind data apriori o multime de restrictii data de o multime de dependente funtionale F. Elaborarea unei proceduri pentru a verifica dependenta functionala X → Y presupune mai intai:",
           "options": {
             "A": "Verificarea redundantei acesteia",
             "B": "Inlaturarea atributelor eliminabile din determinantul X",
@@ -4241,7 +4241,7 @@
             "C",
             "D"
           ],
-          "explanation": "Pentru a verifica o dependență funcțională \\( X \\rightarrow Y \\) dat un set de dependențe funcționale \\( F \\), procesul implică asigurarea că dependența este atât necesară, cât și ireductibilă. Aceasta include verificarea redundanței și simplificarea atributelor implicate. Iată o explicație succintă pentru fiecare pas:\n\nA. **Verificarea redundanței acesteia**: Acest pas implică verificarea dacă dependența \\( X \\rightarrow Y \\) este redundantă în raport cu celelalte dependențe din \\( F \\). Dacă poate fi derivată din alte dependențe, poate fi inutil să o includem explicit.\n\nB. **Înlăturarea atributelor eliminabile din determinantul X**: Acest pas implică eliminarea oricăror atribute din determinantul \\( X \\) care nu afectează dependența. Dacă..."
+          "explanation": "Pentru a verifica o dependență funcțională X → Y dat un set de dependențe funcționale F, procesul presupune analizarea acesteia din perspectiva redundanței și a minimalității. Fiecare dintre pașii următori este esențial:\n\nA. Verificarea redundanței acesteia: Se analizează dacă dependența X → Y poate fi dedusă din alte dependențe existente în F (folosind închiderea lui X, adică X+). Dacă este derivabilă, dependența este redundantă și poate fi eliminată.\n\nB. Înlăturarea atributelor eliminabile din determinantul X: Se testează fiecare atribut din X pentru a vedea dacă dependența încă se menține fără acel atribut. Dacă da, atributul este redundant și poate fi înlăturat, rezultând o formă mai simplă a dependenței.\n\nC. Înlăturarea atributelor eliminabile din dependentul Y: Deși mai puțin frecvent, este posibil ca anumite atribute din Y să nu fie dependente direct de X. Se poate testa eliminarea acestora pentru a păstra doar atributele efectiv dependente.\n\nD. Înlăturarea atributelor eliminabile din X și Y: Uneori este necesar să analizăm simultan ambele părți ale dependenței pentru a obține o formă canonică, esențială în procesul de normalizare a relațiilor.\n\nÎn concluzie, toți acești pași contribuie la determinarea validității și eficienței reprezentării unei dependențe funcționale în contextul dat, de aceea toate opțiunile A, B, C și D sunt corecte."
         },
         {
           "id": 19,
@@ -4257,7 +4257,7 @@
             "A",
             "B"
           ],
-          "explanation": "În contextul bazelor de date, un set de dependențe funcționale (F) este esențial pentru înțelegerea și organizarea structurii datelor. Iată o scurtă explicație pentru fiecare opțiune:\n\nA. Normalizarea bazei de date: Dependențele funcționale sunt fundamentale în normalizarea bazelor de date, care este procesul de organizare a unei baze de date pentru a reduce redundanța și a îmbunătăți integritatea datelor. Ele ajută la determinarea formelor normale ale unei scheme de baze de date prin identificarea relațiilor dintre diferite atribute.\n\nB. Validarea stării bazei de date: Dependențele funcționale sunt utilizate pentru a asigura că starea curentă a bazei de date respectă anumite reguli și constrângeri. Prin validarea acestor dependențe, se poate verifica dacă datele din baza de date sunt consistente cu regulile definite, asigurând astfel integritatea datelor."
+          "explanation": "În SQL, interogările sunt concepute pentru a fi la fel de expresive ca cele din algebra relațională și calculul relațional. Algebra relațională oferă o modalitate procedurală de a interoga bazele de date, concentrându-se pe operațiuni precum selecția, proiecția și îmbinările. Calculul relațional, pe de altă parte, este neprocedural și vine în două forme: calculul relațional pe tupluri (TRC) și calculul relațional pe domenii (DRC). Atât TRC, cât și DRC descriu ce rezultate sunt dorite fără a specifica modul de calcul al acestora. SQL combină expresivitatea acestor abordări, permițând utilizatorilor să recupereze și să manipuleze datele eficient. Prin urmare, interogările SQL sunt la fel de expresive ca cele din algebra relațională (A), calculul relațional pe tupluri (B) și calculul relațional pe domenii (C). Calculul procedural (D) și calculul bazat pe tablouri (E) nu fac parte din formalismul logic standard folosit pentru a defini limbajele de interogare relaționale, motiv pentru care nu sunt incluse printre răspunsurile corecte."
         },
         {
           "id": 20,
@@ -4514,7 +4514,7 @@
           "id": 16,
           "text": "Se dau tabelele \nANGAJATI(ID-Angajat, Nume, ID-Compart, Salariu) \nCOMPARTIMENT (ID-Compart, Nume-Compart) \nsi urmatorul declansator: \n\nCREATE OR REPLACE TRIGGER actual \nAFTER UPDATE OF ID_Compart ON COMPARTIMENT \nREFERENCING OLD AS OLD NEW AS NEW \nFOR EACH ROW \nBEGIN \n UPDATE ANGAJATI SET ID_Compart=:NEW.ID_Compart WHERE ID_Compart=:OLD.ID_Compart; \nEND; \n\nCare dintre urmatoarele afirmatii sunt adevarate?",
           "options": {
-            "A": "Comanda UPDATE trebuie sa se limiteze numai la o linie a tabelei COM- PARTIMENT",
+            "A": "Comanda UPDATE trebuie sa se limiteze numai la o linie a tabelei COMPARTIMENT",
             "B": "Declansatorul implementeaza optiunea UPDATE CASCADE din Oracle",
             "C": "Declansatorul se va lansa numai la modificarea atributului ID-Compart din tabela COMPARTIMENT",
             "D": "Comanda UPDATE poate modifica mai multe linii din tabela ANGAJATI",
@@ -4755,7 +4755,7 @@
           "id": 11,
           "text": "De ce urmatorul cod nu afiseaza o noua linie corect?\n<?php $str = ‘Hello, there.\\nHow are you?\\nThanks for visiting fyicenter’; print $str; ?>\n",
           "options": {
-            "A": "pentru ca \"\n\" nu este interpretat ca o linie noua",
+            "A": "pentru ca \"\\n\" nu este interpretat ca o linie noua",
             "B": "afiseaza corect linia noua",
             "C": "\"\\\" si \"n\" sunt afisate ca o secventa de caractere",
             "D": "lipseste directiva newLine();",
@@ -4784,7 +4784,7 @@
         },
         {
           "id": 13,
-          "text": "Care din urmatoarele functii sunt functii de criptarein PHP?",
+          "text": "Care din urmatoarele functii sunt functii de criptare in PHP?",
           "options": {
             "A": "CRYPT()",
             "B": "MD5()",
