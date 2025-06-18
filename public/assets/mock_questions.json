@@ -3008,14 +3008,14 @@
           "text": "Un vector de intrerupere reprezinta:",
           "options": {
             "A": "adresele punctelor de intrerupere a activitatii sistemului calculator",
-            "B": "punctul de intrare in sistemul de operare relativ la evenimentul care a deter- minat aparitia intreruperii",
+            "B": "punctul de intrare in sistemul de operare relativ la evenimentul care a determinat aparitia intreruperii",
             "C": "directia catre care se indreapta sistemul de operare",
             "D": "o colectie de registre la care au acces toate subunitatile care pot fi intrerupte de unitatea centrala"
           },
           "correct_answer": [
             "B"
           ],
-          "explanation": "cu adresa rutinei corespunzătoare de tratare a întreruperii. Fiecare intrare din tabelul vectorului de întrerupere corespunde unui tip specific de întrerupere și conține adresa de memorie a codului care trebuie executat pentru a gestiona acea întrerupere. Acest mecanism permite sistemului de operare să răspundă rapid și eficient la evenimentele care necesită atenție imediată, asigurând astfel o funcționare corectă și continuă a sistemului."
+          "explanation": "Un vector de întrerupere este o structură de date care conține adresele punctelor de intrare (rutine) în sistemul de operare, asociate cu diferite tipuri de întreruperi. Mai exact, atunci când apare o întrerupere (de exemplu, generată de hardware, software sau de către un utilizator), sistemul consultă vectorul de întreruperi pentru a determina care rutină de tratare trebuie executată. Fiecare tip de întrerupere are asociată o intrare în acest vector, iar acea intrare conține adresa instrucțiunilor care gestionează întreruperea respectivă. \n\nAceastă abordare permite sistemului de operare să răspundă rapid și eficient la evenimente externe sau interne, să preia controlul și să execute acțiunile corespunzătoare pentru restabilirea stării normale a sistemului. Prin urmare, opțiunea corectă este **B**."
         },
         {
           "id": 26,
@@ -4313,7 +4313,7 @@
         },
         {
           "id": 3,
-          "text": "Numele unei coloane dintr-un tabelin ORACLE :",
+          "text": "Numele unei coloane dintr-un tabel in ORACLE :",
           "options": {
             "A": "trebuie sa fie unic in cadrul tabelului,",
             "B": "trebuie sa fie unicin cadrul bazei de date,",
