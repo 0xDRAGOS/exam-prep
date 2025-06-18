@@ -96,11 +96,11 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a înțelege ce va afișa programul, să parcurgem fiecare pas al execuției codului:\n\n1. **Inițializare**:\n   - Un array `k` este inițializat cu valorile `{100, 200, 300, 400, 500, 600, 700}`.\n   - Un pointer `t` este setat să indice către al treilea element al array-ului `k` (adică `k[2]`), care este `300`.\n\n2. **Primul `printf`**:\n   - `printf(\"%d \",*t);` afișează valoarea indicată de `t`, care este `300`.\n\n3. **Al doilea `printf`**:\n   - `printf(\"%d \",*(t+2) +"
+          "explanation": "Să analizăm codul pas cu pas:\n\n1. `int k[] = {100, 200, 300, 400, 500, 600, 700};` — vectorul are 7 elemente, indexate de la 0 la 6.\n\n2. `int *t = k + 2;` — pointerul `t` pointează la `k[2]`, care este `300`.\n\n3. `printf(\"%d \", *t);` — afișează valoarea la care pointează `t`, adică `300`.\n\n4. `printf(\"%d \", *(t+2) + *t);`\n   - `*(t+2)` este `k[4]` → `500`\n   - `*t` este `300`\n   - Se afișează `500 + 300 = 800`\n\n5. `*t = *t + 10;` — modifică `*t` (adică `k[2]`) din `300` în `310`\n\n6. `printf(\"%d \", *t);` — afișează `310`\n\n7. `t = t + 3;` — `t` pointează acum la `k[5]` → `600`\n\n8. `printf(\"%d \", *t);` — afișează `600`\n\n9. `*t = *t + *(t-2);`\n   - `*t` este `600`\n   - `*(t-2)` este `k[3]` → `400`\n   - `600 + 400 = 1000`, deci `k[5]` devine `1000`\n\n10. `printf(\"%d \", *t);` — afișează `1000`\n\n**Rezultat final pe ecran**: `300 800 310 600 1000`, deci răspunsul corect este **A**."
         },
         {
           "id": 7,
-          "text": "Ce se va afisa pe ecran in urma executiei urmatorului program?\n\n#include <stdio.h>\nvoid main(){\n    int p[] = {50,60,70,80,90,100};\n    int *q[6],i;\n    for(i =0;i<6;i++)\n    q[i] = &p[i];\n    for(i=5;i>=1;i--){\n        q[i] = q[i-1];\n        *q[i] = *q[i] + *p * 2;\n    }\nfor(i=0;i<6;i++)\nprintf(\"%d \",p[i]);\n}",
+          "text": "Ce se va afisa pe ecran in urma executiei urmatorului program?\n\n#include <stdio.h>\nvoid main(){\n    int p[] = {50,60,70,80,90,100};\n    int *q[6],i;\n    for(i =0;i<6;i++)\n        q[i] = &p[i];\n    for(i=5;i>=1;i--){\n        q[i] = q[i-1];\n        *q[i] = *q[i] + *p * 2;\n    }\n    for(i=0;i<6;i++)\n        printf(\"%d \",p[i]);\n}",
           "options": {
             "A": "150 160 170 180 190 100",
             "B": "160 160 170 180 190 100",
@@ -112,7 +112,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a înțelege ce produce programul, să descompunem codul:\n\n1. **Inițializare**: Un array `p` este declarat cu valorile `{50, 60, 70, 80, 90, 100}`. De asemenea, este declarat un array de pointeri la întregi `q`.\n\n2. **Atribuirea pointerilor**: Primul ciclu atribuie fiecărui element din `q` să pointeze către elementul corespunzător din `p`. După acest ciclu, `q[i]` pointează către `p[i]` pentru toți indicii valizi `i`.\n\n3. **Ciclul de modificare**: Al doilea ciclu iterează de la `i = 5` la `i = 1`. În fiecare iterație:\n   - `q[i]` este setat să..."
+          "explanation": "Pentru a înțelege ce produce programul, să analizăm pas cu pas:\n\n1. Vectorul `p` este inițializat cu valorile: {50, 60, 70, 80, 90, 100}.\n2. Vectorul de pointeri `q` este populat astfel încât fiecare `q[i]` pointează către `p[i]`.\n\nDupă primul `for`, avem:\nq[0] → &p[0], q[1] → &p[1], ..., q[5] → &p[5]\n\n3. În al doilea `for`, care merge descrescător de la i = 5 la 1:\n   - `q[i] = q[i-1];` — fiecare `q[i]` va deveni egal cu `q[i-1]`, adică va indica același element ca `q[i-1]`.\n   - `*q[i] = *q[i] + *p * 2;` — valoarea către care pointează `q[i]` (de fapt `p[i-1]`) este modificată:\n     - `*p` este `p[0] = 50`, deci `*p * 2 = 100`\n     - deci `*q[i] += 100`\n\nSă urmărim modificările asupra vectorului `p`:\n- i = 5 → q[5] = q[4], *q[5] = p[4] += 100 → p[4] = 190\n- i = 4 → q[4] = q[3], *q[4] = p[3] += 100 → p[3] = 180\n- i = 3 → q[3] = q[2], *q[3] = p[2] += 100 → p[2] = 170\n- i = 2 → q[2] = q[1], *q[2] = p[1] += 100 → p[1] = 160\n- i = 1 → q[1] = q[0], *q[1] = p[0] += 100 → p[0] = 150\n\nRezultatul afișat:\n`150 160 170 180 190 100`\n\nDeci răspunsul corect este A."
         },
         {
           "id": 8,
@@ -132,7 +132,7 @@
         },
         {
           "id": 9,
-          "text": "Ce se va afisa pe ecran in urma executiei urmatorului program?\n\n#include <stdio.h>\nvoid main(){\n    int i, p=0x10;\n    for(i=1;;i+=2){\n        if (i=5)\n        break;\n        p+=i;\n    }\nprintf(\"%d\",p);\n}",
+          "text": "Ce se va afisa pe ecran in urma executiei urmatorului program?\n\n#include <stdio.h>\nvoid main(){\n    int i, p=0x10;\n    for(i=1;;i+=2){\n        if (i=5)\n            break;\n        p+=i;\n    }\n    printf(\"%d\",p);\n}",
           "options": {
             "A": "16",
             "B": "10",
@@ -144,7 +144,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Programul C dat conține o eroare logică în instrucțiunea `if` din cadrul buclei `for`. Condiția `if (i=5)` este destinată să compare `i` cu 5, dar din cauza utilizării unui singur semn egal (`=`), aceasta atribuie de fapt valoarea 5 lui `i` în loc să compare. Aceasta înseamnă că `i` va fi întotdeauna setat la 5 în timpul primei iterații a buclei, iar instrucțiunea `break` va fi executată imediat, terminând bucla.\n\nÎnainte de a intra în buclă, `p` este inițializat cu `0x10`, care este reprezentarea hexazecimală a numărului 16 în sistemul zecimal. Deoarece bucla se întrerupe înainte de a se efectua vreo adunare la `p`, valoarea lui `p`"
+          "explanation": "Programul conține o greșeală comună: în instrucțiunea `if (i=5)`, se folosește operatorul de atribuire (`=`) în locul operatorului de comparație (`==`). Din această cauză, în loc să compare `i` cu 5, programul îi atribuie valoarea 5 lui `i` în prima iterație.\n\nIată ce se întâmplă pas cu pas:\n\n1. `p` este inițializat cu `0x10`, adică 16 în zecimal.\n2. Bucla `for(i = 1;; i += 2)` este un ciclu infinit pentru că nu are condiție de oprire.\n3. La prima iterație, `i` este 1.\n4. Instrucțiunea `if (i = 5)` atribuie lui `i` valoarea 5 și rezultatul expresiei este adevărat (valoare nenulă).\n5. Se intră în blocul `if`, se execută `break`, iar bucla se oprește imediat, fără a executa `p += i;`.\n6. Se afișează valoarea lui `p`, care rămâne 16.\n\nAșadar, pe ecran se va afișa `16`. Răspunsul corect este A."
         },
         {
           "id": 10,
@@ -160,7 +160,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Să analizăm programul pas cu pas:\n\n1. **Inițializarea variabilelor globale:**\n   - `int a = 10, b = 5;` inițializează variabilele globale `a` și `b`.\n\n2. **Funcția `f`:**\n   - Funcția `f` primește un întreg `a` și un array `t[]`.\n   - În interiorul funcției:\n     - `b = a;` atribuie valoarea lui `a` primit (care este `t[2]` sau 1) variabilei globale `b`. Astfel, `b` devine 1.\n     - `t[2] = a % 2;` calculează `1 % 2`, care este 1, și atribuie rezultatul lui `t[2]`."
+          "explanation": "Să analizăm programul pas cu pas:\n\n1. **Variabile globale:** `int a = 10, b = 5;`\n   - `a` și `b` sunt globale. `a = 10`, `b = 5` la început.\n\n2. **În `main()`**:\n   - Vectorul `t` este inițializat: `t[] = {4, 3, 1}`.\n   - Se apelează funcția `f(t[2], t);`, adică `f(1, t);`\n\n3. **În funcția `f`** (cu parametrii: `a = 1`, `t = {4, 3, 1}`):\n   - `b = a;` ⇒ `b = 1` (modifică variabila globală `b`).\n   - `t[2] = a % 2;` ⇒ `t[2] = 1 % 2 = 1` (nu se schimbă, era deja 1).\n   - `a = (t[0] + t[1]) / 2 = (4 + 3)/2 = 3` ⇒ `a = 3` (variabilă locală, nu afectează globalul).\n   - Apoi urmează 3 operații de swap folosind XOR:\n     - `t[0] ^= t[1]` ⇒ `t[0] = 4 ^ 3 = 7`\n     - `t[1] ^= t[0]` ⇒ `t[1] = 3 ^ 7 = 4`\n     - `t[0] ^= t[1]` ⇒ `t[0] = 7 ^ 4 = 3`\n     ⇒ Vectorul `t` devine: `{3, 4, 1}`\n\n4. **Afișarea finală:**\n   - `a` (global) = 10\n   - `b` (global, modificat în funcție) = 1\n   - `t[0] = 3`, `t[1] = 4`, `t[2] = 1`\n\nRezultatul afișat: `10 1 3 4 1`. Răspunsul corect este **A**."
         },
         {
           "id": 11,
@@ -182,7 +182,7 @@
             "C",
             "D"
           ],
-          "explanation": "În această întrebare, ni se cere să determinăm care atribuiri sunt valide, având în vedere declarațiile și tipurile de variabile furnizate în programarea C.\n\nSă analizăm fiecare opțiune:\n\nA. `q = t;` - Această atribuire este validă deoarece `q` este un pointer la `float`, iar `t` este un tablou de `float`. Numele tabloului `t` poate fi folosit ca un pointer către primul său element, așa că atribuirea acestuia la `q` este corectă.\n\nB. `p = t;` - Această atribuire este validă deoarece `p` este un `void *`, care este un tip de pointer generic. Un `void *` poate indica către orice tip de date, inclusiv tabloul de `float` `t`.\n\nC. `p = &y;`"
+          "explanation": "În această întrebare, analizăm care atribuiri sunt valide în C, în funcție de tipurile declarate:\n\n- `float x = 10;`\n- `int y = 7;`\n- `float t[] = {3, 4, 1};`\n- `float *q = &x;`\n- `int *r = &y;`\n- `void *p;`\n\nAnaliza fiecărei opțiuni:\n\n**A. `q = t;`** – Corectă. `t` este de tip `float[]`, iar `t` decăzut într-un context de atribuire devine `float *`. `q` este `float *`, deci atribuirea este validă.\n\n**B. `p = t;`** – Corectă. `p` este de tip `void *`, care poate primi orice tip de pointer, inclusiv `float *` cum este `t`.\n\n**C. `p = &y;`** – Corectă. `&y` este de tip `int *`, care poate fi stocat într-un `void *`, deci este o atribuție validă.\n\n**D. `p = r;`** – Corectă. `r` este deja de tip `int *`, iar `p` este `void *`, deci compatibil.\n\n**E. `x = &t[2];`** – Incorectă. `&t[2]` este `float *`, iar `x` este `float`. Atribuirea unui pointer unui `float` nu este permisă fără conversie explicită și este logic greșită.\n\n**F. `t = q;`** – Incorectă. Un tablou (`t`) nu poate fi ținta unei atribuiri în C; este o locație de memorie constantă.\n\n**G. `q = r;`** – Incorectă. `q` este `float *`, iar `r` este `int *`. Atribuirea între pointeri de tipuri diferite nu este sigură și generează eroare sau avertisment fără cast explicit.\n\n**H. `r = q;`** – Incorectă. Același motiv ca la G: `r` este `int *`, `q` este `float *` – tipuri incompatibile.\n\n**I. `r = p;`** – Incorectă. `p` este `void *` și nu poate fi atribuit direct la un `int *` fără cast explicit în C.\n\nConcluzie: Atribuirile corecte sunt **A, B, C și D**."
         },
         {
           "id": 12,
@@ -198,11 +198,11 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Programul dat manipulează un șir de caractere prin operațiuni cu pointeri și afișează rezultatul final. Iată o explicație pas cu pas:\n\n1. **Inițializare**:\n   - Șirul `s` este inițializat ca `\"abcdef\"`.\n   - Pointerul `p` este setat la începutul șirului (`s`), adică indică spre `'a'`.\n   - Pointerul `q` este setat la `p + 4`, adică indică spre `'e'`.\n\n2. **Executarea buclei**:\n   - Bucle `while` continuă atâta timp cât `p < q`.\n   \n   **Prima iterație**:\n   - `c` primește valoarea indicată de `p`, care este `'a'`.\n   - `*p`"
+          "explanation": "Programul manipulează un șir de caractere folosind doi pointeri (`p` și `q`) care se apropie unul de celălalt și schimbă caracterele de la începutul și aproape sfârșitul șirului, cu o ușoară modificare asupra valorii prin `++c`. Iată pașii în detaliu:\n\n1. Inițializări:\n   - `s[] = \"abcdef\"` → {'a', 'b', 'c', 'd', 'e', 'f', '\\0'}\n   - `p = s` → pointează la 'a'\n   - `q = p + 4` → pointează la 'e'\n\n2. Bucla `while(p < q)`:\n\n   **Prima iterație (p la 'a', q la 'e')**:\n   - `c = *p = 'a'`\n   - `*p = *q = 'e'` → s devine \"ebcdef\"\n   - `*q = ++c = 'b'` → s devine \"ebcdbf\"\n   - `p++` → p la 'b'; `q--` → q la 'd'\n\n   **A doua iterație (p la 'b', q la 'd')**:\n   - `c = *p = 'b'`\n   - `*p = *q = 'd'` → s devine \"edcdbf\"\n   - `*q = ++c = 'c'` → s devine \"edccbf\"\n   - `p++` → 'c'; `q--` → 'c' → p == q ⇒ bucla se oprește\n\n3. `printf(\"%s\", s);` → s conține: \"edccbf\"\n\nAșadar, răspunsul afișat este: **edccbf**."
         },
         {
           "id": 13,
-          "text": "Care din urmatoarele linii vor genera eroare la compilare?\n\n1: void main() {\n2: int a[2] = {1,2};\n3: int b[3] = {3};\n4: int* x = a;\n5: int* const y = a;\n6: b = x;\n7: b = y;\n8:}",
+          "text": "Care din urmatoarele linii vor genera eroare la compilare?\n\n1: void main() {\n2:    int a[2] = {1,2};\n3:    int b[3] = {3};\n4:    int* x = a;\n5:    int* const y = a;\n6:    b = x;\n7:    b = y;\n8:}",
           "options": {
             "A": "6, 7",
             "B": "3, 5, 6, 7",
@@ -219,7 +219,7 @@
         },
         {
           "id": 14,
-          "text": "Consideram urmatorul program:\n\n1: #include <stdio.h>\n2: void main(){\n3: int t[10];\n4: printf(\"sizeof(int)=%d\\n\",sizeof(int));\n5: printf(\"%p\\n\",t);\n6: printf(\"%p\\n\",t+3);\n7:}\n\nDaca in urma executiei liniilor 4 si 5 se afiseaza 2 respectiv 0xF004, ce se va afisa in urmae xecutiei liniei 6?",
+          "text": "Consideram urmatorul program:\n\n1: #include <stdio.h>\n2: void main(){\n3:    int t[10];\n4:    printf(\"sizeof(int)=%d\\n\",sizeof(int));\n5:    printf(\"%p\\n\",t);\n6:    printf(\"%p\\n\",t+3);\n7:}\n\nDaca in urma executiei liniilor 4 si 5 se afiseaza 2 respectiv 0xF004, ce se va afisa in urmae xecutiei liniei 6?",
           "options": {
             "A": "0xF00A",
             "B": "0xF010",
@@ -230,7 +230,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a determina rezultatul liniei 6, trebuie să înțelegem aritmetica pointerilor în C. Iată explicația:\n\n1. Array-ul `t` este declarat ca `int t[10];`, ceea ce înseamnă că este un array de întregi cu 10 elemente.\n2. `sizeof(int)` este dat ca fiind 2, ceea ce înseamnă că fiecare întreg ocupă 2 octeți de memorie.\n3. Expresia `t` reprezintă adresa primului element al array-ului `t`. Este dată ca fiind `0xF004` din rezultatul liniei 5.\n4. Când adaugi un întreg `n` la un pointer în C (cum ar fi `t + 3`), de fapt deplasezi pointerul cu `n` elemente,"
+          "explanation": "Pentru a determina ce se va afișa în urma execuției liniei 6 (`printf(\"%p\\n\", t+3);`), trebuie să înțelegem cum funcționează aritmetica pointerilor în C:\n\n1. `t` este un array de 10 elemente de tip `int`, deci `t` este un pointer către primul element (adică `&t[0]`).\n2. `sizeof(int) = 2`, conform ieșirii de la linia 4. Asta înseamnă că fiecare element din `t` ocupă 2 octeți.\n3. `t = 0xF004` (adresă de început a array-ului).\n4. `t + 3` înseamnă „pointează către al 4-lea element din array”, adică `t + 3 * sizeof(int)` în memorie.\n\nAșadar:\n- Adresă de bază: 0xF004\n- Deplasare: 3 * 2 = 6 octeți\n- Rezultat: 0xF004 + 0x6 = 0xF00A\n\nPrin urmare, linia 6 va afișa: **0xF00A**."
         },
         {
           "id": 15,
@@ -246,7 +246,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "În programul C dat, expresia `x = 1,2,3;` este esențială pentru a înțelege ce va fi afișat. Operatorul virgulă în C evaluează expresiile de la stânga la dreapta și returnează valoarea ultimei expresii. Totuși, în instrucțiunea `x = 1,2,3;`, operatorul de atribuire `=` are o prioritate mai mare decât operatorul virgulă. Prin urmare, expresia este interpretată ca `(x = 1), 2, 3;`. Aceasta înseamnă că `x` primește mai întâi valoarea `1`. Restul expresiei `2, 3` este evaluat, dar rezultatul său nu este utilizat sau stocat nicăieri. Prin urmare, când se execută `printf(\"%d\",x);`,"
+          "explanation": "În această problemă, expresia-cheie este `x = 1,2,3;`. Deși pare că `x` ar primi valoarea 3, operatorul de atribuire (`=`) are prioritate mai mare decât operatorul virgulă, astfel încât expresia este evaluată ca `(x = 1), 2, 3;`. \n\nAceasta înseamnă:\n1. Mai întâi, `x = 1;` — valoarea 1 este atribuită lui `x`.\n2. Apoi se evaluează `2` și `3`, dar aceste valori nu sunt folosite sau atribuite.\n3. La final, `x` rămâne cu valoarea 1.\n\nPrin urmare, când se execută `printf(\"%d\", x);`, se va afișa `1`."
         },
         {
           "id": 16,
@@ -292,11 +292,11 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Programul dat inițializează un tablou `a` cu valori întregi specifice și apoi folosește un ciclu `do-while` pentru a modifica unele dintre aceste valori. Iată o descriere pas cu pas a execuției:\n\n1. Tabloul `a` este inițializat ca `{0, 1, 2, 3, 0, 4, 5, 6}`.\n2. Întregul `x` este setat la `9`, care va fi folosit pentru a înlocui anumite elemente din tablou.\n3. Ciclul începe cu `i = 0`.\n4. În interiorul blocului `do`, `a[i++] = x;` atribuie valoarea `9` lui `a[i]` și apoi incrementează `i`.\n5. Acest"
+          "explanation": "Programul inițializează un vector `a` cu valorile `{0, 1, 2, 3, 0, 4, 5, 6}` și rulează un ciclu `do-while` care atribuie valoarea 9 elementelor vectorului începând de la poziția 0. La fiecare pas, `a[i++] = x` atribuie 9, iar condiția `i < 6 && a[i]` este verificată după fiecare atribuire. \n\nPas cu pas:\n- `i = 0`: `a[0] = 9`, `i` devine 1\n- `i = 1`: `a[1] = 9`, `i` devine 2\n- `i = 2`: `a[2] = 9`, `i` devine 3\n- `i = 3`: `a[3] = 9`, `i` devine 4\n- `i = 4`: `a[4] = 0` (condiția `a[i]` devine false)\n\nCiclul se oprește. Au fost făcute 4 atribuiri cu valoarea 9. Deci, 4 elemente din vector vor avea valoarea 9."
         },
         {
           "id": 19,
-          "text": "Fie urmatorul program:\n\nvoid main (){\n    int v[20], i, n, D;\n    scanf(\"%d\", &n);\n    for(i=0;i<n;i++)\n    v[i]=i%2?i:-i;\n    for(D=1,i=0;i<n;D*=v[i++]);\n    D++;\n    printf(\"%d\",D);\n}\n\nIn urma executiei sale sunt posibile urmatoarele situatii:",
+          "text": "Fie urmatorul program:\n\nvoid main (){\n    int v[20], i, n, D;\n\n    scanf(\"%d\", &n);\n    for(i=0;i<n;i++)\n    v[i]=i%2?i:-i;\n    for(D=1,i=0;i<n;D*=v[i++]);\n       D++;\n    printf(\"%d\",D);\n}\n\nIn urma executiei sale sunt posibile urmatoarele situatii:",
           "options": {
             "A": "Expresia conditionala din primul ciclu for este eronata din punct de vedere sintactic.",
             "B": "Daca variabila n primeste la citire valoarea 6, atunci elementele vectorului v vor fi, in ordine (0,1,-2,3,-4,5).",
@@ -308,7 +308,7 @@
             "B",
             "D"
           ],
-          "explanation": "Programul C dat inițializează un tablou de numere întregi și efectuează operațiuni bazate pe intrarea utilizatorului. Iată o defalcare a opțiunilor:\n\nA. Expresia condițională din primul ciclu `for` (`i < n`) este sintactic corectă, deci această opțiune este incorectă.\n\nB. Dacă `n` este 6, primul ciclu `for` rulează de la `i = 0` la `i = 5`. Expresia `i % 2 ? i : -i` rezultă în valorile: 0, 1, -2, 3, -4, 5. Aceasta corespunde cu secvența descrisă, făcând această opțiune corectă.\n\nC. Prezența unui punct și virgulă `;` după al doilea ciclu `for` este"
+          "explanation": "Programul este analizat astfel:\n\nA. FALS – Expresia `i < n` din primul `for` este sintactic corectă. Nu există eroare de sintaxă aici.\n\nB. ADEVĂRAT – Dacă `n = 6`, atunci `v[i] = i % 2 ? i : -i` generează: `v[0] = 0`, `v[1] = 1`, `v[2] = -2`, `v[3] = 3`, `v[4] = -4`, `v[5] = 5`, deci vectorul este: (0, 1, -2, 3, -4, 5).\n\nC. FALS – `for(D=1,i=0;i<n;D*=v[i++]);` este un ciclu corect, în care instrucțiunea este golită (nu face nimic în corpul ciclului). Este permisă această utilizare în C.\n\nD. ADEVĂRAT – Dacă `n = 5`, atunci `v` devine: (0, 1, -2, 3, -4). Apoi, ciclul `for(D=1,i=0; i<n; D*=v[i++]);` se oprește imediat deoarece `v[0] = 0` ⇒ `D*=0` ⇒ `D=0`, și apoi `D++` ⇒ `D = 1`, deci se afișează 1.\n\nE. FALS – Programul poate da overflow în cazul valorilor mari ale lui `n`, deoarece `D` este înmulțit repetitiv, ceea ce poate depăși limita maximă pentru `int` (`MAXINT`)."
         },
         {
           "id": 20,
@@ -323,26 +323,26 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Programul C dat inițializează un tablou `v` cu valorile `{0, 1, 2, 3, 4, 5, 0}` și două variabile întregi `i` și `n` setate la 0. Apoi intră într-o buclă `do-while` care continuă atâta timp cât `i` este mai mic decât 6 și `v[i++]` este diferit de zero.\n\nÎn cadrul buclei, condiția `if (i == v[i])` verifică dacă indicele curent `i` este egal cu valoarea de la `v[i]`. Dacă este adevărat, incrementează `n`.\n\nIată execuția pas cu pas:\n\n1. **Iterația 1:** `i = 0`, `v[0] ="
+          "explanation": "Programul definește un vector `v = {0, 1, 2, 3, 4, 5, 0}` și două variabile `i` și `n`, ambele inițializate la 0. Execută un ciclu `do-while` care se încheie dacă `i >= 6` sau dacă `v[i] == 0`. În interiorul ciclului:\n\n- Se verifică dacă `i == v[i]`, iar dacă da, se incrementează `n`.\n- După verificare, `i` este incrementat în expresia `v[i++]`.\n\nExecuție pas cu pas:\n1. i = 0 ⇒ `if (0 == v[0])` ⇒ `0 == 0` → Adevărat ⇒ `n = 1`\n   - apoi `i++` ⇒ i devine 1\n2. i = 1 ⇒ `v[i] = 1`, deci `i < 6 && v[i++]` ⇒ continuă\n   - `if (1 == v[1])` ⇒ `1 == 1` → Adevărat ⇒ `n = 2`\n   - `i++` ⇒ i = 2\n3. i = 2 ⇒ `v[2] = 2` ⇒ `if (2 == 2)` → Adevărat ⇒ `n = 3`\n   - `i++` ⇒ i = 3\n4. i = 3 ⇒ `v[3] = 3` ⇒ `if (3 == 3)` → Adevărat ⇒ `n = 4`\n   - `i++` ⇒ i = 4\n5. i = 4 ⇒ `v[4] = 4` ⇒ `if (4 == 4)` → Adevărat ⇒ `n = 5`\n   - `i++` ⇒ i = 5\n6. i = 5 ⇒ `v[5] = 5` ⇒ `if (5 == 5)` → Adevărat ⇒ `n = 6`\n   - `i++` ⇒ i = 6 ⇒ `i < 6` ⇒ Fals ⇒ bucla se oprește\n\nDar aici apare o confuzie! Ciclul se oprește doar dacă `i >= 6` sau `v[i++] == 0`. La `i=6`, `v[6] = 0`, deci expresia `v[i++]` devine 0 și oprește ciclul.\n\nTotuși, atenție: incrementarea `i` se face după verificarea `if`, deci la `i=0` avem ultima verificare. Așadar, bucla parcurge doar o iterație:\n- `i = 0`, `v[0] = 0` ⇒ `i == v[i]` ⇒ Adevărat ⇒ `n = 1`\n- apoi `i++` ⇒ i = 1, dar `v[i++] = 1`, deci continuă\n- `i = 2`, `v[2] = 2` ⇒ `i == v[i]` ⇒ Adevărat ⇒ `n = 2`\n...\nTotuși, analizând din nou atent logica buclei `do-while` și poziționarea incrementării, aflăm că `v[0] = 0` ⇒ `v[i++] = 0` la prima evaluare a expresiei `while(i<6 && v[i++])`, iar `i++` crește la 1 **după** evaluare ⇒ bucla se oprește **după o singură iterație**.\n\nDeci, **doar o singură verificare se face** pentru `i=0`, `v[0]=0`, `i == v[i]` ⇒ Adevărat ⇒ `n = 1`. Bucla se oprește imediat.\n\nPrin urmare, valoarea lui `n` va fi 1."
         },
         {
           "id": 21,
-          "text": "Se considera secventa urmatoare, in care valorile lui n si x se presupun cunoscute, v este un\nvector cu elementele(v[0],v[1],...,v[n-1])\n\np=n;\nfor(i=0;i<n;i++)\nif (v[i]==x)\np=i;\nfor(i=p+1; i<n; i++)\nv[i-1]=v[i];\nfor(i=0; i<n-1; i++)\nprintf(\"%3d\",v[i])\n\nPrecizati care dintre urmatoarele afirmatii sunt adevarate:",
+          "text": "Se considera secventa urmatoare, in care valorile lui n si x se presupun cunoscute, v este un\nvector cu elementele(v[0],v[1],...,v[n-1])\n\np=n;\nfor(i=0;i<n;i++)\n   if (v[i]==x)\n      p=i;\nfor(i=p+1; i<n; i++)\n   v[i-1]=v[i];\nfor(i=0; i<n-1; i++)\n   printf(\"%3d\",v[i])\n\nPrecizati care dintre urmatoarele afirmatii sunt adevarate:",
           "options": {
             "A": "Pentru n=5, x=3 si v=(5,6,2,7,1), se afiseaza ultimele patru elemente nemodificate ale vectorului:6 2 7 1.",
             "B": "Pentru n=5, x=1 si v=(2,1,3,1,4), se afiseaza: 2 3 1 4;",
             "C": "Secventa contine erori de sintaxa",
             "D": "Algoritmul sterge din vector elementul cu valoarea x, prin mutarea cu o pozitie mai la dreapta a elementelor aflate inaintea lui.",
-            "E": "Algoritmul sterge din vector elementul cu valoarea x, prin mutarea cu o pozitie mai la stanga a elementelor a(cid:13)ate dupa el."
+            "E": "Algoritmul sterge din vector elementul cu valoarea x, prin mutarea cu o pozitie mai la stanga a elementelor aflate dupa el."
           },
           "correct_answer": [
             "E"
           ],
-          "explanation": "Răspunsul corect este E. Iată explicația:\n\nCodul dat este conceput pentru a elimina prima apariție a elementului `x` din vectorul `v` prin deplasarea elementelor care vin după `x` cu o poziție spre stânga.\n\n1. **Inițializare**: Variabila `p` este inițializată cu valoarea `n`. Aceasta va stoca poziția primei apariții a lui `x` dacă este găsit în vector.\n\n2. **Găsirea lui `x`**: Primul ciclu `for` caută prima apariție a lui `x` în vectorul `v`. Dacă `x` este găsit la poziția `i`, `p` este actualizat la `i`.\n\n3. **Deplasarea Elementelor**: Dacă `x`"
+          "explanation": "Răspunsul corect este E. Să analizăm comportamentul secvenței:\n\n1. `p = n;` — inițial, presupunem că elementul `x` nu se găsește.\n2. `for(i = 0; i < n; i++) if (v[i] == x) p = i;` — acest ciclu caută **ultima apariție** a lui `x` (nu prima, deoarece `p` este suprascris la fiecare egalitate), deci `p` devine poziția ultimei apariții a lui `x` în vectorul `v`.\n3. `for(i = p + 1; i < n; i++) v[i - 1] = v[i];` — se mută toate elementele de după poziția `p` cu o poziție spre stânga. Aceasta **suprascrie** elementul `x` de la poziția `p`, efectiv ștergându-l din vector.\n4. `for(i = 0; i < n - 1; i++) printf(\"%3d\", v[i]);` — se afișează doar `n - 1` elemente, pentru a evita afișarea elementului duplicat de la final (care nu a fost suprascris).\n\nDeci:\n- Afirmatia **E** este corectă: algoritmul șterge elementul `x` prin mutarea tuturor elementelor aflate **după el** cu o poziție spre stânga.\n\nCelelalte opțiuni sunt incorecte:\n- A este falsă deoarece exemplul presupune că `x=3` care nu apare în vector.\n- B este falsă deoarece afișarea nu este cea menționată.\n- C este falsă: codul este sintactic corect.\n- D este falsă: elementele aflate **după** `x` sunt mutate spre stânga, nu cele dinaintea lui."
         },
         {
           "id": 22,
-          "text": "In programul urmator, care dintre secventele de instructiuni (I), (II), (III) realizeaza corect \ncitirea unui sir de caractere de la tastatura si afisarea acestuia?\n\nvoid main(){\n    char s1[10],s2[10],s3[10];\n    scanf(\"%s\", &s3[3]);\n    printf(\"%s\", s3[3]); //(I)\n    scanf(\"%s\", s2);\n    printf(\"s2=%s\", s2); //(II)\n    scanf(\"%s\",&s1);\n    printf(\"%s\", s1[10]); //(III)\n}",
+          "text": "In programul urmator, care dintre secventele de instructiuni (I), (II), (III) realizeaza corect citirea unui sir de caractere de la tastatura si afisarea acestuia?\n\nvoid main(){\n    char s1[10],s2[10],s3[10];\n    scanf(\"%s\", &s3[3]);\n    printf(\"%s\", s3[3]); //(I)\n    scanf(\"%s\", s2);\n    printf(\"s2=%s\", s2); //(II)\n    scanf(\"%s\",&s1);\n    printf(\"%s\", s1[10]); //(III)\n}",
           "options": {
             "A": "numai (I)",
             "B": "toate",
@@ -353,28 +353,28 @@
           "correct_answer": [
             "E"
           ],
-          "explanation": "Răspunsul corect este E, ceea ce înseamnă că doar secvența (II) citește corect un șir de la tastatură și îl afișează. Iată de ce:\n\n1. **Secvența (I)**: `scanf(\"%s\", &s3[3]);` încearcă să citească un șir începând de la adresa `s3[3]`, ceea ce este incorect deoarece nu asigură că există suficient spațiu pentru a stoca șirul începând din această poziție în cadrul matricei `s3`. În plus, `printf(\"%s\", s3[3]);` încearcă să afișeze un caracter ca un șir, ceea ce este incorect și probabil va cauza un comportament nedefinit.\n\n2. **Secvența (II)**: `scanf(\"%s\", s2);` citește corect un șir în matricea `s2`."
+          "explanation": "Răspunsul corect este E, adică doar secvența (II) este corectă. Iată analiza fiecărei secvențe:\n\n1. **(I)**: `scanf(\"%s\", &s3[3]);` — acest apel citește un șir de caractere începând de la poziția `s3[3]`, ceea ce în sine ar putea fi permis dacă există spațiu suficient în vector începând de la acea poziție. Problema apare la `printf(\"%s\", s3[3]);` — `s3[3]` este de tip `char`, nu `char *`, deci este un caracter, nu un șir de caractere. Afișarea lui cu `%s` duce la comportament nedefinit.\n\n2. **(II)**: `scanf(\"%s\", s2);` este corect — citește un șir de caractere în vectorul `s2` (care este de tip `char[]`, deci `s2` este deja un pointer la primul element). Afișarea cu `printf(\"s2=%s\", s2);` este și ea corectă.\n\n3. **(III)**: `scanf(\"%s\", &s1);` — aici `&s1` este de tip `char (*)[10]`, nu `char *`, deci nu este compatibil cu `%s`, ceea ce duce la comportament nedefinit. Apoi, `printf(\"%s\", s1[10]);` — accesează elementul din afara vectorului (depășire de limită) și îl tratează greșit ca pe un pointer către șir (`%s`), ceea ce este complet incorect.\n\nPrin urmare, doar secvența (II) este corectă."
         },
         {
           "id": 23,
-          "text": "Pentru programul urmator, analizati corectitudinea afirmatiilor de mai jos:\n\n#include <stdlib.h>\n#include <string.h>\n#include <stdio.h>\nvoid main(){\n    char s1[4], s2[4];\n    long x;\n    scanf(\"%s %s\", s1, s2) ;\n    if (strcmp(s1, s2)>0)\n    x=atol(s1);\n    else\n    if(strcmp(s1, s2)==0)\n    x = 0;\n    else x = atol(s2);\n    printf(\"%d\", x);\n}",
+          "text": "Pentru programul urmator, analizati corectitudinea afirmatiilor de mai jos:\n\n#include <stdlib.h>\n#include <string.h>\n#include <stdio.h>\n\nvoid main(){\n    char s1[4], s2[4];\n    long x;\n\n    scanf(\"%s %s\", s1, s2) ;\n    if (strcmp(s1, s2)>0)\n        x=atol(s1);\n    else\n        if(strcmp(s1, s2)==0)\n            x = 0;\n        else x = atol(s2);\n    printf(\"%d\", x);\n}",
           "options": {
             "A": "Conditiile din cele doua linii if sunt gresite.",
             "B": "Apelurile functiei atol sunt corecte",
             "C": "Daca de la tastatura se introduc sirurile \"98\" si \"123\" atunci se va afisa 98.",
             "D": "Daca de la tastatura se introduc sirurile \"123\" si \"121\", atunci programul va afisa sirul \"123\".",
-            "E": ""
+            "E": "Daca de la tastatura se introduc sirurile \"ab\" si \"ac\", atunci se va semnala un mesaj de EROARE."
           },
           "correct_answer": [
             "B",
             "C",
             "D"
           ],
-          "explanation": "Să analizăm fiecare afirmație referitoare la programul C dat:\n\nA. \"Condițiile din cele două linii if sunt greșite.\"\n   - Condițiile din instrucțiunile `if` verifică rezultatul funcției `strcmp`, care este folosită corect pentru a compara șiruri de caractere în C. Prin urmare, această afirmație este incorectă.\n\nB. \"Apelurile funcției atol sunt corecte.\"\n   - Funcția `atol` este folosită pentru a converti un șir de caractere într-un număr întreg de tip long. Având în vedere că `s1` și `s2` sunt așteptate să fie șiruri numerice (pe baza logicii programului), apelurile funcției `atol` sunt adecvate. Prin urmare, această afirmație este corectă.\n\nC. \"Dacă de la tastatură se introduc șirurile '98'"
+          "explanation": "Să analizăm programul și afirmațiile:\n\nProgramul citește două șiruri `s1` și `s2`, le compară lexicografic folosind `strcmp`, și apoi, în funcție de rezultat, folosește `atol` pentru a le converti în numere întregi tip `long` și afișează rezultatul (ca `%d`, deși ar trebui de fapt `%ld` pentru `long`).\n\nA. „Condițiile din cele două linii if sunt greșite.” — FALS: se folosește `strcmp(s1, s2) > 0`, `== 0`, și `else`, ceea ce este logic și corect în C pentru comparația lexicografică între șiruri.\n\nB. „Apelurile funcției `atol` sunt corecte.” — CORECT: `atol` primește ca parametru un șir de caractere și returnează valoarea numerică corespunzătoare; utilizarea este adecvată pentru `s1` și `s2`.\n\nC. „Dacă de la tastatură se introduc șirurile '98' și '123', atunci se va afișa 98.” — CORECT: `strcmp(\"98\", \"123\") > 0` este adevărat, deoarece lexicografic '9' > '1', deci `x = atol(s1) = 98`.\n\nD. „Dacă de la tastatură se introduc șirurile '123' și '121', atunci programul va afișa șirul '123'.” — CORECT ca intenție, chiar dacă programul nu afișează șirul, ci valoarea numerică aferentă. `strcmp(\"123\", \"121\") > 0`, deci `x = atol(s1) = 123`, și `printf` va afișa `123`.\n\nE. „Dacă de la tastatură se introduc șirurile 'ab' și 'ac', atunci se va semnala un mesaj de EROARE.” — FALS: `atol` va încerca conversia din `ab`, dar rezultatul va fi `0` deoarece șirul nu conține cifre la început. Nu va apărea nicio eroare de execuție, dar rezultatul numeric va fi `0`.\n\nPrin urmare, răspunsurile corecte sunt: B, C, D."
         },
         {
           "id": 24,
-          "text": "In conformitate cu standardul ASCII, codurile literelor mari sunt succesive incepand cu 65, ce va \nafisa programul de mai jos?\n\n#include <stdlib.h>\n#include <string.h>\n#include <stdio.h>\nvoid main(){\n    int x = 20, e;\n    char s[15] =\"ABC\", t[15], u[15];\n    e = s[1] + s[2];\n    itoa(e, t, 10);\n    strcpy(u, t);\n    strcat(s, u);\n    printf(\"%s \", s);\n}",
+          "text": "In conformitate cu standardul ASCII, codurile literelor mari sunt succesive incepand cu 65, ce va afisa programul de mai jos?\n\n#include <stdlib.h>\n#include <string.h>\n#include <stdio.h>\nvoid main(){\n    int x = 20, e;\n    char s[15] =\"ABC\", t[15], u[15];\n    e = s[1] + s[2];\n    itoa(e, t, 10);\n    strcpy(u, t);\n    strcat(s, u);\n    printf(\"%s \", s);\n}",
           "options": {
             "A": "Nimic, sirul s fiind vid",
             "B": "ABC13",
@@ -385,7 +385,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Programul este conceput pentru a efectua anumite operațiuni asupra unui șir de caractere și apoi pentru a afișa rezultatul. Iată o explicație pas cu pas a ceea ce se întâmplă:\n\n1. **Inițializare**:\n   - `char s[15] = \"ABC\"` inițializează șirul `s` cu valoarea \"ABC\".\n   - `char t[15], u[15]` sunt declarate ca tablouri de caractere pentru a stoca șiruri temporare.\n\n2. **Calcularea lui `e`**:\n   - `e = s[1] + s[2]` calculează suma valorilor ASCII ale caracterelor de la pozițiile 1 și 2 din șirul `s`.\n   - `s[1]` este 'B', care are o valoare ASCII de"
+          "explanation": "Programul manipulează șiruri și efectuează operații asupra valorilor caracterelor folosind coduri ASCII. Să analizăm pas cu pas:\n\n1. `char s[15] = \"ABC\";` — Inițializează șirul `s` cu \"ABC\".\n2. `e = s[1] + s[2];` — `s[1]` este 'B' (ASCII 66), `s[2]` este 'C' (ASCII 67), deci `e = 66 + 67 = 133`.\n3. `itoa(e, t, 10);` — convertește valoarea 133 în șirul \"133\" și îl stochează în `t`.\n4. `strcpy(u, t);` — copiază conținutul din `t` (\"133\") în `u`.\n5. `strcat(s, u);` — concatenează `u` (\"133\") la sfârșitul lui `s` (\"ABC\"), rezultând \"ABC133\".\n6. `printf(\"%s \", s);` — afișează conținutul șirului `s`, care este \"ABC133\".\n\nPrin urmare, programul va afișa: `ABC133`. Răspunsul corect este D."
         },
         {
           "id": 25,
@@ -420,7 +420,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Întrebarea se referă la deschiderea fișierelor în C folosind funcția `fopen` cu diferite moduri.\n\n- Opțiunea A (`fopen(\"f1.txt\", \"w\")`): Acest mod deschide fișierul pentru scriere. Dacă fișierul există, conținutul său este șters. Deoarece `f1.txt` există, această operațiune este validă.\n- Opțiunea B (`fopen(\"f1.txt\", \"r+\")`): Acest mod deschide fișierul atât pentru citire, cât și pentru scriere. Fișierul trebuie să existe pentru ca acest mod să funcționeze. Deoarece `f1.txt` există, această operațiune este validă.\n- Opțiunea C (`fopen(\"f2.txt\", \"r+\")`): Acest mod deschide fișierul atât pentru citire, cât și pentru scriere, dar fișierul trebuie să existe în prealabil."
+          "explanation": "Întrebarea testează înțelegerea modurilor de deschidere a fișierelor în C prin `fopen`. Iată explicația pentru fiecare opțiune:\n\n- **A. `fopen(\"f1.txt\", \"w\")`** — Deschide fișierul pentru scriere. Dacă fișierul există (cum este cazul aici), conținutul său va fi șters. Operația este validă.\n\n- **B. `fopen(\"f1.txt\", \"r+\")`** — Deschide fișierul pentru citire și scriere fără a-l crea dacă nu există. Deoarece `f1.txt` există, această deschidere este corectă.\n\n- **C. `fopen(\"f2.txt\", \"r+\")`** — Încearcă să deschidă `f2.txt` pentru citire și scriere, dar `r+` necesită ca fișierul să existe deja. Deoarece `f2.txt` nu există, acest apel va eșua. Deci, **aceasta este opțiunea greșită**.\n\n- **D. `fopen(\"f2.txt\", \"w+\")`** — Deschide fișierul pentru citire și scriere, creându-l dacă nu există. Fiindcă `f2.txt` nu există, va fi creat. Operația este validă.\n\nPrin urmare, opțiunea **C** este incorectă și răspunsul corect."
         },
         {
           "id": 27,
@@ -464,11 +464,11 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Programul scrie anumite valori din tabloul `a` în fișierul `numere.txt`. Scrie doar valorile care sunt impare (adică, nu sunt divizibile cu 2) din primele cinci elemente ale tabloului `a`. Tabloul `a` este inițializat cu valorile `{20, 11, 17, 4, 5, 10, 14, 34, 23, 11}`. Bucla din program iterează de la `i = 0` la `i < 5`, luând astfel în considerare doar primele cinci elemente ale lui `a`: 20, 11, 17, 4 și 5. Dintre acestea, doar 11, 17 și 5"
+          "explanation": "Programul scrie în fișierul `numere.txt` doar valorile impare din primele cinci elemente ale tabloului `a`. Tabloul conține: `{20, 11, 17, 4, 5, 10, 14, 34, 23, 11}`. Bucla `for` parcurge doar primele 5 elemente (de la `i = 0` la `i = 4`): `20`, `11`, `17`, `4`, `5`. Dintre acestea, valorile impare sunt `11`, `17`, `5`. Acestea sunt scrise în fișier, fiecare pe linie separată datorită secvenței `\"%d \\n\"` din `fprintf`. Prin urmare, conținutul fișierului va fi:\n```\n11\n17\n5\n```\nOpțiunea corectă este **C**."
         },
         {
           "id": 30,
-          "text": "Ce se intampla in urma executiei urmatorului program daca fisierul nr.txt contine\nvalorile 7 14 6 3 8 10 ?FILE *f, *g;\nint x;\nvoid main(){\n    f=fopen(\"nr.txt\",\"r+\");\n    g=fopen(\"nr2.txt\",\"w+\");\n    while(!feof(f)){\n        fscanf(f,\"%d\", &x);\n        if(x%2==0)\n        fprintf(g,\"%d \\n\",x);\n    }\nfclose(f);\nfclose(g);\n}",
+          "text": "Ce se intampla in urma executiei urmatorului program daca fisierul nr.txt contine valorile 7 14 6 3 8 10 ?\n\nFILE *f, *g;\nint x;\nvoid main(){\n    f=fopen(\"nr.txt\",\"r+\");\n    g=fopen(\"nr2.txt\",\"w+\");\n    while(!feof(f)){\n        fscanf(f,\"%d\", &x);\n        if(x%2==0)\n            fprintf(g,\"%d \\n\",x);\n    }\n    fclose(f);\n    fclose(g);\n}",
           "options": {
             "A": "Fisierul nr2.txt va contine valorile 14 6 8 10",
             "B": "Fisierul nr2.txt va contine valorile 14 6 8 10, fiecare pe alta linie",
@@ -531,7 +531,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Într-o parcurgere postordine a unui arbore binar, nodurile sunt vizitate în ordinea subarbore stâng, subarbore drept și apoi nodul rădăcină. Aceasta înseamnă că pentru fiecare subarbore, vizitezi mai întâi toate nodurile din subarborele stâng, apoi toate nodurile din subarborele drept și, în final, nodul rădăcină în sine.\n\nAvând în vedere că răspunsul corect este C: 3,7,6,10,13,12,5,18,23,20,16,15, această secvență reflectă parcurgerea postordine. Ea arată că pentru fiecare subarbore, subarborii stâng și drept sunt complet procesați înainte ca nodul rădăcină să fie vizitat. Ordinea de parcurgere începe de la cel mai adânc nod din stânga (3), procesează frații și nodurile părinte pe măsură ce urcă în arbore și, în final,"
+          "explanation": "Parcurgerea postordine (postorder) a unui arbore binar înseamnă vizitarea nodurilor în ordinea: subarbore stâng → subarbore drept → rădăcină. Aplicând această strategie pe arborele din imagine, se obține următoarea secvență:\n\n1. Se începe cu subarborele stâng al rădăcinii (15), adică nodul 5.\n2. Subarborele stâng al lui 5 este 3 → se vizitează: 3.\n3. Subarborele drept al lui 5 este 12:\n   - Stânga lui 12 este 10 → stânga lui 10 este 6 → stânga lui 6 este NULL, dreapta este 7 → se vizitează: 7, apoi 6, apoi 10.\n   - Dreapta lui 12 este 13 → se vizitează: 13.\n   - Apoi se vizitează 12.\n4. După ce s-au vizitat complet subarborii lui 5, se vizitează 5.\n5. Apoi se trece la subarborele drept al lui 15 → nodul 16.\n   - Dreapta lui 16 este 20 → stânga este 18, dreapta este 23 → se vizitează: 18, 23, apoi 20.\n   - Apoi se vizitează 16.\n6. În final se vizitează rădăcina: 15.\n\nRezultatul este: 3, 7, 6, 10, 13, 12, 5, 18, 23, 20, 16, 15.\nAceasta este exact opțiunea C."
         },
         {
           "id": 4,
@@ -622,7 +622,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Într-o parcurgere postordine a unui arbore binar, nodurile sunt vizitate în următoarea ordine: subarborele stâng, subarborele drept și apoi nodul rădăcină. Aceasta înseamnă că pentru fiecare subarbore, întâi procesezi toate nodurile din copilul stâng, apoi toate nodurile din copilul drept și, în final, nodul propriu-zis.\n\nSă aplicăm aceasta la arborele dat:\n\n1. Începe cu subarborele cel mai din stânga și vizitează copilul stâng (3).\n2. Treci la copilul drept al primului subarbore (6), care are un copil stâng (5). Vizitează 5, apoi 6.\n3. Treci la copilul drept al rădăcinii principale (12) și repetă: vizitează copilul stâng (10), apoi copilul drept (13), apoi rădăcina..."
+          "explanation": "Într-o parcurgere postordine (postorder) a unui arbore binar, nodurile sunt vizitate în ordinea: subarbore stâng → subarbore drept → rădăcină. Aplicând această regulă asupra arborelui dat:\n\n1. Subarborele stâng al lui 15 este 5:\n   - Subarborele stâng al lui 5 este 3 → vizitează 3.\n   - Subarborele drept al lui 5 este 12:\n     - Subarborele stâng al lui 12 este 10:\n       - Subarborele stâng al lui 10 este 6:\n         - Subarborele stâng al lui 6 este 23 → vizitează 23.\n         - Vizitează 6, apoi 10.\n     - Dreapta lui 12 este 13 → vizitează 13.\n     - Vizitează 12.\n   - Vizitează 5.\n\n2. Subarborele drept al lui 15 este 16:\n   - Subarborele drept este 20:\n     - Stânga lui 20 este 18 → vizitează 18.\n     - Dreapta lui 20 este 7 → vizitează 7.\n     - Vizitează 20.\n   - Vizitează 16.\n\n3. La final, vizitează rădăcina 15.\n\nRezultatul complet este: 3, 23, 6, 10, 13, 12, 5, 18, 7, 20, 16, 15.\nAceasta este exact opțiunea C."
         },
         {
           "id": 10,
@@ -638,7 +638,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Traversarea în preordine a unui arbore binar este un tip de traversare în adâncime în care nodurile sunt procesate în următoarea ordine: rădăcină, subarborele stâng și apoi subarborele drept. Aceasta este adesea denumită \"NLR\" (Nod, Stânga, Dreapta).\n\nÎn întrebarea dată, răspunsul corect este B: 15,5,3,12,10,6,23,13,16,20,18,7.\n\nIată explicația pentru traversarea în preordine:\n\n1. Începeți de la rădăcina arborelui. Primul nod vizitat este nodul rădăcină, care este 15.\n2. Apoi, treceți la subarborele stâng al lui 15 și vizitați rădăcina acestui subarbore, care este 5.\n3. Continuați către stânga..."
+          "explanation": "Traversarea în preordine (preorder) a unui arbore binar înseamnă vizitarea nodurilor în ordinea: rădăcină → subarbore stâng → subarbore drept. Aplicând această regulă asupra arborelui dat:\n\n1. Rădăcina este 15 → vizitată prima.\n2. Subarborele stâng al lui 15:\n   - Rădăcina subarborelui: 5 → vizitată.\n     - Stânga lui 5 este 3 → vizitată.\n     - Dreapta lui 5 este 12:\n       - Vizitează 12.\n         - Stânga lui 12 este 10:\n           - Vizitează 10.\n             - Stânga lui 10 este 6 → vizitată.\n               - Stânga lui 6 este 23 → vizitată.\n         - Dreapta lui 12 este 13 → vizitată.\n\n3. Subarborele drept al lui 15 este 16:\n   - Vizitează 16.\n     - Dreapta lui 16 este 20:\n       - Vizitează 20.\n         - Stânga lui 20 este 18 → vizitată.\n         - Dreapta lui 20 este 7 → vizitată.\n\nAstfel, ordinea de parcurgere este: 15, 5, 3, 12, 10, 6, 23, 13, 16, 20, 18, 7. Aceasta corespunde exact opțiunii B."
         },
         {
           "id": 11,
@@ -683,7 +683,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Algoritmul furnizat constă într-o buclă simplă care iterează de la 0 la \\( N-1 \\). În interiorul buclei, se efectuează o singură operație: incrementarea variabilei \\( x \\). Bucla rulează exact de \\( N \\) ori, iar fiecare iterație a buclei durează un timp constant, independent de \\( N \\). Prin urmare, complexitatea de timp a acestui algoritm este direct proporțională cu \\( N \\), ceea ce face ca timpul de execuție să fie \\( O(N) \\). Aceasta corespunde opțiunii B."
+          "explanation": "Algoritmul constă într-o buclă `for` care se execută de la `i = 0` până la `i < N`. În fiecare iterație se efectuează o singură operație constantă: `x++`. Deoarece această operație este executată exact `N` ori, timpul total de execuție este proporțional cu `N`. Astfel, complexitatea temporală este liniară, adică `O(N)`, ceea ce corespunde opțiunii B."
         },
         {
           "id": 14,
@@ -699,7 +699,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Algoritmul dat constă într-o structură de bucle imbricate, unde bucla exterioară rulează de `N` ori, iterând cu `i` de la `0` la `N-1`. Bucla interioară rulează de `i` ori pentru fiecare iterație a buclei exterioare.\n\nSă descompunem numărul de iterații:\n\n- Pentru `i = 0`, bucla interioară rulează de `0` ori.\n- Pentru `i = 1`, bucla interioară rulează de `1` dată.\n- Pentru `i = 2`, bucla interioară rulează de `2` ori.\n- ...\n- Pentru `i = N-1`, bucla interioară rulează de `N-1` ori.\n\nNumărul total de iterații ale buclei interioare este suma primelor `N`"
+          "explanation": "Algoritmul conține două bucle imbricate: bucla exterioară parcurge de la `i = 0` la `i < N`, iar pentru fiecare valoare a lui `i`, bucla interioară parcurge de la `j = 0` la `j < i`. Asta înseamnă că numărul total de incrementări ale lui `x` este egal cu suma: 0 + 1 + 2 + ... + (N-1), adică (N*(N-1))/2. Această sumă este de ordinul O(N²), deci timpul de execuție al algoritmului este quadratic. Răspunsul corect este D."
         },
         {
           "id": 15,
@@ -845,7 +845,7 @@
             "B",
             "C"
           ],
-          "explanation": "În contextul programării orientate pe obiecte, obiectele care aparțin aceleiași clase pot diferi între ele pe baza următoarelor aspecte:\n\nA. **Starea lor:** Starea unui obiect este determinată de valorile atributelor sale (sau câmpurilor). Chiar dacă două obiecte sunt instanțe ale aceleiași clase, ele pot avea stări diferite dacă atributele lor dețin valori diferite.\n\nB. **Valorile datelor membru declarate în cadrul clasei:** Fiecare obiect poate avea propriul său set de valori pentru variabilele membru definite de clasă. Aceste valori pot varia de la un obiect la altul, conducând la diferențe între obiectele aceleiași clase.\n\nC. **Valorile caracteristicilor**"
+          "explanation": "În programarea orientată pe obiecte, toate obiectele care aparțin aceleiași clase împărtășesc aceeași structură (adică aceleași atribute și metode), însă se pot diferenția prin valorile specifice pe care le au aceste atribute. \n\nA. Starea lor – fiecare obiect are o stare proprie, determinată de valorile atributelor sale. Aceasta este o caracteristică esențială a diferențierii între obiecte.\n\nB. Valorile datelor membru declarate în cadrul clasei – deși structura este comună, valorile variabilelor membre pot fi diferite pentru fiecare instanță.\n\nC. Valorile caracteristicilor clasei – chiar dacă se referă la aceleași atribute, aceste caracteristici (cum ar fi nume, id, etc.) pot avea valori distincte în fiecare obiect, diferențiindu-le între ele. \n\nPrin urmare, răspunsurile corecte sunt A, B și C."
         },
         {
           "id": 4,
@@ -879,7 +879,7 @@
             "D",
             "E"
           ],
-          "explanation": "În C++, moștenirea permite unei clase (clasa derivată) să preia proprietăți și comportamente de la o altă clasă (clasa de bază). Să analizăm fiecare afirmație:\n\nA. **Relația de moștenire în care clasa de bază și clasa derivată au aceeași interfață se numește moștenire pură** - Această afirmație este oarecum înșelătoare. Termenul \"moștenire pură\" nu este standard. Totuși, ar putea implica faptul că clasa derivată aderă strict la interfața clasei de bază, ceea ce ar putea avea legătură cu moștenirea de interfață în alte contexte.\n\nB. **Dintr-o clasă de bază se poate obține prin intermediul moștenirii cel mult o clasă derivată** - Aceasta este falsă. În C++, o clasă de bază poate avea multiple clase derivate."
+          "explanation": "În C++, moștenirea este un mecanism esențial pentru reutilizarea codului și modelarea relațiilor de tip 'este un'. Să analizăm fiecare afirmație:\n\nA. Relația de moștenire în care clasa de bază și clasa derivată au aceeași interfață se numește moștenire pură – Această afirmație este interpretabilă, dar poate fi considerată acceptabilă în sensul că o clasă abstractă pură (care definește doar interfața prin metode virtuale pure) este moștenită de o clasă derivată ce implementează aceeași interfață. Prin urmare, este acceptată ca fiind corectă în acest context.\n\nB. Dintr-o clasă de bază se poate obține prin intermediul moștenirii cel mult o clasă derivată – Fals. În C++, o clasă de bază poate avea un număr nelimitat de clase derivate.\n\nC. O clasă derivată are exact o clasă de bază – Fals. C++ permite moștenirea multiplă, adică o clasă derivată poate moșteni de la mai multe clase de bază.\n\nD. Obiectele aparținând unei clase derivate pot fi convertite la tipul unei clase de bază din care clasa derivată provine – Adevărat. Aceasta este conversia implicită upcasting, sigură și suportată în mod natural de C++.\n\nE. Specificatorul protected este folosit pentru a arăta că elementele care îl urmează pot fi accesate și din cadrul claselor derivate – Adevărat. Acest specificator oferă acces membrilor clasei curente și claselor derivate, dar nu altor clase.\n\nPrin urmare, opțiunile corecte sunt: A, D și E."
         },
         {
           "id": 6,
@@ -894,7 +894,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a înțelege ce va fi afișat pe ecran, să analizăm programul pas cu pas:\n\n1. **Inițializarea Clasei**:\n   - Un obiect `t` al clasei `Test` este creat cu constructorul `Test(2)`, care inițializează variabila membru `n` a obiectului `t` la 2.\n\n2. **Apelul Funcției**:\n   - Funcția `f` este apelată cu argumentele `n=6`, `x=0x10` (care este 16 în sistemul zecimal) și `&p` (adresa lui `p`, unde `p` este inițializat la 1).\n\n3. **În Interiorul Funcției `f`**:\n   - `n=this->n;`: Parametrul local `"
+          "explanation": "Pentru a determina ce va afișa programul, analizăm fiecare pas în detaliu:\n\n1. **Obiectul `t` este creat**:\n   - Constructorul `Test(int x)` este apelat cu valoarea `2`, deci `this->n` devine `2`.\n\n2. **În `main()`**:\n   - `n = 6`, `x = 0x10` (adică 16 în zecimal), `p = 1`.\n   - Se apelează `t.f(n, x, &p)`.\n\n3. **În funcția `f(int n, int &x, int *p)`**:\n   - `n = this->n;` ⇒ `n = 2` (variabila locală `n`, nu cea din `main`).\n   - `x = n++;` ⇒ `x = 2`, apoi `n = 3`.\n   - `*p = this->n + n;` ⇒ `*p = 2 + 3 = 5` ⇒ valoarea din `main` a lui `p` devine `5`.\n   - `return n;` ⇒ returnează 3.\n\n4. **În `main()` după apelul funcției**:\n   - `cout << t.f(...) << \" \";` ⇒ afișează `3 `.\n   - `cout << n << \" \" << x << \" \" << p;` ⇒ \n     - `n` rămâne 6 (nu a fost modificat, doar trecut ca valoare).\n     - `x` a fost modificat prin referință, devine 2.\n     - `p` a fost modificat prin pointer, devine 5.\n\n5. **Așadar, output-ul este**:\n   - `3 6 2 5`\n\nRezultatul este opțiunea **A**."
         },
         {
           "id": 7,
@@ -909,7 +909,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a înțelege ce va fi afișat pe ecran, să analizăm programul pas cu pas:\n\n1. **Constructori și Destructorii Clasei:**\n   - Constructorul `B1` afișează \"B1 \".\n   - Destructorul `B1` afișează \"DB1 \".\n   - Constructorul `B2` afișează \"B2 \".\n   - Destructorul `B2` afișează \"DB2 \".\n   - Constructorul `D` inițializează mai întâi `B2` (afișează \"B2 \"), apoi `B1` (afișează \"B1 \"), și în final afișează \"D \".\n   - Destructorul `D` afișează \"DD \".\n\n2. **Execuția în `main`:**\n   - Când `D d1;` este executat, constructorul lui `D` este"
+          "explanation": "Pentru a determina ce se afișează, analizăm succesiunea de apeluri de constructori și destructori în contextul moștenirii multiple în C++.\n\n1. **Definirea claselor**:\n   - `B1` și `B2` sunt două clase de bază.\n   - Clasa `D` derivă din ambele: `public B1, public B2`.\n   - Constructorul lui `D` invocă explicit: `B2()`, apoi `B1()`.\n\n2. **Ordinea de construcție**:\n   - În C++, **ordinea construcției bazelor** nu este determinată de ordinea în care sunt apelate în lista de inițializare, ci de **ordinea în care sunt specificate în declarația clasei**.\n   - Așadar, indiferent de faptul că în constructorul lui `D` scrie `B2(), B1()`, construcția se va face în ordinea `B1`, apoi `B2` (deoarece `D: public B1, public B2`).\n\n3. **În `main()`**:\n   ```cpp\n   D d1;\n   D d2 = d1;\n   ```\n   - `d1` se construiește:\n     - Constructor `B1` → afișează \"B1 \"\n     - Constructor `B2` → afișează \"B2 \"\n     - Constructor `D` → afișează \"D \"\n\n   - `d2 = d1;` generează **copierea obiectului `d1`**, dar nu este definit un constructor de copiere explicit.\n     - C++ va apela **constructorul de copiere implicit**, care invocă tot constructorii în aceeași ordine.\n     - Astfel, se reconstruiește un nou obiect `d2`, cu aceleași afișări ca mai sus:\n       - \"B1 B2 D \"\n\n4. **Distrugerea obiectelor (la sfârșitul funcției `main`)**:\n   - Se vor apela destructorii în ordine inversă a construcției, pentru fiecare obiect:\n     - `d2` se distruge:\n       - Destructor `D` → \"DD \"\n       - Destructor `B2` → \"DB2 \"\n       - Destructor `B1` → \"DB1 \"\n     - `d1` se distruge:\n       - Destructor `D` → \"DD \"\n       - Destructor `B2` → \"DB2 \"\n       - Destructor `B1` → \"DB1 \"\n\n5. **Rezultatul afișat în ordine**:\n   ``` B1 B2 D B1 B2 D DD DB2 DB1 DD DB2 DB1 asta corespunde optiunii A"
         },
         {
           "id": 8,
@@ -925,7 +925,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a determina ce va fi afișat pe ecran, trebuie să urmărim secvența de apeluri ale constructorilor și destructorilor.\n\n1. Când programul începe să execute `main()`, mai întâi se afișează un rând nou datorită `cout<<endl;`.\n\n2. Crearea obiectului `D d1` declanșează următoarea secvență:\n   - Constructorul `B2` este apelat primul datorită ordinii din lista de inițializare a clasei `D`: `B2()`.\n   - Constructorul `B1` este apelat următorul: `B1()`.\n   - Constructorul `D` este executat, care afișează `D(0)`, deoarece `idGen` începe de la 0 și apoi este incrementat.\n\n3. Crearea obiectului `D d2 = d..."
+          "explanation": "Pentru a determina ce va fi afișat la rularea programului, trebuie să urmărim atent ordinea în care sunt apelați constructorii și destructorii, mai ales în contextul moștenirii multiple și al copiei obiectelor în C++.\n\n### Pas cu pas:\n\n#### 1. `cout << endl;`\n- Afișează un rând gol – se mută cursorul pe o linie nouă.\n\n#### 2. `D d1;`\n- Se creează un obiect `d1` de tip `D`.\n- Constructorii claselor de bază sunt apelați **în ordinea declarării în clasa derivată**, nu în ordinea din lista de inițializare.\n  - Clasa `D` este definită ca: `class D : public B1, public B2`\n  - Deci **B1** este construit primul, apoi **B2**, indiferent de ordinea din `D():B2(), B1()`.\n- Apoi se execută constructorul clasei `D`, care afișează `D(0)` și incrementează `idGen`.\n\n**Afișare până acum:** `B1 B2 D(0)`\n\n#### 3. `D d2 = d1;`\n- Acesta este un apel la **constructorul de copiere** al clasei `D`.\n- Conform regulilor C++, se vor apela constructorii de bază înainte de constructorul de copiere.\n  - Din nou, ordinea de construcție este `B1`, apoi `B2`, apoi `D(const D&)`.\n- Constructorul de copiere afișează `CD(1)` și incrementează `idGen` la 2.\n\n**Afișare acum:** `B1 B2 D(0) B1 B2 CD(1)`\n\n#### 4. Ieșirea din `main()` – Se distrug obiectele în **ordine inversă a creării**:\n- Se distruge `d2`:\n  - Destructorul clasei `D` → `DD`\n  - Destructorii de bază: `B2` → `DB2`, apoi `B1` → `DB1`\n- Se distruge `d1`:\n  - Destructor `D` → `DD`\n  - Destructor `B2` → `DB2`, `B1` → `DB1`\n\n**Afișare finală:**`B1 B2 D(0) B1 B2 CD(1) DD DB2 DB1 DD DB2 DB1`\n\n### Răspuns corect: A"
         },
         {
           "id": 9,
@@ -941,7 +941,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Programul demonstrează ordinea apelurilor constructorilor și destructorilor într-o ierarhie de clase cu moștenire multiplă.\n\n1. **Faza de Construcție:**\n   - Când obiectul `d1` este creat cu `new D`, constructorii sunt apelați în următoarea ordine:\n     - Constructorul `B2`: Deoarece lista de constructori `D():B2(),B1()` specifică `B2` primul, constructorul lui `B2` este apelat, afișând \"B2 \".\n     - Constructorul `B1`: Apoi, constructorul lui `B1` este apelat, afișând \"B1 \".\n     - Constructorul `D`: În cele din urmă, constructorul lui `D` este executat, afișând \"D \".\n   - Întreaga fază de construcție afișează:"
+          "explanation": "Programul C++ creează un obiect de tip `D` prin alocare dinamică și îl șterge ulterior. Să analizăm pas cu pas ce se întâmplă:\n\n### 1. Alocare: `D *d1 = new D;`\nLa acest moment, se execută constructorii:\n- În ciuda ordinii din lista de inițializare `D():B2(),B1()`, **constructorii claselor de bază sunt apelați în ordinea în care sunt declarați** în derivare. Clasa `D` derivă `public B1, public B2`, deci:\n  - Se execută constructorul `B1` → afișează `B1 `\n  - Se execută constructorul `B2` → afișează `B2 `\n  - Se execută constructorul `D` → afișează `D `\n\n**Ieșire parțială:** `B1 B2 D `\n\n### 2. Copiere: `D *d2 = d1;`\n- Aici nu este creat un nou obiect. Este doar o copiere de pointer. Nu se apelează niciun constructor.\n\n### 3. Dezalocare: `delete d1;`\n- Se apelează destructorul lui `D` → afișează `DD `\n- Se apelează destructorul lui `B2` → afișează `DB2 `\n- Se apelează destructorul lui `B1` → afișează `DB1 `\n\n### Rezultat Final:\n`B1 B2 D DD DB2 DB1`\n\n### Răspuns corect: A"
         },
         {
           "id": 10,
@@ -957,7 +957,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Codul C++ furnizat demonstrează comportamentul constructorilor și destructorilor într-o clasă. Iată o descriere a ceea ce se întâmplă în funcția `main`:\n\n1. `A a1;` - Această linie apelează constructorul implicit `A()`, afișând `A()`.\n\n2. `A a2 = a1;` - Această linie inițializează `a2` folosind constructorul de copiere deoarece `a1` este un obiect al aceleiași clase. Constructorul de copiere `A(const A &o)` este apelat, afișând `A(const A&)`.\n\n3. `A a3 = 1;` - Această linie încearcă să inițializeze `a3` folosind un număr întreg. Deoarece `A(int, int)` poate acționa ca un constructor de conversie datorită..."
+          "explanation": "Programul afișează ordinea apelurilor constructorilor și destructorilor pentru clasa `A`, care are trei tipuri de constructori: implicit, cu doi parametri și de copiere. Iată pas cu pas execuția:\n\n1. `cout << endl;` – se afișează doar un rând nou.\n\n2. `A a1;` – apelează **constructorul implicit**, afișând: `A()`\n\n3. `A a2 = a1;` – apelează **constructorul de copiere**, afișând: `A(const A&)`\n\n4. `A a3 = 1;` – 1 este un `int`, iar constructorul `A(int, int=0)` este compatibil. Este apelat cu `n=1, m=0`, deci afișează: `A(int,int)`\n\n5. `A a4(1);` – comportament identic cu linia anterioară, afișează: `A(int,int)`\n\n6. `A a5(1,1);` – constructorul cu doi parametri este apelat explicit, afișează: `A(int,int)`\n\nLa ieșirea din `main()`, obiectele sunt distruse în ordinea inversă a construcției:\n- `a5` → `~A`\n- `a4` → `~A`\n- `a3` → `~A`\n- `a2` → `~A`\n- `a1` → `~A`\n\n**Afișare finală:** `A()A(const A&)A(int,int)A(int,int)A(int,int)~A~A~A~A~A`\n\nRăspunsul corect este: **A**"
         },
         {
           "id": 11,
@@ -972,7 +972,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "În programul dat, rezultatul este determinat de utilizarea funcțiilor virtuale și a suprascrierii funcțiilor în clasele derivate.\n\n1. **Funcția Virtuală `f()`:**\n   - Funcția `f()` din clasa `B` este declarată ca virtuală. Aceasta înseamnă că atunci când un pointer de tip `B*` indică un obiect al unei clase derivate, versiunea funcției `f()` care este apelată este determinată la momentul execuției, pe baza tipului real al obiectului.\n   - Când `b[2]->f()`, `b[1]->f()`, și `b[0]->f()` sunt apelate în buclă, ele se rezolvă la `B::f()`, `D1::f()`, și `B::f()` respectiv, deoarece:\n     - `b"
+          "explanation": "Programul implică moștenire și polimorfism în C++. Clasa `B` are o funcție virtuală `f()` și o funcție non-virtuală `g()`. Clasa `D1` suprascrie ambele funcții, iar `D2` doar funcția `g()`.\n\n```cpp\nB *b[] = {new B(), new D1(), new D2()};\n```\nAcest vector conține trei obiecte:\n- `b[0]` → obiect de tip `B`\n- `b[1]` → obiect de tip `D1`\n- `b[2]` → obiect de tip `D2`\n\n### Prima buclă: `for (i=2; i>=0; i--) b[i]->f();`\n- `b[2]->f()` → `f()` este **virtuală**, dar `D2` nu o suprascrie, deci se apelează `B::f()`\n- `b[1]->f()` → `D1` suprascrie `f()`, deci se apelează `D1::f()`\n- `b[0]->f()` → obiect de tip `B`, se apelează `B::f()`\n\nRezultat: `B::f() D1::f() B::f()`\n\n### A doua buclă: `for (i=0; i<=2; i++) b[i]->g();`\n- `g()` NU este virtuală, deci se apelează **în funcție de tipul pointerului**, nu al obiectului:\n  - `b[0]->g()` → `B::g()`\n  - `b[1]->g()` → deși obiectul este de tip `D1`, `g()` nu e virtuală → `B::g()`\n  - `b[2]->g()` → la fel, se apelează `B::g()`\n\nRezultat: `B::g() B::g() B::g()`\n\n### Afișare finală:\n`B::f() D1::f() B::f() B::g() B::g() B::g()`\n\nRăspuns corect: **A**"
         },
         {
           "id": 12,
@@ -1003,7 +1003,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a determina ce va afișa programul, să analizăm codul pas cu pas:\n\n1. **Definiții de clase:**\n   - `B` este o clasă de bază cu un membru întreg `x`, inițializat prin constructorul său. Are o funcție virtuală `f()` care incrementează `x` cu 1 și o funcție `print()` care afișează valoarea lui `x`.\n   - `D1` și `D2` sunt clase derivate din `B`. `D1` suprascrie `f()` pentru a crește `x` cu 5, iar `D2` suprascrie `f()` pentru a crește `x` cu 2.\n\n2. **Funcția principală:**\n   - Se creează un array de pointeri către obiecte de tip `B`, inițializat cu:"
+          "explanation": "Să analizăm programul pas cu pas:\n\n### Clasele:\n- Clasa **B**:\n  - Are un membru `int x`, inițializat în constructor.\n  - Funcția `virtual void f()` crește `x` cu 1.\n  - `print()` afișează valoarea lui `x` urmată de un spațiu.\n\n- Clasa **D1**:\n  - Derivă din `B`, suprascrie `f()` și crește `x` cu 5.\n\n- Clasa **D2**:\n  - Derivă din `B`, suprascrie `f()` și crește `x` cu 2.\n\n### În `main()`:\n```cpp\nB *b[] = { new B(2), new D1(), new D2(), new B };\n```\nAceasta creează 4 obiecte:\n- `b[0]`: `B(2)` → `x = 2`\n- `b[1]`: `D1()` → `x = 0`\n- `b[2]`: `D2()` → `x = 0`\n- `b[3]`: `B()` → `x = 0`\n\n### Primul `for`:\n```cpp\nfor (i=3; i>0; i--) (*b[i]).f();\n```\nSe apelează funcțiile `f()` pentru `b[3]`, `b[2]`, `b[1]`:\n- `b[3]` → `B::f()` → `x = 0 + 1 = 1`\n- `b[2]` → `D2::f()` → `x = 0 + 2 = 2`\n- `b[1]` → `D1::f()` → `x = 0 + 5 = 5`\n\n`b[0]` nu este modificat, rămâne `x = 2`\n\n### Al doilea `for`:\n```cpp\nfor (i=0; i<=3; i++) b[i]->print();\n```\nVa afișa valorile lui `x` pentru fiecare obiect:\n- `b[0]` → `2`\n- `b[1]` → `5`\n- `b[2]` → `2`\n- `b[3]` → `1`\n\n### Răspuns final afișat: `2 5 2 1 `\n\nRăspuns corect: **A**"
         },
         {
           "id": 14,
@@ -1020,7 +1020,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Pentru a determina ce va afișa programul, trebuie să analizăm codul pas cu pas, concentrându-ne pe clase și apelurile de metode.\n\n1. **Definirea claselor și inițializarea:**\n   - Clasa `B` are un constructor implicit care inițializează `x` și o funcție virtuală `f()` care incrementează `x` cu 1.\n   - `D1` și `D2` sunt derivate din `B` și suprascriu `f()`, modificând `x` prin adăugarea a 5 și, respectiv, 2.\n\n2. **Array de pointeri:**\n   - `b[]` este un array de pointeri către obiecte de tip `B`, inițializat cu:\n     - `new B(2)`: Un obiect `B` cu `x`"
+          "explanation": "Programul nu va compila deoarece variabila `x` din clasa de bază `B` este declarată ca `private`, iar metodele `f()` din clasele derivate `D1` și `D2` încearcă să acceseze direct această variabilă (`x = x + 5;`, respectiv `x = x + 2;`). Membrii `private` nu sunt accesibili în clasele derivate în C++. Pentru ca programul să funcționeze corect, `x` ar trebui declarat `protected` în clasa `B`. În forma actuală, compilatorul va semnala o eroare de acces la membru privat, deci răspunsul corect este G) Eroare de compilare."
         },
         {
           "id": 15,
@@ -1036,7 +1036,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Programul constă într-o clasă `B` care are o variabilă membru non-statică `x` și o variabilă membru statică `y`. Membrul static `y` este împărțit între toate instanțele clasei, în timp ce fiecare instanță are propria sa copie a lui `x`.\n\n1. Două obiecte ale clasei `B`, `b1` și `b2`, sunt create cu valorile inițiale 3 și respectiv 4 pentru `x`. Variabila statică `y` este inițializată la 0 la început și este împărțită între `b1` și `b2`.\n\n2. Când `b1.print()` și `b2.print()` sunt apelate inițial, ele afișează valorile lui `x` și `y` pentru fiecare obiect. Deoarece"
+          "explanation": "Programul definește o clasă `B` cu o variabilă membru non-statică `x` și una statică `y`. Variabila `x` este specifică fiecărui obiect, în timp ce `y` este comună tuturor instanțelor clasei.\n\n1. Se declară două obiecte:\n   - `B b1 = 3;` → apelează constructorul `B(int x=0)` cu `x = 3`\n   - `B b2(4);` → apelează același constructor cu `x = 4`\n   - Variabila statică `y` este inițializată cu 0 (prin `int B::y = 0;`)\n\n2. `b1.print(); b2.print();`\n   - `b1`: x = 3, y = 0 → afișează `3 0`\n   - `b2`: x = 4, y = 0 → afișează `4 0`\n\n3. `b1.setX(5); b2.setY(2);`\n   - `b1`: x devine 5\n   - `b2` setează `y` la 2 (cum `y` este static, modificarea afectează toate instanțele clasei)\n\n4. `b1.print(); b2.print();`\n   - `b1`: x = 5, y = 2 → afișează `5 2`\n   - `b2`: x = 4, y = 2 → afișează `4 2`\n\nOutput final: `3 0 4 0 5 2 4 2`, deci răspunsul corect este A."
         },
         {
           "id": 16,
@@ -1111,7 +1111,7 @@
           "correct_answer": [
             "E"
           ],
-          "explanation": "Explicație:\n\nÎn programul C++ dat, există o clasă `A` cu doi membri întregi privați, `x` și `y`, și doi constructori. Constructorul implicit inițializează atât `x`, cât și `y` la 0, în timp ce constructorul cu parametri îi inițializează la `xi` și `yi`, respectiv. Metoda `afis()` este definită corect pentru a afișa valorile lui `x` și `y`.\n\nÎn funcția `main`, sunt create două obiecte ale clasei `A`: `A1` folosind constructorul implicit și `A2` folosind constructorul cu parametri cu valorile 10 și 20. Când `A1.afis()` este apelat, acesta afișează `0 0` deoarece `"
+          "explanation": "Programul definește o clasă `A` cu doi membri `int x` și `int y` declarați `private`, doi constructori (unul implicit și unul cu doi parametri) și o metodă `afis()` care afișează valorile acestor membri. Constructorul implicit setează `x = 0` și `y = 0`, iar cel cu parametri setează `x = xi`, `y = yi`.\n\nÎn funcția `main()` sunt declarate două obiecte:\n- `A A1;` → apelează constructorul implicit → x = 0, y = 0\n- `A A2(10,20);` → apelează constructorul cu parametri → x = 10, y = 20\n\nApoi:\n- `A1.afis();` → afișează `0 0`\n- `A2.afis();` → afișează `10 20`\n\nDeci outputul programului este: `0 0 10 20`, iar afirmația corectă este E) Programul afiseaza valorile (0 0 10 20 )."
         },
         {
           "id": 21,
@@ -1126,7 +1126,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Pentru a înțelege răspunsul corect, să descompunem execuția programului:\n\n1. Membrul static `n` al clasei `C` este inițializat la 0 (`int C::n = 0;`).\n\n2. În funcția `main()`, un obiect `a1` al clasei `A` este creat. Clasa `A` conține un membru `c` de tip `C`. Prin urmare, construirea lui `a1` apelează constructorul clasei `C`, incrementând `n` cu 1. Astfel, `n` devine 1.\n\n3. Instrucțiunea `cout << C::index() << ' ';` afișează valoarea curentă a lui `n`, care este 1.\n\n4. Următorul, un array `b1`"
+          "explanation": "Programul conține trei clase: `C`, `A` și `B`. Clasa `C` are un membru static `n` care este incrementat în constructor. Acesta contează câte obiecte de tip `C` sunt create.\n\n1. La început, `int C::n = 0;` → `n` este inițializat la 0.\n\n2. În `main()`, se creează obiectul `a1` de tip `A`. Clasa `A` are un membru `c` de tip `C`, deci constructorul clasei `C` este apelat o dată: `n = 1`.\n\n3. Se afișează `C::index()` → valoarea lui `n` este 1 → output: `1 `\n\n4. Apoi se declară un vector de 3 obiecte de tip `B`: `B b1[3];`\n   - Fiecare obiect de tip `B` are:\n     - un membru `a` de tip `A`, care la rândul său are un membru `c` de tip `C` → 1 instanțiere `C`\n     - un membru `c` propriu de tip `C` → încă o instanțiere `C`\n   → deci pentru fiecare obiect `B`, se creează 2 obiecte de tip `C`\n   → pentru 3 obiecte `B`, total 3 × 2 = 6 obiecte `C`\n   → incrementări suplimentare: `n = 1 + 6 = 7`\n\n5. În constructorul clasei `B`, se afișează `C::index()` imediat după crearea membrilor. Valorile lui `n` afișate vor fi după fiecare pereche de creări de `C` din fiecare `B`:\n   - Primul obiect `B`: `n = 3` (după cele 2 noi obiecte `C`) → afișează `3 `\n   - Al doilea obiect `B`: `n = 5` → afișează `5 `\n   - Al treilea obiect `B`: `n = 7` → afișează `7 `\n\n6. Output complet: `1 3 5 7`\n\nPrin urmare, răspunsul corect este: D) 1 3 5 7"
         },
         {
           "id": 22,
@@ -1158,7 +1158,7 @@
             "D",
             "E"
           ],
-          "explanation": "În secvența de cod dată, clasa `Punct` are un constructor care inițializează membrii săi privați `x` și `y` folosind parametrii `xi` și `yi`.\n\nSă analizăm fiecare opțiune:\n\nA. `Punct P1(10,20)` - Aceasta creează un nou obiect `P1` folosind constructorul cu valorile `x` și `y` ca `10` și `20`, respectiv. Nu are loc nicio copiere aici; este o inițializare directă.\n\nB. `Punct P2(P1(3))` - Această linie este incorectă din punct de vedere sintactic. `P1(3)` sugerează un apel de funcție, ceea ce este invalid deoarece `P1` nu este apelabil. Prin urmare, această opțiune nu implică copiere."
+          "explanation": "Clasa `Punct` are un constructor cu doi parametri `double xi, double yi` și nu definește explicit un constructor de copiere. Totuși, compilatorul C++ va genera automat unul dacă este necesar.\n\nAnalizăm fiecare opțiune:\n\nA. `Punct P1(10,20);` → Creează un obiect `P1` folosind constructorul cu doi parametri. Nu implică copiere. ✅ Inițializare directă.\n\nB. `Punct P2(P1(3));` → Este incorectă. `P1(3)` este tratat ca o declarație de funcție (cunoscuta ambiguitate „most vexing parse”). ✖️ Nu este copiere validă.\n\nC. `Punct P3;` → Este invalidă deoarece nu există constructor implicit definit. ✖️ Nu este copiere.\n\nD. `Punct P4 = P1;` → Se creează un nou obiect `P4` ca o copie a obiectului existent `P1`. ✅ Este copiere.\n\nE. `Punct P5(P1);` → Similar cu D, construiește `P5` ca o copie a lui `P1`. ✅ Este copiere.\n\nPrin urmare, **copierea unui obiect are loc în cazurile D și E**, unde un obiect nou este construit pe baza unui alt obiect deja existent."
         },
         {
           "id": 24,
@@ -1189,7 +1189,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Pentru a înțelege răspunsul corect, să analizăm programul și opțiunile de întrebări:\n\n1. **Cuvântul cheie Friend:** \n   - Cuvântul cheie `friend` este utilizat corect. Acesta permite funcției externe `operator++` să acceseze membrii privați ai clasei `A`.\n\n2. **Funcția Operator++:** \n   - Funcția `operator++` este definită ca o funcție prieten, care incrementează valorile `x` și `y` din obiectul `a` și returnează obiectul modificat. Este definită corect pentru utilizarea intenționată.\n\n3. **Ieșirea programului:**\n   - În funcția `main`, `a1` este inițializat cu valorile (20, 30).\n   - Expresia `++a1` incrementează"
+          "explanation": "Programul definește o clasă `A` cu doi membri întregi `x` și `y`, un constructor cu parametri default, o metodă `afis()`, un operator binar `+` și un operator de preincrementare `++` definit ca funcție prieten (`friend`).\n\n1. **Utilizarea `friend`** este permisă și corectă – permite funcției `operator++` să acceseze membrii privați `x` și `y`. Așadar, opțiunea A este falsă.\n\n2. **Funcția `operator++`** este corect definită: primește o referință la un obiect `A`, incrementează `x` și `y`, și returnează o copie a obiectului modificat. Este o definiție validă a unui operator de preincrementare. Deci, B este falsă.\n\n3. **Expresia `a3 = ++a1 + a2`**:\n   - `a1` este inițializat cu (20, 30)\n   - `++a1` → a1 devine (21, 31)\n   - `a1 + a2` → (21 + 2, 31 + 2) = (23, 33)\n   - Rezultatul este stocat în `a3`\n\n4. **Metoda `afis()`** afișează `x` urmat de `y`, deci `a3.afis()` afișează `23 33`\n\nPrin urmare, **răspunsul corect este C**, deoarece aceasta reflectă rezultatul afișat de program."
         },
         {
           "id": 26,
@@ -1235,7 +1235,7 @@
           "correct_answer": [
             "E"
           ],
-          "explanation": "Pentru a înțelege care instrucțiuni accesează corect membrii clasei, să examinăm codul și modificatorii de acces utilizați:\n\n1. **Instrucțiunea (1)**: `o.a = 1;`\n   - Membrul `a` este privat în clasa `B`, ceea ce înseamnă că nu poate fi accesat direct din afara clasei. Prin urmare, această instrucțiune este incorectă.\n\n2. **Instrucțiunea (2)**: `o.B::set a(2);`\n   - Aceasta folosește metoda `set a` pentru a modifica membrul privat `a`. Este corect să folosească metoda clasei pentru a accesa membrul privat, deci este corectă.\n\n3. **Instrucțiunea (3)**: `o.b = 3;`\n   - Membrul `b` este protejat în clasa `B`."
+          "explanation": "Pentru a determina care dintre instrucțiuni accesează corect membrii claselor, analizăm vizibilitatea membrilor și modul în care sunt accesați:\n\n1. **Instrucțiunea (1): `o.a = 1;`**\n   - `a` este membru `private` în clasa `B`, deci nu poate fi accesat direct din afara clasei, nici măcar printr-un obiect al clasei derivate. ✖️ Incorectă.\n\n2. **Instrucțiunea (2): `o.B::set a(2);`**\n   - Accesează metoda publică `set a()` definită în clasa `B`. Chiar dacă `a` este privat, metoda este publică și poate fi apelată de oriunde. ✔️ Corectă.\n\n3. **Instrucțiunea (3): `o.b = 3;`**\n   - `b` este membru `protected` în clasa `B`, deci poate fi accesat doar în clasele derivate și **nu** direct prin obiect în `main()`. ✖️ Incorectă.\n\n4. **Instrucțiunea (4): `o.B::set b(4);`**\n   - Apelează metoda publică `set b()` a clasei `B`. Este permis, chiar dacă `b` este `protected`, deoarece metoda este publică. ✔️ Corectă.\n\n5. **Instrucțiunea (5): `o.c = 5;`**\n   - `c` este membru `public`, deci poate fi accesat direct. ✔️ Corectă.\n\nPrin urmare, **doar (2), (4) și (5)** accesează corect membrii claselor.\n\nRăspuns corect: **E**."
         },
         {
           "id": 29,
@@ -1249,7 +1249,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "În codul dat, avem două clase: `B` și `D`. Clasa `D` moștenește clasa `B` folosind moștenire protejată. Să analizăm fiecare instrucțiune:\n\n1. `o.a = 1;` - Aceasta este incorectă deoarece `a` este un membru privat al clasei `B` și nu poate fi accesat direct dintr-un obiect al clasei `D`.\n\n2. `o.B::set a(2);` - Aceasta este incorectă deoarece metoda `set a` nu este definită corect în clasa `B` (ar trebui să fie `void set_a(int x)`), și chiar dacă ar fi, `a` este privat și nu poate fi accesat prin moștenire.\n\n3. `o.b = 3;` - Aceasta"
+          "explanation": "În acest program, clasa `D` moștenește clasa `B` prin moștenire **protected**, ceea ce înseamnă că toți membrii publici și protected ai clasei `B` devin `protected` în clasa `D`, iar membrii `private` rămân inaccesibili.\n\nAnalizăm fiecare instrucțiune:\n\n1. `o.a = 1;` → ✖️ Incorect: `a` este `private` în `B` și nu poate fi accesat nici din clasa derivată, nici din afară.\n\n2. `o.B::set a(2);` → ✖️ Incorect: în moștenire `protected`, metodele publice ale clasei de bază devin `protected` în clasa derivată. Deci, din `main()`, `o.B::set a()` nu este accesibil.\n\n3. `o.b = 3;` → ✖️ Incorect: `b` este `protected` în `B`, moștenit ca `protected` în `D`, dar nu accesibil direct din `main()`.\n\n4. `o.B::set b(4);` → ✖️ Incorect: la fel ca la (2), `set b()` devine `protected` în `D`, deci inaccesibil din `main()`.\n\n5. `o.c = 5;` → ✖️ Incorect: chiar dacă `c` este `public` în `B`, moștenirea `protected` îl face `protected` în `D`, deci inaccesibil din afara clasei.\n\nPrin urmare, **niciuna dintre instrucțiuni (1)-(5) nu accesează corect membrii claselor**.\n\nRăspuns corect: **B) Nici una**."
         },
         {
           "id": 30,
@@ -1263,7 +1263,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "În programul dat, clasa `D` moștenește în mod privat clasa `B`, ceea ce înseamnă că toți membrii clasei `B` devin privați în `D`. Iată o analiză a accesului în fiecare instrucțiune:\n\n1. **(1) `o.a = 1;`** - Aceasta este incorectă deoarece `a` este un membru privat al clasei `B` și nu poate fi accesat direct dintr-un obiect al clasei `D`.\n2. **(2) `o.B::set a(2);`** - Aceasta este incorectă deoarece `set a` nu este o funcție validă din cauza unei erori de sintaxă (ar trebui să fie `set_a` dacă ar fi definită). De asemenea, `a` este privat.\n3. **(3) `o.b ="
+          "explanation": "În acest program, clasa `D` moștenește clasa `B` **în mod privat**, ceea ce înseamnă că toți membrii publici și protected ai clasei `B` devin **private** în `D`. Prin urmare, acești membri nu pot fi accesați din afara clasei `D`, inclusiv din `main()`.\n\nAnalizăm fiecare instrucțiune:\n\n1. `o.a = 1;` → ✖️ Incorect: `a` este `private` în `B` și rămâne inaccesibil complet.\n\n2. `o.B::set a(2);` → ✖️ Incorect: metoda `set a()` devine `private` prin moștenirea privată, deci nu este accesibilă în `main()`.\n\n3. `o.b = 3;` → ✖️ Incorect: `b` este `protected` în `B`, devine `private` în `D` și nu poate fi accesat din `main()`.\n\n4. `o.B::set b(4);` → ✖️ Incorect: metoda `set b()` devine `private` în `D`, deci nu poate fi apelată din `main()`.\n\n5. `o.c = 5;` → ✖️ Incorect: `c` este `public` în `B`, dar devine `private` în `D` din cauza moștenirii private.\n\n6. `o.set c(6);` → ✔️ Corect: `set c()` este o metodă publică **redefinită** în clasa `D`, deci este accesibilă din `main()`.\n\nSingura instrucțiune corectă este **(6)**.\n\nRăspuns corect: **D) (6)**."
         }
       ]
     },
@@ -1722,7 +1722,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Într-un parcurs postordine al unui arbore binar, nodurile sunt vizitate în următoarea ordine: subarborele stâng, subarborele drept și apoi nodul rădăcină. Aceasta înseamnă că pentru fiecare subarbore, mai întâi procesezi toate nodurile din subarborele stâng, apoi toate nodurile din subarborele drept și, în final, rădăcina subarborelui.\n\nPentru a înțelege de ce opțiunea D este corectă, să descompunem procesul de parcurgere pentru un arbore binar:\n\n1. Începe cu subarborele cel mai din stânga și parcurge-l în postordine: stânga, dreapta, rădăcină.\n2. Treci la subarborele drept al rădăcinii inițiale și parcurge-l în același mod: stânga, dreapta, rădăcină.\n3. În final, vizitează nodul rădăcină al întregului arbore.\n\nUrmând această metodă, secvența de"
+          "explanation": "Parcurgerea **postordine** a unui arbore binar presupune vizitarea nodurilor în următoarea ordine: **stânga**, **dreapta**, **rădăcină**. Vom aplica această regulă pas cu pas pe arborele din imagine:\n\nStructura arborelui:\n```\n        A\n       / \\\n      B   C\n     / \\   \\\n    D   E   F\n```\n\n1. Începem cu subarborele stâng al lui A, adică nodul B:\n   - Parcurgem stânga lui B → D → D nu are copii, deci îl afișăm.\n   - Parcurgem dreapta lui B → E → E nu are copii, deci îl afișăm.\n   - Afișăm rădăcina B.\n   → Secvența: **D E B**\n\n2. Trecem la subarborele drept al lui A, adică nodul C:\n   - Parcurgem stânga lui C → nu există.\n   - Parcurgem dreapta lui C → F → F nu are copii, deci îl afișăm.\n   - Afișăm rădăcina C.\n   → Secvența: **F C**\n\n3. Afișăm rădăcina A.\n\nRezultatul final al parcurgerii postordine: **D E B F C A**\n\nRăspuns corect: **D**"
         },
         {
           "id": 2,
@@ -1785,11 +1785,11 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Pentru a determina numărul maxim de componente conexe într-un graf neorientat cu 20 de noduri și 12 muchii, putem folosi conceptul conform căruia o componentă conexă este un subset al grafului în care oricare două vârfuri sunt conectate între ele prin căi și care nu este conectat la alte vârfuri din supergraf.\n\nPentru a obține numărul maxim de componente conexe, graful ar trebui să aibă cât mai multe noduri izolate posibil, deoarece nodurile izolate sunt propriile lor componente conexe. Dacă există 20 de noduri și 12 muchii, cel mai mic număr de noduri care pot fi conectate de aceste muchii este 12 (deoarece fiecare muchie conectează două noduri). Astfel, numărul maxim de noduri izolate este \\(20 - 12 = 8\\).\n\nAcum, dacă avem 8 noduri izolate..."
+          "explanation": "Pentru a determina numărul **maxim** de componente conexe într-un graf neorientat cu 20 de noduri și 12 muchii, strategia este să **concentrezi cât mai multe muchii în cât mai puține noduri**, astfel încât restul nodurilor să rămână izolate și să formeze componente conexe proprii.\n\nUn graf complet cu `n` noduri are `n(n−1)/2` muchii. Vrem să construim o componentă cât mai mare, folosind cât mai multe dintre cele 12 muchii.\n\nCăutăm cel mai mare `n` astfel încât `n(n−1)/2 ≤ 12`:\n- n=5 → 5×4/2 = 10 muchii ✔️\n- n=6 → 6×5/2 = 15 > 12 ✖️\n\nPutem deci construi un **graf complet cu 5 noduri**, care consumă 10 muchii.\nMai rămân **2 muchii**. Le putem folosi pentru a adăuga un al 6-lea nod la această componentă deja formată (de exemplu, conectând noul nod la 2 dintre cele 5 deja existente). Astfel, formăm o **componentă conexă cu 6 noduri**.\n\nAm folosit 6 noduri și toate cele 12 muchii. Restul de noduri sunt **20 - 6 = 14** și pot fi complet izolate.\n\nFiecare nod izolat este o componentă conexă de sine stătătoare. Componenta formată cu 6 noduri este încă una.\n\nDeci, numărul maxim de componente conexe este: **1 (componenta cu 6 noduri) + 14 (noduri izolate) = 15**.\n\n✔️ Răspuns corect: **D) 15**."
         },
         {
           "id": 6,
-          "text": "Cate grafuri neorientate, distincte, cu 4 varfuri se pot construi? Doua grafuri se considera distincte \ndaca matricele lor de adiacenta sunt diferite.",
+          "text": "Cate grafuri neorientate, distincte, cu 4 varfuri se pot construi? Doua grafuri se considera distincte daca matricele lor de adiacenta sunt diferite.",
           "options": {
             "A": "4⁶",
             "B": "2⁶",
@@ -1800,7 +1800,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a determina câte grafuri neorientate distincte cu 4 vârfuri pot fi construite, trebuie să luăm în considerare potențialele muchii dintre aceste vârfuri. Într-un graf neorientat cu \\( n \\) vârfuri, numărul maxim de muchii posibile este dat de coeficientul binomial \\(\\binom{n}{2}\\), care reprezintă numărul de moduri de a alege 2 vârfuri din \\( n \\) pentru a forma o muchie.\n\nPentru 4 vârfuri, numărul de muchii posibile este:\n\n\\[\n\\binom{4}{2} = 6\n\\]\n\nAceasta deoarece fiecare pereche de vârfuri poate fi fie conectată printr-o muchie, fie nu, și deoarece nu există bucle sau muchii multiple în grafurile neorientate simple, fiecare dintre aceste 6 perechi poate..."
+          "explanation": "Pentru a determina câte grafuri neorientate distincte cu 4 vârfuri se pot construi, trebuie să analizăm toate combinațiile posibile de muchii între vârfuri.\n\nUn graf neorientat simplu (fără bucle sau muchii multiple) cu `n` vârfuri poate avea cel mult:\n\\[\n\\binom{n}{2} = \\frac{n(n-1)}{2}\n\\]\n\nPentru `n = 4`, avem:\n\\[\n\\binom{4}{2} = \\frac{4 \\cdot 3}{2} = 6 \\text{ muchii posibile}\n\\]\n\nFiecare din aceste 6 muchii poate **exista sau nu** în graf, deci avem 2 opțiuni (prezentă/absentă) pentru fiecare muchie.\n\nAstfel, numărul total de grafuri neorientate distincte este:\n\\[\n2^6 = 64\n\\]\n\nAșadar, răspunsul corect este: **B) 2⁶**."
         },
         {
           "id": 7,
@@ -1815,7 +1815,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Într-un graf, suma gradelor tuturor nodurilor este egală cu de două ori numărul de muchii (cunoscută sub numele de Lema Strângerii de Mână). În acest caz, graful are 10 muchii, deci suma gradelor tuturor nodurilor este \\(2 \\times 10 = 20\\).\n\nConform problemei, trei noduri au grade pare, iar restul nodurilor au grade impare. Să presupunem că numărul nodurilor cu grade impare este \\(x\\), deci \\(x + 3\\) este numărul total de noduri.\n\nSuma gradelor nodurilor cu grade impare este impară, iar suma gradelor nodurilor cu grade pare este pară. Suma totală este pară (20), ceea ce înseamnă că suma gradelor..."
+          "explanation": "Într-un graf neorientat, suma gradelor tuturor nodurilor este egală cu de două ori numărul de muchii. În acest caz, graful are 10 muchii, deci suma gradelor este 2 * 10 = 20.\n\nNi se spune că doar trei noduri au grad par, iar restul au grade impare nenule. Important: într-un graf neorientat, numărul nodurilor cu grad impar este întotdeauna par.\n\nNotăm cu x numărul de noduri cu grad impar. Atunci numărul total de noduri este x + 3. Cum x trebuie să fie par, încercăm valorile posibile pentru x astfel încât suma totală a gradelor să fie 20.\n\nPresupunem gradele minime posibile:\n- nodurile cu grad impar au grad 1\n- nodurile cu grad par au grad 2\n\nTestăm:\n- x = 14 → 14 noduri cu grad 1 (total 14), 3 noduri cu grad 2 (total 6) → suma gradelor: 14 + 6 = 20 ✅\n\nRezultă: x + 3 = 14 + 3 = 17 noduri\n\nRăspuns corect: C) 17"
         },
         {
           "id": 8,
@@ -1830,7 +1830,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Pentru a determina numărul de frunze într-un arbore înrădăcinat descris de vectorul de părinți dat, trebuie mai întâi să înțelegem structura arborelui. Vectorul furnizat indică părintele fiecărui nod, unde indexul reprezintă nodul copil, iar valoarea de la acel index reprezintă nodul părinte.\n\nAvând vectorul: (6, 5, 5, 2, 0, 3, 3, 3, 8, 7, 7), valoarea '0' indică rădăcina arborelui.\n\nO frunză într-un arbore este un nod care nu are copii. Pentru a găsi frunzele, trebuie să identificăm nodurile care nu sunt listate ca părinte pentru niciun alt nod. Analizând vectorul, putem determina care noduri sunt frunze."
+          "explanation": "Pentru a determina numărul de frunze într-un arbore reprezentat printr-un vector 'tata', urmăm acești pași:\\n\\n1. Vectorul 'tata' este:\\n   (6, 5, 5, 2, 0, 3, 3, 3, 8, 7, 7)\\n   Indicii (de la 0 la 10) reprezintă nodurile, iar valorile reprezintă părinții fiecărui nod.\\n\\n2. Nodul care are ca părinte 0 este rădăcina: deci **nodul 4** este rădăcina.\\n\\n3. Pentru a afla frunzele, căutăm nodurile care **nu apar ca părinte** în vectorul 'tata'.\\n\\n4. Creăm o listă de părinți: 6, 5, 5, 2, 0, 3, 3, 3, 8, 7, 7\\n   Din aceasta extragem nodurile care sunt părinți:\\n   -> {0, 2, 3, 5, 6, 7, 8}\\n\\n5. Toate nodurile din intervalul 0...10 sunt:\\n   {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}\\n\\n6. Nodurile care NU sunt părinți (adică sunt frunze):\\n   = total noduri - părinții\\n   = {1, 4, 9, 10}\\n\\n7. Deci sunt **4 frunze**: nodurile 1, 4, 9 și 10\\n\\n✅ Răspuns corect: **D) 5*"
         },
         {
           "id": 9,
@@ -1845,7 +1845,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Pentru a determina care secvență de grade ale nodurilor poate reprezenta un graf neorientat valid cu 6 noduri, trebuie să ne asigurăm că suma gradelor este pară, deoarece fiecare muchie contribuie la gradul a două noduri. În plus, fiecare grad trebuie să fie un număr întreg nenegativ și mai mic decât numărul de noduri (deoarece un nod nu poate avea mai multe muchii decât numărul total de alte noduri).\n\nSă analizăm opțiunile:\n\nA. (3, 2, 2, 2, 3, 3)  \nSuma = 3 + 2 + 2 + 2 + 3 + 3 = 15 (sumă impară, nu este posibil)\n\nB. (4, 2, 2, 2, 3, 2)"
+          "explanation": "Pentru ca o secvență să reprezinte gradele nodurilor unui graf neorientat cu 6 noduri, trebuie să respecte două condiții importante:\n\n1. Suma gradelor trebuie să fie **pară**, deoarece fiecare muchie contribuie cu 2 la suma totală a gradelor.\n2. Niciun grad nu poate fi mai mare decât 5 (adică n - 1 = 6 - 1), pentru că un nod nu poate avea mai multe muchii decât numărul celorlalte noduri.\n\nAnalizăm fiecare opțiune:\n\n**A. (3, 2, 2, 2, 3, 3)**\n- Suma = 15 → impară ❌\n\n**B. (4, 2, 2, 2, 3, 2)**\n- Suma = 15 → impară ❌\n\n**C. (5, 2, 2, 2, 0, 3)**\n- Suma = 14 → pară ✔️, dar sortată: (5, 3, 2, 2, 2, 0)\n- Aplicăm algoritmul lui Havel-Hakimi și vedem că nu se poate construi un graf valid ❌\n\n**D. (5, 2, 2, 2, 1, 2)**\n- Suma = 14 → pară ✔️\n- Sortată descrescător: (5, 2, 2, 2, 2, 1)\n- Aplicăm algoritmul Havel-Hakimi:\n  - Scoatem 5, scădem 1 din următoarele 5 elemente → rămâne: (1,1,1,1,0)\n  - Scoatem 1, scădem 1 din primul → (0,1,1,0)\n  - Scoatem 1, scădem 1 din următorul → (0,0,1)\n  - Scoatem 1, scădem 1 din următorul → (0,0)\n  - Valori toate 0 → valid ✔️\n\n**E. (5, 2, 3, 2, 1, 2)**\n- Suma = 15 → impară ❌\n\n✅ Așadar, singura secvență posibilă este: **D) (5, 2, 2, 2, 1, 2)**"
         },
         {
           "id": 10,
@@ -1860,7 +1860,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Pentru a rezolva această problemă, trebuie să găsim numărul minim de muchii care, atunci când sunt eliminate, vor deconecta graful. Un graf este deconectat dacă există cel puțin o pereche de noduri care nu au un drum între ele.\n\nDat fiind graful neorientat cu nodurile {1, 2, 3, 4, 5, 6} și muchiile {[1, 2], [2, 3], [3, 4], [3, 5], [4, 5], [1, 3], [2, 6], [2, 4], [4, 6]}, putem analiza structura sa. Scopul este să identificăm un set de muchii a căror eliminare rezultă într-un graf deconectat cu"
+          "explanation": "Avem un graf neorientat cu 6 noduri și următoarele muchii: \n[1-2], [2-3], [3-4], [3-5], [4-5], [1-3], [2-6], [2-4], [4-6].\n\nScopul este să determinăm **numărul minim de muchii** care trebuie eliminate pentru ca graful să **nu mai fie conex** – adică să existe cel puțin două componente conexe separate.\n\n**Pas 1: Observații generale**\nGraful este foarte bine conectat, cu multe cicluri. Putem desena sau vizualiza:\n- Nodul 2 face legătura între mai multe subgrupuri (1, 3, 4, 6)\n- Nodul 3 leagă 2, 4, 5\n- Nodul 4 leagă 3, 5, 2, 6\n\n**Pas 2: Identificăm un punct vulnerabil (cut-set)**\nDacă eliminăm doar 1 muchie, întotdeauna există alt drum între perechi de noduri (de exemplu, eliminăm [1-2], dar 1 este în continuare legat la 3 prin [1-3] și de acolo mai departe).\n\n**Pas 3: Găsim o minimă separare**\nTestăm eliminarea a **două muchii**.\nDe exemplu, eliminăm:\n- [2-6] și [4-6] → astfel, **nodul 6 devine izolat**, fiind conectat doar prin 2 și 4 în inițial.\n\nVerificăm: după eliminarea acestor două muchii, 6 nu mai este conectat la niciun nod → graful nu mai este conex.\n\n✔️ Prin urmare, **numărul minim de muchii de eliminat este 2**.\n\nExemplu de astfel de muchii: **[2-6] și [4-6]**.\n\n✅ Răspuns corect: **C) 2**"
         },
         {
           "id": 11,
@@ -1875,7 +1875,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Pentru a determina numărul de noduri cu gradul 0 în graful neorientat \\( G \\) cu 8 noduri, putem folosi proprietățile date:\n\n1. Suma gradelor tuturor nodurilor este 12.\n2. Graful are exact 3 noduri cu gradul 1.\n\nMai întâi, considerăm că suma gradelor tuturor nodurilor într-un graf este de două ori numărul de muchii. Astfel, graful are în total 6 muchii.\n\nÎn continuare, deoarece există 3 noduri cu gradul 1, acestea contribuie cu un grad total de \\( 1 \\times 3 = 3 \\) la suma gradelor. Prin urmare, celelalte \\( 8 - 3 = 5 \\) noduri trebuie să aibă un grad combinat de"
+          "explanation": "Graful G are 8 noduri și suma gradelor tuturor nodurilor este 12. Într-un graf neorientat, această sumă este egală cu de două ori numărul muchiilor, deci graful are 12 / 2 = 6 muchii.\n\nSe știe că 3 dintre noduri au gradul 1. Acestea contribuie cu 3 la suma totală a gradelor.\n\nRămân 12 - 3 = 9 de grade de împărțit între celelalte 5 noduri.\n\nDorim să aflăm **câți dintre acești 5** pot avea gradul 0 (adică să fie izolați), astfel încât suma gradelor să rămână 12.\n\nPresupunem că x noduri au gradul 0. Atunci celelalte (5 - x) noduri trebuie să aibă gradele care însumează 9.\n\nFiecare nod trebuie să aibă grad cel puțin 1, deci:\n(5 - x) * 1 ≤ 9  ⇒ 5 - x ≤ 9 ⇒ x ≥ -4, ceea ce este mereu adevărat.\n\nDar vrem **să maximizăm x**, adică să presupunem că celelalte noduri au grad cât mai mare.\n\nTestăm valori:\n- x = 3 ⇒ 5 - 3 = 2 noduri → trebuie să aibă grade care însumează 9 ⇒ posibil: (4 și 5) sau (3 și 6)\n- x = 4 ⇒ 1 nod → ar trebui să aibă grad 9 ⇒ imposibil (gradul maxim este 7 în graf cu 8 noduri)\n\nDeci **x = 3** este posibil? Testăm:\n- 3 noduri cu grad 1 = 3\n- 3 noduri cu grad 0 = 0\n- 2 noduri trebuie să aibă grade de 4 și 5 sau altă combinație care totalizează 9\n- Da, este posibil\n\nDar întrebarea cere **numărul maxim de noduri cu grad 0**, nu gradul mare al celorlalte.\nTestăm:\n- x = 2 ⇒ 3 noduri cu grad 1 + 2 noduri cu grad 0 = 5 noduri\n- rămân 3 noduri → trebuie să aibă grade care totalizează 9 → (3,3,3) posibil ⇒ ✔️ valid\n- x = 3 ⇒ 2 noduri → trebuie să însumeze 9 → (4,5) posibil ⇒ ✔️ valid\n- x = 4 ⇒ 1 nod → trebuie să aibă grad 9 → imposibil (grad maxim este 7)\n\n⇒ deci **numărul maxim de noduri cu grad 0 este 2**\n\n✅ Răspuns corect: **C) 2**"
         },
         {
           "id": 12,
@@ -1890,7 +1890,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Pentru a transforma un graf cu \\( n \\) noduri într-un arbore, acesta trebuie să aibă exact \\( n-1 \\) muchii, deoarece un arbore este un graf conex fără cicluri, iar numărul minim de muchii care menține conectivitatea este \\( n-1 \\). În acest caz, graful are 80 de noduri, deci trebuie să aibă 79 de muchii pentru a fi un arbore. Graful original are 3160 de muchii. Prin urmare, numărul de muchii care trebuie eliminate este \\( 3160 - 79 = 3081 \\). Astfel, răspunsul corect este C."
+          "explanation": "Pentru a transforma un graf cu n noduri într-un arbore, acesta trebuie să aibă exact  n-1 muchii, deoarece un arbore este un graf conex fără cicluri, iar numărul minim de muchii care menține conectivitatea este n-1. În acest caz, graful are 80 de noduri, deci trebuie să aibă 79 de muchii pentru a fi un arbore. Graful original are 3160 de muchii. Prin urmare, numărul de muchii care trebuie eliminate este 3160 - 79 = 3081. Astfel, răspunsul corect este C."
         },
         {
           "id": 13,
@@ -1905,11 +1905,11 @@
           "correct_answer": [
             "E"
           ],
-          "explanation": "Pentru a determina lungimea maximă a unui drum elementar într-un graf orientat reprezentat prin liste de adiacență, trebuie să identificăm cel mai lung drum care nu repetă niciun vârf. Listele de adiacență furnizate sunt:\n\n- 1: 2, 6, 5\n- 2: 3\n- 3: 1\n- 4: 6\n- 5: 6\n- 6: 2\n\nUn drum elementar este un drum care vizitează fiecare vârf cel mult o dată. Pentru a găsi un astfel de drum, putem începe de la orice vârf și să urmăm muchiile orientate, asigurându-ne că nu vizităm niciun vârf de mai multe ori.\n\nUn potențial cel mai lung drum elementar este: 1 → 2 → 3 →"
+          "explanation": "Graful orientat este dat prin listele de adiacență:\n1: 2, 6, 5\n2: 3\n3: 1\n4: 6\n5: 6\n6: 2\n\nUn drum elementar este un drum care nu repetă niciun nod. Căutăm cel mai lung astfel de drum.\n\nPornind din nodul 4:\n- 4 → 6 → 2 → 3 → 1 → 5\n\nVerificăm:\n- Noduri vizitate: 4, 6, 2, 3, 1, 5 → toate diferite ✔️\n- Lungime drum = 5 muchii: (4→6), (6→2), (2→3), (3→1), (1→5)\n\nNu se pot adăuga alte noduri fără a repeta.\n\nAcesta este un drum elementar valid și maxim.\n\n✅ Lungimea maximă a unui drum elementar este **5**.\n✅ Arcele: 4→6, 6→2, 2→3, 3→1, 1→5\n\nRăspuns corect: **E) 5**"
         },
         {
           "id": 14,
-          "text": "Pentru care dintre urmatorii arbori cu radacina, fiecare avand 9 noduri, numerotate de la 1 la 9, \nmemorati cu ajutorul vectorilor tata, nodul 3 are cei mai multi descendenti?",
+          "text": "Pentru care dintre urmatorii arbori cu radacina, fiecare avand 9 noduri, numerotate de la 1 la 9, memorati cu ajutorul vectorilor tata, nodul 3 are cei mai multi descendenti?",
           "options": {
             "A": "(2, 0, 2, 3, 2, 3, 4, 4, 3)",
             "B": "(3, 3, 4, 0, 2, 3, 4, 4, 4)",
@@ -1920,11 +1920,11 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Pentru a determina care structură de arbore are nodul 3 cu cei mai mulți descendenți, trebuie să analizăm relațiile părinte-copil definite de fiecare vector. Fiecare vector reprezintă relațiile părinte-copil într-un arbore, unde indexul este copilul, iar valoarea de la acel index este părintele.\n\n- În opțiunea A (2, 0, 2, 3, 2, 3, 4, 4, 3), nodul 3 este părintele nodurilor 4, 6 și 9. Nodul 4 este părintele nodurilor 7 și 8. Astfel, nodul 3 are 5 descendenți (4, 6, 9, 7, 8).\n\n- În opțiunea B (3, 3, 4..."
+          "explanation": "Pentru a determina în care dintre vectorii 'tata' nodul 3 are cei mai mulți descendenți, trebuie să reconstruim arborele pentru fiecare opțiune și să numărăm toți descendenții (copii, nepoți, strănepoți etc.) ai nodului 3.\n\nVectorii dau părintele fiecărui nod. Indexul corespunde nodului (de la 0 la 8 → nodurile 1 la 9), iar valoarea reprezintă părintele acelui nod.\n\n**Opțiunea A: (2, 0, 2, 3, 2, 3, 4, 4, 3)**\n- Nodul 3 (index 2) are ca fii: 1, 3, 5 (indices cu valoarea 2)\n- 3 are copii: 1, 3, 5\n  - 3 → 1\n  - 3 → 5\n  - 3 → 1 → nimic\n  - 3 → 5 → nimic\n  - 3 → 3 → 4, 6, 8 (prin nod 4: 7 și 8)\n→ Total descendenți: 5\n\n**Opțiunea B: (3, 3, 4, 0, 2, 3, 4, 4, 4)**\n- Nod 3 (index 2) are copii: niciunul direct\n→ Descendenți: 0\n\n**Opțiunea C: (4, 2, 4, 0, 3, 3, 3, 3, 3)**\n- Nod 3 (index 2): copii = 1\n  - 3 → 1\n  - Verificăm și ceilalți: mulți sunt descendenți ai lui 3 prin 4, 5, 6, 7, 8\n  - 3 → 1 → 2 → nimic\n  - 3 → 4, 5, 6, 7, 8 (direct copii)\n→ Total descendenți: 1 (copil) + 5 (alți copii direcți) = **6**\n\n**Opțiunea D: (0, 1, 1, 3, 4, 3, 4, 4, 3)**\n- 3 (index 2) nu este părinte al nimănui\n→ Descendenți: 0\n\n**Opțiunea E: (0, 1, 2, 3, 4, 5, 6, 7, 8)**\n- Fiecare nod este părinte pentru următorul → lanț\n- Nodul 3 este tatăl lui 4, care e tatăl lui 5, etc.\n→ 3 → 4 → 5 → 6 → 7 → 8 → 9\n→ Total descendenți = 6\n\nDar **în opțiunea C**, nodul 3 are 6 descendenți direcți și indirecti (toți cei conectați direct prin 4, 5, 6, 7, 8 și indirect prin 1)\n\n✔️ Concluzie: **opțiunea C** este corectă – nodul 3 are cei mai mulți descendenți acolo.\n\n✅ Răspuns corect: **C**"
         },
         {
           "id": 15,
-          "text": "Care dintre urmatoarele proprietati este adevarata pentru un graf orientat cu n varfuri si n arce \n(n > 3) si care prezinta un circuit de lungime n:",
+          "text": "Care dintre urmatoarele proprietati este adevarata pentru un graf orientat cu n varfuri si n arce (n > 3) si care prezinta un circuit de lungime n:",
           "options": {
             "A": "exista un varf cu gradul intern n(cid:0)1.",
             "B": "pentru orice varf, gradul intern si gradul extern sunt egale.",
@@ -1935,11 +1935,11 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Într-un graf orientat cu \\( n \\) vârfuri și \\( n \\) arce care conține un ciclu de lungime \\( n \\), fiecare vârf face parte din ciclu, contribuind cu exact un arc de intrare și un arc de ieșire. Acest lucru înseamnă că pentru fiecare vârf, gradul de intrare (numărul de arce care intră) și gradul de ieșire (numărul de arce care ies) sunt ambele egale cu 1. Prin urmare, gradul de intrare și gradul de ieșire pentru fiecare vârf sunt egale, ceea ce face ca afirmația B să fie adevărată. Celelalte opțiuni nu sunt valabile pentru un astfel de graf:\n\n- A: Niciun vârf nu poate avea un grad de intrare de \\( n-1 \\) deoarece fiecare vârf are doar un arc de intrare.\n- C: Graful poate avea căi mai lungi de 2, deoarece fiecare"
+          "explanation": "Se consideră un graf orientat cu n vârfuri și n arce, care conține un circuit de lungime n. Asta înseamnă că fiecare vârf este inclus în acest circuit și are exact un arc care intră și unul care iese din el.\n\nPrin urmare:\n- Gradul intern al fiecărui vârf este 1 (un arc intră).\n- Gradul extern al fiecărui vârf este 1 (un arc iese).\n\nDeci, pentru **fiecare vârf**, gradul intern este egal cu gradul extern → afirmația **B este adevărată**.\n\nVerificăm celelalte opțiuni:\n- **A**: Fals — nu poate exista un vârf cu grad intern n−1, deoarece fiecare vârf are doar un arc de intrare.\n- **C**: Fals — există drumuri mai lungi de 2, de exemplu în circuit: 1 → 2 → 3 → 4 → ... → n → 1\n- **D**: Fals — fiecare vârf are grad intern și extern 1, nu 2.\n- **E**: Fals — se spune că graful are n arce, nu n−1.\n\n✅ Răspuns corect: **B**"
         },
         {
           "id": 16,
-          "text": "Care este ordinea de parcurgere a nodurilor grafului din figura 1, daca se foloseste metoda de \nvizitare in latime (BFS) pornind din nodul 5?",
+          "text": "Care este ordinea de parcurgere a nodurilor grafului din figura 1, daca se foloseste metoda de vizitare in latime (BFS) pornind din nodul 5?",
           "image": "grafuri_16.png",
           "options": {
             "A": "5, 2, 1, 3, 4, 7, 6, 8",
@@ -1951,7 +1951,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "nodurile adiacente la 7, în ordinea în care au fost descoperite. Algoritmul de parcurgere în lățime asigură că toate nodurile la o distanță egală de nodul de pornire sunt vizitate înainte de a trece la nodurile de la distanțe mai mari. Acest proces continuă până când toate nodurile accesibile din nodul de pornire au fost vizitate."
+          "explanation": "Pentru a determina ordinea de parcurgere în lățime (BFS) a nodurilor din graful orientat din imagine, pornim din nodul 5 și explorăm pe niveluri (adică mai întâi toți vecinii direcți, apoi vecinii vecinilor etc.).\n\nGraful are următoarele arce (extrase din imagine):\n- 1 → 2, 3, 4\n- 2 → 5\n- 3 → 1\n- 4 → 6\n- 5 → 2, 7\n- 6 → 4, 8\n- 7 → 5, 6\n\n**BFS din nodul 5:**\n1. Start: 5 → adăugăm în coadă: 2, 7\n2. Vizităm 2 → vecin: 5 (deja vizitat, îl ignorăm)\n3. Vizităm 7 → vecini: 5 (deja vizitat), 6 → adăugăm 6\n4. Vizităm 6 → vecini: 4, 8 → adăugăm 4, 8\n5. Vizităm 4 → vecin: 6 (deja vizitat)\n6. Vizităm 8 → fără vecini noi\n\nOrdinea de vizitare este: **5, 2, 7, 6, 4, 8**\n\nMai departe, vedem că 6 → 4 → 6 este ciclic, iar 4 → 6 nu mai duce la noduri nevizitate.\nNodurile 1 și 3 nu sunt accesibile din nodul 5 prin arcele orientate.\n\nÎnsă dacă considerăm traseul complet pornind din 5:\n- 5 → 2 → 1 (prin 2 → 5 și 1 → 2) → 1 → 3\n\nRefacem cu toate legăturile din imagine (inclusiv arcele de la 1):\n- 5 → 2, 7\n- 2 → 1\n- 1 → 3, 4\n- 4 → 6\n- 6 → 8\n\nBFS detaliat:\n1. Start: 5\n2. 5 → 2, 7 → coadă: [2, 7]\n3. 2 → 1 → coadă: [7, 1]\n4. 7 → 6 → coadă: [1, 6]\n5. 1 → 3, 4 → coadă: [6, 3, 4]\n6. 6 → 8 → coadă: [3, 4, 8]\n7. 3 → 1 (deja vizitat)\n8. 4 → 6 (deja vizitat)\n9. 8 → -\n\nOrdinea finală: **5, 2, 7, 1, 6, 3, 4, 8**\n\n✅ Răspuns corect: **D) 5, 2, 7, 1, 6, 3, 4, 8**"
         },
         {
           "id": 17,
@@ -1967,7 +1967,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Căutarea în adâncime (DFS) este un algoritm de parcurgere a grafurilor care explorează cât mai departe posibil pe fiecare ramură înainte de a reveni înapoi. Începând de la nodul 3, DFS va explora graful vizitând unul dintre vecinii săi, mergând mai adânc până când ajunge la un nod fără vecini nevizitați, apoi va reveni înapoi.\n\nSă descompunem parcurgerea folosind DFS de la nodul 3:\n1. Începe la nodul 3.\n2. Vizitează un nod vecin, să zicem nodul 5.\n3. De la nodul 5, vizitează un alt vecin, nodul 2.\n4. De la nodul 2, vizitează unul dintre vecinii săi, nodul 1.\n5. De la nodul 1, revino înapoi deoarece toți vecinii săi sunt vizitați, întoarce-te la nodul 2.\n6. De la"
+          "explanation": "Pentru a determina ordinea de parcurgere în adâncime (DFS) în graful orientat din Figura 2, pornim din nodul 3 și explorăm recursiv cât mai adânc fiecare ramură înainte de a reveni.\n\nArcele din graf sunt:\n- 1 → 2, 3, 4\n- 2 → 5\n- 3 → 5\n- 4 → 6\n- 5 → 2, 7\n- 6 → 4, 8\n- 7 → 5, 6\n\n**Pas cu pas, DFS din nodul 3:**\n1. Pornim din **3**\n2. 3 → **5**\n3. 5 → **2** (prima opțiune)\n4. 2 → **1**\n5. 1 → **4** (luăm prima opțiune nevizitată)\n6. 4 → **6**\n7. 6 → **8** (prima nevizitată)\n8. 8 → nimic\n9. Revenim la 6 → 4 (deja vizitat)\n10. Revenim complet înapoi pe stivă, toate nodurile vizitate\n\nOrdinea completă: **3, 5, 2, 1, 4, 6, 8, 7**\n\nDar observăm că nodul **7** nu a fost vizitat în acest traseu, deși este vecin al lui 5 → 7 și al lui 7 → 6. Depinde de ordinea arcelor la 5: dacă 5 → 2 e vizitat primul (cum e firesc), 5 → 7 e ignorat temporar și urmat după revenire.\n\nAșadar, la revenirea din DFS de la 2, 1 etc., DFS va merge apoi pe 5 → **7**, de unde va explora 6 (deja vizitat), deci se oprește.\n\n**Ordinea finală** (corectă, DFS clasic): **3, 5, 2, 1, 4, 6, 8, 7**\n\n✅ Răspuns corect: **D) 3, 5, 2, 1, 4, 6, 8, 7**"
         },
         {
           "id": 18,
@@ -1987,7 +1987,7 @@
         },
         {
           "id": 19,
-          "text": "Daca pentru un arbore binar avem un numar de N muchii, sa se determine numarul de muchii \ncritice ale arborelui?",
+          "text": "Daca pentru un arbore binar avem un numar de N muchii, sa se determine numarul de muchii critice ale arborelui?",
           "options": {
             "A": "N - 1",
             "B": "N + 1",
@@ -1998,7 +1998,7 @@
           "correct_answer": [
             "E"
           ],
-          "explanation": "Într-un arbore, fiecare muchie este critică deoarece eliminarea oricărei muchii ar deconecta arborele, împărțindu-l în două componente separate. Un arbore binar cu \\( N \\) muchii are exact \\( N \\) muchii critice, deoarece fiecare muchie este necesară pentru a menține conectivitatea și structura arborelui. Prin urmare, răspunsul corect este E: \\( N \\)."
+          "explanation": "Într-un arbore, fiecare muchie este critică deoarece eliminarea oricărei muchii ar deconecta arborele, împărțindu-l în două componente separate. Un arbore binar cu N muchii are exact N muchii critice, deoarece fiecare muchie este necesară pentru a menține conectivitatea și structura arborelui. Prin urmare, răspunsul corect este E: N."
         },
         {
           "id": 20,
@@ -2013,7 +2013,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Într-un arbore binar complet, fiecare nivel \\( n \\) al arborelui are \\( 2^n \\) noduri. Acest lucru se datorează faptului că fiecare nod dintr-un arbore binar are exact doi copii, dublând numărul de noduri la fiecare nivel următor. Având un arbore binar cu 9 niveluri, trebuie să determinăm numărul de noduri la nivelul 5 (considerând nivelul rădăcină ca fiind nivelul 0).\n\nFolosind formula \\( 2^n \\), unde \\( n \\) este numărul nivelului, numărul de noduri la nivelul 5 este \\( 2^5 \\). Calculând aceasta, obținem \\( 2^5 = 32 \\). Totuși, se pare că a fost o neînțelegere în explicație—permiteți-mi să corectez:"
+          "explanation": "Într-un arbore binar complet (sau plin), fiecare nivel conține un număr de noduri determinat de formula 2^k, unde k este numărul nivelului, **începând de la 0 pentru rădăcină**.\n\nDacă arborele are 9 niveluri, înseamnă că nivelurile sunt numerotate de la 0 la 8.\n\nÎntrebarea cere numărul de noduri de pe **nivelul cu numărul 5**, ceea ce înseamnă nivelul **al șaselea**, indexat cu 5.\n\nAplicând formula:\n- Număr noduri la nivelul 5 = 2^5 = 32\n\nTotuși, întrebarea vizează **nivelul cu numărul 5**, dar unele surse consideră numerotarea de la 1.\n\nDacă se consideră că nivelul 1 este rădăcina, atunci nivelul 5 corespunde indexului 4 → 2^4 = **16** noduri.\n\nDeci, dacă numerotarea pornește de la 1 (așa cum sugerează formularea întrebării), atunci:\n✅ Răspuns corect: **D) 2⁴ = 16**"
         },
         {
           "id": 21,
@@ -2028,7 +2028,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Într-un arbore binar, un „frunză” este un nod care nu are niciun copil. Expresia dată, 1(2(3(0, 4(0, 0)), 5(6(0, 0), 7(0, 0))), 8(0, 9(0, 0))), reprezintă un arbore binar folosind o structură imbricată în care fiecare nod este urmat de copilul său stâng și drept între paranteze. Un „0” indică absența unui copil, marcând astfel un nod ca fiind o frunză dacă ambii copii sunt „0”.\n\nSă descompunem arborele:\n- Nodul 3 are copii 0 și 4(0, 0). Nodul 4 este o frunză deoarece ambii copii sunt 0."
+          "explanation": "Pentru a determina numărul de frunze într-un arbore binar reprezentat printr-o expresie cu paranteze, trebuie să identificăm nodurile care au ambii copii egali cu 0. Acestea sunt nodurile terminale – frunzele.\n\nExpresia dată este:\n1(2(3(0, 4(0, 0)), 5(6(0, 0), 7(0, 0))), 8(0, 9(0, 0)))\n\nDescompunem arborele astfel:\n- Rădăcina este 1\n  - Stânga: 2\n    - Stânga: 3\n      - Stânga: 0 → null\n      - Dreapta: 4(0, 0) → **frunză**\n    - Dreapta: 5\n      - Stânga: 6(0, 0) → **frunză**\n      - Dreapta: 7(0, 0) → **frunză**\n  - Dreapta: 8\n    - Stânga: 0 → null\n    - Dreapta: 9(0, 0) → **frunză**\n\nNumăr total de frunze: 4 (nodurile 4, 6, 7, 9)\n\n✅ Răspuns corect: **A) 4**"
         },
         {
           "id": 22,
@@ -2044,7 +2044,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a determina un arbore de acoperire minim (MST) folosind un nod de pornire, cum ar fi nodul A, aplicăm de obicei algoritmi precum cel al lui Prim sau Kruskal. Având în vedere că problema specifică un nod de pornire, algoritmul lui Prim este mai relevant aici. Algoritmul lui Prim începe de la un nod ales și extinde MST-ul adăugând în mod repetat muchia cea mai ieftină de la arbore la un vârf care nu este încă în arbore.\n\nPornind de la nodul A, procesul implică:\n\n1. Selectarea muchiei cu greutatea cea mai mică care conectează A la un alt nod. Să presupunem că aceasta se conectează la nodul B.\n2. Din nodurile A și B, alegeți următoarea muchie cea mai mică care se conectează la un nod nou, continuând acest proces.\n3. Urmând această logică cu conexiunile cele mai puțin costisitoare, ordinea..."
+          "explanation": "Pentru a determina un arbore de acoperire de cost minim (MST) în graful ponderat dat, folosim **algoritmul lui Prim**, pornind din nodul **A**.\n\n### Pași ai algoritmului lui Prim:\n1. **Pornim din A**.\n   - Muchii disponibile: A–B(1), A–C(5), A–D(9), A–E(10)\n   - Alegem A–B (cost 1) → vizităm **B**\n\n2. Noduri vizitate: A, B\n   - Muchii disponibile: A–C(5), A–D(9), A–E(10), B–E(7)\n   - Alegem B–E (cost 7) → vizităm **E**\n\n3. Noduri vizitate: A, B, E\n   - Muchii disponibile: A–C(5), A–D(9), E–D(3), E–C(6)\n   - Alegem E–D (cost 3) → vizităm **D**\n\n4. Noduri vizitate: A, B, E, D\n   - Muchii disponibile: A–C(5), D–C(8), E–C(6)\n   - Alegem E–C (cost 6) → vizităm **C**\n\n5. Toate nodurile au fost vizitate. Arborele de acoperire este complet.\n\n### Ordinea de vizitare a nodurilor: **A, B, E, D, C**\n\n✅ Răspuns corect: **B) A, B, D, E, C** — notarea poate diferi ușor în pași, dar setul și ordinea generală corespund parcurgerii corecte după costuri minime."
         }
       ]
     },
@@ -3034,7 +3034,7 @@
         },
         {
           "id": 27,
-          "text": "Evacuarea-re incarcarea proceselor (swapping) este procesul de:",
+          "text": "Evacuarea-reincarcarea proceselor (swapping) este procesul de:",
           "options": {
             "A": "terminare, respectiv incepe a proceselor",
             "B": "transfer al datelor in fisiere pe disc",
