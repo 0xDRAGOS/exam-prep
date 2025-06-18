@@ -24,6 +24,12 @@ const TestPage = () => {
         return saved !== null ? JSON.parse(saved) : true;
     });
 
+    const [selectSubjectsMode, setSelectSubjectsMode] = useState(false);
+    const [availableSubjects, setAvailableSubjects] = useState([]);
+    const [selectedSubjects, setSelectedSubjects] = useState([]);
+
+    const [wrongAnswers, setWrongAnswers] = useState([]);
+
     useEffect(() => {
         localStorage.setItem("wrapText", JSON.stringify(wrapText));
     }, [wrapText]);
@@ -40,6 +46,11 @@ const TestPage = () => {
         timerRef.current = setTimeout(() => setTimeLeft(t => t - 1), 1000);
         return () => clearTimeout(timerRef.current);
     }, [timeLeft]);
+
+    useEffect(() => {
+        if (selectSubjectsMode) loadAvailableSubjects();
+    }, [selectSubjectsMode]);
+
 
     const current = questions[currentIndex];
     const correct = current?.correct_answer ?? [];
@@ -67,6 +78,13 @@ const TestPage = () => {
     const isCorrectOption = (key) => isMultiple ? correct.includes(key) : correct === key;
     const isSelected = (key) => !!selectedAnswers[key];
 
+    const loadAvailableSubjects = () => {
+        fetch(QUESTIONS_PATH)
+            .then(res => res.json())
+            .then(data => setAvailableSubjects(data.subjects || []));
+    };
+
+
     const getOptionClass = (key) => {
         if (!answered) return "bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600";
         if (isCorrectOption(key)) return "bg-green-100 dark:bg-green-700 text-green-800 dark:text-green-100 border border-green-500";
@@ -79,7 +97,17 @@ const TestPage = () => {
         const correctSet = isMultiple ? correct : [correct];
         const isCorrect = selected.length === correctSet.length &&
             selected.every(k => correctSet.includes(k));
-        if (isCorrect) setScore(s => s + 1);
+
+        if (isCorrect) {
+            setScore(s => s + 1);
+        } else {
+            setWrongAnswers(prev => [...prev, {
+                question: current,
+                selected: selected,
+                correct: correctSet
+            }]);
+        }
+
         setFeedback(isCorrect ? 'Răspuns corect!' : `Greșit. Corect: ${correctSet.join(', ')}`);
         setAnswered(true);
     };
@@ -121,6 +149,58 @@ const TestPage = () => {
         ? ((currentIndex + (answered ? 1 : 0)) / questions.length) * 100
         : 0;
 
+    if (selectSubjectsMode && !started) {
+        return (
+            <div className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
+                <h2 className="text-2xl font-bold mb-4">🎯 Selectează materiile</h2>
+                <div className="grid grid-cols-1 gap-3 text-left mb-4">
+                    {availableSubjects.map((subject, index) => (
+                        <label key={index} className="flex items-center gap-2">
+                            <input
+                                type="checkbox"
+                                value={subject.name}
+                                checked={selectedSubjects.includes(subject.name)}
+                                onChange={(e) => {
+                                    const checked = e.target.checked;
+                                    const name = subject.name;
+                                    setSelectedSubjects(prev =>
+                                        checked ? [...prev, name] : prev.filter(s => s !== name)
+                                    );
+                                }}
+                            />
+                            {subject.name}
+                        </label>
+                    ))}
+                </div>
+                <button
+                    disabled={selectedSubjects.length === 0}
+                    onClick={() => {
+                        fetch(QUESTIONS_PATH)
+                            .then(res => res.json())
+                            .then(data => {
+                                const filtered = data.subjects
+                                    .filter(s => selectedSubjects.includes(s.name))
+                                    .flatMap(s => s.questions);
+                                const shuffled = filtered.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
+                                setQuestions(shuffled);
+                                setStarted(true);
+                                setSelectSubjectsMode(false);
+                            });
+                    }}
+                    className="mt-4 px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
+                >
+                    ✅ Începe Testul
+                </button>
+                <button
+                    onClick={() => setSelectSubjectsMode(false)}
+                    className="ml-2 mt-4 px-6 py-3 bg-blue-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
+                >
+                    ↩ Înapoi
+                </button>
+            </div>
+        );
+    }
+
     if (!started) {
         return (
             <div className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
@@ -128,12 +208,23 @@ const TestPage = () => {
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
                     Vei primi 30 de întrebări aleatorii, cu timp limitat. Răspunde cât mai corect pentru a-ți îmbunătăți scorul.
                 </p>
-                <button
-                    onClick={() => setStarted(true)}
-                    className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-                >
-                    🚀 Începe Testul
-                </button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button
+                        onClick={() => {
+                            setStarted(true);
+                            loadQuestions();
+                        }}
+                        className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                    >
+                        🚀 Test Aleator
+                    </button>
+                    <button
+                        onClick={() => setSelectSubjectsMode(true)}
+                        className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                    >
+                        🎯 Test Personalizat
+                    </button>
+                </div>
             </div>
         );
     }
@@ -158,12 +249,38 @@ const TestPage = () => {
                         setTimeLeft(TEST_DURATION_SECONDS);
                         setAnswered(false);
                         setShowExplanation(false);
+                        setWrongAnswers([]);
                         loadQuestions();
                     }}
                     className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
                 >
                     🔁 Reia Testul
                 </button>
+                {wrongAnswers.length > 0 && (
+                    <div className="mt-8 text-left">
+                        <h3 className="text-xl font-semibold mb-4 text-red-600">❌ Întrebări greșite:</h3>
+                        {wrongAnswers.map((item, index) => (
+                            <div key={index} className="mb-6 p-4 bg-gray-100 dark:bg-gray-800 rounded shadow">
+                                <div className="mb-2 font-semibold text-gray-800 dark:text-gray-100">
+                                    {index + 1}. {item.question.text}
+                                </div>
+
+                                <div className="text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <strong>Răspunsul tău:</strong> {item.selected.join(', ')}
+                                </div>
+                                <div className="text-sm text-green-700 dark:text-green-300 mb-1">
+                                    <strong>Corect:</strong> {item.correct.join(', ')}
+                                </div>
+                                {item.question.explanation && (
+                                    <div className="text-sm text-yellow-800 dark:text-yellow-200 mt-2 border-l-4 border-yellow-500 pl-3">
+                                        <strong>Explicație:</strong><br />
+                                        {item.question.explanation}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         );
     }
