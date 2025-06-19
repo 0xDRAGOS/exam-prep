@@ -29,6 +29,8 @@ const TestPage = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     const [wrongAnswers, setWrongAnswers] = useState([]);
+    const [showWrongAnswers, setShowWrongAnswers] = useState(false);
+    const [visibleExplanations, setVisibleExplanations] = useState({});
 
     useEffect(() => {
         localStorage.setItem("wrapText", JSON.stringify(wrapText));
@@ -83,7 +85,6 @@ const TestPage = () => {
             .then(res => res.json())
             .then(data => setAvailableSubjects(data.subjects || []));
     };
-
 
     const getOptionClass = (key) => {
         if (!answered) return "bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600";
@@ -148,6 +149,13 @@ const TestPage = () => {
     const questionProgress = questions.length
         ? ((currentIndex + (answered ? 1 : 0)) / questions.length) * 100
         : 0;
+
+    const toggleExplanation = (index) => {
+        setVisibleExplanations(prev => ({
+            ...prev,
+            [index]: !prev[index]
+        }));
+    };
 
     if (selectSubjectsMode && !started) {
         return (
@@ -250,6 +258,9 @@ const TestPage = () => {
                         setAnswered(false);
                         setShowExplanation(false);
                         setWrongAnswers([]);
+                        setShowWrongAnswers(false);
+                        setVisibleExplanations({});
+
                         loadQuestions();
                     }}
                     className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
@@ -257,30 +268,100 @@ const TestPage = () => {
                     🔁 Reia Testul
                 </button>
                 {wrongAnswers.length > 0 && (
-                    <div className="mt-8 text-left">
-                        <h3 className="text-xl font-semibold mb-4 text-red-600">❌ Întrebări greșite:</h3>
-                        {wrongAnswers.map((item, index) => (
-                            <div key={index} className="mb-6 p-4 bg-gray-100 dark:bg-gray-800 rounded shadow">
-                                <div className="mb-2 font-semibold text-gray-800 dark:text-gray-100">
-                                    {index + 1}. {item.question.text}
-                                </div>
-
-                                <div className="text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <strong>Răspunsul tău:</strong> {item.selected.join(', ')}
-                                </div>
-                                <div className="text-sm text-green-700 dark:text-green-300 mb-1">
-                                    <strong>Corect:</strong> {item.correct.join(', ')}
-                                </div>
-                                {item.question.explanation && (
-                                    <div className="text-sm text-yellow-800 dark:text-yellow-200 mt-2 border-l-4 border-yellow-500 pl-3">
-                                        <strong>Explicație:</strong><br />
-                                        {item.question.explanation}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                    <button
+                        onClick={() => setShowWrongAnswers(prev => !prev)}
+                        className="ml-2 mt-6 mb-6 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                    >
+                        {showWrongAnswers ? '🔽 Ascunde răspunsurile greșite' : '❌ Afișează răspunsurile greșite'}
+                    </button>
                 )}
+                {showWrongAnswers && wrongAnswers.map((item, index) => {
+                    const isMulti = Array.isArray(item.correct);
+                    const isMarked = (key) => item.selected.includes(key);
+                    const isCorrectKey = (key) => isMulti ? item.correct.includes(key) : item.correct === key;
+
+                    const getAnswerStyle = (key) => {
+                        if (isCorrectKey(key)) return "bg-green-100 dark:bg-green-700 text-green-800 dark:text-green-100 border border-green-500";
+                        if (isMarked(key)) return "bg-red-100 dark:bg-red-700 text-red-800 dark:text-red-100 border border-red-500";
+                        return "bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600";
+                    };
+
+                    return (
+                        <div key={index} className="mb-8 p-6 bg-gray-100 dark:bg-gray-800 rounded shadow">
+                            <div className="mb-2 font-semibold text-gray-800 dark:text-gray-100">
+                                <SyntaxHighlighter
+                                    language="java"
+                                    style={isDark ? oneDark : oneLight}
+                                    wrapLines={wrapText}
+                                    wrapLongLines={wrapText}
+                                    codeTagProps={{
+                                        style: {
+                                            whiteSpace: wrapText ? 'pre-wrap' : 'pre',
+                                            wordBreak: wrapText ? 'break-word' : 'normal',
+                                        }
+                                    }}
+                                    customStyle={{
+                                        borderRadius: '0.5rem',
+                                        padding: '1rem',
+                                        fontSize: '0.9rem',
+                                        background: isDark ? '#1e293b' : '#f9fafb',
+                                        overflowX: wrapText ? 'visible' : 'auto',
+                                    }}
+                                >
+                                    {index + 1 + ". " + item.question.text}
+                                </SyntaxHighlighter>
+                            </div>
+
+                            {item.question.image && (
+                                <img
+                                    src={`${IMAGE_PATH}${item.question.image}`}
+                                    alt="Întrebare"
+                                    className="my-4 rounded shadow max-w-full"
+                                />
+                            )}
+
+                            <div className="grid grid-cols-1 gap-3 mt-3">
+                                {Object.entries(item.question.options).map(([key, val]) => (
+                                    <div
+                                        key={key}
+                                        className={`p-4 rounded-md select-none ${getAnswerStyle(key)}`}
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <input
+                                                type={isMulti ? 'checkbox' : 'radio'}
+                                                checked={isMarked(key)}
+                                                readOnly
+                                            />
+                                            <span className="text-base break-words">{key}. {val}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {item.question.explanation && (
+                                <>
+                                    <button
+                                        onClick={() => toggleExplanation(index)}
+                                        className="mt-4 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
+                                    >
+                                        {visibleExplanations[index] ? 'Ascunde Explicația' : 'Vezi Explicația'}
+                                    </button>
+
+                                    {visibleExplanations[index] && (
+                                        <div className="flex items-start mt-3 bg-yellow-100 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100 border border-yellow-300 dark:border-yellow-600 p-4 rounded">
+                                            <div className="text-sm leading-relaxed whitespace-pre-wrap">
+                                                <Info size={20} className="mt-1" />
+                                                <p className="font-semibold">Explicație:</p>
+                                                {item.question.explanation || "(Nu există explicație pentru această întrebare.)"}
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
+                            )}
+
+                        </div>
+                    );
+                })}
             </div>
         );
     }
@@ -310,7 +391,6 @@ const TestPage = () => {
                     </button>
                 </div>
             </div>
-
 
             <div className="mb-2">
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded h-2">

@@ -2719,7 +2719,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "de a gestiona eficient interacțiunile dintre hardware și software, permițând sistemului să prioritizeze și să aloce resursele în mod optim. Acest lucru este crucial pentru performanța și stabilitatea generală a sistemului de calcul."
+          "explanation": "Subunitățile de întrerupere reprezintă un mijloc de comunicare între hardware-ul calculatorului și sistemul de operare. Acestea permit sistemului să răspundă prompt la evenimentele externe (cum ar fi intrările de la periferice) fără a consuma resurse în mod inutil prin așteptare activă. Prin intermediul acestor subunități, se asigură o interacțiune eficientă și coordonată între componentele fizice ale sistemului și software-ul care le gestionează."
         },
         {
           "id": 6,
@@ -2833,7 +2833,7 @@
             "B",
             "C"
           ],
-          "explanation": "Iată traducerea textului în limba română:\n\nCriteriile generale urmate de algoritmii de planificare se concentrează pe asigurarea unei performanțe optime a sistemului și a satisfacției utilizatorului.\n\nA. Corectitudinea (echitabilitatea): Acest criteriu asigură că toate procesele sunt tratate corect și primesc timp de procesor adecvat, prevenind monopolizarea resurselor de către un singur proces, ceea ce este crucial pentru menținerea unei funcționări echilibrate a sistemului.\n\nB. Respectarea politicii SO: Algoritmii de planificare trebuie să respecte politicile și regulile sistemului de operare pentru a asigura îndeplinirea obiectivelor sistemului, cum ar fi gestionarea priorităților și alocarea resurselor.\n\nC. Eficiența: Eficiența este esențială pentru maximizarea performanței sistemului prin minimizarea timpului de execuție a proceselor, a timpului de răspuns și maximizarea utilizării procesorului, asigurând utilizarea eficientă a resurselor.\n\nD. Mentenabilitatea: Deși mentenabilitatea este importantă pentru dezvoltarea software-ului,"
+          "explanation": "Algoritmii de planificare urmăresc optimizarea performanței sistemului de operare prin aplicarea unor criterii esențiale:\n\n- **A. Corectitudinea (echitabilitatea)**: Se asigură că toate procesele au acces echitabil la resurse, prevenind blocarea sau favorizarea unui proces.\n\n- **B. Respectarea politicii SO**: Algoritmii trebuie să se conformeze politicii stabilite de sistemul de operare privind prioritățile, alocările și obiectivele generale.\n\n- **C. Eficiența**: Implică maximizarea utilizării procesorului și a resurselor sistemului, reducerea timpilor de așteptare și creșterea vitezei de răspuns.\n\n- **D. Mentenabilitatea** nu este un criteriu direct de planificare, ci ține mai degrabă de întreținerea codului software, de aceea nu este considerat un criteriu principal în contextul algoritmilor de planificare."
         },
         {
           "id": 14,
@@ -2879,7 +2879,7 @@
             "C",
             "D"
           ],
-          "explanation": "Excepțiile în programare se referă la evenimente care perturbă fluxul normal de execuție al unui program. Ele pot apărea din diverse motive, cum ar fi erori sau condiții specifice care necesită un tratament special.\n\n- Opțiunea B este corectă deoarece excepțiile sunt, în esență, întreruperi în mașina abstractă reprezentată de programul care rulează pe un sistem real de calcul. Ele acționează ca semnale că s-a întâmplat ceva neașteptat, necesitând ca programul să gestioneze situația.\n\n- Opțiunea C este corectă deoarece excepțiile servesc ca un mecanism de auto-întrerupere într-un program. Când apare o excepție, aceasta declanșează, de obicei, sistemul de operare sau runtime-ul să execute funcții specifice sau gestionari de excepții pentru a rezolva problema.\n\n- Opțiunea D este corectă deoarece excepțiile sunt adesea rezultatul executării unei instrucțiuni specifice în programul care rulează. De exemplu, încercarea de a"
+          "explanation": "Excepțiile program sunt evenimente generate în timpul execuției unui program care alterează fluxul normal al execuției. Ele pot apărea:\n- (B) ca întreruperi logice ale mașinii abstracte datorate stării programului;\n- (C) ca solicitări interne ale programului pentru a apela servicii ale sistemului de operare;\n- (D) ca urmare a unor instrucțiuni specifice (ex. împărțire la zero, acces nevalid la memorie etc.).\nOpțiunea A descrie întreruperi hardware, nu excepții de program."
         },
         {
           "id": 17,
@@ -2895,7 +2895,7 @@
             "B",
             "C"
           ],
-          "explanation": "În contextul programării, în special atunci când se lucrează cu variabile folosite ca numărătoare, anumite operațiuni sunt de obicei permise.\n\n- **AVANSARE**: Această operațiune este adesea folosită pentru a incrementa valoarea unei numărători. Este o acțiune comună pentru a muta numărătoarea la starea sa următoare, prin urmare este validă.\n- **AȘTEPTARE**: Această operațiune implică așteptarea ca o anumită condiție să fie îndeplinită înainte de a continua. Deși nu modifică direct numărătoarea, poate fi asociată cu fluxul de control care implică numărători, astfel încât poate fi aplicată în scenarii în care aștepți ca numărătoarea să atingă o valoare specifică.\n- **CITIRE**: Aceasta este acțiunea de a accesa valoarea curentă a numărătorii fără a o modifica. Este o operațiune fundamentală care poate fi efectuată pe orice variabilă, inclusiv"
+          "explanation": "Operațiile care se pot efectua asupra variabilelor contor sunt:\n- **ADVANCE**: avansează starea contorului (de regulă, incrementează).\n- **AWAIT**: permite unui fir de execuție să aștepte până când contorul atinge o anumită valoare.\n- **READ**: permite citirea valorii curente a contorului, fără a o modifica.\nOperația **AWAKE** nu este standard în contextul variabilelor contor și nu este recunoscută ca operație validă în acest cadru."
         },
         {
           "id": 18,
@@ -2913,7 +2913,7 @@
             "D",
             "E"
           ],
-          "explanation": "Sistemele de operare sunt esențiale pentru gestionarea resurselor hardware și software ale unui computer. Funcțiile principale ale acestora includ:\n\nA. **Managementul fișierelor**: Organizarea, stocarea, accesarea și protejarea datelor pe unități de stocare.\n\nC. **Managementul memoriei**: Alocarea și eliberarea memoriei RAM pentru procese, asigurând eficiența și evitarea conflictelor între aplicații.\n\nD. **Managementul dispozitivelor periferice**: Controlul și coordonarea interacțiunilor între computer și dispozitivele externe, cum ar fi imprimantele, tastaturile și mouse-urile."
+          "explanation": "Sistemele de operare au rolul de a gestiona eficient resursele unui sistem de calcul. Funcțiile principale includ:\n- **A. Managementul fișierelor**: organizarea, accesarea și controlul asupra fișierelor și directoarelor.\n- **C. Managementul memoriei**: alocarea și eliberarea memoriei pentru procese, gestionarea memoriei virtuale.\n- **D. Managementul dispozitivelor periferice**: interfațarea cu imprimante, tastaturi, discuri etc.\n- **E. Managementul proceselor**: inițierea, planificarea, sincronizarea și terminarea proceselor.\nOpțiunea **B. Managementul serverelor** nu este o funcțiune de bază a sistemului de operare, ci mai degrabă o funcție specifică aplicațiilor de tip server."
         },
         {
           "id": 19,
@@ -2957,7 +2957,7 @@
             "C",
             "D"
           ],
-          "explanation": "În contextul sistemelor de calcul, subsistemul de memorie este conceput pentru a gestiona și organiza resursele de memorie în mod eficient. De obicei, acesta satisface următoarele proprietăți:\n\nB. Permite extensia modulară: Subsistemul de memorie poate fi extins sau modificat într-un mod modular, permițând actualizări sau modificări ușoare ale capacității de memorie fără a afecta întregul sistem.\n\nC. Permite alocarea dinamică: Alocarea dinamică este o caracteristică cheie a gestionării memoriei, permițând sistemului să aloce și să dezaloce memorie după cum este necesar, optimizând utilizarea resurselor disponibile.\n\nD. Permite lucrul în paralel: Subsistemele de memorie moderne suportă procesarea în paralel, permițând accesul simultan al mai multor procese sau fire de execuție la memorie, ceea ce îmbunătățește performanța și eficiența.\n\nOpțiunea A, care se referă la accesul direct la fișiere, este"
+          "explanation": "Subsistemul de memorie al unui calculator este proiectat să asigure o utilizare eficientă a resurselor și o performanță ridicată. Proprietățile esențiale includ:\n\n- **B. Permite extensia modulară**: memoriile pot fi extinse ușor, adăugând module noi fără a afecta sistemul existent.\n- **C. Permite alocarea dinamică**: memoria este alocată sau eliberată în funcție de necesitățile aplicațiilor în timp real.\n- **D. Permite lucrul în paralel**: mai multe unități de procesare pot accesa simultan memoria, îmbunătățind eficiența sistemului.\n\nOpțiunea **A** nu este corectă, deoarece accesul la fișiere este gestionat de subsistemul de fișiere, nu de cel de memorie."
         },
         {
           "id": 22,
@@ -3001,7 +3001,7 @@
             "C",
             "D"
           ],
-          "explanation": "În contextul sistemelor de calcul, fiecare nivel al ierarhiei este caracterizat de aspecte specifice care îi definesc funcționalitatea și scopul.\n\n- **Structuri de informație (A)**: Acest termen se referă la structurile de date utilizate la fiecare nivel, care definesc modul în care informația este organizată și manipulată în cadrul acelui nivel.\n\n- **Tipuri de date (C)**: Fiecare nivel se ocupă de anumite tipuri de date care sunt adecvate pentru operațiunile sale, reflectând abstractizarea și funcționalitatea acelui nivel.\n\n- **Operații primitive (D)**: Acestea sunt operațiile de bază care pot fi efectuate la un anumit nivel, formând acțiunile fundamentale pe care se construiesc procese mai complexe.\n\nOpțiunea incorectă:\n\n- **Relația între nivele (B)**: Deși relațiile între niveluri sunt importante pentru înțelegerea..."
+          "explanation": "Fiecare nivel din ierarhia sistemului de calcul este definit printr-un set de caracteristici proprii care susțin funcționalitatea acelui nivel:\n\n- **A. Structuri de informație**: definesc modul de organizare și reprezentare a datelor la acel nivel.\n- **C. Tipuri de date**: fiecare nivel utilizează tipuri de date adecvate pentru operațiile pe care le efectuează.\n- **D. Operații primitive**: reprezintă setul de acțiuni de bază disponibile la acel nivel, pe baza cărora se construiesc funcționalități mai complexe.\n\nOpțiunea **B** (relația între nivele) nu este o caracteristică definitorie a unui singur nivel, ci o proprietate generală a structurii ierarhice ca întreg."
         },
         {
           "id": 25,
@@ -3030,7 +3030,7 @@
           "correct_answer": [
             "E"
           ],
-          "explanation": "Pentru a determina care procese și resurse sunt implicate într-un blocaj, trebuie să identificăm un ciclu în graful de alocare a resurselor. Un blocaj apare atunci când un set de procese sunt blocate deoarece fiecare proces deține o resursă și așteaptă o altă resursă într-un lanț circular.\n\nSă examinăm relațiile date:\n\n1. Procesul A este blocat la resursa T și deține U.\n2. Procesul B solicită U și deține S.\n3. Procesul C deține R.\n4. Procesul D este blocat la S și R și deține T.\n5. Procesul E este blocat la R.\n\nAcum să analizăm opțiunile pentru a găsi ciclul corect:\n\n- **E. D-S-B-U-A-T**: Această opțiune sugerează un ciclu:\n  - D așteaptă S,"
+          "explanation": "Pentru a identifica interblocarea, construim un lanț de dependențe între procese și resurse:\n\n1. A deține U și așteaptă T.\n2. B deține S și așteaptă U (pe care o are A).\n3. D deține T și așteaptă S (deținută de B).\n\nAstfel, avem un ciclu:\n- D → S (așteaptă) → B → U (așteaptă) → A → T (așteaptă) → D — ceea ce închide cercul de interblocare.\n\nC și E nu sunt implicate direct în ciclu (R este deținut de C, dar E doar așteaptă R — nu închide cercul).\n\nPrin urmare, interblocarea implică: D, S, B, U, A, T — adică opțiunea **E**."
         },
         {
           "id": 27,
@@ -3073,7 +3073,7 @@
             "A",
             "B"
           ],
-          "explanation": "În contextul arhitecturii calculatoarelor, un subsistem funcțional al unui sistem de calcul este compus din mai multe componente care îndeplinesc funcții specifice. Opțiunile corecte sunt:\n\nA. Unitate funcțională propriu-zisă - aceasta se referă la componentele hardware sau software care realizează efectiv sarcini specifice, cum ar fi procesarea datelor.\n\nB. Unitate de control - aceasta coordonează funcționarea diferitelor componente ale sistemului, asigurându-se că toate părțile funcționează în armonie pentru a îndeplini sarcinile cerute.\n\nCelelalte opțiuni, C"
+          "explanation": "În arhitectura sistemelor de calcul, un subsistem funcțional este alcătuit din:\n\n- A. **Unitatea funcțională propriu-zisă** – responsabilă de realizarea operațiilor efective, cum ar fi execuția instrucțiunilor, calcule aritmetice sau logice.\n\n- B. **Unitatea de control** – dirijează și sincronizează activitatea componentelor, controlând fluxul de date și execuția instrucțiunilor.\n\nOpțiunile C și D sunt mai puțin precise în cadrul terminologiei standardizate a arhitecturii calculatoarelor."
         },
         {
           "id": 30,
@@ -3089,7 +3089,7 @@
             "C",
             "D"
           ],
-          "explanation": "Întrebarea se referă la tipurile de operatori utilizați într-o unitate de procesare. Iată o explicație succintă pentru fiecare opțiune:\n\nA. **Operatorul binar** - Acesta este un tip fundamental de operator în informatică care lucrează cu date binare, efectuând operații precum adunarea, scăderea și operațiile logice pe numere binare.\n\nB. **Operatorul cu virgulă fixă** - Acesta este utilizat de obicei în aplicații specifice unde este necesară aritmetica cu virgulă fixă, dar nu este un operator standard în unitățile de procesare cu scop general.\n\nC. **Operatorul cu virgulă mobilă** - Acești operatori se ocupă de aritmetica cu virgulă mobilă, care este esențială pentru o gamă largă de sarcini de calcul, în special cele care necesită precizie cu numere reale.\n\nD. **Operatorul**"
+          "explanation": "Operatorii unității de prelucrare se referă la tipurile de operații pe care aceasta le poate efectua în cadrul procesării datelor:\n\n- **A. Operatorul binar** – Este un operator fundamental care acționează asupra a două operanzi binari și este esențial pentru toate operațiile aritmetice și logice la nivel de procesor.\n\n- **C. Operatorul cu virgulă mobilă** – Este folosit pentru efectuarea calculelor care implică numere reale (float), permițând reprezentarea și manipularea valorilor foarte mari sau foarte mici cu precizie.\n\n- **D. Operatorul zecimal** – Este implicat în operații cu date zecimale, utile în aplicații financiare și comerciale, unde este importantă precizia zecimală.\n\n- **B. Operatorul cu virgulă fixă** nu este un operator standard al unității de prelucrare generală, fiind folosit mai degrabă în aplicații specifice (ex. embedded systems) unde precizia este restrânsă și resursele sunt limitate."
         },
         {
           "id": 31,
@@ -3145,7 +3145,7 @@
           "correct_answer": [
             "C"
           ],
-          "explanation": "Textul este deja în limba română. Dacă ai nevoie de ajutor suplimentar sau de o traducere în altă limbă, te rog să îmi spui."
+          "explanation": "Condițiile de competiție apar atunci când două sau mai multe procese accesează simultan resurse partajate și rezultatul depinde de ordinea execuției. Pentru a evita aceste situații, se folosește **excluderea mutuală**, care asigură că o singură entitate (proces sau fir de execuție) poate accesa o resursă partajată la un moment dat. Astfel, se elimină interferențele și se asigură coerența datelor."
         },
         {
           "id": 35,
@@ -3159,7 +3159,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "resurselor disponibile. În acest fel, procesele sunt clasificate și gestionate în funcție de necesitățile lor specifice, ceea ce permite alocarea mai eficientă a resurselor și îmbunătățirea performanței generale a sistemului. Fiecare coadă poate avea propriile reguli de planificare, adaptate la tipul de procese pe care le gestionează, asigurând astfel o mai bună adaptare la cerințele specifice ale fiecărui proces."
+          "explanation": "Planificarea cu cozi multiple este eficientă în sistemele unde comutarea între procese este lentă, deoarece permite gruparea proceselor cu caracteristici similare și aplicarea unor politici diferite de planificare pentru fiecare coadă. Aceasta reduce costurile asociate comutării contextului și optimizează utilizarea resurselor, adaptându-se mai bine la natura și comportamentul proceselor rulate."
         }
       ]
     },
@@ -3367,7 +3367,7 @@
           "correct_answer": [
             "E"
           ],
-          "explanation": "Răspunsul corect este E.\n\nExplicație: În modelul OSI (Open Systems Interconnection), stratul de transport este conceput pentru a susține atât comunicarea orientată pe conexiune, cât și cea fără conexiune. Aceasta înseamnă că modelul OSI este capabil să gestioneze transmisia de date care necesită stabilirea unei conexiuni înainte de transferul de date (orientată pe conexiune) și transmisia de date care nu necesită o astfel de conexiune (fără conexiune). Prin urmare, afirmația că modelul OSI suportă doar comunicarea fără conexiune la stratul de transport este falsă.\n\nIată o scurtă prezentare a celorlalte opțiuni:\n\nA. Modelul OSI într-adevăr suportă atât comunicarea orientată pe conexiune, cât și cea fără conexiune la stratul de rețea, ceea ce face ca această afirmație să fie adevărată.\n\nB. Așa cum s-a menționat anterior, stratul de transport din modelul OSI suportă ambele tipuri de comunicare."
+          "explanation": "Modelul OSI, la nivelul stratului de transport, suportă atât comunicarea orientată pe conexiune (ex. TCP) cât și cea fără conexiune (ex. UDP-like). Prin urmare, afirmația că modelul OSI suportă *numai* comunicarea fără conexiuni la nivelul transport este falsă. Celelalte opțiuni sunt corecte conform comportamentului prevăzut al modelelor OSI și TCP/IP."
         },
         {
           "id": 15,
@@ -3502,7 +3502,7 @@
             "B",
             "C"
           ],
-          "explanation": "Iată traducerea textului în limba română:\n\nPodurile transparente sunt dispozitive de rețea utilizate pentru a filtra și a redirecționa traficul între diferite segmente ale unei rețele locale (LAN). Ele funcționează prin menținerea unei tabele de redirecționare pentru a lua decizii inteligente despre unde să trimită traficul, pe baza sursei și destinației cadrelor de date. Să analizăm opțiunile corecte:\n\nA. \"Dacă LAN-ul sursă este același cu LAN-ul destinație, atunci abandonează cadrul\": Această regulă este folosită deoarece, dacă sursa și destinația sunt pe același LAN, nu este nevoie să se redirecționeze cadrul prin pod, deoarece ar crea trafic inutil.\n\nB. \"Dacă LAN-ul sursă și cel destinație sunt diferite,"
+          "explanation": "Podurile transparente (transparent bridges) utilizează o serie de reguli pentru a gestiona traficul între segmentele de rețea:\n\n- Dacă LAN-ul sursă este același cu LAN-ul destinație, cadrul este abandonat pentru a evita redirecționarea inutilă (regula A).\n- Dacă LAN-ul sursă și cel destinație sunt diferite, cadrul este transmis către segmentul corespunzător (regula B).\n- Dacă destinația nu este cunoscută (nu există în tabela de redirecționare), cadrul este difuzat către toate segmentele, adică se face \"inundare\" (regula C).\n\nRegula D este incorectă deoarece, în lipsa informației despre LAN-ul destinație, cadrul nu este abandonat, ci transmis prin flooding."
         },
         {
           "id": 24,
@@ -3518,7 +3518,7 @@
             "B",
             "C"
           ],
-          "explanation": "Întrebarea se referă la obiectivele de proiectare ale serviciilor de la nivelul de rețea, care sunt esențiale pentru asigurarea unei comunicări eficiente și eficace a datelor prin rețele diverse.\n\nA. \"Serviciile trebuie să fie independente de tehnologia ruterului\" este corect, deoarece serviciile de la nivelul de rețea trebuie să funcționeze indiferent de hardware-ul sau tehnologia rutelor subiacente, pentru a asigura interoperabilitatea și flexibilitatea între diferite sisteme.\n\nB. \"Nivelul transport trebuie să fie independent de numărul, tipul și topologia rutelor existente\" este corect, deoarece nivelul de transport ar trebui să poată livra date fără a fi necesar să cunoască detaliile infrastructurii de rețea, permițând o comunicare fără întreruperi."
+          "explanation": "Serviciile nivelului de rețea sunt proiectate pentru a oferi comunicare eficientă între dispozitive într-o rețea interconectată, indiferent de tehnologia folosită. \n\nA. Corect – serviciile trebuie să fie independente de tehnologia ruterului pentru a garanta interoperabilitate între rețele diferite.\nB. Corect – nivelul de transport trebuie să funcționeze indiferent de structura internă a rețelei (numărul, tipul și topologia routerelor), astfel încât aplicațiile să nu depindă de arhitectura fizică.\nC. Corect – o schemă de adresare uniformă (ex. IP) este necesară pentru a permite identificarea unică a gazdelor, atât în rețele LAN, cât și WAN.\nD. Incorect – evitarea coliziunilor este responsabilitatea nivelului de legătură de date, nu a nivelului de rețea."
         },
         {
           "id": 25,
@@ -3674,7 +3674,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Întrebarea se referă la tipul de clasă al adresei IP 88.100.10.23. Adresele IP sunt împărțite în diferite clase pe baza primelor biți, care determină intervalul și scopul adresei.\n\n- Adresele de **Clasă A** variază de la 0.0.0.0 la 127.255.255.255. Ele se caracterizează prin faptul că primul bit este setat la 0, ceea ce înseamnă că primul octet variază de la 0 la 127.\n- Adresele de **Clasă B** variază de la 128.0.0.0 la 191.255.255.255, având primii doi biți setați la 10.\n- Adresele de **Clasă C** variază de la 192.0.0.0 la"
+          "explanation": "Adresele IP sunt împărțite în clase în funcție de primul octet al adresei:\n\n- Clasa A: 0.0.0.0 – 127.255.255.255 (primul bit este 0)\n- Clasa B: 128.0.0.0 – 191.255.255.255 (primii doi biți sunt 10)\n- Clasa C: 192.0.0.0 – 223.255.255.255 (primii trei biți sunt 110)\n- Clasa D: 224.0.0.0 – 239.255.255.255 (pentru multicast)\n\nAdresa 88.100.10.23 are primul octet 88, care se încadrează în intervalul 0–127, ceea ce o plasează în **clasa A**."
         },
         {
           "id": 36,
@@ -3688,7 +3688,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Adresa IP dată, 163.21.84.12, aparține Clasei B. Iată cum determinăm acest lucru:\n\nAdresele IPv4 sunt împărțite în diferite clase (A, B, C, D și E) pe baza primelor biți:\n\n- Adresele **Clasa A** variază de la 0.0.0.0 la 127.255.255.255. Ele au primul octet cuprins între 0 și 127.\n- Adresele **Clasa B** variază de la 128.0.0.0 la 191.255.255.255. Ele au primul octet cuprins între 128 și 191.\n- Adresele **Clasa C** variază de la 192.0.0.0 la 223."
+          "explanation": "Adresa IP 163.21.84.12 aparține clasei B. În IPv4, clasele de adrese sunt definite în funcție de primul octet:\n\n- Clasa A: 0.0.0.0 – 127.255.255.255\n- Clasa B: 128.0.0.0 – 191.255.255.255\n- Clasa C: 192.0.0.0 – 223.255.255.255\n\nAdresa 163.21.84.12 are primul octet 163, care este cuprins între 128 și 191, deci este o adresă de **Clasă B**."
         },
         {
           "id": 37,
@@ -3732,7 +3732,7 @@
             "C",
             "D"
           ],
-          "explanation": "IPv6 a fost creat pentru a aborda limitările IPv4 și a aduce îmbunătățiri semnificative.\n\nA. Reducerea dimensiunii tabelelor de rutare: IPv6 utilizează o structură mai eficientă de adresare și agregare, ceea ce permite o reducere a complexității și dimensiunii tabelelor de rutare.\n\nC. Posibilitatea ca un calculator gazdă să migreze fără a-și schimba adresa IP: IPv6 suportă mobilitatea IP, permițând dispozitivelor să-și păstreze adresa IP în timp ce se deplasează între diferite rețele.\n\nD."
+          "explanation": "IPv6 a fost dezvoltat pentru a remedia limitările protocolului IPv4 și are mai multe obiective esențiale:\n\n- A. Reducerea dimensiunii tabelelor de dirijare: Prin utilizarea unui sistem ierarhic de adresare, IPv6 permite agregarea rutelor, ceea ce reduce dimensiunea tabelelor de rutare.\n- C. Posibilitatea ca un calculator gazdă să migreze fără a-și schimba adresa IP: IPv6 suportă mobilitatea IP, facilitând continuitatea conexiunilor chiar și când dispozitivul se mută într-o altă rețea.\n- D. Asigurarea unei securități sporite prin mecanisme de autentificare și confidențialitate: IPv6 include IPsec ca parte integrantă a protocolului pentru securizarea traficului de rețea.\n\nOpțiunea B este incorectă deoarece adresele Ethernet rămân la 48 de biți; IPv6 extinde adresele IP (nu adresele Ethernet) la 128 de biți."
         },
         {
           "id": 40,
