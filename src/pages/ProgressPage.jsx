@@ -29,7 +29,8 @@ const ProgressPage = () => {
   const { isDark } = useTheme();
 
   const loadData = () => {
-    const saved = JSON.parse(localStorage.getItem('scoreHistory') || '[]');
+    const saved = JSON.parse(localStorage.getItem('scoreHistory') || '[]').sort(
+        (a, b) => new Date(b.timestamp) - new Date(a.timestamp));
     setHistory(saved);
 
     if (!saved.length) {
