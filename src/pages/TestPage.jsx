@@ -53,6 +53,12 @@ const TestPage = () => {
         if (selectSubjectsMode) loadAvailableSubjects();
     }, [selectSubjectsMode]);
 
+    useEffect(() => {
+        const saved = sessionStorage.getItem("selectedSubjects");
+        if (saved) {
+            setSelectedSubjects(JSON.parse(saved));
+        }
+    }, []);
 
     const current = questions[currentIndex];
     const correct = current?.correct_answer ?? [];
@@ -171,9 +177,12 @@ const TestPage = () => {
                                 onChange={(e) => {
                                     const checked = e.target.checked;
                                     const name = subject.name;
-                                    setSelectedSubjects(prev =>
-                                        checked ? [...prev, name] : prev.filter(s => s !== name)
-                                    );
+                                    const updated = checked
+                                        ? [...selectedSubjects, name]
+                                        : selectedSubjects.filter(s => s !== name);
+
+                                    setSelectedSubjects(updated);
+                                    sessionStorage.setItem("selectedSubjects", JSON.stringify(updated));
                                 }}
                             />
                             {subject.name}
