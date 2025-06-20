@@ -1726,7 +1726,7 @@
         },
         {
           "id": 2,
-          "text": "O procedura ce parcurge arborele binar  in preordine va afisa:",
+          "text": "O procedura ce parcurge arborele binar in preordine va afisa:",
           "image": "grafuri_2.png",
           "options": {
             "A": "J D P B H L R F N",
@@ -1742,7 +1742,7 @@
         },
         {
           "id": 3,
-          "text": "O procedura ce parcurge arborele binar  in inordine va afisa:",
+          "text": "O procedura ce parcurge arborele binar in inordine va afisa:",
           "image": "grafuri_3.png",
           "options": {
             "A": "B H F D L N P R J",
@@ -1758,7 +1758,7 @@
         },
         {
           "id": 4,
-          "text": "O procedura ce parcurge arborele binar  in A-preordine va afisa:",
+          "text": "O procedura ce parcurge arborele binar in A-preordine va afisa:",
           "image": "grafuri_4.png",
           "options": {
             "A": "A B C E F D G H I J",
@@ -1800,11 +1800,11 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a determina câte grafuri neorientate distincte cu 4 vârfuri se pot construi, trebuie să analizăm toate combinațiile posibile de muchii între vârfuri.\n\nUn graf neorientat simplu (fără bucle sau muchii multiple) cu `n` vârfuri poate avea cel mult:\n\\[\n\\binom{n}{2} = \\frac{n(n-1)}{2}\n\\]\n\nPentru `n = 4`, avem:\n\\[\n\\binom{4}{2} = \\frac{4 \\cdot 3}{2} = 6 \\text{ muchii posibile}\n\\]\n\nFiecare din aceste 6 muchii poate **exista sau nu** în graf, deci avem 2 opțiuni (prezentă/absentă) pentru fiecare muchie.\n\nAstfel, numărul total de grafuri neorientate distincte este:\n\\[\n2^6 = 64\n\\]\n\nAșadar, răspunsul corect este: **B) 2⁶**."
+          "explanation": "Un graf neorientat simplu cu 4 vârfuri poate avea cel mult câte o muchie între fiecare pereche de noduri. Numărul total de perechi de noduri (deci potențiale muchii) este dat de combinația de 4 luate câte 2: C(4,2) = 6. Pentru fiecare dintre aceste 6 perechi, există două opțiuni: fie există o muchie, fie nu. Prin urmare, numărul total de grafuri distincte (cu matrice de adiacență diferită) este 2^6 = 64. Răspunsul corect este B."
         },
         {
           "id": 7,
-          "text": "Intr-un graf neorientat cu 10 muchii, fiecare nod are gradul un numar nenul. Doar trei dintre noduri \nau gradul un numar par, restul nodurilor avand gradele numere impare. Care este numarul maxim \nde noduri pe care poate sa le aiba graful?",
+          "text": "Intr-un graf neorientat cu 10 muchii, fiecare nod are gradul un numar nenul. Doar trei dintre noduri au gradul un numar par, restul nodurilor avand gradele numere impare. Care este numarul maxim de noduri pe care poate sa le aiba graful?",
           "options": {
             "A": "14",
             "B": "10",
@@ -1830,7 +1830,7 @@
           "correct_answer": [
             "D"
           ],
-          "explanation": "Pentru a determina numărul de frunze într-un arbore reprezentat printr-un vector 'tata', urmăm acești pași:\\n\\n1. Vectorul 'tata' este:\\n   (6, 5, 5, 2, 0, 3, 3, 3, 8, 7, 7)\\n   Indicii (de la 0 la 10) reprezintă nodurile, iar valorile reprezintă părinții fiecărui nod.\\n\\n2. Nodul care are ca părinte 0 este rădăcina: deci **nodul 4** este rădăcina.\\n\\n3. Pentru a afla frunzele, căutăm nodurile care **nu apar ca părinte** în vectorul 'tata'.\\n\\n4. Creăm o listă de părinți: 6, 5, 5, 2, 0, 3, 3, 3, 8, 7, 7\\n   Din aceasta extragem nodurile care sunt părinți:\\n   -> {0, 2, 3, 5, 6, 7, 8}\\n\\n5. Toate nodurile din intervalul 0...10 sunt:\\n   {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}\\n\\n6. Nodurile care NU sunt părinți (adică sunt frunze):\\n   = total noduri - părinții\\n   = {1, 4, 9, 10}\\n\\n7. Deci sunt **4 frunze**: nodurile 1, 4, 9 și 10\\n\\n✅ Răspuns corect: **D) 5*"
+          "explanation": "Vectorul 'tata' are 11 elemente, ceea ce înseamnă că arborele are 11 noduri numerotate de la 1 la 11. Fiecare valoare din vector reprezintă părintele nodului de pe poziția respectivă. De exemplu, prima valoare este 6, deci nodul 1 are ca părinte nodul 6.\n\nPentru a determina numărul de frunze, trebuie să găsim nodurile care **nu sunt părinți** pentru niciun alt nod. Cu alte cuvinte, nodurile care **nu apar în vectorul 'tata'**.\n\nVectorul 'tata' este: (6, 5, 5, 2, 0, 3, 3, 3, 8, 7, 7)\nSetul de părinți (valorile din vector): {0, 2, 3, 5, 6, 7, 8}\nToate nodurile (de la 1 la 11): {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}\n\nScăzând părinții din totalul nodurilor, obținem frunzele:\nFrunze = {1, 4, 9, 10, 11}\n\nSunt 5 noduri care nu apar ca părinți, deci răspunsul corect este: **5 frunze**."
         },
         {
           "id": 9,
@@ -1849,7 +1849,7 @@
         },
         {
           "id": 10,
-          "text": "Se considera graful neorientat cu multimea varfurilor {1, 2, 3, 4, 5, 6} si multimea muchiilor \n{[1, 2], [2, 3], [3, 4], [3, 5], [4, 5], [1, 3], [2, 6], [2, 4], [4, 6]}. Care este numarul minim de muchii ce trebuie \neliminate (care sunt aceste muchii) astfel incat graful partial obtinut sa nu mai fie conex?",
+          "text": "Se considera graful neorientat cu multimea varfurilor {1, 2, 3, 4, 5, 6} si multimea muchiilor {[1, 2], [2, 3], [3, 4], [3, 5], [4, 5], [1, 3], [2, 6], [2, 4], [4, 6]}. Care este numarul minim de muchii ce trebuie eliminate (care sunt aceste muchii) astfel incat graful partial obtinut sa nu mai fie conex?",
           "options": {
             "A": "1",
             "B": "3",
@@ -1894,7 +1894,7 @@
         },
         {
           "id": 13,
-          "text": "Se considera graful orientat G reprezentat prin listele de adiacenta alaturate. Care este lungimea\nmaxima a unui drum elementar din acest graf? Sa se specifice arcele ce compun un drum cu aceste\nproprietati.\n1 2 6 5\n2 3\n3 1\n4 6\n5 6\n6 2",
+          "text": "Se considera graful orientat G reprezentat prin listele de adiacenta alaturate. Care este lungimea maxima a unui drum elementar din acest graf? Sa se specifice arcele ce compun un drum cu aceste proprietati.\n1 2 6 5\n2 3\n3 1\n4 6\n5 6\n6 2",
           "options": {
             "A": "1",
             "B": "7",
@@ -1926,7 +1926,7 @@
           "id": 15,
           "text": "Care dintre urmatoarele proprietati este adevarata pentru un graf orientat cu n varfuri si n arce (n > 3) si care prezinta un circuit de lungime n:",
           "options": {
-            "A": "exista un varf cu gradul intern n(cid:0)1.",
+            "A": "exista un varf cu gradul intern n - 1.",
             "B": "pentru orice varf, gradul intern si gradul extern sunt egale.",
             "C": "graful nu are drumuri de lungime strict mai mare decat 2.",
             "D": "gradul intern al oricarui varf este egal cu 2.",
@@ -1955,7 +1955,7 @@
         },
         {
           "id": 17,
-          "text": "Care este ordinea de parcurgere a nodurilor grafului din figura 2, daca se foloseste metoda de \nvizitare in adancime (DFS) pornind din nodul 3?",
+          "text": "Care este ordinea de parcurgere a nodurilor grafului din figura 2, daca se foloseste metoda de vizitare in adancime (DFS) pornind din nodul 3?",
           "image": "grafuri_17.png",
           "options": {
             "A": "3, 5, 7, 6, 4, 8, 2, 1",
@@ -2032,7 +2032,7 @@
         },
         {
           "id": 22,
-          "text": "Avand graful ponderat din figura 4, sa se determine un arbore de acoperire de cost minim. \nVom considera nodul A ca nod de plecare. Care este ordinea de parcurgere a nodurilor?",
+          "text": "Avand graful ponderat din figura 4, sa se determine un arbore de acoperire de cost minim. Vom considera nodul A ca nod de plecare. Care este ordinea de parcurgere a nodurilor?",
           "image": "grafuri_22.png",
           "options": {
             "A": "A, C, B, D, E;",
