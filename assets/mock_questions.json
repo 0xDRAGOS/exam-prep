@@ -219,7 +219,7 @@
         },
         {
           "id": 14,
-          "text": "Consideram urmatorul program:\n\n1: #include <stdio.h>\n2: void main(){\n3:    int t[10];\n4:    printf(\"sizeof(int)=%d\\n\",sizeof(int));\n5:    printf(\"%p\\n\",t);\n6:    printf(\"%p\\n\",t+3);\n7:}\n\nDaca in urma executiei liniilor 4 si 5 se afiseaza 2 respectiv 0xF004, ce se va afisa in urmae xecutiei liniei 6?",
+          "text": "Consideram urmatorul program:\n\n1: #include <stdio.h>\n2: void main(){\n3:    int t[10];\n4:    printf(\"sizeof(int)=%d\\n\",sizeof(int));\n5:    printf(\"%p\\n\",t);\n6:    printf(\"%p\\n\",t+3);\n7:}\n\nDaca in urma executiei liniilor 4 si 5 se afiseaza 2 respectiv 0xF004, ce se va afisa in urma executiei liniei 6?",
           "options": {
             "A": "0xF00A",
             "B": "0xF010",
@@ -234,7 +234,7 @@
         },
         {
           "id": 15,
-          "text": "Ce se va afisa pe ecran in urma executiei urmatorului program?\n\n#include <stdio.h>\nvoid main(){\n    int x=7;\n    x = 1,2,3;\n    printf(\"%d\",x);\n}\n\nSolution: Operatorul virgula se evalueaza de la stanga la dreapta. Rezultatul este dat de\nultima valoare a expresiei. Insa, deoarce operatorul = are prioritatea mai mare decat a\noperatorului virgula mai intai se atribuie lui x valoarea 1 si apoi se evalueaza expresia x,2,3,\nrezultat care nu este memorat in nicio variabila.",
+          "text": "Ce se va afisa pe ecran in urma executiei urmatorului program?\n\n#include <stdio.h>\nvoid main(){\n    int x=7;\n    x = 1,2,3;\n    printf(\"%d\",x);\n}\n",
           "options": {
             "A": "1",
             "B": "7",
@@ -246,11 +246,11 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "În această problemă, expresia-cheie este `x = 1,2,3;`. Deși pare că `x` ar primi valoarea 3, operatorul de atribuire (`=`) are prioritate mai mare decât operatorul virgulă, astfel încât expresia este evaluată ca `(x = 1), 2, 3;`. \n\nAceasta înseamnă:\n1. Mai întâi, `x = 1;` — valoarea 1 este atribuită lui `x`.\n2. Apoi se evaluează `2` și `3`, dar aceste valori nu sunt folosite sau atribuite.\n3. La final, `x` rămâne cu valoarea 1.\n\nPrin urmare, când se execută `printf(\"%d\", x);`, se va afișa `1`."
+          "explanation": "Solution (din grile): Operatorul virgula se evalueaza de la stanga la dreapta. Rezultatul este dat de\nultima valoare a expresiei. Insa, deoarce operatorul = are prioritatea mai mare decat a\noperatorului virgula mai intai se atribuie lui x valoarea 1 si apoi se evalueaza expresia x,2,3,\nrezultat care nu este memorat in nicio variabila.\n\nÎn această problemă, expresia-cheie este `x = 1,2,3;`. Deși pare că `x` ar primi valoarea 3, operatorul de atribuire (`=`) are prioritate mai mare decât operatorul virgulă, astfel încât expresia este evaluată ca `(x = 1), 2, 3;`. \n\nAceasta înseamnă:\n1. Mai întâi, `x = 1;` — valoarea 1 este atribuită lui `x`.\n2. Apoi se evaluează `2` și `3`, dar aceste valori nu sunt folosite sau atribuite.\n3. La final, `x` rămâne cu valoarea 1.\n\nPrin urmare, când se execută `printf(\"%d\", x);`, se va afișa `1`."
         },
         {
           "id": 16,
-          "text": "Ce se va afisa pe ecran in urma executiei urmatorului program?\n\n#include <stdio.h>\nvoid main() {\n    int array[3][] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};\n    int s = 0, i ,j;\n    for (i = 0; i < 3 ; ++i){\n        for (j = 2; j < 3 ; j++){\n            s += array[i][j];\n        }\n}\nprintf(\"%d\",s);\n}\n\nSolution: La declararea tablourilor multidimensionale numai prima dimensiune poate fi omisa.\nIn acest caz, se genereaza eroare de compilare deoarece nu este specificat numarul de coloane.",
+          "text": "Ce se va afisa pe ecran in urma executiei urmatorului program?\n\n#include <stdio.h>\nvoid main() {\n    int array[3][] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};\n    int s = 0, i ,j;\n    for (i = 0; i < 3 ; ++i){\n        for (j = 2; j < 3 ; j++){\n            s += array[i][j];\n        }\n}\nprintf(\"%d\",s);\n}\n",
           "options": {
             "A": "nimic (programul nu se compileaza)",
             "B": "15",
@@ -261,7 +261,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "În C, atunci când declarăm tablouri multidimensionale, toate dimensiunile, cu excepția primei, trebuie specificate. În programul dat, tabloul `int array[3][] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};` nu are specificată dimensiunea celei de-a doua dimensiuni (numărul de coloane), ceea ce este necesar pentru ca programul să se compileze cu succes. Deoarece numărul de coloane nu este specificat, compilatorul nu poate aloca corect memoria pentru tablou, ceea ce duce la o eroare de compilare. Prin urmare, programul nu se compilează și nimic nu este afișat pe ecran. Așadar, răspunsul corect este A: nimic (programul nu se compilează)."
+          "explanation": "Solution (din grile): La declararea tablourilor multidimensionale numai prima dimensiune poate fi omisa.\nIn acest caz, se genereaza eroare de compilare deoarece nu este specificat numarul de coloane.\n\nÎn C, atunci când declarăm tablouri multidimensionale, toate dimensiunile, cu excepția primei, trebuie specificate. În programul dat, tabloul `int array[3][] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};` nu are specificată dimensiunea celei de-a doua dimensiuni (numărul de coloane), ceea ce este necesar pentru ca programul să se compileze cu succes. Deoarece numărul de coloane nu este specificat, compilatorul nu poate aloca corect memoria pentru tablou, ceea ce duce la o eroare de compilare. Prin urmare, programul nu se compilează și nimic nu este afișat pe ecran. Așadar, răspunsul corect este A: nimic (programul nu se compilează)."
         },
         {
           "id": 17,
@@ -866,7 +866,7 @@
         },
         {
           "id": 5,
-          "text": "Care din urmatoarele afirmatii referitoare la mostenire sunt adevarate relativ la limbajul de pro- gramare C++:",
+          "text": "Care din urmatoarele afirmatii referitoare la mostenire sunt adevarate relativ la limbajul de programare C++:",
           "options": {
             "A": "Relatia de mostenire in care clasa de baza si clasa derivata au aceeasi interfata se numeste mostenire pura",
             "B": "Dintr-o clasa de baza se poate obtine prin intermediul mostenirii cel mult o clasa derivata",
@@ -1552,7 +1552,7 @@
             "A": "Sa facem o initializare;",
             "B": "Sa le accesam in subclase;",
             "C": "Ca utilizatorul sa aiba acces;",
-            "D": "Accesul direct atunci cand clasa este utilizata dar care prezinta interes atunci\ncand cineva creeaza o subclasa a acesteia ca parte a unui pachet diferit, in\nvederea extinderii ei;"
+            "D": "Accesul direct atunci cand clasa este utilizata dar care prezinta interes atunci cand cineva creeaza o subclasa a acesteia ca parte a unui pachet diferit, in vederea extinderii ei;"
           },
           "correct_answer": [
             "D"
@@ -1696,7 +1696,7 @@
             "A": "relatia de mostenire dintre clase;",
             "B": "numele constructorului, care trebuie sa fie identic cu numele clasei;",
             "C": "comportamentul obiectelor pe care le instantiaza;",
-            "D": "o metoda prin care poate fi accesat de toate tipurile din Java sau de tipuri mostenite din tipul care contine membrul in discutie; 5 Algoritmica grafurilor"
+            "D": "o metoda prin care poate fi accesat de toate tipurile din Java sau de tipuri mostenite din tipul care contine membrul in discutie;"
           },
           "correct_answer": [
             "B"
@@ -4075,7 +4075,7 @@
           "id": 8,
           "text": "Se da entitatea ANGAJATI, cu urmatoarele atribute: ANGAJATI (CodAngaj, Nume, DataAngajare, compartiment, profesia, salariu) Care dintre urmatoarele instructiuni SQL permite stergerea salariatilor angajati inainte de inceputul anului 2007, cu profesia ”profesor”.",
           "options": {
-            "A": "DELETE FROM Angajati WHERE DataAngajare < ”1/1/2006” AND profesia = ”pro- fesor” ;",
+            "A": "DELETE FROM Angajati WHERE DataAngajare < ”1/1/2006” AND profesia = ”profesor” ;",
             "B": "DELETE * FROM Angajati WHERE profesia LIKE ”profesor” HAVING YEAR(DataAngajare) <2007;",
             "C": "DELETE Angajati WHERE DataAngajare < \"1/1/2007\" AND profesia LIKE \"*profesor*\";",
             "D": "UPDATE Angajati SET CodAngaj = Null WHERE DataAngajare < ”1/1/2006” AND profesia = ”profesor”;",
