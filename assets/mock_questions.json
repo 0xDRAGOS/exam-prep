@@ -2352,7 +2352,7 @@
             "E": "11.10000; 2.42; 3.2;"
           },
           "correct_answer": [
-            "A"
+            "B"
           ],
           "explanation": "Pentru a exprima numărul zecimal 3.625 în binar, octal și hexazecimal, convertim separat partea întreagă și partea fracționară:\n\n1. **Binar**:\n   - Partea întreagă 3 → în binar: 11\n   - Partea fracționară 0.625:\n     - 0.625 × 2 = 1.25 → 1\n     - 0.25 × 2 = 0.5 → 0\n     - 0.5 × 2 = 1.0 → 1\n   - Rezultatul: 0.101\n   - Deci, 3.625 în binar = **11.101**\n\n2. **Octal**:\n   - 11.101 binar → grupăm câte 3 biți:\n     - 11 → 011 (în stânga), 101 → complet (în dreapta)\n     - 011 = 3, 101 = 5\n   - Deci, în octal: **3.5**\n\n3. **Hexazecimal**:\n   - 11.101 binar → grupăm câte 4 biți:\n     - 0011 = 3, 1010 = A\n   - Deci, în hexazecimal: **3.A**\n\n✅ Răspuns corect: **B) 11.101; 3.5; 3.A**"
         },
@@ -2869,9 +2869,9 @@
           "id": 16,
           "text": "Exceptiile program sunt:",
           "options": {
-            "A": "evenimente care se produc la nivelul dispozitivelor fizice tratate prin intermediul unor\nsecvente de program",
-            "B": "\nintreruperi ale masinii abstracte reprezentate prin programul care se executa\npe un sistem calculator real",
-            "C": "mijloace de auto intrerupere a unui program pentru a solicita executarea unor \nfunctii de catre sistemul de operare",
+            "A": "evenimente care se produc la nivelul dispozitivelor fizice tratate prin intermediul unor secvente de program",
+            "B": "intreruperi ale masinii abstracte reprezentate prin programul care se executa pe un sistem calculator real",
+            "C": "mijloace de auto intrerupere a unui program pentru a solicita executarea unor functii de catre sistemul de operare",
             "D": "evenimente datorate executiei unei anume instructiuni din programul care ruleaza"
           },
           "correct_answer": [
