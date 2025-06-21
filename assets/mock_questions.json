@@ -2238,7 +2238,7 @@
         },
         {
           "id": 14,
-          "text": "Care este ordinul de crestere al algoritmului pentru problema Turnurilor din Hanoi avand timpul \nde executie de forma",
+          "text": "Care este ordinul de crestere al algoritmului pentru problema Turnurilor din Hanoi avand timpul de executie de forma",
           "image": "maa_14.png",
           "options": {
             "A": "f(n) ∈ O(n)",
@@ -2267,7 +2267,7 @@
         },
         {
           "id": 16,
-          "text": "Care este ordinul de complexitate al algoritmului mergesort avand relatia de \nrecurenta t(n) = 2t(n/2) + Θ(n)?",
+          "text": "Care este ordinul de complexitate al algoritmului mergesort avand relatia de recurenta t(n) = 2t(n/2) + Θ(n)?",
           "options": {
             "A": "f(n) ∈ Θ(nlogn)",
             "B": "f(n) ∈ Θ(n)",
@@ -2669,7 +2669,7 @@
           "options": {
             "A": "un proces nu poate fi suspendat temporar daca este in starea GATA",
             "B": "un proces care din punct de vedere logic poate fi executat este temporar suspendat",
-            "C": "unprocesodatalansat inexecutienumaiestesuspendatatuncicandpoatefi inexecutie",
+            "C": "un proces odata lansat in executie nu mai este suspendat atunci cand poate fi in executie",
             "D": "un proces nu poate fi suspendat temporar daca este in starea BLOCAT"
           },
           "correct_answer": [
@@ -3759,7 +3759,7 @@
           "id": 1,
           "text": "Un sistem criptografic este",
           "options": {
-            "A": "Un tuplu format dintr-o functie de criptare, una de decriptare, domeniile de \ndefinitie si chei",
+            "A": "Un tuplu format dintr-o functie de criptare, una de decriptare, domeniile de definitie si chei",
             "B": "Un tuplu format din functie de criptare decriptare, domenii de definitie si chei",
             "C": "Un tuplu format din functie de criptare si chei",
             "D": "Un aparat special de transformare a caracterelor",
