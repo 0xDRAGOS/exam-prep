@@ -3490,7 +3490,7 @@
         },
         {
           "id": 23,
-          "text": "Care dintr eregulile urmatoare sunt utilizate pentru dirijarea traficului in cadrul puntilor \ntransparente (transparent bridges)?",
+          "text": "Care dintre regulile urmatoare sunt utilizate pentru dirijarea traficului in cadrul puntilor transparente (transparent bridges)?",
           "options": {
             "A": "Daca LAN-ul sursa este acela si cu LAN-ul destinatie, atunci abandoneaza cadrul",
             "B": "Daca LAN-ul sursa si cel destinatie sunt diferite, atunci transmite cadrul",
@@ -3738,7 +3738,7 @@
           "id": 40,
           "text": "Care dintre campurile urmatoare fac parte din antetul obligatoriu IPv6?",
           "options": {
-            "A": "urmatorull antent",
+            "A": "urmatorul antent",
             "B": "eticheta fluxului",
             "C": "limita de salturi",
             "D": "tipul nodului: client sau server"
