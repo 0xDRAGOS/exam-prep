@@ -677,7 +677,7 @@
             "B": "N",
             "C": "NlogN",
             "D": "N²",
-            "E": "2^N",
+            "E": "2ⁿ",
             "F": "N!"
           },
           "correct_answer": [
@@ -693,7 +693,7 @@
             "B": "N",
             "C": "NlogN",
             "D": "N²",
-            "E": "2^N",
+            "E": "2ⁿ",
             "F": "N!"
           },
           "correct_answer": [
@@ -709,7 +709,7 @@
             "B": "N",
             "C": "NlogN",
             "D": "N²",
-            "E": "2^N",
+            "E": "2ⁿ",
             "F": "N!"
           },
           "correct_answer": [
@@ -725,7 +725,7 @@
             "B": "N",
             "C": "NlogN",
             "D": "N²",
-            "E": "2^N",
+            "E": "2ⁿ",
             "F": "N!"
           },
           "correct_answer": [
@@ -741,7 +741,7 @@
             "B": "N",
             "C": "NlogN",
             "D": "N²",
-            "E": "2^N",
+            "E": "2ⁿ",
             "F": "N!"
           },
           "correct_answer": [
@@ -757,7 +757,7 @@
             "B": "N",
             "C": "NlogN",
             "D": "N²",
-            "E": "2^N",
+            "E": "2ⁿ",
             "F": "N!"
           },
           "correct_answer": [
@@ -773,7 +773,7 @@
             "B": "N",
             "C": "NlogN",
             "D": "N²",
-            "E": "2^N",
+            "E": "2ⁿ",
             "F": "N!"
           },
           "correct_answer": [
@@ -1800,7 +1800,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Un graf neorientat simplu cu 4 vârfuri poate avea cel mult câte o muchie între fiecare pereche de noduri. Numărul total de perechi de noduri (deci potențiale muchii) este dat de combinația de 4 luate câte 2: C(4,2) = 6. Pentru fiecare dintre aceste 6 perechi, există două opțiuni: fie există o muchie, fie nu. Prin urmare, numărul total de grafuri distincte (cu matrice de adiacență diferită) este 2^6 = 64. Răspunsul corect este B."
+          "explanation": "Un graf neorientat simplu cu 4 vârfuri poate avea cel mult câte o muchie între fiecare pereche de noduri. Numărul total de perechi de noduri (deci potențiale muchii) este dat de combinația de 4 luate câte 2: C(4,2) = 6. Pentru fiecare dintre aceste 6 perechi, există două opțiuni: fie există o muchie, fie nu. Prin urmare, numărul total de grafuri distincte (cu matrice de adiacență diferită) este 2⁶ = 64. Răspunsul corect este B."
         },
         {
           "id": 7,
@@ -2053,15 +2053,15 @@
       "questions": [
         {
           "id": 1,
-          "text": "Care este expresia timpului de executie T(n) al urmatorului algoritm in cazul cel mai favorabil, \nin cazul mediu si in cazul cel mai defavorabil, unde n noteaza dimensiunea setului de intrare, \niar k, k1, ..., k8 - orice constanta pozitiva:",
+          "text": "Care este expresia timpului de executie T(n) al urmatorului algoritm in cazul cel mai favorabil, in cazul mediu si in cazul cel mai defavorabil, unde n noteaza dimensiunea setului de intrare, iar k, k1, ..., k8 - orice constanta pozitiva:",
           "image": "maa_1.png",
           "options": {
-            "A": "k, k1n, k2n + k3",
-            "B": "k1n + k2, k3n + k4, k5n + k6",
-            "C": "k, k1n + k2, k2n² + k3n + k4",
-            "D": "k1n + k2, k3n + k4, k5n² + k6n + k7",
-            "E": "k, k1n² + k2n + k3, k4n² + k5n + k6",
-            "F": "k1n + k2, k3n² + k4n + k5, k6n² + k7n + k8"
+            "A": "k, k₁n, k₂n + k₃",
+            "B": "k₁n + k₂, k₃n + k₄, k₅n + k6",
+            "C": "k, k₁n + k₂, k₂n² + k₃n + k₄",
+            "D": "k₁n + k₂, k₃n + k₄, k₅n² + k₆n + k₇",
+            "E": "k, k₁n² + k₂n + k₃, k₄n² + k₅n + k₆",
+            "F": "k₁n + k₂, k₃n² + k₄n + k₅, k₆n² + k₇n + k₈"
           },
           "correct_answer": [
             "F"
@@ -2110,18 +2110,18 @@
         },
         {
           "id": 5,
-          "text": "Pentru f(n)=6n^3 + 14n^2 - 8n + 4 si g(n)=2n^3 care din urmatoarele afirmatii sunt adevarate?",
+          "text": "Pentru f(n)=6n³ + 14n² - 8n + 4 si g(n)=2n³ care din urmatoarele afirmatii sunt adevarate?",
           "options": {
-            "A": "f(n), g(n) ∈ O(2n^3)",
-            "B": "f(n), g(n) ∈ O(n^3)",
-            "C": "f(n) ∈ O(6n^3) si g(n) ∈ O(2n^3)"
+            "A": "f(n), g(n) ∈ O(2n³)",
+            "B": "f(n), g(n) ∈ O(n³)",
+            "C": "f(n) ∈ O(6n³) si g(n) ∈ O(2n³)"
           },
           "correct_answer": [
             "A",
             "B",
             "C"
           ],
-          "explanation": "Pentru a determina comportamentul asimptotic al funcțiilor f(n) = 6n^3 + 14n^2 - 8n + 4 și g(n) = 2n^3, folosim notația Big O, care exprimă limita superioară a ratei de creștere a unei funcții.\n\n- f(n) = 6n^3 + 14n^2 - 8n + 4: Termenul dominant este 6n^3, ceea ce înseamnă că pentru valori mari ale lui n, ceilalți termeni devin neglijabili. Astfel, f(n) este în O(6n^3), dar și în O(n^3) și O(2n^3), pentru că acești termeni sunt doar multipli constanți ai lui n^3.\n\n- g(n) = 2n^3: Este clar că este în O(2n^3), dar și în O(n^3), din același motiv.\n\nPrin urmare:\n- A este corect: ambele funcții sunt în O(2n^3)\n- B este corect: ambele funcții sunt în O(n^3)\n- C este corect: f(n) este în O(6n^3) și g(n) este în O(2n^3)\n\nToate cele trei afirmații sunt adevărate, deci răspunsurile corecte sunt A, B și C."
+          "explanation": "Pentru a determina comportamentul asimptotic al funcțiilor f(n) = 6n³ + 14n² - 8n + 4 și g(n) = 2n³, folosim notația Big O, care exprimă limita superioară a ratei de creștere a unei funcții.\n\n- f(n) = 6n³ + 14n² - 8n + 4: Termenul dominant este 6n³, ceea ce înseamnă că pentru valori mari ale lui n, ceilalți termeni devin neglijabili. Astfel, f(n) este în O(6n³), dar și în O(n³) și O(2n³), pentru că acești termeni sunt doar multipli constanți ai lui n³.\n\n- g(n) = 2n³: Este clar că este în O(2n³), dar și în O(n³), din același motiv.\n\nPrin urmare:\n- A este corect: ambele funcții sunt în O(2n³)\n- B este corect: ambele funcții sunt în O(n³)\n- C este corect: f(n) este în O(6n³) și g(n) este în O(2n³)\n\nToate cele trei afirmații sunt adevărate, deci răspunsurile corecte sunt A, B și C."
         },
         {
           "id": 6,
@@ -2180,25 +2180,25 @@
         },
         {
           "id": 10,
-          "text": "Care este ordinul de complexitate al algoritmului de ridicare la putere al unui numar x^n?",
+          "text": "Care este ordinul de complexitate al algoritmului de ridicare la putere al unui numar xⁿ?",
           "options": {
             "A": "Θ(n)",
             "B": "Θ(logn)",
-            "C": "Θ(x^n)"
+            "C": "Θ(xⁿ)"
           },
           "correct_answer": [
             "A",
             "B"
           ],
-          "explanation": "Complexitatea calculării lui x^n depinde de metoda utilizată:\n\n- Dacă folosim **metoda naivă**, în care se înmulțește x cu el însuși de n ori (x * x * x * ... * x, de n ori), atunci se efectuează n înmulțiri. Astfel, timpul de execuție este Θ(n).\n\n- Dacă folosim o **metodă eficientă**, cum ar fi 'exponențierea rapidă' sau 'exponențierea binară', atunci numărul de înmulțiri scade drastic. Această metodă împarte exponentul în două la fiecare pas și înmulțește doar când este necesar. Ea folosește reprezentarea binară a lui n, iar numărul total de pași este proporțional cu log₂(n). Astfel, complexitatea este Θ(log n).\n\n- Opțiunea C, Θ(x^n), este incorectă, deoarece nu reflectă complexitatea temporală în funcție de dimensiunea intrării (n), ci valoarea rezultatului, care este irelevantă în acest context.\n\nPrin urmare, răspunsurile corecte sunt A și B, corespunzând celor două metode diferite de calcul a lui x^n."
+          "explanation": "Complexitatea calculării lui xⁿ depinde de metoda utilizată:\n\n- Dacă folosim **metoda naivă**, în care se înmulțește x cu el însuși de n ori (x * x * x * ... * x, de n ori), atunci se efectuează n înmulțiri. Astfel, timpul de execuție este Θ(n).\n\n- Dacă folosim o **metodă eficientă**, cum ar fi 'exponențierea rapidă' sau 'exponențierea binară', atunci numărul de înmulțiri scade drastic. Această metodă împarte exponentul în două la fiecare pas și înmulțește doar când este necesar. Ea folosește reprezentarea binară a lui n, iar numărul total de pași este proporțional cu log₂(n). Astfel, complexitatea este Θ(log n).\n\n- Opțiunea C, Θ(xⁿ), este incorectă, deoarece nu reflectă complexitatea temporală în funcție de dimensiunea intrării (n), ci valoarea rezultatului, care este irelevantă în acest context.\n\nPrin urmare, răspunsurile corecte sunt A și B, corespunzând celor două metode diferite de calcul a lui xⁿ."
         },
         {
           "id": 11,
-          "text": "Care este ordinul de complexitate al functiei f(n) cu relatia de recurenta t(n)=2t(sqrt(n)) + logn?",
+          "text": "Care este ordinul de complexitate al functiei f(n) cu relatia de recurenta t(n)=2t(√n) + logn?",
           "options": {
             "A": "f(n) ∈ O(lognlog(logn))",
             "B": "f(n) ∈ O(logn)",
-            "C": "f(n) ∈ O(n^1/2)"
+            "C": "f(n) ∈ O(n¹ᐟ²)"
           },
           "correct_answer": [
             "A"
@@ -2242,13 +2242,13 @@
           "image": "maa_14.png",
           "options": {
             "A": "f(n) ∈ O(n)",
-            "B": "f(n) ∈ O(2^n)",
+            "B": "f(n) ∈ O(2ⁿ)",
             "C": "f(n) ∈ O(logn)"
           },
           "correct_answer": [
             "B"
           ],
-          "explanation": "Relația de recurență dată este:\n\nt(n) = 2 * t(n - 1) + 1, pentru n > 1\n\nt(1) = 1\n\nAceasta este exact relația care descrie timpul de execuție al algoritmului pentru rezolvarea problemei Turnurilor din Hanoi. Această problemă implică mutarea a n discuri de pe un țăruș pe altul, necesitând 2^(n) - 1 mutări.\n\nRezolvarea relației de recurență:\n- t(n) = 2 * t(n - 1) + 1\n- => t(n) = 2^n - 1\n\nPrin urmare, complexitatea este:\n- f(n) ∈ O(2^n)\n\nAceasta este o creștere exponențială, ceea ce face ca algoritmul să fie ineficient pentru valori mari ale lui n. Răspunsul corect este B."
+          "explanation": "Relația de recurență dată este:\n\nt(n) = 2 * t(n - 1) + 1, pentru n > 1\n\nt(1) = 1\n\nAceasta este exact relația care descrie timpul de execuție al algoritmului pentru rezolvarea problemei Turnurilor din Hanoi. Această problemă implică mutarea a n discuri de pe un țăruș pe altul, necesitând 2^(n) - 1 mutări.\n\nRezolvarea relației de recurență:\n- t(n) = 2 * t(n - 1) + 1\n- => t(n) = 2ⁿ - 1\n\nPrin urmare, complexitatea este:\n- f(n) ∈ O(2ⁿ)\n\nAceasta este o creștere exponențială, ceea ce face ca algoritmul să fie ineficient pentru valori mari ale lui n. Răspunsul corect este B."
         },
         {
           "id": 15,
@@ -2256,7 +2256,7 @@
           "image": "maa_15.png",
           "options": {
             "A": "f(n) ∈ O(n)",
-            "B": "f(n) ∈ O(2^logn)",
+            "B": "f(n) ∈ O(2ˡᵒᵍⁿ)",
             "C": "f(n) ∈ O(logn)"
           },
           "correct_answer": [
@@ -2429,7 +2429,7 @@
           "correct_answer": [
             "B"
           ],
-          "explanation": "Pentru a reprezenta intern în format VMSP (virgulă mobilă simplă precizie) numărul zecimal -6.25, parcurgem următorii pași:\n\n1. **Semnul**: Numărul este negativ → bitul de semn este `1`.\n\n2. **Conversia la binar**:\n   - 6 = 110 în binar\n   - 0.25 = 0.01 în binar\n   - Deci, 6.25 = `110.01` în binar\n\n3. **Normalizarea**:\n   - `110.01` → `1.1001 × 2^2`\n   - Mantisa: partea după virgulă = `1001...` (până la 23 de biți)\n\n4. **Exponentul decalat**:\n   - Exponent real = 2\n   - Exponent decalat = 2 + 127 = 129 → în binar: `10000001`\n\n5. **Formăm reprezentarea pe 32 de biți**:\n   - Semn: `1`\n   - Exponent: `10000001`\n   - Mantisă: `10010000000000000000000`\n\n6. **Combinăm toate**:\n   - Bin: `1 10000001 10010000000000000000000`\n   - Hexazecimal: `C1E40000`\n\n✅ Răspunsul corect este: **B) C1E40000**"
+          "explanation": "Pentru a reprezenta intern în format VMSP (virgulă mobilă simplă precizie) numărul zecimal -6.25, parcurgem următorii pași:\n\n1. **Semnul**: Numărul este negativ → bitul de semn este `1`.\n\n2. **Conversia la binar**:\n   - 6 = 110 în binar\n   - 0.25 = 0.01 în binar\n   - Deci, 6.25 = `110.01` în binar\n\n3. **Normalizarea**:\n   - `110.01` → `1.1001 × 2²`\n   - Mantisa: partea după virgulă = `1001...` (până la 23 de biți)\n\n4. **Exponentul decalat**:\n   - Exponent real = 2\n   - Exponent decalat = 2 + 127 = 129 → în binar: `10000001`\n\n5. **Formăm reprezentarea pe 32 de biți**:\n   - Semn: `1`\n   - Exponent: `10000001`\n   - Mantisă: `10010000000000000000000`\n\n6. **Combinăm toate**:\n   - Bin: `1 10000001 10010000000000000000000`\n   - Hexazecimal: `C1E40000`\n\n✅ Răspunsul corect este: **B) C1E40000**"
         },
         {
           "id": 7,
@@ -3941,7 +3941,7 @@
         },
         {
           "id": 14,
-          "text": "O retea de calculatoare are ca mod de comunicare standard un modul numit placa de retea. \nAceasta comunica date",
+          "text": "O retea de calculatoare are ca mod de comunicare standard un modul numit placa de retea. Aceasta comunica date",
           "options": {
             "A": "criptat, cu un algoritm simetric",
             "B": "criptat, cu un algoritm asimetric",
