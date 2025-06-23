@@ -50,6 +50,7 @@ A modern React-based web application for exam preparation. Offers multiple-choic
 ├── components/
 │   ├── Header.jsx
 │   └── Footer.jsx
+│   └── ResumePopup.jsx
 │
 ├── constants/
 │   └── constants.js         # Global constants (test time, paths, PDF list)

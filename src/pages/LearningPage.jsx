@@ -4,6 +4,7 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {oneLight, oneDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {useTheme} from '../context/ThemeContext';
 import {IMAGE_PATH, QUESTIONS_PATH} from "../constants/constants";
+import ResumePopup from "../components/ResumePopup";
 
 const LearningPage = () => {
     const [subjects, setSubjects] = useState([]);
@@ -19,6 +20,13 @@ const LearningPage = () => {
         return saved !== null ? JSON.parse(saved) : true;
     });
 
+    const currentQuestion = selectedSubject?.questions[currentQuestionIndex];
+    const correct = currentQuestion?.correct_answer ?? [];
+    const isMultiple = Array.isArray(correct);
+
+    const [showResumePopup, setShowResumePopup] = useState(false);
+    const [resumeSubject, setResumeSubject] = useState(null);
+
     useEffect(() => {
         localStorage.setItem("wrapText", JSON.stringify(wrapText));
     }, [wrapText]);
@@ -31,9 +39,19 @@ const LearningPage = () => {
             .then(data => setSubjects(data.subjects || []));
     }, []);
 
-    const currentQuestion = selectedSubject?.questions[currentQuestionIndex];
-    const correct = currentQuestion?.correct_answer ?? [];
-    const isMultiple = Array.isArray(correct);
+    useEffect(() => {
+        if (selectedSubject?.name) {
+            localStorage.setItem(`progress-${selectedSubject.name}`, JSON.stringify({
+                currentQuestionIndex,
+            }));
+        }
+    }, [currentQuestionIndex, selectedSubject?.name]);
+
+    useEffect(() => {
+        if (!currentQuestion && selectedSubject?.name) {
+            localStorage.removeItem(`progress-${selectedSubject.name}`);
+        }
+    }, [currentQuestion, selectedSubject]);
 
     const handleSelect = (key) => {
         if (answered) return;
@@ -41,6 +59,22 @@ const LearningPage = () => {
             setSelectedAnswers(prev => ({...prev, [key]: !prev[key]}));
         } else {
             setSelectedAnswers({[key]: true});
+        }
+    };
+
+    const handleSubjectSelect = (subject) => {
+        const savedProgressRaw = localStorage.getItem(`progress-${subject.name}`);
+        try {
+            const savedProgress = savedProgressRaw ? JSON.parse(savedProgressRaw) : null;
+            if (savedProgress && typeof savedProgress.currentQuestionIndex === 'number' && savedProgress.currentQuestionIndex > 0) {
+                setResumeSubject(subject);
+                setShowResumePopup(true);
+            } else {
+                setSelectedSubject(subject);
+            }
+        } catch (e) {
+            console.warn('Progres invalid în localStorage:', e);
+            setSelectedSubject(subject);
         }
     };
 
@@ -77,10 +111,20 @@ const LearningPage = () => {
                 className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100 text-center">
                 <h2 className="text-2xl font-semibold mb-6">Selectează o materie</h2>
                 <div className="grid grid-cols-1 gap-3 text-left">
+                    <button
+                        onClick={() => handleSubjectSelect({ name: 'Toate materiile', questions: subjects.flatMap(s => s.questions) })}
+                        className={`px-4 py-2 rounded border transition text-left shadow-sm hover:bg-blue-50 dark:hover:bg-gray-700 ${
+                            selectedSubject?.name === 'Toate materiile'
+                                ? 'border-blue-600 bg-blue-100 text-blue-800 font-medium dark:bg-blue-900 dark:text-blue-300'
+                                : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800'
+                        }`}
+                    >
+                        📘 Toate materiile
+                    </button>
                     {subjects.map((s, i) => (
                         <button
                             key={i}
-                            onClick={() => setSelectedSubject(s)}
+                            onClick={() => handleSubjectSelect(s)}
                             className={`px-4 py-2 rounded border transition text-left shadow-sm hover:bg-blue-50 dark:hover:bg-gray-700 ${
                                 selectedSubject?.name === s.name
                                     ? 'border-blue-600 bg-blue-100 text-blue-800 font-medium dark:bg-blue-900 dark:text-blue-300'
@@ -91,7 +135,27 @@ const LearningPage = () => {
                         </button>
                     ))}
                 </div>
-                {selectedSubject && (
+                {showResumePopup && (
+                    <ResumePopup
+                        subjectName={resumeSubject.name}
+                        onContinue={() => {
+                            const data = JSON.parse(localStorage.getItem(`progress-${resumeSubject.name}`));
+                            setCurrentQuestionIndex(data.currentQuestionIndex || 0);
+                            setSelectedSubject(resumeSubject);
+                            setShowResumePopup(false);
+                            setStarted(true);
+                        }}
+                        onRestart={() => {
+                            setCurrentQuestionIndex(0);
+                            setSelectedSubject(resumeSubject);
+                            setShowResumePopup(false);
+                            setStarted(true);
+                        }}
+                        onClose={() => setShowResumePopup(false)}
+                    />
+                )}
+
+                {selectedSubject && !showResumePopup && (
                     <button
                         onClick={() => setStarted(true)}
                         className="mt-6 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
@@ -99,6 +163,7 @@ const LearningPage = () => {
                         Începe
                     </button>
                 )}
+
             </div>
         );
     }
