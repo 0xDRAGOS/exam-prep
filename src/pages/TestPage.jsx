@@ -309,37 +309,7 @@ const TestPage = () => {
                 <CheckCircle className="w-10 h-10 mx-auto text-green-500"/>
                 <h2 className="text-2xl font-bold mt-2">Test Finalizat</h2>
                 <p className="text-lg mt-2 text-blue-600 dark:text-blue-400">Scor: {score} / {questions.length}</p>
-                <p className="text-gray-600 dark:text-gray-300 mt-1">{feedback}</p>
-                <button
-                    onClick={() => {
-                        setStarted(false);
-                        setFinished(false);
-                        setQuestions([]);
-                        setCurrentIndex(0);
-                        setSelectedAnswers({});
-                        setFeedback(null);
-                        setScore(0);
-                        setTimeLeft(TEST_DURATION_SECONDS);
-                        setAnswered(false);
-                        setShowExplanation(false);
-                        setWrongAnswers([]);
-                        setShowWrongAnswers(false);
-                        setVisibleExplanations({});
-
-                        loadQuestions();
-                    }}
-                    className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                >
-                    🔁 Reia Testul
-                </button>
-                {wrongAnswers.length > 0 && (
-                    <button
-                        onClick={() => setShowWrongAnswers(prev => !prev)}
-                        className="ml-2 mt-6 mb-6 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
-                    >
-                        {showWrongAnswers ? '🔽 Ascunde răspunsurile greșite' : '❌ Afișează răspunsurile greșite'}
-                    </button>
-                )}
+                <p className="text-gray-600 dark:text-gray-300 mt-1 mb-4">{feedback}</p>
                 {showWrongAnswers && wrongAnswers.map((item, index) => {
                     const isMulti = Array.isArray(item.correct);
                     const isMarked = (key) => item.selected.includes(key);
@@ -427,6 +397,36 @@ const TestPage = () => {
                         </div>
                     );
                 })}
+                <button
+                    onClick={() => {
+                        setStarted(false);
+                        setFinished(false);
+                        setQuestions([]);
+                        setCurrentIndex(0);
+                        setSelectedAnswers({});
+                        setFeedback(null);
+                        setScore(0);
+                        setTimeLeft(TEST_DURATION_SECONDS);
+                        setAnswered(false);
+                        setShowExplanation(false);
+                        setWrongAnswers([]);
+                        setShowWrongAnswers(false);
+                        setVisibleExplanations({});
+
+                        loadQuestions();
+                    }}
+                    className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                >
+                    🔁 Reia Testul
+                </button>
+                {wrongAnswers.length > 0 && (
+                    <button
+                        onClick={() => setShowWrongAnswers(prev => !prev)}
+                        className="ml-2 mb-6 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                    >
+                        {showWrongAnswers ? '🔽 Ascunde răspunsurile greșite' : '❌ Afișează răspunsurile greșite'}
+                    </button>
+                )}
             </div>
         );
     }
