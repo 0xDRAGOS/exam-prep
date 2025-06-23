@@ -32,6 +32,11 @@ const TestPage = () => {
     const [showWrongAnswers, setShowWrongAnswers] = useState(false);
     const [visibleExplanations, setVisibleExplanations] = useState({});
 
+    const [shuffleOptions, setShuffleOptions] = useState(() => {
+        const saved = localStorage.getItem("shuffleOptions");
+        return saved !== null ? JSON.parse(saved) : true;
+    });
+
     useEffect(() => {
         localStorage.setItem("wrapText", JSON.stringify(wrapText));
     }, [wrapText]);
@@ -70,8 +75,22 @@ const TestPage = () => {
             .then(data => {
                 const allQuestions = data.subjects.flatMap(s => s.questions);
                 const shuffled = allQuestions.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
-                setQuestions(shuffled);
+                const processed = shuffleOptions
+                    ? shuffled.map(q => ({
+                        ...q,
+                        options: shuffleObject(q.options)
+                    }))
+                    : shuffled;
+
+                setQuestions(processed);
+
             });
+    };
+
+    const shuffleObject = (obj) => {
+        const entries = Object.entries(obj);
+        const shuffled = entries.sort(() => 0.5 - Math.random());
+        return Object.fromEntries(shuffled);
     };
 
     const handleSelect = (key) => {
@@ -189,6 +208,20 @@ const TestPage = () => {
                         </label>
                     ))}
                 </div>
+                <div className="flex items-center justify-center gap-2 mt-4 text-sm">
+                    <input
+                        type="checkbox"
+                        id="shuffleOptions"
+                        checked={shuffleOptions}
+                        onChange={(e) => {
+                            setShuffleOptions(e.target.checked);
+                            localStorage.setItem("shuffleOptions", JSON.stringify(e.target.checked));
+                        }}
+                    />
+                    <label htmlFor="shuffleOptions" className="select-none">
+                        Amestecă opțiunile de răspuns
+                    </label>
+                </div>
                 <button
                     disabled={selectedSubjects.length === 0}
                     onClick={() => {
@@ -199,7 +232,16 @@ const TestPage = () => {
                                     .filter(s => selectedSubjects.includes(s.name))
                                     .flatMap(s => s.questions);
                                 const shuffled = filtered.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
-                                setQuestions(shuffled);
+
+                                const processed = shuffleOptions
+                                    ? shuffled.map(q => ({
+                                        ...q,
+                                        options: shuffleObject(q.options)
+                                    }))
+                                    : shuffled;
+
+                                setQuestions(processed);
+
                                 setStarted(true);
                                 setSelectSubjectsMode(false);
                             });
@@ -222,9 +264,23 @@ const TestPage = () => {
         return (
             <div className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
                 <h2 className="text-2xl font-bold mb-4">🧪 Pregătit pentru test?</h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
                     Vei primi 30 de întrebări aleatorii, cu timp limitat. Răspunde cât mai corect pentru a-ți îmbunătăți scorul.
                 </p>
+                <div className="flex items-center justify-center gap-2 mb-4 text-md">
+                    <input
+                        type="checkbox"
+                        id="shuffleOptions"
+                        checked={shuffleOptions}
+                        onChange={(e) => {
+                            setShuffleOptions(e.target.checked);
+                            localStorage.setItem("shuffleOptions", JSON.stringify(e.target.checked));
+                        }}
+                    />
+                    <label htmlFor="shuffleOptions" className="select-none">
+                        Amestecă opțiunile de răspuns
+                    </label>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <button
                         onClick={() => {
