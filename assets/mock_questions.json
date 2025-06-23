@@ -1619,7 +1619,7 @@
         },
         {
           "id": 25,
-          "text": "Cand browser-ul intalneste tag-ul < APPLET >, rezerva o zona pentru afisare cu dimensiunile\nspecificate de paramterii WIDTH, HEIGHT si:",
+          "text": "Cand browser-ul intalneste tag-ul < APPLET >, rezerva o zona pentru afisare cu dimensiunile specificate de paramterii WIDTH, HEIGHT si:",
           "options": {
             "A": "Se instaleaza un manager de securitate, adica un obiect de tip SecurityManager care va monitoriza activitatea metodelor appletului, aruncand exceptii de tip SecurityException;",
             "B": "Incarca codul compilat al applet-ului cu numele specificat de parametrul CODE;",
@@ -4165,16 +4165,16 @@
           "id": 14,
           "text": "Fie baza de date formata din tabelele: studenti(NrLeg, Nume, Pren, Fac,An,grupa) cataloage(NrLeg,CodDis,dat,nota), discipline(CodDis,Denumire,NrOreC, NrOreL, NrOreS, NrOreP,Credite,An,Sectie). Care din expresiile algebrei relationale determina studentii din anul II:",
           "options": {
-            "A": "πAn(studenti)",
-            "B": "σAn=2(studenti)",
-            "C": "πAn(σAn=2(studenti))",
-            "D": "σAn(πAn=2(studenti))",
-            "E": "πNume(studenti)"
+            "A": "πₐₙ(studenti)",
+            "B": "σₐₙ₌₂(studenti)",
+            "C": "πₐₙ(σₐₙ₌₂(studenti))",
+            "D": "σₐₙ(πₐₙ₌₂(studenti))",
+            "E": "πₙᵤₘₑ(studenti)"
           },
           "correct_answer": [
             "B"
           ],
-          "explanation": "În algebra relațională, operatorii principali sunt:\n\n- **σ (sigma)**: selecția – filtrează tupluri care îndeplinesc o condiție.\n- **π (pi)**: proiecția – extrage anumite atribute (coloane) dintr-o relație.\n\nOpțiunea corectă este:\n\n**B. σAn=2(studenti)** – selectează din tabela 'studenti' doar acele înregistrări unde atributul An este egal cu 2, adică exact studenții din anul II.\n\nDe ce celelalte opțiuni sunt incorecte:\n\n- **A. πAn(studenti)** – returnează toate valorile distincte ale anului de studiu din tabela 'studenti', deci nu filtrează doar anul II.\n- **C. πAn(σAn=2(studenti))** – selectează studenții din anul II, dar returnează doar valoarea câmpului An (adică doar '2'), nu lista studenților.\n- **D. σAn(πAn=2(studenti))** – este o formulare incorectă sintactic în algebra relațională.\n- **E. πNume(studenti)** – returnează doar toate numele studenților, fără să verifice anul de studiu.\n\nPrin urmare, doar expresia din opțiunea B returnează toți studenții din anul II."
+          "explanation": "În algebra relațională, operatorii principali sunt:\n\n- **σ (sigma)**: selecția – filtrează tupluri care îndeplinesc o condiție.\n- **π (pi)**: proiecția – extrage anumite atribute (coloane) dintr-o relație.\n\nOpțiunea corectă este:\n\n**B. σₐₙ₌₂(studenti)** – selectează din tabela 'studenti' doar acele înregistrări unde atributul An este egal cu 2, adică exact studenții din anul II.\n\nDe ce celelalte opțiuni sunt incorecte:\n\n- **A. πₐₙ(studenti)** – returnează toate valorile distincte ale anului de studiu din tabela 'studenti', deci nu filtrează doar anul II.\n- **C. πₐₙ(σₐₙ₌₂(studenti))** – selectează studenții din anul II, dar returnează doar valoarea câmpului An (adică doar '2'), nu lista studenților.\n- **D. σₐₙ(πₐₙ₌₂(studenti))** – este o formulare incorectă sintactic în algebra relațională.\n- **E. πₙᵤₘₑ(studenti)** – returnează doar toate numele studenților, fără să verifice anul de studiu.\n\nPrin urmare, doar expresia din opțiunea B returnează toți studenții din anul II."
         },
         {
           "id": 15,
