@@ -422,7 +422,7 @@ const TestPage = () => {
                 {wrongAnswers.length > 0 && (
                     <button
                         onClick={() => setShowWrongAnswers(prev => !prev)}
-                        className="ml-2 mb-6 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                        className="ml-2 mt-2 mb-6 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
                     >
                         {showWrongAnswers ? '🔽 Ascunde răspunsurile greșite' : '❌ Afișează răspunsurile greșite'}
                     </button>
