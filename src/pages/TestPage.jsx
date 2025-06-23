@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { CheckCircle, AlertTriangle, Info, WrapText } from 'lucide-react';
+import { CheckCircle, AlertTriangle, Info, WrapText, Settings } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useTheme } from '../context/ThemeContext';
 import {IMAGE_PATH, QUESTIONS_PATH, TEST_DURATION_SECONDS, TEST_QUESTION_COUNT} from "../constants/constants";
+import SettingsPopup from '../components/SettingsPopup';
 
 const TestPage = () => {
     const { isDark } = useTheme();
@@ -37,6 +38,13 @@ const TestPage = () => {
         return saved !== null ? JSON.parse(saved) : true;
     });
 
+    const [hideOptionLetters, setHideOptionLetters] = useState(() => {
+        const saved = localStorage.getItem("hideOptionLetters");
+        return saved !== null ? JSON.parse(saved) : false;
+    });
+
+    const [showSettings, setShowSettings] = useState(false);
+
     useEffect(() => {
         localStorage.setItem("wrapText", JSON.stringify(wrapText));
     }, [wrapText]);
@@ -64,6 +72,10 @@ const TestPage = () => {
             setSelectedSubjects(JSON.parse(saved));
         }
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem("hideOptionLetters", JSON.stringify(hideOptionLetters));
+    }, [hideOptionLetters]);
 
     const current = questions[currentIndex];
     const correct = current?.correct_answer ?? [];
@@ -184,121 +196,133 @@ const TestPage = () => {
 
     if (selectSubjectsMode && !started) {
         return (
-            <div className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
-                <h2 className="text-2xl font-bold mb-4">🎯 Selectează materiile</h2>
-                <div className="grid grid-cols-1 gap-3 text-left mb-4">
-                    {availableSubjects.map((subject, index) => (
-                        <label key={index} className="flex items-center gap-2">
-                            <input
-                                type="checkbox"
-                                value={subject.name}
-                                checked={selectedSubjects.includes(subject.name)}
-                                onChange={(e) => {
-                                    const checked = e.target.checked;
-                                    const name = subject.name;
-                                    const updated = checked
-                                        ? [...selectedSubjects, name]
-                                        : selectedSubjects.filter(s => s !== name);
-
-                                    setSelectedSubjects(updated);
-                                    sessionStorage.setItem("selectedSubjects", JSON.stringify(updated));
-                                }}
-                            />
-                            {subject.name}
-                        </label>
-                    ))}
+            <>
+                <div className="flex justify-end mb-2 mr-4">
+                    <button
+                        onClick={() => setShowSettings(true)}
+                        title="Setări"
+                        className="p-2 rounded-full border bg-gray-200 dark:bg-gray-800 hover:shadow transition"
+                    >
+                        <Settings className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                    </button>
                 </div>
-                <div className="flex items-center justify-center gap-2 mt-4 text-sm">
-                    <input
-                        type="checkbox"
-                        id="shuffleOptions"
-                        checked={shuffleOptions}
-                        onChange={(e) => {
-                            setShuffleOptions(e.target.checked);
-                            localStorage.setItem("shuffleOptions", JSON.stringify(e.target.checked));
+                <div className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
+                    <h2 className="text-2xl font-bold mb-4">🎯 Selectează materiile</h2>
+                    <div className="grid grid-cols-1 gap-3 text-left mb-4">
+                        {availableSubjects.map((subject, index) => (
+                            <label key={index} className="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    value={subject.name}
+                                    checked={selectedSubjects.includes(subject.name)}
+                                    onChange={(e) => {
+                                        const checked = e.target.checked;
+                                        const name = subject.name;
+                                        const updated = checked
+                                            ? [...selectedSubjects, name]
+                                            : selectedSubjects.filter(s => s !== name);
+
+                                        setSelectedSubjects(updated);
+                                        sessionStorage.setItem("selectedSubjects", JSON.stringify(updated));
+                                    }}
+                                />
+                                {subject.name}
+                            </label>
+                        ))}
+                    </div>
+                    <button
+                        disabled={selectedSubjects.length === 0}
+                        onClick={() => {
+                            fetch(QUESTIONS_PATH)
+                                .then(res => res.json())
+                                .then(data => {
+                                    const filtered = data.subjects
+                                        .filter(s => selectedSubjects.includes(s.name))
+                                        .flatMap(s => s.questions);
+                                    const shuffled = filtered.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
+
+                                    const processed = shuffleOptions
+                                        ? shuffled.map(q => ({
+                                            ...q,
+                                            options: shuffleObject(q.options)
+                                        }))
+                                        : shuffled;
+
+                                    setQuestions(processed);
+
+                                    setStarted(true);
+                                    setSelectSubjectsMode(false);
+                                });
                         }}
-                    />
-                    <label htmlFor="shuffleOptions" className="select-none">
-                        Amestecă opțiunile de răspuns
-                    </label>
+                        className="mt-4 px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
+                    >
+                        ✅ Începe Testul
+                    </button>
+                    <button
+                        onClick={() => setSelectSubjectsMode(false)}
+                        className="ml-2 mt-4 px-6 py-3 bg-blue-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
+                    >
+                        ↩ Înapoi
+                    </button>
                 </div>
-                <button
-                    disabled={selectedSubjects.length === 0}
-                    onClick={() => {
-                        fetch(QUESTIONS_PATH)
-                            .then(res => res.json())
-                            .then(data => {
-                                const filtered = data.subjects
-                                    .filter(s => selectedSubjects.includes(s.name))
-                                    .flatMap(s => s.questions);
-                                const shuffled = filtered.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
-
-                                const processed = shuffleOptions
-                                    ? shuffled.map(q => ({
-                                        ...q,
-                                        options: shuffleObject(q.options)
-                                    }))
-                                    : shuffled;
-
-                                setQuestions(processed);
-
-                                setStarted(true);
-                                setSelectSubjectsMode(false);
-                            });
-                    }}
-                    className="mt-4 px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
-                >
-                    ✅ Începe Testul
-                </button>
-                <button
-                    onClick={() => setSelectSubjectsMode(false)}
-                    className="ml-2 mt-4 px-6 py-3 bg-blue-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
-                >
-                    ↩ Înapoi
-                </button>
-            </div>
+                {showSettings && (
+                    <SettingsPopup
+                        onClose={() => setShowSettings(false)}
+                        shuffleOptions={shuffleOptions}
+                        setShuffleOptions={setShuffleOptions}
+                        hideOptionLetters={hideOptionLetters}
+                        setHideOptionLetters={setHideOptionLetters}
+                    />
+                )}
+            </>
         );
     }
 
     if (!started) {
         return (
-            <div className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
-                <h2 className="text-2xl font-bold mb-4">🧪 Pregătit pentru test?</h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    Vei primi 30 de întrebări aleatorii, cu timp limitat. Răspunde cât mai corect pentru a-ți îmbunătăți scorul.
-                </p>
-                <div className="flex items-center justify-center gap-2 mb-4 text-md">
-                    <input
-                        type="checkbox"
-                        id="shuffleOptions"
-                        checked={shuffleOptions}
-                        onChange={(e) => {
-                            setShuffleOptions(e.target.checked);
-                            localStorage.setItem("shuffleOptions", JSON.stringify(e.target.checked));
-                        }}
+            <>
+                <div className="flex justify-end mb-2 mr-4">
+                    <button
+                        onClick={() => setShowSettings(true)}
+                        title="Setări"
+                        className="p-2 rounded-full border bg-gray-200 dark:bg-gray-800 hover:shadow transition"
+                    >
+                        <Settings className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                    </button>
+                </div>
+                <div className="max-w-xl sm:mx-auto mx-2 mt-10 p-6 bg-white dark:bg-gray-900 shadow rounded-xl text-center text-gray-900 dark:text-gray-100">
+                    <h2 className="text-2xl font-bold mb-4">🧪 Pregătit pentru test?</h2>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                        Vei primi 30 de întrebări aleatorii, cu timp limitat. Răspunde cât mai corect pentru a-ți îmbunătăți scorul.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button
+                            onClick={() => {
+                                setStarted(true);
+                                loadQuestions();
+                            }}
+                            className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                        >
+                            🚀 Test Aleator
+                        </button>
+                        <button
+                            onClick={() => setSelectSubjectsMode(true)}
+                            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                        >
+                            🎯 Test Personalizat
+                        </button>
+                    </div>
+                </div>
+                {showSettings && (
+                    <SettingsPopup
+                        onClose={() => setShowSettings(false)}
+                        shuffleOptions={shuffleOptions}
+                        setShuffleOptions={setShuffleOptions}
+                        hideOptionLetters={hideOptionLetters}
+                        setHideOptionLetters={setHideOptionLetters}
                     />
-                    <label htmlFor="shuffleOptions" className="select-none">
-                        Amestecă opțiunile de răspuns
-                    </label>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                        onClick={() => {
-                            setStarted(true);
-                            loadQuestions();
-                        }}
-                        className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-                    >
-                        🚀 Test Aleator
-                    </button>
-                    <button
-                        onClick={() => setSelectSubjectsMode(true)}
-                        className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                    >
-                        🎯 Test Personalizat
-                    </button>
-                </div>
-            </div>
+                )}
+            </>
         );
     }
 
@@ -367,7 +391,9 @@ const TestPage = () => {
                                                 checked={isMarked(key)}
                                                 readOnly
                                             />
-                                            <span className="text-base break-words">{key}. {val}</span>
+                                            <span className="text-base break-words">
+                                                {hideOptionLetters ? val : `${key}. ${val}`}
+                                            </span>
                                         </div>
                                     </div>
                                 ))}
@@ -515,7 +541,7 @@ const TestPage = () => {
                                 onChange={() => handleSelect(key)}
                             />
                             <span className="text-base whitespace-pre-wrap break-words">
-                                {shuffleOptions ? value : `${key}. ${value}`}
+                                {hideOptionLetters ? value : `${key}. ${value}`}
                             </span>
                         </div>
                     </div>

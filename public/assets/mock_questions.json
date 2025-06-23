@@ -555,7 +555,7 @@
           "options": {
             "A": "lista trebuie sa fie sortata",
             "B": "ar trebui sa existe acces direct catre elementul din mijlocul fiecarei subliste",
-            "C": "ar trebui sa existe un mecanism de stergere sau/si de inserare a elementelor  in lista",
+            "C": "ar trebui sa existe un mecanism de stergere sau/si de inserare a elementelor in lista",
             "D": "niciuna de mai sus"
           },
           "correct_answer": [
@@ -804,7 +804,7 @@
           "id": 1,
           "text": "Un program orientat obiect reprezinta:",
           "options": {
-            "A": "o colectie de obiecte care coopereaza prin intermediul mesajelor  in vederea realizarii unui obiectiv comun",
+            "A": "o colectie de obiecte care coopereaza prin intermediul mesajelor in vederea realizarii unui obiectiv comun",
             "B": "o varianta de program procedural",
             "C": "un program care poate fi considerat un obiect de catre alte programe",
             "D": "un program specific mediului de programare Windows",
@@ -1276,7 +1276,7 @@
           "options": {
             "A": "Variabila h va fi accesata in mod public, deoarece se ia in considerare primul modificator de acces;",
             "B": "Variabila h va fi accesata in mod private,deoarece se ia in considerare ultimul modificator de acces;",
-            "C": "Va fi eroare la compilare deoarece o variabila nu poate fi  in acelasi timp accesata public si private;",
+            "C": "Va fi eroare la compilare deoarece o variabila nu poate fi in acelasi timp accesata public si private;",
             "D": "Nici una din variantele de mai sus;"
           },
           "correct_answer": [
@@ -1361,7 +1361,7 @@
             "A": "Programul este corect si va afisa la executie 5 4;",
             "B": "Programul este corect si va afisa la executie 4.0 4;",
             "C": "Va aparea eroare la compilare deoarece in clasa C2 s-a suprascris gresit atributul x din clasa C1;",
-            "D": "Va aparea eroare la compilare deoarece metoda suprascrisa f() din clasa C2  intoarce un tip diferit de void;"
+            "D": "Va aparea eroare la compilare deoarece metoda suprascrisa f() din clasa C2 intoarce un tip diferit de void;"
           },
           "correct_answer": [
             "D"
@@ -1446,7 +1446,7 @@
           "text": "Care sunt deosebirile dintre Swing si AWT?",
           "options": {
             "A": "Componentele Swing sunt scrise in totalitate in Java, pe cand in AWT, componentele sunt scrise folosind cod nativ;",
-            "B": "Componentele AWT au vizualizarea dependenta de sistemul de operare, iar  in Swing componentele pot avea o aceeasi vizualizare, indiferent de sistemul de operare;",
+            "B": "Componentele AWT au vizualizarea dependenta de sistemul de operare, iar in Swing componentele pot avea o aceeasi vizualizare, indiferent de sistemul de operare;",
             "C": "In sistemele de operare Unix componentele AWT nu sunt vizibile, pe cand cele din Swing da;",
             "D": "Fiecare componenta AWT are o componenta corespondenta in Swing;"
           },
@@ -1578,7 +1578,7 @@
           "text": "Prin modalitatea sa de tratare a exceptiilor, Java are urmatoarele avantaje fata de mecanismul traditional de tratare a erorilor:",
           "options": {
             "A": "Exista o metoda care se ocupa cu acest lucru;",
-            "B": "Separarea codului pentru tratarea unei erori de codul  in care ea poate sa apara;",
+            "B": "Separarea codului pentru tratarea unei erori de codul in care ea poate sa apara;",
             "C": "Propagarea unei erori pana la un analizor de exceptii corespunzator;",
             "D": "Gruparea erorilor dupa tipul lor;"
           },
@@ -2556,7 +2556,7 @@
         },
         {
           "id": 15,
-          "text": "Se considera o memorie intretesuta constituita din doua unitati de cate 4 Mo. Stiind ca adresa de memorie se constituie pe 23 de biti astfel: 1 bit identifica superunitatea, 20 biti specifica adresa in cadrul unitatii, iar ultimii 2 biti octetul din cadrul cuvantului), sa se identifice ( in zecimal) linia  intr-o memorie cache de 1Ko precum si bitii de pondere mare ai adresei de memorie A = 10000.",
+          "text": "Se considera o memorie intretesuta constituita din doua unitati de cate 4 Mo. Stiind ca adresa de memorie se constituie pe 23 de biti astfel: 1 bit identifica superunitatea, 20 biti specifica adresa in cadrul unitatii, iar ultimii 2 biti octetul din cadrul cuvantului), sa se identifice ( in zecimal) linia intr-o memorie cache de 1Ko precum si bitii de pondere mare ai adresei de memorie A = 10000.",
           "options": {
             "A": "600; 42;",
             "B": "600; 2;",
@@ -2714,7 +2714,7 @@
             "A": "un mijloc de intrerupere al sistemului calculator",
             "B": "un mecanism de transmitere a informatillor intre dispozitivele de intrare-iesire",
             "C": "un mijloc de terminare a unei operatii de intrare-iesire",
-            "D": "un mijloc de comunicatie  intre sistemul calculator hardware si sistemul de operare"
+            "D": "un mijloc de comunicatie intre sistemul calculator hardware si sistemul de operare"
           },
           "correct_answer": [
             "D"
@@ -3791,7 +3791,7 @@
           "options": {
             "A": "verificarea integritatii mesajului primit de un destinatar",
             "B": "modul prin care expeditorul nu poate nega faptul ca a transmis mesajul",
-            "C": "destinatarul unui mesaj trebuie sa dispuna de modalitati de a verifica \nidentitatea expeditorului si originea mesajului"
+            "C": "destinatarul unui mesaj trebuie sa dispuna de modalitati de a verifica identitatea expeditorului si originea mesajului"
           },
           "correct_answer": [
             "C"
@@ -4304,7 +4304,7 @@
             "B": "O multime finita si ordonata de operatii de citire, scriere si terminare,",
             "C": "O multime de instructiuni executabile dintr-un limbaj gazda,",
             "D": "O serie finita de opeartii de modificare a datelor dintr-o baza de date ORACLE",
-            "E": "O multime finita de operatii coerente, executate de un SGBD, care\n manipuleaza datele unei baze de date."
+            "E": "O multime finita de operatii coerente, executate de un SGBD, care manipuleaza datele unei baze de date."
           },
           "correct_answer": [
             "E"
@@ -4497,7 +4497,7 @@
           "id": 15,
           "text": "Se da tabelul \nSTUDENT(CNP, Nume, Grupa, Adresa) cu cheia primara CNP \nsi urmatoarele doua declansatoare: \n\nD1. CREATE OR REPLACE TRIGGER t1 \n BEFORE INSERT ON STUDENT \n REFERENCING OLD AS OLD NEW AS NEW \n FOR EACH ROW \n BEGIN \n  SELECT NVL(MAX(CNP),100)+1 INTO:NEW.CNP FROM STUDENT; \n END; \nD2. CREATE SEQUENCE secventa INCREMENT BY 1 \n INVALUE 101 MAXVALUE 500 NOCYCLE NOCACHE ORDER; \n\n CREATE OR REPLACE TRIGGER t2 \n BEFORE INSERT ON STUDENT \n REFERENCING OLD AS OLD NEW AS NEW \n FOR EACH ROW \n BEGIN \n  SELECT secventa.NEXTVAL INTO:NEW.CNP FROM STUDENT; \n END; \n\nCare dintre urmatoarele afirmatii sunt adevarate?",
           "options": {
-            "A": "Declansatorul D1 atribuie o valoare maxima atributului CNP  inainte de o noua inserare",
+            "A": "Declansatorul D1 atribuie o valoare maxima atributului CNP inainte de o noua inserare",
             "B": "Cele doua declasatoare produc acelasi rezultat",
             "C": "Declansatorul D2 nu violeaza restrictia de cheie primara",
             "D": "Declansatorul D1 poate viola restrictia de cheie primara",
@@ -4664,7 +4664,7 @@
           "options": {
             "A": "textul scris in stil italic din paragrafe este verde",
             "B": "textele din paragrafe sunt scrise cu culoarea verde",
-            "C": "textul scrisin stil italic din paragraful urmator este verde",
+            "C": "textul scris in stil italic din paragraful urmator este verde",
             "D": "cuvantul em din paragraful urmator este scris cu verde",
             "E": "regula este scrisa gresit"
           },
