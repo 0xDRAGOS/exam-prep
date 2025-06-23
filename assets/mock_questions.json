@@ -2070,11 +2070,11 @@
         },
         {
           "id": 2,
-          "text": "Determinati in care caz timpii de executie T1(n) si T2(n) au acelasi ordin de crestere, unde prin n\nnotam dimensiunea datelor de inrtare iar k noteaza o constanta oarecare pozitiva: ",
+          "text": "Determinati in care caz timpii de executie T₁(n) si T₂(n) au acelasi ordin de crestere, unde prin n notam dimensiunea datelor de inrtare iar k noteaza o constanta oarecare pozitiva: ",
           "options": {
-            "A": "lim (n → ∞) (T1(n)/T2(n)) = 0",
-            "B": "lim (n → ∞) (T1(n)/T2(n)) = ∞",
-            "C": "lim (n → ∞) (T1(n)/T2(n)) = k"
+            "A": "limₙ→∞ T₁(n)/T₂(n) = 0",
+            "B": "limₙ→∞ T₁(n)/T₂(n) = ∞",
+            "C": "limₙ→∞ T₁(n)/T₂(n) = k"
           },
           "correct_answer": [
             "C"
@@ -2083,7 +2083,7 @@
         },
         {
           "id": 3,
-          "text": "Pentru lim (n → ∞) (f(n)/g(n)) = ∞, care din urmatoarele afirmatii sunt adevarate?",
+          "text": "Pentru limₙ→∞ f(n)/g(n) = ∞, care din urmatoarele afirmatii sunt adevarate?",
           "options": {
             "A": "f(n) ∈ ω(g(n))",
             "B": "f(n) ∈ Θ(g(n))",
@@ -2093,7 +2093,7 @@
             "A",
             "C"
           ],
-          "explanation": "Pentru limita lim (n → ∞) f(n)/g(n) = ∞, înseamnă că funcția f(n) crește mult mai repede decât funcția g(n) atunci când n devine foarte mare.\n\n- A. f(n) ∈ ω(g(n)) – este adevărat. Notația omega mic înseamnă că f(n) crește strict mai repede decât g(n). Așadar, dacă raportul f(n)/g(n) tinde spre infinit, atunci f(n) este într-adevăr în ω(g(n)).\n\n- B. f(n) ∈ Θ(g(n)) – este fals. Această notație ar însemna că f(n) și g(n) cresc în același ritm (adică raportul lor tinde către o constantă pozitivă). Dar aici raportul tinde către infinit, deci f(n) nu este în Θ(g(n)).\n\n- C. f(n) ∈ Ω(g(n)) – este adevărat. Notația omega mare înseamnă că f(n) crește cel puțin la fel de repede ca g(n). Cum f(n) crește chiar mai repede, această condiție este satisfăcută.\n\nConcluzie: Afirmațiile adevărate sunt A și C, pentru că f(n) domină clar g(n) când n devine foarte mare."
+          "explanation": "Pentru limita limₙ→∞ f(n)/g(n) = ∞, înseamnă că funcția f(n) crește mult mai repede decât funcția g(n) atunci când n devine foarte mare.\n\n- A. f(n) ∈ ω(g(n)) – este adevărat. Notația omega mic înseamnă că f(n) crește strict mai repede decât g(n). Așadar, dacă raportul f(n)/g(n) tinde spre infinit, atunci f(n) este într-adevăr în ω(g(n)).\n\n- B. f(n) ∈ Θ(g(n)) – este fals. Această notație ar însemna că f(n) și g(n) cresc în același ritm (adică raportul lor tinde către o constantă pozitivă). Dar aici raportul tinde către infinit, deci f(n) nu este în Θ(g(n)).\n\n- C. f(n) ∈ Ω(g(n)) – este adevărat. Notația omega mare înseamnă că f(n) crește cel puțin la fel de repede ca g(n). Cum f(n) crește chiar mai repede, această condiție este satisfăcută.\n\nConcluzie: Afirmațiile adevărate sunt A și C, pentru că f(n) domină clar g(n) când n devine foarte mare."
         },
         {
           "id": 4,
@@ -3272,7 +3272,7 @@
           "text": "Un protocol este",
           "options": {
             "A": "un set de reguli folosit pentru apelul primitivelor de serviciu",
-            "B": "un set de reguli care guverneaza formatul si semnificatia cadrelor, pachetelor \nsau mesajelor schimbate intre ele de entitatile pereche de pe un anumit nivel",
+            "B": "un set de reguli care guverneaza formatul si semnificatia cadrelor, pachetelor sau mesajelor schimbate intre ele de entitatile pereche de pe un anumit nivel",
             "C": "un set de reguli care guverneaza formatul pachetelor transmise nivelelor superioare",
             "D": "un set de reguli care guverneaza formatul pachetelor transmise nivelului fizic"
           },
@@ -3358,9 +3358,9 @@
           "id": 14,
           "text": "Care dintre urmatoarele afirmatii este FALSA?",
           "options": {
-            "A": "Modelul OSI suporta ambele tipuri de comunicatii – orientata pe conexiuni respectiv fara\nconexiuni – la nivelul retea",
+            "A": "Modelul OSI suporta ambele tipuri de comunicatii – orientata pe conexiuni respectiv fara conexiuni – la nivelul retea",
             "B": "Modelul OSI suporta numai comunicatia orientata pe conexiuni la nivelul transport",
-            "C": "Modelul TCP/IP suporta ambele tipuri de comunicatii – orientata pe conexiuni \nrespectiv fara conexiuni – la nivelul transport",
+            "C": "Modelul TCP/IP suporta ambele tipuri de comunicatii – orientata pe conexiuni respectiv fara conexiuni – la nivelul transport",
             "D": "Modelul TCP/IP suporta numai comunicatia fara conexiuni la nivelul retea",
             "E": "Modelul OSI suporta numai comunicatia fara conexiuni la nivelul transport"
           },
