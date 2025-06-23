@@ -497,10 +497,10 @@ const TestPage = () => {
                     Următoarea
                 </button>
                 <button
-                    onClick={() => answered && setShowExplanation(true)}
+                    onClick={() => answered && setShowExplanation(prev => !prev)}
                     className="px-5 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
                 >
-                    Vezi Explicația
+                    {showExplanation ? 'Ascunde Explicația' : 'Vezi Explicația'}
                 </button>
             </div>
         </div>

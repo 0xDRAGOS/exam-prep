@@ -4579,7 +4579,7 @@
         },
         {
           "id": 20,
-          "text": "In definirea unui cursor explicit exista urmatoarele 5 operatiuni: \n1. Declararea variabilei in care va fi stocata o linie a cursorului \n2. Deschiderea cursorului (OPEN) \n3. Declararea cursorului printr-o fraza SELECT (CURSOR nume IS SELECT ...) \n4. Structura de ciclare ce include, obligatoriu, o comanda deincarcare a \nurmatoarelor linii din cursor altfel bucla se repeta la infinit \n5. Incarcarea urmatoarei linii din cursor (FETCH) Care este ordinea corecta a acestor operatii?",
+          "text": "In definirea unui cursor explicit exista urmatoarele 5 operatiuni: \n1. Declararea variabilei in care va fi stocata o linie a cursorului \n2. Deschiderea cursorului (OPEN) \n3. Declararea cursorului printr-o fraza SELECT (CURSOR nume IS SELECT ...) \n4. Structura de ciclare ce include, obligatoriu, o comanda deincarcare a urmatoarelor linii din cursor altfel bucla se repeta la infinit \n5. Incarcarea urmatoarei linii din cursor (FETCH) \n\nCare este ordinea corecta a acestor operatii?",
           "options": {
             "A": "3,2,1,4,5",
             "B": "3,1,2,5,4",
