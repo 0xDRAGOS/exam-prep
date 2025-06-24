@@ -1663,7 +1663,7 @@
         },
         {
           "id": 28,
-          "text": "Ce rezulta din urmatorul fragment de cod Java?\n\nint x=1;\nString []names={\"Fred\",\"Jim\",\"Sheila\"};\nnames[--x]+=\".\";\nfor(int i=0;i<names.length;i++)\nSystem.out.println(names[i]);",
+          "text": "Ce rezulta din urmatorul fragment de cod Java?\n\nint x=1;\nString []names={\"Fred\",\"Jim\",\"Sheila\"};\nnames[--x]+=\".\";\nfor(int i=0;i<names.length;i++)\n   System.out.println(names[i]);",
           "options": {
             "A": "Output-ul include Sheila.;",
             "B": "Output-ul include Fred.;",
@@ -2002,7 +2002,7 @@
         },
         {
           "id": 20,
-          "text": "Daca avem un arbore binar plin cu 9 nivele,sa se determine numarul de varfuri ce se \nafla pe nivelul cu numarul 5?",
+          "text": "Daca avem un arbore binar plin cu 9 nivele,sa se determine numarul de varfuri ce se afla pe nivelul cu numarul 5?",
           "options": {
             "A": "15",
             "B": "31",
@@ -3917,7 +3917,7 @@
             "A": "toate datele care tranziteaza reteaua",
             "B": "datele de la computerele legate indirect la acelasi server",
             "C": "datele din computerele care sunt in aceeasi zona geografica",
-            "D": "datele de la computerelec are comunica in orice fel cu un computer care ares niffer instalat",
+            "D": "datele de la computerelec are comunica in orice fel cu un computer care are sniffer instalat",
             "E": "datele din subreteaua primului switch de deasupra sa, in ierahia retelei"
           },
           "correct_answer": [
@@ -4316,9 +4316,9 @@
           "text": "Numele unei coloane dintr-un tabel in ORACLE :",
           "options": {
             "A": "trebuie sa fie unic in cadrul tabelului,",
-            "B": "trebuie sa fie unicin cadrul bazei de date,",
+            "B": "trebuie sa fie unic in cadrul bazei de date,",
             "C": "are asociat un index ,",
-            "D": "trebuie sa aparaa in instructiunea CREATE TABLE,",
+            "D": "trebuie sa aparaă in instructiunea CREATE TABLE,",
             "E": "rebuie sa fie specificat a in instructiunea ALTER TABLE."
           },
           "correct_answer": [
@@ -4440,7 +4440,7 @@
             "B": "Populeaza cu inregistrari tabela pe o luna dintr-un an",
             "C": "Nu populeaza tabela datorita exceptiei DUP-VAL-ON-INDEX",
             "D": "Daca se executa de doua ori succesiv, nu produce rezultate",
-            "E": "Daca se executa de doua ori succesiv, dubleazainregistrarile din tabela"
+            "E": "Daca se executa de doua ori succesiv, dubleaza inregistrarile din tabela"
           },
           "correct_answer": [
             "B",
@@ -4450,7 +4450,7 @@
         },
         {
           "id": 12,
-          "text": "Se da tabelul \nSTUDENT(CNP, Nume, Grupa, Adresa) \nCare secventa creaza un view ce permite ca modificarile in tabela \nsa se reflecte automat siin view?",
+          "text": "Se da tabelul \nSTUDENT(CNP, Nume, Grupa, Adresa) \nCare secventa creaza un view ce permite ca modificarile in tabela sa se reflecte automat siin view?",
           "options": {
             "A": "CREATE VIEW stud AS \nSELECT * FROM STUDENT WHERE Grupa IN (210,220);",
             "B": "CREATE VIEW emp_vu AS \nSELECT * FROM STUDENT WHERE Grupa IN (210,220) \nWITH READ ONLY;",
