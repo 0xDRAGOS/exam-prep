@@ -4424,7 +4424,7 @@
             "A": "Venitul maxim al unui angajat dintr-un compartiment utilizand expresii tabela",
             "B": "Angajatul sau angajatii cu cel mai mare venit utilizand expresii tabela",
             "C": "Venitul de baza al unui angajat utilizand operatorul INNER JOIN",
-            "D": "Veniturile angajatilorin ordine descrescatoare utilizand expresii tabela",
+            "D": "Veniturile angajatilor in ordine descrescatoare utilizand expresii tabela",
             "E": "Numele angajatului din fiecare compartiment cu venitul cel mai mare"
           },
           "correct_answer": [
@@ -4566,8 +4566,8 @@
           "text": "Fie tabelul \nANGAJAT(Marca, Numepren, Compart, Datasv, Salorar,Salorarco, Compart)\n cu interogarea \nSELECT marca, Numepren, Datasv, vechime(datasv,2008,7) FROM ANGAJAT) \nsi functia \n\nCREATE OR REPLACE FUNCTION vechime \n(Datasv_ DATE, An_ Number(4), Luna_ Number(2)) \nRETURN Integer \nAS \nprima_zi DATE:=TO_DATE(’01/’||luna_||’/’||an_,’DD/MM/YYYY’); \nBEGIN \n RETURN TRUNC(MONTHS_BETWEEN(prima_zi,Datasv_)/12,0); \nEND; \n\nCare dintre urmatoarele afirmatii sunt adevarate?",
           "options": {
             "A": "Interogarea produce o singura valoare",
-            "B": "Apelul functiei nu este plasat corectin interogare",
-            "C": "Functia calculeaza numarul de ani dintre o datasi prima zi a lunii de referinta",
+            "B": "Apelul functiei nu este plasat corect in interogare",
+            "C": "Functia calculeaza numarul de ani dintre o data si prima zi a lunii de referinta",
             "D": "Functia si interogarea sunt corecte",
             "E": "Interogarea produce mai multe valori"
           },
