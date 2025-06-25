@@ -88,10 +88,14 @@ const TestPage = () => {
                 const allQuestions = data.subjects.flatMap(s => s.questions);
                 const shuffled = allQuestions.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
                 const processed = shuffleOptions
-                    ? shuffled.map(q => ({
-                        ...q,
-                        options: shuffleObject(q.options)
-                    }))
+                    ? shuffled.map(q => {
+                        const { options, correct } = shuffleObject(q.options, q.correct_answer);
+                        return {
+                            ...q,
+                            options,
+                            correct_answer: correct
+                        };
+                    })
                     : shuffled;
 
                 setQuestions(processed);
@@ -99,10 +103,30 @@ const TestPage = () => {
             });
     };
 
-    const shuffleObject = (obj) => {
+    const shuffleObject = (obj, correctAnswer) => {
         const entries = Object.entries(obj);
         const shuffled = entries.sort(() => 0.5 - Math.random());
-        return Object.fromEntries(shuffled);
+
+        const newOptions = {};
+        const keyMap = {};
+
+        shuffled.forEach(([oldKey, val], idx) => {
+            const newKey = String.fromCharCode(65 + idx);
+            newOptions[newKey] = val;
+            keyMap[oldKey] = newKey;
+        });
+
+        let newCorrect;
+        if (Array.isArray(correctAnswer)) {
+            newCorrect = correctAnswer.map(oldKey => keyMap[oldKey]);
+        } else {
+            newCorrect = keyMap[correctAnswer];
+        }
+
+        return {
+            options: newOptions,
+            correct: newCorrect.sort()
+        };
     };
 
     const handleSelect = (key) => {

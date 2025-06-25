@@ -1,5 +1,7 @@
 export const TEST_DURATION_SECONDS = 30 * 60;
 export const TEST_QUESTION_COUNT = 30;
+export const PROGRESS_ITEMS_PER_PAGE = 15;
+export const PROGRESS_CHART_LIMIT = 30;
 export const PDF_FILES = [
     "licenta-2015-grile-modul-1.pdf",
     "licenta-2015-grile-modul-2.pdf",

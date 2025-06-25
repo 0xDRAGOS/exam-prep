@@ -12,25 +12,20 @@ import {
 import { Line } from 'react-chartjs-2';
 import { BarChart2, AlertCircle, Clock } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import {PROGRESS_CHART_LIMIT, PROGRESS_ITEMS_PER_PAGE} from "../constants/constants";
 
-ChartJS.register(
-    LineElement,
-    PointElement,
-    LinearScale,
-    CategoryScale,
-    Tooltip,
-    Legend,
-    Filler
-);
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend, Filler);
 
 const ProgressPage = () => {
   const [chartData, setChartData] = useState(null);
   const [history, setHistory] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const { isDark } = useTheme();
 
   const loadData = () => {
-    const saved = JSON.parse(localStorage.getItem('scoreHistory') || '[]').sort(
-        (a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    const saved = JSON.parse(localStorage.getItem('scoreHistory') || '[]')
+        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
     setHistory(saved);
 
     if (!saved.length) {
@@ -38,25 +33,25 @@ const ProgressPage = () => {
       return;
     }
 
-    const labels = saved.map(h => new Date(h.timestamp).toLocaleString());
-    const scores = saved.map(h => h.score);
-    const totals = saved.map(h => h.total);
-    const modes = saved.map(h => h.mode);
+    const latest = saved.slice(0, PROGRESS_CHART_LIMIT).reverse();
+
+    const labels = latest.map(h => new Date(h.timestamp).toLocaleString());
+    const scores = latest.map(h => h.score);
+    const totals = latest.map(h => h.total);
+    const modes = latest.map(h => h.mode);
 
     setChartData({
       labels,
-      datasets: [
-        {
-          label: 'Scor obținut',
-          data: scores,
-          fill: true,
-          borderColor: '#3b82f6',
-          backgroundColor: isDark ? 'rgba(59,130,246,0.1)' : 'rgba(59,130,246,0.2)',
-          tension: 0.25,
-          pointRadius: 5,
-          pointHoverRadius: 7,
-        }
-      ],
+      datasets: [{
+        label: 'Scor obținut',
+        data: scores,
+        fill: true,
+        borderColor: '#3b82f6',
+        backgroundColor: isDark ? 'rgba(59,130,246,0.1)' : 'rgba(59,130,246,0.2)',
+        tension: 0.25,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+      }],
       meta: { totals, modes }
     });
   };
@@ -67,8 +62,15 @@ const ProgressPage = () => {
 
   const handleClearHistory = () => {
     localStorage.removeItem('scoreHistory');
+    setCurrentPage(1);
     loadData();
   };
+
+  const totalPages = Math.ceil(history.length / PROGRESS_ITEMS_PER_PAGE);
+  const paginatedHistory = history.slice(
+      (currentPage - 1) * PROGRESS_ITEMS_PER_PAGE,
+      currentPage * PROGRESS_ITEMS_PER_PAGE
+  );
 
   return (
       <div className="max-w-5xl sm:mx-auto mx-2 px-4 sm:px-6 py-6 bg-white dark:bg-gray-900 rounded-xl shadow text-gray-900 dark:text-gray-100">
@@ -171,7 +173,7 @@ const ProgressPage = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {history.map((entry, index) => (
+                    {paginatedHistory.map((entry, index) => (
                         <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                           <td className="px-4 py-2 border-b">{new Date(entry.timestamp).toLocaleString()}</td>
                           <td className="px-4 py-2 border-b capitalize">{entry.mode}</td>
@@ -182,6 +184,28 @@ const ProgressPage = () => {
                     </tbody>
                   </table>
                 </div>
+
+                {totalPages > 1 && (
+                    <div className="flex justify-center mt-4 gap-2">
+                      <button
+                          onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                          className="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 rounded disabled:opacity-50"
+                          disabled={currentPage === 1}
+                      >
+                        Înapoi
+                      </button>
+                      <span className="px-3 py-1 text-sm text-gray-600 dark:text-gray-300">
+                  Pagina {currentPage} din {totalPages}
+                </span>
+                      <button
+                          onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                          className="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 rounded disabled:opacity-50"
+                          disabled={currentPage === totalPages}
+                      >
+                        Înainte
+                      </button>
+                    </div>
+                )}
               </div>
             </>
         )}
