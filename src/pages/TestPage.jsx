@@ -266,10 +266,14 @@ const TestPage = () => {
                                     const shuffled = filtered.sort(() => 0.5 - Math.random()).slice(0, TEST_QUESTION_COUNT);
 
                                     const processed = shuffleOptions
-                                        ? shuffled.map(q => ({
-                                            ...q,
-                                            options: shuffleObject(q.options)
-                                        }))
+                                        ? shuffled.map(q => {
+                                            const { options, correct } = shuffleObject(q.options, q.correct_answer);
+                                            return {
+                                                ...q,
+                                                options,
+                                                correct_answer: correct
+                                            };
+                                        })
                                         : shuffled;
 
                                     setQuestions(processed);

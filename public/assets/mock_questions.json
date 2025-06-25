@@ -3509,8 +3509,8 @@
           "text": "Serviciile nivelului retea au fost proiectate avand in vedere urmatoarele scopuri:",
           "options": {
             "A": "serviciile trebuie sa fie independente de tehnologia ruterului",
-            "B": "nivelul transport trebuie sa fie independent de numarul, tipul si topologia \nruterelor existente",
-            "C": "adresele de retea disponibile la nivelul transport trebuie sa foloseasca o schema \nde numerotare uniforma, chiar in cadrul retelelor LAN si WAN",
+            "B": "nivelul transport trebuie sa fie independent de numarul, tipul si topologia ruterelor existente",
+            "C": "adresele de retea disponibile la nivelul transport trebuie sa foloseasca o schema de numerotare uniforma, chiar in cadrul retelelor LAN si WAN",
             "D": "serviciile trebuie sa asigure evitarea coliziunilor"
           },
           "correct_answer": [
@@ -4151,7 +4151,7 @@
           "text": "Restrictiile referentiale intre 2 tabele sunt date de:",
           "options": {
             "A": "Cheile primare si cheile externe",
-            "B": "Coloanele commune",
+            "B": "Coloanele comune",
             "C": "Coloanele din clauza CHECK",
             "D": "Coloanele din SELECT",
             "E": "Chei externe"
