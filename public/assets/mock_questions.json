@@ -1020,7 +1020,7 @@
           "correct_answer": [
             "A"
           ],
-          "explanation": "Programul nu va compila deoarece variabila `x` din clasa de bază `B` este declarată ca `private`, iar metodele `f()` din clasele derivate `D1` și `D2` încearcă să acceseze direct această variabilă (`x = x + 5;`, respectiv `x = x + 2;`). Membrii `private` nu sunt accesibili în clasele derivate în C++. Pentru ca programul să funcționeze corect, `x` ar trebui declarat `protected` în clasa `B`. În forma actuală, compilatorul va semnala o eroare de acces la membru privat, deci răspunsul corect este G) Eroare de compilare."
+          "explanation": "Programul va afișa `2 5 2 1`. Iată cum se execută:\n\n1. Se creează un vector de 4 pointeri la obiecte de tip `B` sau derivate:\n   - `b[0] = new B(2)` → x = 2\n   - `b[1] = new D1()` → x = 0\n   - `b[2] = new D2()` → x = 0\n   - `b[3] = new B()` → x = 0\n\n2. Se apelează metoda virtuală `f()` pentru fiecare obiect, în ordine inversă:\n   - `b[3]->f()` → B::f() → x = 0 + 1 = 1\n   - `b[2]->f()` → D2::f() → x = 0 + 2 = 2\n   - `b[1]->f()` → D1::f() → x = 0 + 5 = 5\n\n3. Se apelează `print()` pentru fiecare obiect în ordine:\n   - `b[0]` → x = 2\n   - `b[1]` → x = 5\n   - `b[2]` → x = 2\n   - `b[3]` → x = 1\n\nRezultatul afișat este: `2 5 2 1`. Așadar, răspunsul corect este A.\n\nNotă: Pentru ca acest program să funcționeze, membrul `x` din clasa `B` trebuie să fie declarat `protected`, nu `private`, altfel metodele `f()` din `D1` și `D2` nu pot accesa `x` și programul nu va compila."
         },
         {
           "id": 15,
@@ -5098,7 +5098,7 @@
             "B": "imaginea o sa aiba marimea de 2px",
             "C": "nu are niciun efect deoarece imaginea nu este inserata corect",
             "D": "scrie titlul imaginii cu albastru inchis",
-            "E": "titlul imaginii esteincadrat de o margine de 2px"
+            "E": "titlul imaginii este incadrat de o margine de 2px"
           },
           "correct_answer": [
             "A"
