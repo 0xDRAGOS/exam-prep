@@ -2681,7 +2681,7 @@
           "id": 3,
           "text": "Planificarea Round-Robin:",
           "options": {
-            "A": "determina atribuirea unei cunate de timp in care procesului ii este permis sa ruleze",
+            "A": "determina atribuirea unei cuante de timp in care procesului ii este permis sa ruleze",
             "B": "determina suspendarea unui proces intr-un moment arbitrar",
             "C": "determina atribuirea unei prioritati fixe pentru executia unui proces",
             "D": "determina lansarea in executie a unui proces daca nu exista altul mai prioritar in executie"
