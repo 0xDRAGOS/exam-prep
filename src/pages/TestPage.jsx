@@ -77,6 +77,18 @@ const TestPage = () => {
         localStorage.setItem("hideOptionLetters", JSON.stringify(hideOptionLetters));
     }, [hideOptionLetters]);
 
+    useEffect(() => {
+        if (!started || questions.length === 0) return;
+
+        if (timeLeft <= 0) {
+            finishTest(true);
+            return;
+        }
+
+        timerRef.current = setTimeout(() => setTimeLeft(t => t - 1), 1000);
+        return () => clearTimeout(timerRef.current);
+    }, [timeLeft, started, questions.length]);
+
     const current = questions[currentIndex];
     const correct = current?.correct_answer ?? [];
     const isMultiple = Array.isArray(correct);
@@ -193,8 +205,9 @@ const TestPage = () => {
             timestamp: new Date().toISOString(),
             score,
             total: questions.length,
-            mode: 'test'
+            mode: questions.length === TEST_QUESTION_COUNT ? 'test' : 'test_complet',
         };
+
         const history = JSON.parse(localStorage.getItem('scoreHistory') || '[]');
         history.push(entry);
         localStorage.setItem('scoreHistory', JSON.stringify(history));
@@ -338,6 +351,34 @@ const TestPage = () => {
                             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
                         >
                             🎯 Test Personalizat
+                        </button>
+                        <button
+                            onClick={() => {
+                                fetch(QUESTIONS_PATH)
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        const allQuestions = data.subjects.flatMap(s => s.questions);
+                                        const shuffledQuestions = allQuestions.sort(() => 0.5 - Math.random());
+
+                                        const processed = shuffleOptions
+                                            ? shuffledQuestions.map(q => {
+                                                const { options, correct } = shuffleObject(q.options, q.correct_answer);
+                                                return {
+                                                    ...q,
+                                                    options,
+                                                    correct_answer: correct,
+                                                };
+                                            })
+                                            : shuffledQuestions;
+
+                                        setQuestions(processed);
+                                        setTimeLeft(allQuestions.length * 30);
+                                        setStarted(true);
+                                    });
+                            }}
+                            className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+                        >
+                            📚 Test Complet
                         </button>
                     </div>
                 </div>
