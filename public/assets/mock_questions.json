@@ -565,7 +565,7 @@
         },
         {
           "id": 6,
-          "text": "Care dintre urmatoarele nu este afirmatii nu este adevarata in cazul unui algoritm de cautare binara?",
+          "text": "Care dintre urmatoarele afirmatii nu este adevarata in cazul unui algoritm de cautare binara?",
           "options": {
             "A": "trebuie folosit un array sortat",
             "B": "cerinta de a avea un array sortat necesita multa memorie si timp atunci cand sunt necesare multe stergeri si inserari",
