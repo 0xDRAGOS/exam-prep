@@ -565,7 +565,7 @@
         },
         {
           "id": 6,
-          "text": "Care dintre urmatoarele nu este afirmatii nu este adevarata in cazul unui algoritm de cautare binara?",
+          "text": "Care dintre urmatoarele afirmatii nu este adevarata in cazul unui algoritm de cautare binara?",
           "options": {
             "A": "trebuie folosit un array sortat",
             "B": "cerinta de a avea un array sortat necesita multa memorie si timp atunci cand sunt necesare multe stergeri si inserari",
@@ -1612,9 +1612,7 @@
             "C": "Prin apelul metodei join();",
             "D": "Niciodata;"
           },
-          "correct_answer": [
-            "B"
-          ],
+          "correct_answer": [],
           "explanation": "Răspunsul corect este B: Automat de către sistemul de operare.\n\nExplicație: În contextul sistemelor de operare și al multithreading-ului, un fir de execuție poate intra în starea de \"pregătit\" automat de către sistemul de operare atunci când este pregătit să ruleze, dar nu este în execuție în acel moment. Această tranziție are loc de obicei după ce firul de execuție a fost blocat (de exemplu, așteptând I/O sau o resursă) și resursa devine disponibilă, sau când durata de somn a firului s-a încheiat. Sistemul de operare gestionează stările și tranzițiile firelor de execuție, mutând firele în starea de \"pregătit\" atunci când sunt eligibile să utilizeze CPU-ul. Celelalte opțiuni implică acțiuni explicite, cum ar fi somnul sau alăturarea, care de obicei blochează un fir de execuție în loc să-l facă pregătit pentru rulare."
         },
         {
