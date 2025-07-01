@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://0xdragos.github.io/exam-prep/sitemap.xml

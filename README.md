@@ -2,6 +2,8 @@
 
 A modern React-based web application for exam preparation. Offers multiple-choice question training, test simulations, PDF viewer, and progress analytics — with full light/dark theme support.
 
+🔍 Cuvinte cheie: informatica ucv examen licenta grila, grile licenta informatica, examene ucv craiova
+
 🔗 **Live demo**: [https://0xDRAGOS.github.io/exam-prep](https://0xDRAGOS.github.io/exam-prep)
 
 ## 🌟 Features

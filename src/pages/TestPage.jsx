@@ -16,6 +16,7 @@ const TestPage = () => {
     const [feedback, setFeedback] = useState(null);
     const [score, setScore] = useState(0);
     const [timeLeft, setTimeLeft] = useState(TEST_DURATION_SECONDS);
+    const [isCustomTest, setIsCustomTest] = useState(false);
     const [finished, setFinished] = useState(false);
     const [showExplanation, setShowExplanation] = useState(false);
     const [answered, setAnswered] = useState(false);
@@ -169,6 +170,7 @@ const TestPage = () => {
     const handleAnswer = () => {
         const selected = Object.keys(selectedAnswers).filter(k => selectedAnswers[k]);
         const correctSet = isMultiple ? correct : [correct];
+        const correctText = correctSet.length > 0 ? correctSet.join(', ') : 'nici un răspuns';
         const isCorrect = selected.length === correctSet.length &&
             selected.every(k => correctSet.includes(k));
 
@@ -182,7 +184,7 @@ const TestPage = () => {
             }]);
         }
 
-        setFeedback(isCorrect ? 'Răspuns corect!' : `Greșit. Corect: ${correctSet.join(', ')}`);
+        setFeedback(isCorrect ? 'Răspuns corect!' : `Greșit. Corect: ${correctText}`);
         setAnswered(true);
     };
 
@@ -205,7 +207,9 @@ const TestPage = () => {
             timestamp: new Date().toISOString(),
             score,
             total: questions.length,
-            mode: questions.length === TEST_QUESTION_COUNT ? 'test' : 'test_complet',
+            mode: isCustomTest
+                ? 'test_personalizat'
+                : (questions.length === TEST_QUESTION_COUNT ? 'test' : 'test_complet'),
         };
 
         const history = JSON.parse(localStorage.getItem('scoreHistory') || '[]');
@@ -290,7 +294,7 @@ const TestPage = () => {
                                         : shuffled;
 
                                     setQuestions(processed);
-
+                                    setIsCustomTest(true);
                                     setStarted(true);
                                     setSelectSubjectsMode(false);
                                 });
@@ -339,6 +343,7 @@ const TestPage = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button
                             onClick={() => {
+                                setIsCustomTest(false);
                                 setStarted(true);
                                 loadQuestions();
                             }}
@@ -354,6 +359,7 @@ const TestPage = () => {
                         </button>
                         <button
                             onClick={() => {
+                                setIsCustomTest(false);
                                 fetch(QUESTIONS_PATH)
                                     .then(res => res.json())
                                     .then(data => {

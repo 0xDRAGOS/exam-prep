@@ -91,9 +91,10 @@ const LearningPage = () => {
     const handleAnswer = () => {
         const selected = Object.keys(selectedAnswers).filter(k => selectedAnswers[k]);
         const correctSet = isMultiple ? correct : [correct];
+        const correctText = correctSet.length > 0 ? correctSet.join(', ') : 'nici un răspuns';
         const isCorrect = selected.length === correctSet.length &&
             selected.every(k => correctSet.includes(k));
-        setFeedback(isCorrect ? 'Răspuns corect!' : `Greșit. Corect: ${correctSet.join(', ')}`);
+        setFeedback(isCorrect ? 'Răspuns corect!' : `Greșit. Corect: ${correctText}`);
         setAnswered(true);
     };
 
