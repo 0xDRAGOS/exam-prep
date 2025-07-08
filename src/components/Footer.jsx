@@ -21,8 +21,7 @@ const Footer = () => {
                             Pregătire examen licență informatică UCV.
                         </p>
                         <p className="text-sm text-gray-500 dark:text-gray-400">
-                            Această pagină conține grile pentru examenul de licență la Facultatea de
-                            Informatică UCV.
+                            Această pagină conține grile pentru examenul de licență la Facultatea de Științe, Departamentul de Informatică UCV.
                         </p>
                     </div>
                 </div>
