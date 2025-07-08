@@ -17,6 +17,13 @@ const Footer = () => {
                         <p className="text-sm text-gray-500 dark:text-gray-400">
                             Fă-ți studiul mai eficient. Simplu. Clar. Rapid.
                         </p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                            Pregătire examen licență informatică UCV.
+                        </p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                            Această pagină conține grile pentru examenul de licență la Facultatea de
+                            Informatică UCV.
+                        </p>
                     </div>
                 </div>
 
@@ -25,7 +32,7 @@ const Footer = () => {
                         href="mailto:contact@examprep.com"
                         className="text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
                     >
-                        <Mail size={20} />
+                        <Mail size={20}/>
                     </a>
                     <a
                         href="https://github.com/0xDRAGOS/exam-prep"
